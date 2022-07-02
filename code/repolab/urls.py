@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from django.contrib.auth import views as auth_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("repolab/",include("simple_judge.urls"))
-]
+    path("repolab/",include("simple_judge.urls")),
+    path('content/', include('quiz.urls'))
+    ]
+
