@@ -12,6 +12,7 @@ class Student(models.Model):
 class Question(models.Model):
     student=models.ForeignKey(Student, on_delete=models.CASCADE)
     question_title=models.CharField(max_length=200)
-    question_content=models.CharField(max_length=200)
+    question_content=models.JSONField('quiz_content')
+    ifpassed=models.BooleanField('ifpassed')
     def __str__(self):
         return self.question_title
