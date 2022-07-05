@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.forms import IntegerField
+from django.utils import timezone
+import datetime
 # Create your models here.
 
 class Student(models.Model):
@@ -15,6 +16,9 @@ class Question(models.Model):
     question_title=models.CharField(max_length=200)
     #question_content=models.JSONField('quiz_content')
     ifpassed=models.BooleanField('ifpassed')
+    pub_date=models.DateTimeField('date published', default=timezone.now())
+    due_date=models.DateTimeField('date due', default=timezone.now())
+    #level=0
     def __str__(self):
         return self.question_title
 
@@ -23,5 +27,7 @@ class Questiondict(models.Model):
     question_title=models.CharField(max_length=200)
     question_content=models.JSONField('quiz_content')
     question_id=models.IntegerField(default=0)
+    question_level=models.IntegerField(default=0)
+    question_week=models.IntegerField(default=0)
     def __str__(self):
         return self.question_title

@@ -12,7 +12,10 @@ class StudentAdmin(admin.ModelAdmin):
 
     inlines=[QuestionInline]
 
+class QuestiondictAdmin(admin.ModelAdmin):
+
+    list_display=('question_type','question_title','question_level','question_week')
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Question)
-admin.site.register(Questiondict)
+admin.site.register(Questiondict,QuestiondictAdmin)

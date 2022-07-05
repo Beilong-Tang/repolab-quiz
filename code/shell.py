@@ -32,21 +32,31 @@ def generate_input_file_blank():
                 for quiz in quiz_files:
                     quiz_path=quiz_file_path+'/'+quiz
                     #quiz_paths.append(quiz_path)
-                    quiz_title=quiz_path[quiz_path.find('princeton-book')+15:].replace('quiz-gen/','').replace('/','_')
+                    quiz_title=quiz_path[quiz_path.find('princeton-book')+15:].replace('quiz-gen/','').replace('/','_').replace('json','blank')
                     #print(quiz_title)
                     quiz_dict[quiz_title]=quiz_path
-                    args+="Questiondict(question_type='blank',question_title= '"+quiz_title+"',question_content={'de':1}).save()\n"
+                    args+="Questiondict(question_type='blank',question_title= '"+quiz_title+"',question_content={'description':1}).save()\n"
+    # Change the question dict
     for i,j in quiz_dict.items():
         args+="q=Questiondict.objects.get(question_title='"+i+"')\n"
         args+="q.question_content=json.load(open('"+j+"','r'))\n"
         args+='q.save()\n'
+    for i, j in quiz_dict.items():
+        args+="q=Questiondict.objects.get(question_title='"+i+"')\n"
+        args+="q.question_level=int('0' if q.question_content.get('level')==' ' or q.question_content.get('level')==''  else q.question_content.get('level'))\n"
+        args+='q.save()\n'
     open('input.txt','w').write(args)
     ain=open('input.txt','r')
-
-
-
-
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
+
+
+
+
+def generate_input_multi_choice():
+    pass
+
+    #p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
     
 
 
@@ -61,7 +71,7 @@ pass
 
 if __name__=='__main__':
     if sys.argv[1]=='blank':
-        x=generate_input_file_blank()
+        generate_input_file_blank()
     
     #open('input.txt','w').write(x)
     #ain=open('input.txt','r')
