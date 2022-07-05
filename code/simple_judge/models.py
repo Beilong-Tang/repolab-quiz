@@ -19,8 +19,9 @@ class Question(models.Model):
         return self.question_title
 
 class Questiondict(models.Model):
+    question_type=models.CharField(max_length=200)
     question_title=models.CharField(max_length=200)
     question_content=models.JSONField('quiz_content')
-    question_id=IntegerField()
+    question_id=models.IntegerField(default=0)
     def __str__(self):
         return self.question_title
