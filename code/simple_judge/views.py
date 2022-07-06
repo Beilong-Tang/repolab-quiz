@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, models, logout
 from django.contrib.auth import views
 from django.views import generic
-
+from simple_judge.models import Student
 # Create your views here.
 def index(request):
     
@@ -65,7 +65,7 @@ def signup(request):
 def signin(request):
 
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('quiz:userface', args=(request.user.pk,)))
+        return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
 
     if request.method == 'POST':
         username= request.POST['username']
@@ -77,7 +77,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname=user.first_name
-            return HttpResponseRedirect(reverse('quiz:userface', args=(request.user.pk,)))
+            return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
         
         else:
             messages.error(request, 'Bad Credentials')

@@ -1,5 +1,5 @@
-from simple_judge.models import Questiondict
-import json
-for q in Questiondict.objects.all():
-    if q.question_level==0:
+from simple_judge.models import Question, Student, Questiondict
+from utils.AssignQuestionWeek import question_assign_fixed_per_week as qafpw
+for s in Student.objects.all():
+    for q in s.question_set.all():
         q.delete()

@@ -9,8 +9,8 @@
 <body>
         <h3>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h3>
         <h3>Chapter 1</h3>
-        {% for i,j in quizes.items %}
-        <button type = 'submit'> <a href= '{% url 'quiz:quiz' user_id j %}'>{{i}}</a> </button>
+        {% for i in question_title %}
+        <button type = 'submit'> <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </button>
         <br>
         {% endfor %}
 
