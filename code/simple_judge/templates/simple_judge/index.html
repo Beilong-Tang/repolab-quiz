@@ -1,20 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {# <link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">  #}
+    {% load static %}
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/style.css' %}">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-        <h3>Welcome to CS201 Quiz</h3>
+        <h1>Welcome to CS201 Quiz</h1>
+        <p> login to see the content </p>
         
         {% if user.is_authenticated %}
         <h3>hello {{user.username}}</h3>
         <h4> You have successfully logged in </h4>
         {% endif %}
+        <div class='mydiv'>
         <button type = 'submit'> <a href="{% url 'simple_judge:signup' %}"> SignUp</a> </button>
         <button type = 'submit'> <a href="{% url 'simple_judge:signin' %}"> SignIn</a></button>
         <button type = 'submit'> <a href ="{% url 'simple_judge:signout' %}"> SignOut</a></button>
+    </div>
 </body>
 </html>

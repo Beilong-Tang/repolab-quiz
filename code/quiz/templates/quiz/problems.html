@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/style.css' %}">
     <title>Document</title>
 </head>
 <body>
-        <h3>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h3>
-        <h3>Chapter 1</h3>
+        <h1>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h1>
         {% for i in question_title %}
-        <button type = 'submit'> <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </button>
+        <button type = 'submit' > <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </button>
         <br>
         {% endfor %}
 

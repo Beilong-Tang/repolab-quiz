@@ -54,7 +54,7 @@ def quiz(request,user_id,question_title):
     context['user_id']=user_id
     context['question_title']=question_title
     #quiz_description=quiz.question_content.get('description').split('\n')
-    quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description').split('\n')
+    quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.split('\n')
     context['quiz_description']=quiz_description
     
 
