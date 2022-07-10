@@ -10,10 +10,27 @@
 </head>
 <body>
         <h1>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h1>
-        {% for i in question_title %}
-        <button type = 'submit' > <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </button>
-        <br>
-        {% endfor %}
-
+        {# {% for i in question_title %} #}
+        {#<div class='questiondiv'>#}
+            {#    <div class='labeldiv'>#}
+                {#        <label for="">{{i}} </label>#}
+                {#        <label class='level'> level </label>#}
+                {#    </div>#}
+                    {#        <div class='buttondiv'><button type = 'submit' > <a href= '{% url 'quiz:quiz' user_id i %}'style="color: black;">Go</a> </button>#}
+                        {#    </div>#}
+                            {#</div>#}
+        {#{% endfor %} #}
+    <div class='questiondiv'>
+        <table>
+            <tr>
+                <td class='Question'>Question</td>
+                <td class='level'>Level</td>
+            {% for i in question_title%}
+            <tr>
+                <td class='Question'> <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </td>
+                <td class= 'level'> level</td>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
