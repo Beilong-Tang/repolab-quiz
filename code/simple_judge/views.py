@@ -91,6 +91,27 @@ def signout(request):
     logout(request)
     return HttpResponseRedirect(reverse('simple_judge:index'))
 
+def signin_from_question(request,week,question_title):
+    context={}
+    context['week']=week
+    context['question_title']=question_title
+    if request.method == 'POST':
+        username= request.POST['username']
+        pass1= request.POST['pass1']
+
+        user = authenticate(username=username,password=pass1)
+
+
+        if user is not None:
+            login(request, user)
+            fname=user.first_name
+            return HttpResponseRedirect(reverse('quiz:quiz_new', args=(week,question_title,)))
+        
+        else:
+            messages.error(request, 'Bad Credentials')
+            return HttpResponseRedirect(reverse('simple_judge:signin_from_question'))
+
+    return render(request,'simple_judge/signin_q.html',context)
 
 
 

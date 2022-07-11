@@ -32,9 +32,9 @@
         <div class='question'>
             
             {{quiz_description|markdownify}}
-        
+        {% if user.is_authenticated %}
         </div>
-        <form action="{% url 'quiz:check' user_id question_title %}" method="post">
+        <form action="{% url 'quiz:check' 1 question_title %}" method="post">
             {% csrf_token %}
             <div class='a'>
             <label for="">Answer</label>
@@ -44,7 +44,12 @@
             <div class= 'a'>
             <button type="submit"> SUBMIT</button>
             </div>
-            </form>
+        </form>
+        {% else %}
+        <div class='a'>
+            <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' 1 question_title %}" >Please Login to see the page </a></p>
+        </div>
+        {% endif%}
 
 </body>
 </html>

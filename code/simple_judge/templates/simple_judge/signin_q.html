@@ -22,7 +22,7 @@
 
     <h1>Sign In</h1>
 
-    <form action="{% url 'simple_judge:signin' %}" method="post">
+    <form action="{% url 'simple_judge:signin_from_question' week question_title %}" method="post">
     {% csrf_token %}
     <div class = 'mydiv'>
         <label for="">Username</label>
@@ -31,7 +31,6 @@
         <label for="">Password</label>
         <input type="password" id="pass1" name="pass1" placeholde="Enter your password" required>
         <br>
-        
         <button type="submit"> Sign In</button>
          </form>
         </div>

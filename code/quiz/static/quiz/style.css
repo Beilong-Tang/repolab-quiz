@@ -21,9 +21,7 @@ html {
 
 
 h1 {
-
     text-align: center;
-    
         margin: 0;
         padding: 20px 0;
         color: #00539F;
@@ -70,14 +68,20 @@ button:hover{
 .questiondiv{
     width:800px;
 }
-
+table{
+    width:100%;
+    font-family: Consolas;
+    text-overflow: hidden;
+}
 table,th,td{
     border: 1px solid black;
     background-color: antiquewhite;
 }
-table{
-    width:100%;
+td{
+    width:400;
+    overflow: hidden;
 }
+
 .level{
     text-align: center;
     color:rgb(15, 74, 31);
@@ -88,4 +92,7 @@ table{
 }
 a{
     color:cornflowerblue;
+}
+.question{
+    font-family: Consolas;
 }

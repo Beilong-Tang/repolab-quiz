@@ -1,5 +1,5 @@
 from simple_judge.models import Questiondict
 for q in Questiondict.objects.all():
-    if q.question_title.find('chap02')!=-1 and q.question_title.find('sec-2.1')!=-1:
-        q.question_week=2
-        q.save()
+    chap=q.question_title[q.question_title.find('chap')+4:q.question_title.find('chap')+6]
+    q.question_week=(int)(chap)
+    q.save()

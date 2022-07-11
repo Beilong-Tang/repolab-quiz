@@ -1,6 +1,6 @@
 import sys, os,subprocess,json
 from utils.AssignWeek import assign_week_main as week
-from utils.AssignQuestionWeek import execute
+#from utils.AssignQuestionWeek import execute
 # Revise the Quiz director as where the quiz is at 
 
 ## Change the home_dir at here 
@@ -23,7 +23,7 @@ def generate_input_file_blank():
     args+=delete_blank()
     chap_dir=home_dir+'/'+'princeton-book'
     chapters=list(filter(lambda x: x.find('.')==-1 ,os.listdir(chap_dir)))
-    chapters=list(filter(lambda x: x!='chap01',chapters))
+    #chapters=list(filter(lambda x: x!='chap01',chapters))
     chapter_paths=[chap_dir+'/'+chapter for chapter in chapters]
     # Quiz_path is the quiz we want to do 
     #quiz_paths=[]

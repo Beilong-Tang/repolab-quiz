@@ -11,7 +11,7 @@ html {
   }
 h3 {
   text-align: center;
-    
+  font-family:Consolas;
         margin: 0;
         padding: 20px 0;
         color: #00539F;
@@ -19,20 +19,28 @@ h3 {
 }
 .a{
   text-align: center;
+  font-family:Consolas;
 }
 
 
 button{
   background-color: #2dd3e6;
+  font-family:Consolas;
 }
 
 button:hover{
   background-color: white;
-  border: 2px solid aquamarine
+  border: 2px solid aquamarine;
+  font-family:Consolas;
 }
 .question{
     width:800;
+    font-family:Consolas;
 }
 strong{
-  color:red
+  color:red;
+  font-family:Consolas;
+}
+code{
+  font-family:Consolas;
 }

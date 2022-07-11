@@ -41,12 +41,12 @@ def userface(request,user_id):
     context['user_id']=user_id
     question_sets=student.question_set.filter(ifpassed=False)
     question_title=[question.question_title for question in question_sets]
-    context['question_title']=[question.question_title for question in question_sets]
-    quiz_level=[Questiondict.objects.get(question_title=question.question_title).question_level for question in question_sets]
+    #context['question_sets']=student.question_set.filter(ifpassed=False)
+    context['question_sets']=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
     #quiz_level_sets
 
     return render(request, 'quiz/problems.html', context)
-
+'''
 def quiz(request,user_id,question_title):
     if checkuser(request,user_id)!=True:
         return HttpResponse("You are not allowed to See the Page")
@@ -59,15 +59,18 @@ def quiz(request,user_id,question_title):
     context['question_title']=question_title
     #quiz_description=quiz.question_content.get('description').split('\n')
     quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+    image_index=quiz_description.find('[image]')
+    if image_index !=-1:
+        quiz_description=quiz_description.replace('[image](','[image](/static/quiz')
     if '%s' in quiz_description:
         quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
     #quiz_description=x.convert("## Programming in Java \n```java\n System.out.println(1)\n```\n\n\nTo introduce you to developing Java programs, we break the process\ndown into three steps. To program in Java, you need to:\n\n- __(0)__ a program by typing it into a file named, say,\n  MyProgram.java.\n\n- __(1)__ it by typing __(2)__ MyProgram.java in a __(3)__\n  window.\n\n- __(4)__ (or run) it by typing java MyProgram in the __(5)__\n  window.\n\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.")
-    
+
     context['quiz_description']=quiz_description
     
-    #return HttpResponse(quiz_description)
+    return HttpResponse(quiz_description)
     return render(request, 'quiz/quiz.html', context)
- 
+'''
 def check(request, user_id, question_title):
     if checkuser(request,user_id)!=True:
         return HttpResponse("You are not allowed to See the Page")
@@ -82,3 +85,29 @@ def check(request, user_id, question_title):
         quiz.ifpassed=True
         quiz.save()
         return HttpResponseRedirect(reverse('quiz:userface', args=(user_id,)))
+
+def quiz_new(request,week,question_title):
+    if request.user.is_authenticated:
+        student_current=Student.objects.get(student_name=request.user.username)
+        if ut.checkquestion(question_title,student_current):
+            context={}
+            context['question_title']=question_title
+            quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+            if '%s' in quiz_description:
+                quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
+            image_index=quiz_description.find('[image]')
+            if image_index !=-1:
+                quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
+            context['quiz_description']=quiz_description
+            return render(request, 'quiz/quiz.html', context)
+        else:
+
+            return HttpResponse(request.user.username)
+    else:
+        context={}
+        context['question_title']=question_title
+        quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+        if '%s' in quiz_description:
+            quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
+        context['quiz_description']=quiz_description
+        return render(request, 'quiz/quiz.html', context)

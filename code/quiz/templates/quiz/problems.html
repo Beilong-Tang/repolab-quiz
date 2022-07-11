@@ -25,10 +25,10 @@
             <tr>
                 <td class='Question'>Question</td>
                 <td class='level'>Level</td>
-            {% for i in question_title%}
+            {% for i in question_sets%}
             <tr>
-                <td class='Question'> <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </td>
-                <td class= 'level'> Question</td>
+                <td class='Question'> <a href= '{% url 'quiz:quiz_new' 1 i.question_title %}'>{{i.question_title}}</a> </td>
+                <td class= 'level'> {{i.question_level}}</td>
             {% endfor %}
         </table>
     </div>
