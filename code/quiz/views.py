@@ -16,6 +16,7 @@ from django.views import generic
 
 from simple_judge.models import Student, Question, Questiondict
 import quiz.utils as ut
+import markdown
 # Create your views here.
 
 def checkuser(request,user_id):
@@ -39,7 +40,10 @@ def userface(request,user_id):
     context={}
     context['user_id']=user_id
     question_sets=student.question_set.filter(ifpassed=False)
+    question_title=[question.question_title for question in question_sets]
     context['question_title']=[question.question_title for question in question_sets]
+    quiz_level=[Questiondict.objects.get(question_title=question.question_title).question_level for question in question_sets]
+    #quiz_level_sets
 
     return render(request, 'quiz/problems.html', context)
 
@@ -54,10 +58,14 @@ def quiz(request,user_id,question_title):
     context['user_id']=user_id
     context['question_title']=question_title
     #quiz_description=quiz.question_content.get('description').split('\n')
-    quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.split('\n')
+    quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+    if '%s' in quiz_description:
+        quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
+    #quiz_description=x.convert("## Programming in Java \n```java\n System.out.println(1)\n```\n\n\nTo introduce you to developing Java programs, we break the process\ndown into three steps. To program in Java, you need to:\n\n- __(0)__ a program by typing it into a file named, say,\n  MyProgram.java.\n\n- __(1)__ it by typing __(2)__ MyProgram.java in a __(3)__\n  window.\n\n- __(4)__ (or run) it by typing java MyProgram in the __(5)__\n  window.\n\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.")
+    
     context['quiz_description']=quiz_description
     
-
+    #return HttpResponse(quiz_description)
     return render(request, 'quiz/quiz.html', context)
  
 def check(request, user_id, question_title):
@@ -74,6 +82,3 @@ def check(request, user_id, question_title):
         quiz.ifpassed=True
         quiz.save()
         return HttpResponseRedirect(reverse('quiz:userface', args=(user_id,)))
-
-
-

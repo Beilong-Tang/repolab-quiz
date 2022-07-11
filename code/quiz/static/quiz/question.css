@@ -20,21 +20,8 @@ h3 {
 .a{
   text-align: center;
 }
-p{
-  /* text-align:center; */
-  width:800px;
-  font-size:16px;
-  font-family:'Courier New', Courier, monospace;
-  letter-spacing:0.3px;
-  /* line-height:1; */
-  white-space: pre-wrap;
-  word-wrap:break-word; 
 
-  word-break:break-word; 
 
-  overflow: hidden;
-
-}
 button{
   background-color: #2dd3e6;
 }
@@ -45,4 +32,7 @@ button:hover{
 }
 .question{
     width:800;
+}
+strong{
+  color:red
 }

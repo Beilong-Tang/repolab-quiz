@@ -20,7 +20,7 @@
                         {#    </div>#}
                             {#</div>#}
         {#{% endfor %} #}
-    <div class='questiondiv'>
+    <div class='questiondiv'> 
         <table>
             <tr>
                 <td class='Question'>Question</td>
@@ -28,7 +28,7 @@
             {% for i in question_title%}
             <tr>
                 <td class='Question'> <a href= '{% url 'quiz:quiz' user_id i %}'>{{i}}</a> </td>
-                <td class= 'level'> level</td>
+                <td class= 'level'> Question</td>
             {% endfor %}
         </table>
     </div>
