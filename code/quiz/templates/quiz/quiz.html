@@ -19,22 +19,19 @@
     {% for message in messages %}
     <div class="alert alert-{{ messages.tags}} alert-dismissible fade show" role="alert">
     <strong>Message:</strong> {{message}}
-    <button type= 'button' class='close' data-dismiss='alert' aria-label='Close'>
+    {% comment %} <button type= 'button' class='close' data-dismiss='alert' aria-label='Close'> {% endcomment %}
     <span aria-hidden='true'>&times;</span>
     </button> 
     </div>
      {% endfor %}
     
-    
-
     <h3>{{question_title}}</h3>
 
         <div class='question'>
-            
             {{quiz_description|markdownify}}
-        {% if user.is_authenticated %}
         </div>
-        <form action="{% url 'quiz:check' 1 question_title %}" method="post">
+        {% if user.is_authenticated %}
+        <form action="{% url 'quiz:check' question_title %}" method="post">
             {% csrf_token %}
             <div class='a'>
             <label for="">Answer</label>
@@ -47,7 +44,7 @@
         </form>
         {% else %}
         <div class='a'>
-            <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' 1 question_title %}" >Please Login to see the page </a></p>
+            <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
         </div>
         {% endif%}
 

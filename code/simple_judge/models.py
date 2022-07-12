@@ -19,6 +19,7 @@ class Question(models.Model):
     ifpassed=models.BooleanField('ifpassed')
     pub_date=models.DateTimeField('date published', default=timezone.now())
     due_date=models.DateTimeField('date due', default=timezone.now())
+    submission_times=models.IntegerField(default=2)
     #level=0
     def __str__(self):
         return self.question_title

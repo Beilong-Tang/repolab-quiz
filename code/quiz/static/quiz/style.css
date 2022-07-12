@@ -12,7 +12,7 @@ html {
   }
 
   body {
-    width: 800px;
+    width: 1000px;
     margin: 0 auto;
     background-color: #ffffff;
     padding: 0 20px 20px 20px;
@@ -66,7 +66,7 @@ button:hover{
 }
 
 .questiondiv{
-    width:800px;
+    width:100%;
 }
 table{
     width:100%;
@@ -95,4 +95,8 @@ a{
 }
 .question{
     font-family: Consolas;
+}
+.Times{
+    color:red;
+    text-align:center;
 }

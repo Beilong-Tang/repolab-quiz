@@ -17,6 +17,7 @@ from django.views import generic
 from simple_judge.models import Student, Question, Questiondict
 import quiz.utils as ut
 import markdown
+import re
 # Create your views here.
 
 def checkuser(request,user_id):
@@ -26,12 +27,12 @@ def checkuser(request,user_id):
 
 def index(request):
     return HttpResponse("HelloThere!")
-
+'''
 def student_user(user_id):
 
     student=Student.objects.get(student_id=user_id)
     return student
-
+'''
 
 def userface(request,user_id):
     if checkuser(request , user_id) !=True:
@@ -40,9 +41,10 @@ def userface(request,user_id):
     context={}
     context['user_id']=user_id
     question_sets=student.question_set.filter(ifpassed=False)
-    question_title=[question.question_title for question in question_sets]
     #context['question_sets']=student.question_set.filter(ifpassed=False)
-    context['question_sets']=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
+    question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
+    submission_times=[ i.submission_times for i in question_sets]
+    context['array']=list(zip(question_sets_after,submission_times))
     #quiz_level_sets
 
     return render(request, 'quiz/problems.html', context)
@@ -71,34 +73,34 @@ def quiz(request,user_id,question_title):
     return HttpResponse(quiz_description)
     return render(request, 'quiz/quiz.html', context)
 '''
-def check(request, user_id, question_title):
-    if checkuser(request,user_id)!=True:
-        return HttpResponse("You are not allowed to See the Page")
-    student_current=student_user(user_id)
+def check(request, question_title):
+    student_current=Student.objects.get(student_name=request.user.username)
     quiz=student_current.question_set.get(question_title=question_title)
-
     if request.method=='POST':
-        answer=request.POST['answer'].split(' ')
-        if ut.checkanswer(answer,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))!=True:
+        answer=request.POST['answer']
+        if ut.checkanswer(answer,question_title,Questiondict.objects.get(question_title=question_title).question_type)!=True:    
             messages.error(request, 'Wrong Answer, please try again')
-            return HttpResponseRedirect(reverse('quiz:quiz',args=(user_id,question_title,)))
+            return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
         quiz.ifpassed=True
         quiz.save()
-        return HttpResponseRedirect(reverse('quiz:userface', args=(user_id,)))
+        return HttpResponseRedirect(reverse('quiz:userface', args=(student_current.student_id,)))
+    return HttpResponse('You are not allowed to see the page now')
 
-def quiz_new(request,week,question_title):
+def quiz_new(request,question_title):
     if request.user.is_authenticated:
         student_current=Student.objects.get(student_name=request.user.username)
         if ut.checkquestion(question_title,student_current):
             context={}
             context['question_title']=question_title
             quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+            quiz_description=ut.replace_blanks(quiz_description)
             if '%s' in quiz_description:
                 quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
             image_index=quiz_description.find('[image]')
             if image_index !=-1:
                 quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
             context['quiz_description']=quiz_description
+           # return HttpResponse(quiz_description)
             return render(request, 'quiz/quiz.html', context)
         else:
 

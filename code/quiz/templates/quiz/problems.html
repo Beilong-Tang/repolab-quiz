@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    
         <h1>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h1>
         {# {% for i in question_title %} #}
         {#<div class='questiondiv'>#}
@@ -25,10 +26,14 @@
             <tr>
                 <td class='Question'>Question</td>
                 <td class='level'>Level</td>
-            {% for i in question_sets%}
+                <td class='level'> Week </td>
+                <td class='Times'> Times</td>
+            {% for i,j in array %}
             <tr>
-                <td class='Question'> <a href= '{% url 'quiz:quiz_new' 1 i.question_title %}'>{{i.question_title}}</a> </td>
+                <td class='Question'> <a href= '{% url 'quiz:quiz_new' i.question_title %}'>{{i.question_title}}</a> </td>
                 <td class= 'level'> {{i.question_level}}</td>
+                <td class= 'level'> {{i.question_week}}</td>
+                <td class= 'Times'> {{j}}</td>
             {% endfor %}
         </table>
     </div>
