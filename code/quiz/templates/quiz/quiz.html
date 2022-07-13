@@ -34,40 +34,40 @@
             <div class="row-md-1" style=" border:1px solid rgb(58, 51, 51)">
                  <a href='{% url 'quiz:userface' user_id %}' style='color:black'> Main Menu </a><br>
                  {% if week == 1 %}
-                 <a href='{% url 'quiz:week' user_id 1 %}' >   Week1 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.0 %}' >   Week1 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 1 %}' style="color:rgb(0, 0, 0)">   Week1 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.0 %}' style="color:rgb(0, 0, 0)">   Week1 </a></button><br>
                  {% endif %}
                  {% comment %} <a href='{% url 'quiz:week' user_id 1 %}' >   Week1 </a></button><br> {% endcomment %}
                  {% if week == 2 %}
-                 <a href='{% url 'quiz:week' user_id 2 %}' >   Week2 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.1 %}' >   Week2 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 2 %}' style="color:rgb(0, 0, 0)">   Week2 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.1 %}' style="color:rgb(0, 0, 0)">   Week2 </a></button><br>
                  {% endif %}
                  {% if week == 3 %}
-                 <a href='{% url 'quiz:week' user_id 3 %}' >   Week3 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.2  %}' >   Week3 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 3 %}' style="color:rgb(0, 0, 0)">   Week3 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.2  %}' style="color:rgb(0, 0, 0)">   Week3 </a></button><br>
                  {% endif %}
                  {% if week == 4 %}
-                 <a href='{% url 'quiz:week' user_id 4 %}' >   Week4 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.3  %}' >   Week4 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 4 %}' style="color:rgb(0, 0, 0)">   Week4 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.3  %}' style="color:rgb(0, 0, 0)">   Week4 </a></button><br>
                  {% endif %}
                  {% if week == 5 %}
-                 <a href='{% url 'quiz:week' user_id 2 %}' >   Week5 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.4  %}' >   Week5 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 5 %}' style="color:rgb(0, 0, 0)">   Week5 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.4  %}' style="color:rgb(0, 0, 0)">   Week5 </a></button><br>
                  {% endif %}
                  {% if week == 6 %}
-                 <a href='{% url 'quiz:week' user_id 6 %}' >   Week6 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.5  %}' >   Week6 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 6 %}' style="color:rgb(0, 0, 0)">   Week6 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.5  %}' style="color:rgb(0, 0, 0)">   Week6 </a></button><br>
                  {% endif %}
                  {% if week == 7 %}
-                 <a href='{% url 'quiz:week' user_id 7 %}' >   Week7 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.6  %}' >   Week7 </a></button><br>
                  {% else %}
-                 <a href='{% url 'quiz:week' user_id 7 %}' style="color:rgb(0, 0, 0)">   Week7 </a></button><br>
+                 <a href='{% url 'quiz:quiz_new' quiz_to.6  %}' style="color:rgb(0, 0, 0)">   Week7 </a></button><br>
                  {% endif %}
                  {% comment %} <a href='{% url 'quiz:week' user_id 3 %}'>   Week3 </a></button><br>
                  <a href='{% url 'quiz:week' user_id 4 %}'>   Week4 </a></button><br>

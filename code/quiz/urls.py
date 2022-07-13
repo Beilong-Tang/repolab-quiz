@@ -11,5 +11,4 @@ urlpatterns = [
     #path('<int:user_id>/index/<str:question_title>/', views.quiz, name='quiz'),
     path('quiz/index/<str:question_title>/', views.quiz_new, name='quiz_new'),
     path('index/<str:question_title>/checking/', views.check, name='check')
-
 ]

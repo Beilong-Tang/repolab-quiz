@@ -113,7 +113,11 @@ def quiz_new(request,question_title):
             question_sets_temp2=[student_current.question_set.get(question_title=i.question_title) for i in question_sets_temp1] #[All the questions that belongs to the student (Question)]
             context['question_sets']=question_sets_temp2
             context['ifpassed']= student_current.question_set.get(question_title=question_title).ifpassed
-            #context['ifpass']=student_current.question_set.get(question_title=question_title).ifpass
+            set=[]
+            for i in range(1,8):    
+                q_w=list(filter(lambda x: student_current.question_set.get(question_title=x.question_title).ifpassed==False, list(filter(lambda x: x.question_week==i,question_sets_after ))))[0]
+                set.append(q_w)
+            context['quiz_to']=set
             return render(request, 'quiz/quiz.html', context)
         else:
 
