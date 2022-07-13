@@ -103,9 +103,9 @@
                 <td class='level'> Week </td>
                 <td class='Times'> Times</td>
                 <td class='Times'> Status</td>
-            {% for i,j in array %}
+            {% for i,j,k in array %}
             <tr>
-                <td class='level' style="width:30px"> {{forloop.counter}}</td>
+                <td class='level' style="width:30px"> {{k}}</td>
                 <td class='Question'> <a href= '{% url 'quiz:quiz_new' i.question_title %}'>{{i.question_title}}</a> </td>
                 <td class= 'level'> {{i.question_level}}</td>
                 <td class= 'level'> {{i.question_week}}</td>

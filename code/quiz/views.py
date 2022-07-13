@@ -86,7 +86,7 @@ def check(request, question_title):
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
         quiz.ifpassed=True
         quiz.save()
-        return HttpResponseRedirect(reverse('quiz:userface', args=(student_current.student_id,)))
+        return HttpResponseRedirect(reverse('quiz:quiz_new', args=(question_title,)))
     return HttpResponse('You are not allowed to see the page now')
 
 def quiz_new(request,question_title):
@@ -105,6 +105,15 @@ def quiz_new(request,question_title):
                 quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
             context['quiz_description']=quiz_description
             context['submission_times']=student_current.question_set.get(question_title=question_title).submission_times
+            context['week']=Questiondict.objects.get(question_title=question_title).question_week
+            ## Input a array with the quiz title
+            question_sets=student_current.question_set.all()
+            question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets] #[All the questions in Questiondict that is related to the question title]
+            question_sets_temp1=list(filter(lambda x: x.question_week==context['week'], question_sets_after)) #[All the questions in Questiondict that belonggs the the certain week (Questiondict)]
+            question_sets_temp2=[student_current.question_set.get(question_title=i.question_title) for i in question_sets_temp1] #[All the questions that belongs to the student (Question)]
+            context['question_sets']=question_sets_temp2
+            context['ifpassed']= student_current.question_set.get(question_title=question_title).ifpassed
+            #context['ifpass']=student_current.question_set.get(question_title=question_title).ifpass
             return render(request, 'quiz/quiz.html', context)
         else:
 
@@ -125,11 +134,12 @@ def week(request, user_id, week):
     context={}
     context['user_id']=user_id
     question_sets=student.question_set.all() # ['All the questions in Alice ]
-    temp1= Questiondict.objects.filter()
+    #temp1= Questiondict.objects.filter()
     question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets] #[All the questions in Questiondict that is related to the question title]
-    question_sets_temp1=list(filter(lambda x: x.question_week==week, question_sets_after)) #[All the questions in Questiondict that ]
-    question_sets_temp2=[student.question_set.get(question_title=i.question_title) for i in question_sets_temp1]
-    context['array']=list(zip( question_sets_temp1,question_sets_temp2))
+    question_sets_temp1=list(filter(lambda x: x.question_week==week, question_sets_after)) #[All the questions in Questiondict that belonggs the the certain week (Questiondict)]
+    question_sets_temp2=[student.question_set.get(question_title=i.question_title) for i in question_sets_temp1] #[All the questions that belongs to the student (Question)]
+    id=range(1,len(question_sets_temp1)+1)
+    context['array']=list(zip( question_sets_temp1,question_sets_temp2,id))
     context['week']=week
     #quiz_level_sets
 
