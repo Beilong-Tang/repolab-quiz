@@ -40,11 +40,12 @@ def userface(request,user_id):
     student=Student.objects.get(student_name=request.user.username)
     context={}
     context['user_id']=user_id
-    question_sets=student.question_set.filter(ifpassed=False)
+    question_sets=student.question_set.all()#.filter(ifpassed=False)
     #context['question_sets']=student.question_set.filter(ifpassed=False)
     question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
-    submission_times=[ i.submission_times for i in question_sets]
-    context['array']=list(zip(question_sets_after,submission_times))
+    #submission_times=[ i.submission_times for i in question_sets]
+    #ifpass=[ i.ifpassed for i in question_sets]
+    context['array']=list(zip(question_sets_after,question_sets))
     #quiz_level_sets
 
     return render(request, 'quiz/problems.html', context)
@@ -80,6 +81,8 @@ def check(request, question_title):
         answer=request.POST['answer']
         if ut.checkanswer(answer,question_title,Questiondict.objects.get(question_title=question_title).question_type)!=True:    
             messages.error(request, 'Wrong Answer, please try again')
+            quiz.submission_times=quiz.submission_times-1
+            quiz.save()
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
         quiz.ifpassed=True
         quiz.save()
@@ -89,8 +92,9 @@ def check(request, question_title):
 def quiz_new(request,question_title):
     if request.user.is_authenticated:
         student_current=Student.objects.get(student_name=request.user.username)
+        context={}
+        context['user_id']=student_current.student_id
         if ut.checkquestion(question_title,student_current):
-            context={}
             context['question_title']=question_title
             quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
             quiz_description=ut.replace_blanks(quiz_description)
@@ -100,7 +104,7 @@ def quiz_new(request,question_title):
             if image_index !=-1:
                 quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
             context['quiz_description']=quiz_description
-           # return HttpResponse(quiz_description)
+            context['submission_times']=student_current.question_set.get(question_title=question_title).submission_times
             return render(request, 'quiz/quiz.html', context)
         else:
 
@@ -113,3 +117,20 @@ def quiz_new(request,question_title):
             quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
         context['quiz_description']=quiz_description
         return render(request, 'quiz/quiz.html', context)
+
+def week(request, user_id, week):
+    if checkuser(request , user_id) !=True:
+       return HttpResponse("You are not allowed to See the Page") 
+    student=Student.objects.get(student_name=request.user.username)
+    context={}
+    context['user_id']=user_id
+    question_sets=student.question_set.all() # ['All the questions in Alice ]
+    temp1= Questiondict.objects.filter()
+    question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets] #[All the questions in Questiondict that is related to the question title]
+    question_sets_temp1=list(filter(lambda x: x.question_week==week, question_sets_after)) #[All the questions in Questiondict that ]
+    question_sets_temp2=[student.question_set.get(question_title=i.question_title) for i in question_sets_temp1]
+    context['array']=list(zip( question_sets_temp1,question_sets_temp2))
+    context['week']=week
+    #quiz_level_sets
+
+    return render(request, 'quiz/week.html', context)

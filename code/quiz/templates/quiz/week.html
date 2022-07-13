@@ -21,28 +21,56 @@
           <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active"  href="#">Main Menu</a>
+                <a class="nav-link"  href="{% url 'quiz:userface' user_id %}">Main Menu</a>
               </li>
               <li class="nav-item">
+                {%if week == 1 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 1 %}">Week1</a>
+                {% else %}
                 <a class="nav-link" href="{% url 'quiz:week' user_id 1 %}">Week1</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 2 %}">Week2</a>
+                {%if week == 2 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 2 %}">Week2</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 2 %}">Week2</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 3 %}">Week3</a>
+                {%if week == 3 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 3 %}">Week3</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 3 %}">Week3</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 4 %}">Week4</a>
+                {%if week == 4 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 4 %}">Week4</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 4 %}">Week4</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 5 %}">Week5</a>
+                {%if week == 5 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 5 %}">Week5</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 5 %}">Week5</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 6 %}">Week6</a>
+                {%if week == 6 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 6 %}">Week6</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 6 %}">Week6</a>
+                {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 7 %}">Week7</a>
+                {%if week == 7 %}
+                <a class="nav-link active" href="{% url 'quiz:week' user_id 7 %}">Week7</a>
+                {% else %}
+                <a class="nav-link " href="{% url 'quiz:week' user_id 7 %}">Week7</a>
+                {% endif %}
               </li>
             </ul>
             <!-- <form role="search">
@@ -64,6 +92,8 @@
                             {#</div>#}
         {#{% endfor %} #} -->
 
+    
+    
     <div class='questiondiv'> 
         <table>
             <tr>
@@ -76,7 +106,7 @@
             {% for i,j in array %}
             <tr>
                 <td class='level' style="width:30px"> {{forloop.counter}}</td>
-                <td class='Question'> <a href= "{% url 'quiz:quiz_new' i.question_title %}">{{i.question_title}}</a> </td>
+                <td class='Question'> <a href= '{% url 'quiz:quiz_new' i.question_title %}'>{{i.question_title}}</a> </td>
                 <td class= 'level'> {{i.question_level}}</td>
                 <td class= 'level'> {{i.question_week}}</td>
                 <td class= 'Times'> {{j.submission_times}}</td>

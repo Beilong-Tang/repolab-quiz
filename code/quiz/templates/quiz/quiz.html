@@ -11,8 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load markdownify %}
     {% load static %}
-    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
+    {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
+     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">  {% endcomment %}
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
+    {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}"> 
+     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
     <title>Test</title>
 </head>
 <body>
@@ -25,9 +29,47 @@
     </div>
      {% endfor %}
     
-    <h3>{{question_title}}</h3>
-
-        <div class='question'>
+    <h3 >{{question_title}}</h3>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-2" >
+            {% comment %} This is the one that shows on the top left {% endcomment %}
+            <div class="row-md-1" style=" border:1px solid rgb(58, 51, 51)">
+                <p> <a href='{% url 'quiz:userface' user_id %}'> Main Menu </a></button></P>
+            </div>
+            <div class="row-md-2" style=" border:1px solid rgb(58, 51, 51)" >
+              <p>w.</p>
+            </div>
+          </div>
+          {% comment %} This is the one that has the details of the question {% endcomment %}
+          <div class="col-md-10" style=" border:1px solid rgb(58, 51, 51)">
+            <div class='question'>
+                {{quiz_description|markdownify}}
+            </div>
+            {% if user.is_authenticated %}
+            <form action="{% url 'quiz:check' question_title %}" method="post">
+                {% csrf_token %}
+                <div class='a'>
+                <label for="">Answer</label>
+                <input type="text" id="answer" name="answer" placeholde="Your Answer" required>
+                </div>
+                <br>
+                <div class= 'a'>
+                <button type="submit"> SUBMIT</button>
+                <div>
+                    <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
+                </div>
+                </div>
+            </form>
+            {% else %}
+            <div class='a'>
+                <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
+            </div>
+            {% endif%}
+          </div>
+        </div>
+      </div>
+        {% comment %} <div class='question'>
             {{quiz_description|markdownify}}
         </div>
         {% if user.is_authenticated %}
@@ -40,13 +82,17 @@
             <br>
             <div class= 'a'>
             <button type="submit"> SUBMIT</button>
+            <div>
+                <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
+                <p> <button><a href='{% url 'quiz:userface' user_id %}'> Main Menu </button></P>
+            </div>
             </div>
         </form>
         {% else %}
         <div class='a'>
             <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
         </div>
-        {% endif%}
+        {% endif%} {% endcomment %}
 
 </body>
 </html>
