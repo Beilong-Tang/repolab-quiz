@@ -20,14 +20,18 @@
     <title>Test</title>
 </head>
 <body>
+
      {% for message in messages %}
     <div class="alert alert-{{ messages.tags}} alert-dismissible fade show" role="alert">
     <strong>Message:</strong> {{message}}
     </div>
      {% endfor %}
-    
-    <h3 >{{question_title}}</h3>
+     <div class="topmenu">
+        <p>COMPSCI 201: Intro to prgramming and data structures</p>
+        
+    </div>
     <div class="container">
+        <h3 >{{question_title}}</h3>
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
@@ -77,25 +81,32 @@
             </div>
             <div class="row-md-2" style=" border:1px solid rgb(58, 51, 51)" >
               {% for quiz in question_sets %}
-                 {% if quiz.ifpassed %}
+                 {% if quiz.submission_times <= 0 %}
                     {%if question_title == quiz.question_title%}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="color:green;background-color: rgb(175, 248, 246);">Problem{{forloop.counter}}√</a> <br> 
+                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="color:red;background-color: rgb(175, 248, 246);">Problem{{forloop.counter}}X</a> <br> 
                     {%else %}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}"style="color:green">Problem{{forloop.counter}}√</a> <br>
+                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}"style="color:red">Problem{{forloop.counter}}X</a> <br>
                     {% endif %}
-                {%else%}
-                    {%if question_title == quiz.question_title%}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="background-color: aquamarine;">Problem{{forloop.counter}}</a> <br> 
-                    {%else %}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}">Problem{{forloop.counter}}</a> <br>
-                    {% endif %}
+                {% else %}
+                    {% if quiz.ifpassed %}
+                        {%if question_title == quiz.question_title%}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="color:green;background-color: rgb(175, 248, 246);">Problem{{forloop.counter}}√</a> <br> 
+                        {%else %}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}"style="color:green">Problem{{forloop.counter}}√</a> <br>
+                        {% endif %}
+                    {%else%}
+                        {%if question_title == quiz.question_title%}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="background-color: aquamarine;">Problem{{forloop.counter}}</a> <br> 
+                        {%else %}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}">Problem{{forloop.counter}}</a> <br>
+                        {% endif %}
+                    {%endif%}
                 {%endif%}
-
               {% endfor %}
             </div>
           </div>
           {% comment %} This is the one that has the details of the question {% endcomment %}
-          <div class="col-md-10" style=" border:1px solid rgb(58, 51, 51)">
+          <div class="col-md-10" style=" border:1px solid rgb(58, 51, 51) ;position:static; ">
             <div class='question'>
                 
                 {{quiz_description|markdownify}}
@@ -104,19 +115,44 @@
             {% if user.is_authenticated %}
             <form action="{% url 'quiz:check' question_title %}" method="post">
                 {% csrf_token %}
-                <div class='a'>
+                <div class='a' style="position:static; bottom:0">
                 <label for="">Answer</label>
                 <input type="text" id="answer" name="answer" placeholde="Your Answer" required>
-                </div>
                 <br>
-                <div class= 'a'>
-                <button type="submit"> SUBMIT</button>
-                <div>
-                    {% if ifpassed %}
-                    <p style="color:green"> You have passed the problem.</p>
-                    {% endif%}
+                <br>
+                <button type="submit" > SUBMIT</button>
+                    {% comment %} {% if ifpassed %}
+                        {% if submission_times < 0%}
+                        <p style="color:red"> Your answer is correct but it will not be recorded.</p>
+                        {% else %}
+                        <p style="color:green"> You have passed the quiz.</p>
+                        {% endif%}
+                    {% else %}
+                        {% %}
+                    {% endif%} {% endcomment %}
+
+
+                    {% if submission_times > 0%}
+                        {% if ifpassed %}
+                            <p style="color:green"> You have passed the quiz.</p>
+                        {% else %}
+                            <p style="color:black"> You have {{submission_times}} times left.</p>
+                        {%endif%}
+                    {% else %}
+                        {% if ifpassed %}
+                            <p style="color:red"> Your answer is correct but it will not be recorded.</p>
+                        {%else%}
+                            <p style="color:red"> You have failed the quiz</p>
+                        {%endif%}
+
+                    {% endif %}
+
+
+                    {% comment %} {% if submission_times > 0%}
                     <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
-                </div>
+                    {% else %}
+                    <p> You can try, but your answers will not be recorded. </p>
+                    {% endif %} {% endcomment %}
                 </div>
             </form>
             {% else %}
@@ -151,6 +187,8 @@
             <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
         </div>
         {% endif%} {% endcomment %}
-
+        <!-- <div class="footer">
+            <p>Support by CS201 TA Team</p>
+        </div> -->
 </body>
 </html>

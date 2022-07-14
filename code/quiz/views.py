@@ -80,10 +80,14 @@ def check(request, question_title):
     if request.method=='POST':
         answer=request.POST['answer']
         if ut.checkanswer(answer,question_title,Questiondict.objects.get(question_title=question_title).question_type)!=True:    
-            messages.error(request, 'Wrong Answer, please try again')
-            quiz.submission_times=quiz.submission_times-1
-            quiz.save()
+            messages.error(request, 'Wrong Answer!')
+            if quiz.ifpassed!=True:
+                quiz.submission_times=quiz.submission_times-1
+                quiz.save()
+            ## Fail the test
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
+        ## Failing Condition, if submission times <0, the ifpass will not update 
+        messages.error(request, 'Correct!')
         quiz.ifpassed=True
         quiz.save()
         return HttpResponseRedirect(reverse('quiz:quiz_new', args=(question_title,)))
@@ -106,7 +110,7 @@ def quiz_new(request,question_title):
             context['quiz_description']=quiz_description
             context['submission_times']=student_current.question_set.get(question_title=question_title).submission_times
             context['week']=Questiondict.objects.get(question_title=question_title).question_week
-            ## Input a array with the quiz title
+            ## Input an array with the quiz title
             question_sets=student_current.question_set.all()
             question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets] #[All the questions in Questiondict that is related to the question title]
             question_sets_temp1=list(filter(lambda x: x.question_week==context['week'], question_sets_after)) #[All the questions in Questiondict that belonggs the the certain week (Questiondict)]
@@ -115,7 +119,7 @@ def quiz_new(request,question_title):
             context['ifpassed']= student_current.question_set.get(question_title=question_title).ifpassed
             set=[]
             for i in range(1,8):    
-                q_w=list(filter(lambda x: student_current.question_set.get(question_title=x.question_title).ifpassed==False, list(filter(lambda x: x.question_week==i,question_sets_after ))))[0]
+                q_w=list(filter(lambda x: student_current.question_set.get(question_title=x.question_title).ifpassed==False and student_current.question_set.get(question_title=x.question_title).submission_times>0, list(filter(lambda x: x.question_week==i,question_sets_after ))))[0]
                 set.append(q_w)
             context['quiz_to']=set
             return render(request, 'quiz/quiz.html', context)
@@ -148,3 +152,4 @@ def week(request, user_id, week):
     #quiz_level_sets
 
     return render(request, 'quiz/week.html', context)
+

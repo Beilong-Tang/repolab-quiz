@@ -11,6 +11,9 @@
     <title>Document</title>
 </head>
 <body>
+  <div class="topmenu">
+    <p>COMPSCI 201: Intro to prgramming and data structures</p>
+</div>
     <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
         <div class="container-fluid">
           <!-- <a class="navbar-brand" href="#">Always expand</a>
@@ -74,23 +77,24 @@
                 <td class='Question'>Question</td>
                 <td class='level'>Level</td>
                 <td class='level'> Week </td>
-                <td class='Times'> Times</td>
-                <td class='Times'> Status</td>
+                {% comment %} <td class='Times'> Times</td> {% endcomment %}
+                <td class='level'> Status</td>
             {% for i,j in array %}
             <tr>
                 <td class='level' style="width:30px"> {{forloop.counter}}</td>
                 <td class='Question'> <a href= "{% url 'quiz:quiz_new' i.question_title %}">{{i.question_title}}</a> </td>
                 <td class= 'level'> {{i.question_level}}</td>
                 <td class= 'level'> {{i.question_week}}</td>
-                <td class= 'Times'> {{j.submission_times}}</td>
+                {% comment %} <td class= 'Times'> {{j.submission_times}}</td> {% endcomment %}
+                {% if j.submission_times > 0 %}
                     {% if j.ifpassed %}
-                    <td class= 'Times' style="color:green"> 
-                    Pass
+                    <td class= 'Times' style="color:green"> Passed</td>
                     {% else %}
-                    <td class= 'Times' style="color:rgb(225, 113, 0)"> 
-                    Ongoing
+                    <td class= 'Times' style="color:rgb(225, 113, 0)"> Ongoing</td>
                     {%endif%}
-                </td>
+                {% else %}
+                  <td class= 'Times' style="color:red"> Failed </td>
+                {%endif%}
             {% endfor %}
         </table>
     </div>

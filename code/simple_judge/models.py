@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-import datetime
+
 #from ..utils.AssignQuestionWeek import 
 # Create your models here.
 
@@ -34,10 +34,3 @@ class Questiondict(models.Model):
     def __str__(self):
         return self.question_title
 
-
-## Here are model managers like add or sth.
-def test():
-    for q in Questiondict.objects.all():
-        if q.question_title=="chap01_new_sec-1.1_quiz.0.Programming.in.Java.qz.blank":
-            q.question_week=7
-            q.save()
