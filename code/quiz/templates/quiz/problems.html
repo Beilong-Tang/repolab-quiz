@@ -58,7 +58,7 @@
         </div>
       </nav>
 
-        <h1>Welcome to CS201 Quiz, Here are the quizes you need to finish:</h1>
+        <h1>Welcome to CS201 Quiz!</h1>
         <!-- {# {% for i in question_title %} #}
         {#<div class='questiondiv'>#}
             {#    <div class='labeldiv'>#}
@@ -70,14 +70,14 @@
                             {#</div>#}
         {#{% endfor %} #} -->
 
-    <div class='questiondiv'> 
+    {% comment %} <div class='questiondiv'> 
         <table>
             <tr>
                 <td class='level'>ID</td>
                 <td class='Question'>Question</td>
                 <td class='level'>Level</td>
                 <td class='level'> Week </td>
-                {% comment %} <td class='Times'> Times</td> {% endcomment %}
+                {% comment %} <td class='Times'> Times</td> 
                 <td class='level'> Status</td>
             {% for i,j in array %}
             <tr>
@@ -85,7 +85,7 @@
                 <td class='Question'> <a href= "{% url 'quiz:quiz_new' i.question_title %}">{{i.question_title}}</a> </td>
                 <td class= 'level'> {{i.question_level}}</td>
                 <td class= 'level'> {{i.question_week}}</td>
-                {% comment %} <td class= 'Times'> {{j.submission_times}}</td> {% endcomment %}
+                {% comment %} <td class= 'Times'> {{j.submission_times}}</td> 
                 {% if j.submission_times > 0 %}
                     {% if j.ifpassed %}
                     <td class= 'Times' style="color:green"> Passed</td>
@@ -97,6 +97,6 @@
                 {%endif%}
             {% endfor %}
         </table>
-    </div>
+    </div> {% endcomment %}
 </body>
 </html>

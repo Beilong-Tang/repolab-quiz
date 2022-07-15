@@ -10,8 +10,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, models, logout
-from django.contrib.auth import views
-from django.views import generic
 from simple_judge.models import Student
 # Create your views here.
 def index(request):
