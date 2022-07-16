@@ -1,10 +1,13 @@
 # Put the function Here
 from django.contrib.auth.models import User
+import flask_frozen
 from simple_judge.models import Question, Questiondict
 from django.http import HttpResponse
 import subprocess ,os,datetime,re
 
 
+### Clean the output for the code
+clean_output=True
 ## Check Answer for Fill in the blank questions
 def checkanswer(input_sets,question_title,question_type):
     if question_type=='blank':
@@ -89,9 +92,8 @@ def check_answer_code(jsonfile, answer):
     clean_output=True
     # Get the code
     code=jsonfile['code']
-    blank=0
     for i in range(0,len(answer)):
-        code=code.replace('__'+(str)(blank)+'__',answer[i])
+        code=code.replace('__'+(str)(i)+'__',answer[i])
     if 'wdir-code' not in os.listdir(os.getcwd()):
             os.system('mkdir '+'wdir-code')
     #code_file=open('quiz-gen/'+self.data['title']+'.txt','w')

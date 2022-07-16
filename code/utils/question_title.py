@@ -13,11 +13,16 @@ r_code='[_][\d]+[.]'
 r_blank='_quiz.[\d]+.'
 r_mult='_mult.[\d]+.'
 
+
 def question_title_modify():
     for q in Questiondict.objects.all():
         q.question_title=question_title_change(q.question_title,q.question_type)
         q.save()
 
+def code_modify_question_title_modify():
+    for q in Questiondict.objects.filter(question_type='code'):
+        q.question_title=question_title_change(q.question_title,q.question_type)
+        q.save()
 
 def question_title_change(question_title,question_type):
     if question_type=='blank':
