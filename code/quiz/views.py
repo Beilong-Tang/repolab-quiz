@@ -76,7 +76,8 @@ def quiz_new(request,question_title):
             ## The content here can be imporved
             quiz_description=question_dict.question_content.get('description')#.replace('\n','\n\n')#.split('\n')
             quiz_description=ut.replace_blanks(quiz_description)
-            if '%s' in quiz_description:
+
+            if question_dict.question_type=='mult':
                 quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
             image_index=quiz_description.find('[image]')
             if image_index !=-1:

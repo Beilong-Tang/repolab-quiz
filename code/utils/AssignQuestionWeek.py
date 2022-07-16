@@ -9,7 +9,7 @@
 # chap 4 10 
 # chap 5 10 
 import random
-
+from simple_judge.models import Question, Student, Questiondict
 '''
 from simple_judge.models import Question, Student, Questiondict
 from utils.AssignQuestionWeek import question_assign_fixed_per_week as qafpw
