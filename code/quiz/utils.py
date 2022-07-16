@@ -2,23 +2,21 @@
 from django.contrib.auth.models import User
 from simple_judge.models import Question, Questiondict
 from django.http import HttpResponse
-import re
-import datetime
-
+import subprocess ,os,datetime,re
 
 
 ## Check Answer for Fill in the blank questions
-def checkanswer(input,question_title,question_type):
+def checkanswer(input_sets,question_title,question_type):
     if question_type=='blank':
-        return checkanswer_blank(input,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
+        return checkanswer_blank(input_sets,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
     if question_type=='mult':
-        return checkanswer_mult(input,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
-    
+        return checkanswer_mult(input_sets[0],Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
+    if question_type=='code':
+        return check_answer_code(Questiondict.objects.get(question_title=question_title).question_content,input_sets)
 
 
 
-def checkanswer_blank(input, answer_sets):
-    input_sets=list (filter (lambda x : x!='',input.split(' ')))
+def checkanswer_blank(input_sets, answer_sets):
     if len(input_sets)!=len(answer_sets):
         return False
     for i in range(0,len(input_sets)):
@@ -27,6 +25,7 @@ def checkanswer_blank(input, answer_sets):
     return True
 ## Check Answer for multi choice questions
 def checkanswer_mult(input,answer_sets):    
+
     input_sets=list (filter (lambda x : x!='',input.split(' ')))
     answer_arrays=[]
     for i in range(0,len(answer_sets)):
@@ -76,3 +75,70 @@ def checktime():
         if (tim>time_start and tim < time_end):
             return i+1
     return 8
+
+def getanswer(request, len):
+    answers=[]
+    for i in range(0,len):
+        answers.append(request.POST.get((str)(i)))
+    return answers
+
+def check_answer_code(jsonfile, answer):
+    running_directory=os.getcwd()+'/utils'
+    ### This is for local use
+    ###
+    clean_output=True
+    # Get the code
+    code=jsonfile['code']
+    blank=0
+    for i in range(0,len(answer)):
+        code=code.replace('__'+(str)(blank)+'__',answer[i])
+    if 'wdir-code' not in os.listdir(os.getcwd()):
+            os.system('mkdir '+'wdir-code')
+    #code_file=open('quiz-gen/'+self.data['title']+'.txt','w')
+    code_file=open('wdir-code/'+jsonfile['title']+'.txt','w')
+    code_file.write(code)
+    code_file.close()
+    # Get the checking method #jsonfile['check']
+    check_file=open('wdir-code/'+'check.txt','w')
+    check_file.write(jsonfile['check'])
+    check_file.close()
+    # Get the instruction
+    instruction_file=open('wdir-code/'+'instruction.txt','w')
+    instruction_file.write(jsonfile['instruction'])
+    instruction_file.close()
+    ain = open('wdir-code/instruction.txt','rb') # fixed by lj -- remove use of /bin/more
+    p2=subprocess.Popen(args='jshell',shell=True,stdin=ain,stdout=subprocess.PIPE)
+    output_file=open('wdir-code/data.txt.save','wb')
+    output_file.write(p2.stdout.read()) # fixed by lj -- remove use of nano
+    output_file.close()
+    output_file=open('wdir-code/data.txt.save','r')
+    ## Ready to check answers
+    if jsonfile['main_output']!="":
+        main_output=jsonfile['main_output'].lstrip('\n').rstrip('\n').split()
+        content=output_file.read()
+        content=content[content.find('check()'):]
+        for item in main_output:
+            if content.find(item)!=-1:
+                content=content[content.find(item)+len(item):]
+            else:
+                if clean_output !=False:
+                    clean_all()
+                return False
+        if clean_output !=False:
+            clean_all()
+        return True
+    else:
+        for line in output_file.readlines():
+            if line.find('check()true')!=-1:
+                if clean_output !=False:
+                    clean_all()
+                return True
+        if clean_output !=False:
+            clean_all()    
+        return False
+
+
+def clean_all():
+    os.system('rm -rf wdir-code')
+    # os.system('rm wdir-code/data.txt.save')
+    # os.system('rm wdir-code/*.txt')

@@ -17,6 +17,13 @@
     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}"> 
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
+    <script>
+        function invisible(){
+
+            document.getElementById('submit').style.display='none';
+            document.getElementById('check').style.display='inline';
+        }
+    </script>
     <title>Test</title>
 </head>
 <body>
@@ -106,54 +113,61 @@
             </div>
           </div>
           {% comment %} This is the one that has the details of the question {% endcomment %}
-          <div class="col-md-10" style=" border:1px solid rgb(58, 51, 51) ;position:static; ">
-            <div class='question'>
-                
+
+          <div class="col-md-10" >
+            <div class='question' >
+                <div class='text' style="margin-bottom: 0;">
                 {{quiz_description|markdownify}}
+                </div>
             </div>
-            
             {% if user.is_authenticated %}
-            <form action="{% url 'quiz:check' question_title %}" method="post">
+            <form action="{% url 'quiz:check' question_title %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100)" onsubmit="invisible();">
                 {% csrf_token %}
-                <div class='a' style="position:static; bottom:0">
-                <label for="">Answer</label>
-                <input type="text" id="answer" name="answer" placeholde="Your Answer" required>
-                <br>
-                <br>
-                <button type="submit" > SUBMIT</button>
-                    {% comment %} {% if ifpassed %}
-                        {% if submission_times < 0%}
-                        <p style="color:red"> Your answer is correct but it will not be recorded.</p>
-                        {% else %}
-                        <p style="color:green"> You have passed the quiz.</p>
-                        {% endif%}
+                    {% if overdue != True%}
+                        <label for="" style="text-align: center; color:rgb(110, 119, 123);font-size: 13px;">Your answer goes here:</label>
+                        <br>
+                        {% for i in answers %}
+                        <input type="text" id="answer1" name="{{forloop.counter0}}" placeholder="({{forloop.counter0}})" required> 
+                        {%empty%}
+                        <input type="text" id="answer1" name="0" placeholder="Your Answer"  required> 
+                        {% endfor %}
+                        <br>
+                        <button type="submit" style="margin-top:10px"  id='submit'> SUBMIT</button>
+                        <label for="" style="text-align: center; color:rgb(255, 157, 0);font-size: 13px; display:none ;" id ='check'>...CHECKING...</label>
+                            {% comment %} {% if ifpassed %}
+                                {% if submission_times < 0%}
+                                <p style="color:red"> Your answer is correct but it will not be recorded.</p>
+                                {% else %}
+                                <p style="color:green"> You have passed the quiz.</p>
+                                {% endif%}
+                            {% else %}
+                                {% %}
+                            {% endif%} {% endcomment %}
                     {% else %}
-                        {% %}
-                    {% endif%} {% endcomment %}
-
-
-                    {% if submission_times > 0%}
-                        {% if ifpassed %}
-                            <p style="color:green"> You have passed the quiz.</p>
-                        {% else %}
-                            <p style="color:black"> You have {{submission_times}} times left.</p>
-                        {%endif%}
+                            <p style='color:orange'>Answer: {{answer}}</p>
+                    {% endif%}
+                    {% if overdue == True %}
+                        <p style="color:red"> You have passed the due.</p>
                     {% else %}
-                        {% if ifpassed %}
-                            <p style="color:red"> Your answer is correct but it will not be recorded.</p>
-                        {%else%}
-                            <p style="color:red"> You have failed the quiz</p>
-                        {%endif%}
-
+                        {% if submission_times > 0%}
+                            {% if ifpassed %}
+                                <p style="color:green"> You have passed the quiz.</p>
+                            {% else %}
+                                <p style="color:black"> You have {{submission_times}} times left.</p>
+                            {%endif%}
+                        {% else %}
+                            {% if ifpassed %}
+                                <p style="color:red"> Your answer is correct but it will not be recorded.</p>
+                            {%else%}
+                                <p style="color:red"> You have failed the quiz</p>
+                            {%endif%}
+                        {% endif %}
                     {% endif %}
-
-
                     {% comment %} {% if submission_times > 0%}
                     <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
                     {% else %}
                     <p> You can try, but your answers will not be recorded. </p>
                     {% endif %} {% endcomment %}
-                </div>
             </form>
             {% else %}
             <div class='a'>

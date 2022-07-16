@@ -10,6 +10,8 @@ from simple_judge.models import Student, Question, Questiondict
 import quiz.utils as ut
 # Create your views here.
 
+week_now=1
+
 def checkuser(request,user_id):
     if request.user.username!=Student.objects.get(student_id=user_id).student_name:
         return False
@@ -38,18 +40,22 @@ def check(request, question_title):
     student_current=Student.objects.get(student_name=request.user.username)
     quiz=student_current.question_set.get(question_title=question_title)
     if request.method=='POST':
-        answer=request.POST['answer']
+        question_dict=Questiondict.objects.get(question_title=question_title)
+        answer=ut.getanswer(request,len(question_dict.question_content.get('answers')))
+        if Questiondict.objects.get(question_title=question_title).question_week < week_now:
+            return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
         if ut.checkanswer(answer,question_title,Questiondict.objects.get(question_title=question_title).question_type)!=True:    
             messages.error(request, 'Wrong Answer!')
-            if quiz.ifpassed!=True:
+            if quiz.submission_times > 0 and quiz.ifpassed==False:
                 quiz.submission_times=quiz.submission_times-1
                 quiz.save()
-            ## Fail the test
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
-        ## Failing Condition, if submission times <0, the ifpass will not update 
-        messages.error(request, 'Correct Answer!')
-        quiz.ifpassed=True
-        quiz.save()
+        messages.success(request, 'Correct Answer!')
+        if quiz.ifpassed==True:
+            return HttpResponseRedirect(reverse('quiz:quiz_new', args=(question_title,)))
+        if quiz.submission_times > 0:
+            quiz.ifpassed=True
+            quiz.save()
         return HttpResponseRedirect(reverse('quiz:quiz_new', args=(question_title,)))
     return HttpResponse('You are not allowed to see the page now')
 
@@ -59,16 +65,19 @@ def quiz_new(request,question_title):
         context={}
         context['user_id']=student_current.student_id
         if ut.checkquestion(question_title,student_current):
-            question_week=Questiondict.objects.get(question_title=question_title).question_week
-            # if ut.checktime() != question_week:
-            #     return HttpResponse("Not appropriate Time")
-
+            question_dict=Questiondict.objects.get(question_title=question_title)
+            question_week=question_dict.question_week
+            context['overdue']=False
+            if question_week <week_now:
+                context['overdue']=True
+            if question_dict.question_type=='blank' or question_dict.question_type=='code':
+                context['answers']=question_dict.question_content.get('answers')
             context['question_title']=question_title
             ## The content here can be imporved
-            quiz_description=Questiondict.objects.get(question_title=question_title).question_content.get('description')#.replace('\n','\n\n')#.split('\n')
+            quiz_description=question_dict.question_content.get('description')#.replace('\n','\n\n')#.split('\n')
             quiz_description=ut.replace_blanks(quiz_description)
             if '%s' in quiz_description:
-                quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(Questiondict.objects.get(question_title=question_title).question_content.get('choices')))
+                quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
             image_index=quiz_description.find('[image]')
             if image_index !=-1:
                 quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
@@ -89,7 +98,6 @@ def quiz_new(request,question_title):
             context['quiz_to']=set
             return render(request, 'quiz/quiz.html', context)
         else:
-
             return HttpResponse(request.user.username)
     else:
         context={}

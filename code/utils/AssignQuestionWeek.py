@@ -4,17 +4,19 @@
 # from 
 # 
 # chap 1 10 ge
-# chap 2 10 个
-# chap 3 10 个
-# chap 4 10 个
-# chap 5 10 个
+# chap 2 10 
+# chap 3 10 
+# chap 4 10 
+# chap 5 10 
 import random
 
+'''
 from simple_judge.models import Question, Student, Questiondict
-# from utils.AssignQuestionWeek import question_assign_fixed_per_week as qafpw
-#for s in Student.objects.all():
-#    for q in s.question_set.all():
-#        q.delete()
+from utils.AssignQuestionWeek import question_assign_fixed_per_week as qafpw
+for s in Student.objects.all():
+   for q in s.question_set.all():
+            q.delete()
+'''
 def question_assign_fixed_per_week(num=10,chap=7):
     '''
     iteration=1
