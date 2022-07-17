@@ -10,7 +10,7 @@ from simple_judge.models import Student, Question, Questiondict
 import quiz.utils as ut
 # Create your views here.
 
-week_now=1
+week_now=2
 
 def checkuser(request,user_id):
     if request.user.username!=Student.objects.get(student_id=user_id).student_name:
