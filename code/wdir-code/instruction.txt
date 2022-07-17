@@ -1,4 +1,0 @@
-/open wdir-code/TriangleArea.txt
-/open wdir-code/check.txt
-check()
-/save -history wdir-code/data.txt

@@ -29,6 +29,16 @@ def userface(request,user_id):
     question_sets=student.question_set.all()#.filter(ifpassed=False)
     #context['question_sets']=student.question_set.filter(ifpassed=False)
     question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
+    
+    # for question in question_sets:
+    #     check=False
+    #     for i in Questiondict.objects.all():
+    #         if i.question_title==question.question_title:
+    #             check=True
+    #             break
+    #     if check==False:
+    #         return HttpResponse(i)
+    # return HttpResponse(1)
     #submission_times=[ i.submission_times for i in question_sets]
     #ifpass=[ i.ifpassed for i in question_sets]
     #context['array']=list(zip(question_sets_after,question_sets))
@@ -42,9 +52,9 @@ def check(request, question_title):
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_title=question_title)
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')))
-        if Questiondict.objects.get(question_title=question_title).question_week < week_now:
+        if question_dict.question_week < week_now:
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
-        if ut.checkanswer(answer,question_title,Questiondict.objects.get(question_title=question_title).question_type)!=True:    
+        if ut.checkanswer(answer,question_title,question_dict.question_type)!=True:    
             messages.error(request, 'Wrong Answer!')
             if quiz.submission_times > 0 and quiz.ifpassed==False:
                 quiz.submission_times=quiz.submission_times-1

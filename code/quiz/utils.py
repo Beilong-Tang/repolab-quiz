@@ -1,7 +1,6 @@
 # Put the function Here
 from django.contrib.auth.models import User
-import flask_frozen
-from simple_judge.models import Question, Questiondict
+from simple_judge.models import Questiondict
 from django.http import HttpResponse
 import subprocess ,os,datetime,re
 
@@ -89,7 +88,6 @@ def check_answer_code(jsonfile, answer):
     running_directory=os.getcwd()+'/utils'
     ### This is for local use
     ###
-    clean_output=True
     # Get the code
     code=jsonfile['code']
     for i in range(0,len(answer)):
@@ -115,7 +113,7 @@ def check_answer_code(jsonfile, answer):
     output_file.close()
     output_file=open('wdir-code/data.txt.save','r')
     ## Ready to check answers
-    if jsonfile['main_output']!="":
+    if jsonfile['main_output']!=None:
         main_output=jsonfile['main_output'].lstrip('\n').rstrip('\n').split()
         content=output_file.read()
         content=content[content.find('check()'):]
