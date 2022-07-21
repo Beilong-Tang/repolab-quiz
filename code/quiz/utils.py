@@ -150,7 +150,6 @@ def check_answer_code(jsonfile, answer,student_name):
 
 
 def clean_all(filename):
-
     shutil.rmtree(filename)
     # os.system('rm wdir-code/data.txt.save')
     # os.system('rm wdir-code/*.txt')

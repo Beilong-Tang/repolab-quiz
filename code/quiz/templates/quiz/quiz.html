@@ -9,13 +9,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load markdownify %}
+    {% comment %} {% load markdownify %} {% endcomment %}
     {% load static %}
     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
      {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">  {% endcomment %}
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
-     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}"> 
+    <link rel="stylesheet" href= "{% static 'quiz/highlight/styles/default.min.css' %}">
+    <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
+    <script>hljs.highlightAll();</script>
+    
+    {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">  {% endcomment %}
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
     <script>
         function invisible(){
@@ -116,7 +120,7 @@
           <div class="col-md-10" >
             <div class='question' >
                 <div class='text' style="margin-bottom: 0;">
-                {{quiz_description|markdownify}}
+                {{text|safe}}
                 </div>
             </div>
             {% if user.is_authenticated %}

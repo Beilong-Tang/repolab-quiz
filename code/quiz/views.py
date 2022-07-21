@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.urls import reverse
 from simple_judge.models import Student, Question, Questiondict
 import quiz.utils as ut
+import markdown
+
 # Create your views here.
 
 week_now=2
@@ -113,6 +115,14 @@ def quiz_new(request,question_title):
                 q_w=list(filter(lambda x: student_current.question_set.get(question_title=x.question_title).ifpassed==False and student_current.question_set.get(question_title=x.question_title).submission_times>0, list(filter(lambda x: x.question_week==i,question_sets_after ))))[0]
                 set.append(q_w)
             context['quiz_to']=set
+            text = markdown.markdown(quiz_description,extensions=[
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.extra',
+            #'markdown.extensions.codehilite',
+            'markdown.extensions.toc'
+            # 'markdown.extensions.toc',
+            ])
+            context['text']=text
             return render(request, 'quiz/quiz.html', context)
         else:
             return HttpResponse(request.user.username)
