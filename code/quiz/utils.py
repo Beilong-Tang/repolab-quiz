@@ -3,18 +3,18 @@ from django.contrib.auth.models import User
 from simple_judge.models import Questiondict
 from django.http import HttpResponse
 import subprocess ,os,datetime,re
-
+import shutil
 
 ### Clean the output for the code
 clean_output=True
 ## Check Answer for Fill in the blank questions
-def checkanswer(input_sets,question_title,question_type):
+def checkanswer(input_sets,question_title,question_type,student_name):
     if question_type=='blank':
         return checkanswer_blank(input_sets,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
     if question_type=='mult':
         return checkanswer_mult(input_sets[0],Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
     if question_type=='code':
-        return check_answer_code(Questiondict.objects.get(question_title=question_title).question_content,input_sets)
+        return check_answer_code(Questiondict.objects.get(question_title=question_title).question_content,input_sets,student_name)
 
 
 
@@ -84,34 +84,45 @@ def getanswer(request, len):
         answers.append(request.POST.get((str)(i)))
     return answers
 
-def check_answer_code(jsonfile, answer):
+def check_answer_code(jsonfile, answer,student_name):
     running_directory=os.getcwd()+'/utils'
     ### This is for local use
     ###
     # Get the code
+    # Alice_LargestString_code
+    code_path=os.getcwd()+'/coding_div'
+    file2=student_name+'_'+jsonfile['title']+'_'+'code'
+    filename=code_path+'/'+file2
     code=jsonfile['code']
     for i in range(0,len(answer)):
         code=code.replace('__'+(str)(i)+'__',answer[i])
-    if 'wdir-code' not in os.listdir(os.getcwd()):
-            os.system('mkdir '+'wdir-code')
+    if file2 not in os.listdir(code_path):
+        os.mkdir(filename)
     #code_file=open('quiz-gen/'+self.data['title']+'.txt','w')
-    code_file=open('wdir-code/'+jsonfile['title']+'.txt','w')
+    code_file=open(filename+'/'+jsonfile['title']+'.txt','w')
     code_file.write(code)
     code_file.close()
+
+
+
+
     # Get the checking method #jsonfile['check']
-    check_file=open('wdir-code/'+'check.txt','w')
+    check_file=open(filename+'/'+'check.txt','w')
     check_file.write(jsonfile['check'])
     check_file.close()
     # Get the instruction
-    instruction_file=open('wdir-code/'+'instruction.txt','w')
+    instruction_file=open(filename+'/'+'instruction.txt','w')
+    # Replace the Json File
+    jsonfile['instruction']=jsonfile['instruction'].replace('wdir-code', 'coding_div/'+file2)
+    #
     instruction_file.write(jsonfile['instruction'])
     instruction_file.close()
-    ain = open('wdir-code/instruction.txt','rb') # fixed by lj -- remove use of /bin/more
+    ain = open(filename+'/instruction.txt','rb') # fixed by lj -- remove use of /bin/more
     p2=subprocess.Popen(args='jshell',shell=True,stdin=ain,stdout=subprocess.PIPE)
-    output_file=open('wdir-code/data.txt.save','wb')
+    output_file=open(filename+'/data.txt.save','wb')
     output_file.write(p2.stdout.read()) # fixed by lj -- remove use of nano
     output_file.close()
-    output_file=open('wdir-code/data.txt.save','r')
+    output_file=open(filename+'/data.txt.save','r')
     ## Ready to check answers
     if jsonfile['main_output']!=None:
         main_output=jsonfile['main_output'].lstrip('\n').rstrip('\n').split()
@@ -122,23 +133,24 @@ def check_answer_code(jsonfile, answer):
                 content=content[content.find(item)+len(item):]
             else:
                 if clean_output !=False:
-                    clean_all()
+                    clean_all(filename)
                 return False
         if clean_output !=False:
-            clean_all()
+            clean_all(filename)
         return True
     else:
         for line in output_file.readlines():
             if line.find('check()true')!=-1:
                 if clean_output !=False:
-                    clean_all()
+                    clean_all(filename)
                 return True
         if clean_output !=False:
-            clean_all()    
+            clean_all(filename)    
         return False
 
 
-def clean_all():
-    os.system('rm -rf wdir-code')
+def clean_all(filename):
+
+    shutil.rmtree(filename)
     # os.system('rm wdir-code/data.txt.save')
     # os.system('rm wdir-code/*.txt')

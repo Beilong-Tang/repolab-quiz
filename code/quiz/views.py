@@ -27,23 +27,29 @@ def userface(request,user_id):
     context={}
     context['user_id']=user_id
     question_sets=student.question_set.all()#.filter(ifpassed=False)
+    #return HttpResponse(question_sets)
     #context['question_sets']=student.question_set.filter(ifpassed=False)
     question_sets_after=[Questiondict.objects.get(question_title=question.question_title) for question in question_sets]
-    
+    #return HttpResponse(question_sets)
     # for question in question_sets:
     #     check=False
+    #     n=0
     #     for i in Questiondict.objects.all():
-    #         if i.question_title==question.question_title:
+    #         if n!=1 and i.question_title==question.question_title:
+    #             n+=1
     #             check=True
+    #             continue
+    #         if n==1 and i.question_title==question.question_title:
+    #             return HttpResponse(i.question_title+'    chongfu')
+    #             check=False
     #             break
     #     if check==False:
-    #         return HttpResponse(i)
+    #         return HttpResponse(question)
     # return HttpResponse(1)
     #submission_times=[ i.submission_times for i in question_sets]
     #ifpass=[ i.ifpassed for i in question_sets]
     #context['array']=list(zip(question_sets_after,question_sets))
     #quiz_level_sets
-
     return render(request, 'quiz/problems.html', context)
 
 def check(request, question_title):
@@ -54,7 +60,7 @@ def check(request, question_title):
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')))
         if question_dict.question_week < week_now:
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_title,)))
-        if ut.checkanswer(answer,question_title,question_dict.question_type)!=True:    
+        if ut.checkanswer(answer,question_title,question_dict.question_type,request.user.username)!=True:    
             messages.error(request, 'Wrong Answer!')
             if quiz.submission_times > 0 and quiz.ifpassed==False:
                 quiz.submission_times=quiz.submission_times-1
