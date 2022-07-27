@@ -1,5 +1,3 @@
 from simple_judge.models import Questiondict
-for q in Questiondict.objects.all():
-    chap=q.question_title[q.question_title.find('chap')+4:q.question_title.find('chap')+6]
-    q.question_week=(int)(chap)
-    q.save()
+from utils.AssginQuestion import AssignQuestion as f
+f()

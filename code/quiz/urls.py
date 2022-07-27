@@ -9,6 +9,6 @@ urlpatterns = [
     path('<int:user_id>/index/', views.userface,name='userface'),
     path('<int:user_id>/index/week/<int:week>', views.week,name='week'),
     #path('<int:user_id>/index/<str:question_title>/', views.quiz, name='quiz'),
-    path('quiz/index/<str:question_title>/', views.quiz_new, name='quiz_new'),
-    path('index/<str:question_title>/checking/', views.check, name='check')
+    path('quiz/index/<int:question_id>/', views.quiz_new, name='quiz_new'),
+    path('index/<int:question_id>/checking/', views.check, name='check')
 ]

@@ -1,0 +1,4 @@
+void check(){
+    String[]args={""};
+    FindKiller.main(args);
+}

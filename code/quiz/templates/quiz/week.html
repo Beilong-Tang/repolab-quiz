@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% load my_tags %}
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/style.css' %}">
-    <title>Document</title>
+    <title>WEEK</title>
 </head>
 <body>
   <div class="topmenu">
@@ -16,11 +17,7 @@
 </div>
     <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
         <div class="container-fluid">
-          <!-- <a class="navbar-brand" href="#">Always expand</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
-    
+  
           <div class="collapse navbar-collapse" id="navbarsExample02">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
@@ -103,18 +100,18 @@
                 <td class='level'>ID</td>
                 <td class='Question'>Question</td>
                 <td class='level'>Level</td>
-                <td class='level'> Week </td>
+                {% comment %} <td class='level'> Week </td> {% endcomment %}
                 {% comment %} <td class='Times'> Times</td> {% endcomment %}
                 <td class='level'> Status</td>
-            {% for i,j,k in array %}
+            {% for i,j in array %}
             <tr>
-                <td class='level' style="width:30px"> {{k}}</td>
-                <td class='Question'> <a href= '{% url 'quiz:quiz_new' i.question_title %}'>{{i.question_title}}</a> </td>
-                <td class= 'level'> {{i.question_level}}</td>
-                <td class= 'level'> {{i.question_week}}</td>
+                <td class='level' style="width:30px"> {{i.question_id|last2}}</td>
+                <td class='Question'> <a href= '{% url 'quiz:quiz_new' i.question_id %}'>{{i.question_title}}</a> </td>
+                <td class= 'level'> {{j.question_level}}</td>
+                {% comment %} <td class= 'level'> {{i.question_week}}</td> {% endcomment %}
                 {% comment %} <td class= 'Times'> {{j.submission_times}}</td> {% endcomment %}
-                {% if j.submission_times > 0 %}
-                  {% if j.ifpassed %}
+                {% if i.submission_times > 0 %}
+                  {% if i.ifpassed %}
                       <td class= 'Times' style="color:green"> Passed</td>
                   {% else %}
                       <td class= 'Times' style="color:rgb(225, 113, 0)"> Ongoing</td>

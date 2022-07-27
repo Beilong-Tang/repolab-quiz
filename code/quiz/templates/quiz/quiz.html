@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% comment %} {% load markdownify %} {% endcomment %}
     {% load static %}
+    {% load my_tags%}
     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}"> {% endcomment %}
      {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">  {% endcomment %}
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
@@ -41,7 +42,7 @@
         
     </div>
     <div class="container">
-        <h3 >{{question_title}}</h3>
+        <h3 >sec-{{section}}: {{question_title}}</h3>
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
@@ -93,22 +94,22 @@
               {% for quiz in question_sets %}
                  {% if quiz.submission_times <= 0 %}
                     {%if question_title == quiz.question_title%}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="color:red;background-color: rgb(175, 248, 246);">Problem{{forloop.counter}}X</a> <br> 
+                        <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:red;background-color: rgb(175, 248, 246);">Problem{{quiz.question_id|last2}}X</a> <br> 
                     {%else %}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_title %}"style="color:red">Problem{{forloop.counter}}X</a> <br>
+                        <a href= "{% url 'quiz:quiz_new' quiz.question_id %}"style="color:red">Problem{{quiz.question_id|last2}}X</a> <br>
                     {% endif %}
                 {% else %}
                     {% if quiz.ifpassed %}
-                        {%if question_title == quiz.question_title%}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="color:green;background-color: rgb(175, 248, 246);">Problem{{forloop.counter}}√</a> <br> 
+                        {%if question_id == quiz.question_id%}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:green;background-color: rgb(175, 248, 246);">Problem{{quiz.question_id|last2}}√</a> <br> 
                         {%else %}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}"style="color:green">Problem{{forloop.counter}}√</a> <br>
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}"style="color:green">Problem{{quiz.question_id|last2}}√</a> <br>
                         {% endif %}
                     {%else%}
-                        {%if question_title == quiz.question_title%}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}" style="background-color: aquamarine;">Problem{{forloop.counter}}</a> <br> 
+                        {%if question_id == quiz.question_id%}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="background-color: aquamarine;">Problem{{quiz.question_id|last2}}</a> <br> 
                         {%else %}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_title %}">Problem{{forloop.counter}}</a> <br>
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}">Problem{{quiz.question_id|last2}}</a> <br>
                         {% endif %}
                     {%endif%}
                 {%endif%}
@@ -124,7 +125,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-            <form action="{% url 'quiz:check' question_title %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100)" onsubmit="invisible();">
+            <form action="{% url 'quiz:check' question_id %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100)" onsubmit="invisible();">
                 {% csrf_token %}
                     {% if overdue != True%}
                         <label for="" style="text-align: center; color:rgb(110, 119, 123);font-size: 13px;">Your answer goes here:</label>

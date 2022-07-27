@@ -6,15 +6,15 @@ import subprocess ,os,datetime,re
 import shutil
 
 ### Clean the output for the code
-clean_output=True
+clean_output=False
 ## Check Answer for Fill in the blank questions
-def checkanswer(input_sets,question_title,question_type,student_name):
+def checkanswer(input_sets,question_id,question_type,student_name):
     if question_type=='blank':
-        return checkanswer_blank(input_sets,Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
+        return checkanswer_blank(input_sets,Questiondict.objects.get(question_id=question_id).question_content.get('answers'))
     if question_type=='mult':
-        return checkanswer_mult(input_sets[0],Questiondict.objects.get(question_title=question_title).question_content.get('answers'))
+        return checkanswer_mult(input_sets[0],Questiondict.objects.get(question_id=question_id).question_content.get('answers'))
     if question_type=='code':
-        return check_answer_code(Questiondict.objects.get(question_title=question_title).question_content,input_sets,student_name)
+        return check_answer_code(Questiondict.objects.get(question_id=question_id).question_content,input_sets,student_name)
 
 
 
@@ -46,11 +46,11 @@ def checkuser(username,user_id):
         return HttpResponse("You are not allowed to See the Page") 
     
 
-def checkquestion(question_title, student):
-    for i in student.question_set.all():
-        if student.question_set.get(question_title=i).question_title==question_title:
-            return True
-    return False
+# def checkquestion(question_id, student):
+#     for i in student.question_set.all():
+#         if student.question_set.get(question_title=i).question_title==question_title:
+#             return True
+#     return False
 
 def replace_blanks(question_description):
     # Replace '__(1)__' with '__\___(1)_____'
@@ -102,10 +102,6 @@ def check_answer_code(jsonfile, answer,student_name):
     code_file=open(filename+'/'+jsonfile['title']+'.txt','w')
     code_file.write(code)
     code_file.close()
-
-
-
-
     # Get the checking method #jsonfile['check']
     check_file=open(filename+'/'+'check.txt','w')
     check_file.write(jsonfile['check'])
@@ -113,7 +109,7 @@ def check_answer_code(jsonfile, answer,student_name):
     # Get the instruction
     instruction_file=open(filename+'/'+'instruction.txt','w')
     # Replace the Json File
-    jsonfile['instruction']=jsonfile['instruction'].replace('wdir-code', 'coding_div/'+file2)
+    jsonfile['instruction']=jsonfile['instruction'].replace('quiz-gen', 'coding_div/'+file2)
     #
     instruction_file.write(jsonfile['instruction'])
     instruction_file.close()

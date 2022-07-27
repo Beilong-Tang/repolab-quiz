@@ -11,10 +11,11 @@ class QuestionInline(admin.TabularInline):
 class StudentAdmin(admin.ModelAdmin):
 
     inlines=[QuestionInline]
+   # list_display=('')
 
 class QuestiondictAdmin(admin.ModelAdmin):
 
-    list_display=('question_type','question_title','question_level','question_week')
+    list_display=('question_id','question_type','question_title','question_level','question_week')
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Question)

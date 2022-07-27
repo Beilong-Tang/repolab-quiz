@@ -1,5 +1,6 @@
 import sys, os,subprocess,json
-from utils.AssignWeek import assign_week_main as week
+#from utils.AssignWeek import assign_week_main as week
+import utils as ut
 #from utils.AssignQuestionWeek import execute
 # Revise the Quiz director as where the quiz is at 
 
@@ -10,6 +11,9 @@ home_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/ba
 instruction=""
 quiz_set=""
 importing='from simple_judge.models import Questiondict\nimport json\n'
+
+first_command = ['week1','week2','week3','week4','week5','week6','week7']
+
 
 # All the instructions are in the String 
 # Questiondict(question_type='blank', question_title='test5', question_content={'description':1}).save()#
@@ -152,28 +156,72 @@ def input_and_execute(args):
     ain=open('input.txt','r')
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
+
+def LoadQuestion(command):
+
+    args=""
+    args+="from simple_judge.models import Questiondict\n"
+    args+="from utils.LoadQuestion import LoadQuestion as f\n"
+    args+="f('"+command+"')"
+
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
+
+    '''
+    from simple_judge.models import Questiondict
+    from utils import LoadQuestion.LoadQuestion as f
+    f()
+    '''
+
+## This will assign question for all students
+def AssignQuestion():
+    args=""
+    args+="from simple_judge.models import Questiondict\n"
+    args+="from utils.AssginQuestion import AssignQuestion as f\n"
+    args+="f()"
+
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
+
+
 def execute():
-    if sys.argv[1]=='blank':
-        generate_input_file_blank()
+    if sys.argv[1] in first_command:
+        LoadQuestion(sys.argv[1])
         return
-    if sys.argv[1]=='mult':
-        generate_input_mult_choice()
+
+    if sys.argv[1]== 'assign':
+        AssignQuestion()
         return
-    if sys.argv[1]=='code':
-        generate_input_code_question()
-        return
-    if sys.argv[1]=='week':
-        if len(sys.argv)<3:
-            input_and_execute(week(default=True))
-            return
-        input_and_execute(week(default=False,week=(int)(sys.argv[2]), chap=(int)(sys.argv[3]), section=sys.argv[4]))
-        return
+
+
+
+    # if sys.argv[1]=='blank':
+    #     generate_input_file_blank()
+    #     return
+    # if sys.argv[1]=='mult':
+    #     generate_input_mult_choice()
+    #     return
+    # if sys.argv[1]=='code':
+    #     generate_input_code_question()
+    #     return
+    # if sys.argv[1]=='week':
+    #     if len(sys.argv)<3:
+    #         input_and_execute(week(default=True))
+    #         return
+    #     input_and_execute(week(default=False,week=(int)(sys.argv[2]), chap=(int)(sys.argv[3]), section=sys.argv[4]))
+    #     return
     #if sys.argv[1]=='assign':
       #  if len(sys.argv)<3:
       #  assign(default)
-def input_instruction():
-    args="from simple_judge.models import *\n"
-    pass
+# def input_instruction():
+#     args="from simple_judge.models import *\n"
+#     pass
 
 
 

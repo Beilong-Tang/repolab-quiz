@@ -9,9 +9,9 @@ from utils.question_title import question_title_modify as qtm
 qtm()
 '''
 
-r_code='[_][\d]+[.]'
-r_blank='_quiz.[\d]+.'
-r_mult='_mult.[\d]+.'
+r_code='[\d]+[.]'
+r_blank='quiz.[\d]+.'
+r_mult='mult.[\d]+.'
 
 
 def question_title_modify():
@@ -33,16 +33,22 @@ def question_title_change(question_title,question_type):
         return code_question_title_change(question_title)
 
 def blank_question_title_change(question_title):
+    question_title=question_title[question_title.find('.')+1:]
+    # print(question_title)
     m=re.findall(r_blank,question_title)[0]
-    question_title=question_title[:question_title.find('.qz.blank')].replace(m,': ').replace('c','C',1)
+    question_title=question_title[:question_title.find('.qz.json')].replace(m,'').replace('.',' ')#.replace('c','C',1)
     return question_title
 
 def mult_question_title_change(question_title):
+    question_title=question_title[question_title.find('.')+1:]
+    #print(question_title)
     m=re.findall(r_mult,question_title)[0]
-    question_title=question_title[:question_title.find('.qz.mult')].replace(m,': ').replace('c','C',1)
+    question_title=question_title[:question_title.find('.qz.json')].replace(m,'').replace('.',' ')#.replace('c','C',1)
     return question_title
 
 def code_question_title_change(question_title):
+    question_title=question_title[question_title.find('.')+1:]
+    #print(question_title)
     m=re.findall(r_code,question_title)[0]
-    question_title=question_title[:question_title.find('.code.qz')].replace(m,': ').replace('chap','Chap',1)#.capitalize())
+    question_title=question_title[:question_title.find('.code.qz')].replace(m,'').replace('.',' ')#.replace('chap','Chap',1)#.capitalize())
     return question_title

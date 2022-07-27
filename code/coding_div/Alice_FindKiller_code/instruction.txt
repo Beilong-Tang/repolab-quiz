@@ -1,0 +1,4 @@
+/open coding_div/Alice_FindKiller_code/FindKiller.txt
+/open coding_div/Alice_FindKiller_code/check.txt
+check()
+/save -history coding_div/Alice_FindKiller_code/data.txt

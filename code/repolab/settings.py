@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-39t7sql+@br=8jfsx1%zhuxqe#zh#s71)6_0v+6$2nxt5hj@(#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+'''
 try:
     DEBUG = os.environ["DEBUG"]
     ALLOWED_HOSTS = os.environ["ALLOWED_HOSTS"].split()
@@ -30,7 +31,9 @@ except KeyError:
     print("[ERROR] Django: Cannot get env settings")
     raise KeyError
 
-
+'''
+DEBUG=True
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'simple_judge.apps.SimpleJudgeConfig',
     'quiz.apps.QuizConfig',
-    'markdownify.apps.MarkdownifyConfig'
+    'quiz.templatetags.my_tags'
     
 ]
 
@@ -82,6 +85,7 @@ WSGI_APPLICATION = 'repolab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+'''
 try:
     DATABASE = os.environ["DATABASE"]
     # Only for MongoDB
@@ -150,6 +154,15 @@ elif DATABASE == "mongodb":
 else:
     print("[ERROR] Django: Invalid database name, %s."%DATABASE)
     raise KeyError
+'''
+DATABASES= {
+	'default':{
+	       'ENGINE':'django.db.backends.sqlite3',
+	       'NAME': BASE_DIR / 'db.sqlite3',
+	}
+}
+
+
 
 
 # Password validation
@@ -187,6 +200,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT=os.path.join(BASE_DIR,"static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
