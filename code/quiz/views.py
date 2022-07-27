@@ -36,7 +36,10 @@ def check(request, question_id):
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_id=question_id)
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')),question_dict.question_type)
-        quiz.logx+='\\'.join(answer)+','+str(datetime.datetime.utcnow())+" UTC"+';'
+        if "" in answer or answer==[]:
+            messages.warning(request,'You have unfinished blanks')
+            return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_id,)))
+        quiz.logx+='\\'.join(answer)+','+str(datetime.datetime.utcnow())[:19]+';'
         quiz.save()
         if question_dict.question_week < week_now:
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_id,)))
@@ -69,27 +72,21 @@ def quiz_new(request,question_id):
                 context['overdue']=True
             if question_dict.question_type=='blank' or question_dict.question_type=='code':
                 context['answers']=question_dict.question_content.get('answers')
+
             context['section']=question_dict.question_content.get('section')
             context['question_title']=question_dict.question_title
             context['question_id']=question_id
-            ## The content here can be imporved
-            quiz_description=question_dict.question_content.get('description')#.replace('\n','\n\n')#.split('\n')
-            quiz_description=ut.replace_blanks(quiz_description)
-            if question_dict.question_type=='mult':
-                quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
-            image_index=quiz_description.find('[image]')
-            if image_index !=-1:
-                quiz_description=quiz_description.replace('[image](','[image](/static/quiz/images/')
-            ############################################
+            quiz_description=question_dict.question_content.get('description')
             context['quiz_description']=quiz_description
             q= student_current.question_set.get(question_id=question_id)
             context['submission_times']=q.submission_times
             context['week']=question_week
-            question_sets_after=[Questiondict.objects.get(question_id=question.question_id) for question in student_current.question_set.all()] #[All the questions in Questiondict that is related to the question title]
+            #question_sets_after=[Questiondict.objects.get(question_id=question.question_id) for question in student_current.question_set.all()] #[All the questions in Questiondict that is related to the question title]
             #question_sets_temp1=list(filter(lambda x: x.question_week==context['week'], question_sets_after)) #[All the questions in Questiondict that belonggs the the certain week (Questiondict)]
             question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
-            question_sets_after=[Questiondict.objects.get(question_id=question.question_id) for question in question_sets_temp1]
+            #question_sets_after=[Questiondict.objects.get(question_id=question.question_id) for question in question_sets_temp1]
             context['question_sets']=question_sets_temp1
+            context['ids']=ut.findid(question_id,len(question_sets_temp1))
             context['ifpassed']= q.ifpassed
             set=[101,201,301,401,501,101,701]
             context['quiz_to']=set

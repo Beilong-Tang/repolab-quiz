@@ -26,9 +26,9 @@ def checkanswer_blank(input_sets, answer_sets):
             return False
     return True
 ## Check Answer for multi choice questions
-def checkanswer_mult(input,answer_sets):    
+def checkanswer_mult(input_sets,answer_sets):    
 
-    input_sets=list (filter (lambda x : x!='',input.split(' ')))
+    #input_sets=list (filter (lambda x : x!='',input.split(' ')))
     answer_arrays=[]
     for i in range(0,len(answer_sets)):
         if answer_sets[i]=='True':
@@ -52,13 +52,13 @@ def checkuser(username,user_id):
 #             return True
 #     return False
 
-def replace_blanks(question_description):
-    # Replace '__(1)__' with '__\___(1)_____'
-    r = '__[(][0-9]+[)]__'
-    m=re.findall(r,question_description)
-    for i in range(0,len(m)):
-        question_description=question_description.replace('__('+(str)(i)+')__','_____('+(str)(i)+')\___')
-    return question_description
+# def replace_blanks(question_description):
+#     # Replace '__(1)__' with '__\___(1)_____'
+#     r = '__[(][0-9]+[)]__'
+#     m=re.findall(r,question_description)
+#     for i in range(0,len(m)):
+#         question_description=question_description.replace('__('+(str)(i)+')__','_____('+(str)(i)+')\___')
+#     return question_description
 
 def checktime():
 
@@ -81,7 +81,7 @@ def checktime():
 def getanswer(request, len,question_type):
     answers=[]
     if question_type=='mult':
-        return request.POST.get('0')
+        return list(filter(lambda x: x!="",request.POST.get('0').split(' ')))
     for i in range(0,len):
         answers.append(request.POST.get((str)(i)))
     return answers
@@ -151,3 +151,12 @@ def clean_all(filename):
     shutil.rmtree(filename)
     # os.system('rm wdir-code/data.txt.save')
     # os.system('rm wdir-code/*.txt')
+
+def findid(question_id , question_array_length):
+    if str(question_id)[1:]=='01':
+        return [question_id, question_id+1]
+    if str(question_id)[1:]==str(question_array_length):
+        return [question_id-1, question_id]
+    
+
+    return [question_id-1,question_id+1]

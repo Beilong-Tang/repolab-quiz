@@ -23,26 +23,30 @@
     {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">  {% endcomment %}
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
     <script>
-        function invisible(){
-            document.getElementById('submit').style.display='none';
+        function submit(){
+            var x = document.getElementsByName('xxx')
+            for(var i=0;i<x.length;i++){
+                x[i].style.display='none'
+            }
             document.getElementById('check').style.display='inline';
+            document.myform.submit();
         }
     </script>
     <title>Test</title>
 </head>
 <body>
 
-     {% for message in messages %}
+     {% comment %} {% for message in messages %}
     <div class="alert alert-{{ messages.tags}} alert-dismissible fade show" role="alert">
     <strong>Message:</strong> {{message}}
     </div>
-     {% endfor %}
+     {% endfor %} {% endcomment %}
      <div class="topmenu">
         <p>COMPSCI 201: Intro to prgramming and data structures</p>
         
     </div>
     <div class="container">
-        <h3 >sec-{{section}}: {{question_title}}</h3>
+        <h2 >sec-{{section}}: {{question_title}}</h2>
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
@@ -125,7 +129,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-            <form action="{% url 'quiz:check' question_id %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100)" onsubmit="invisible();">
+            <form action="{% url 'quiz:check' question_id %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100)"  name='myform' >
                 {% csrf_token %}
                     {% if overdue != True%}
                         <label for="" style="text-align: center; color:rgb(110, 119, 123);font-size: 13px;">Your answer goes here:</label>
@@ -133,20 +137,21 @@
                         {% for i in answers %}
                         <input type="text" id="answer1" name="{{forloop.counter0}}" placeholder="({{forloop.counter0}})" required> 
                         {%empty%}
-                        <input type="text" id="answer1" name="0" placeholder="Your Answer"  required> 
+                        <input type="text" id="answer1" name="0" placeholder="Your Answer" required> 
                         {% endfor %}
                         <br>
-                        <button type="submit" style="margin-top:10px"  id='submit'> SUBMIT</button>
                         <label for="" style="text-align: center; color:rgb(255, 157, 0);font-size: 13px; display:none ;" id ='check'>...CHECKING...</label>
-                            {% comment %} {% if ifpassed %}
-                                {% if submission_times < 0%}
-                                <p style="color:red"> Your answer is correct but it will not be recorded.</p>
-                                {% else %}
-                                <p style="color:green"> You have passed the quiz.</p>
-                                {% endif%}
-                            {% else %}
-                                {% %}
-                            {% endif%} {% endcomment %}
+            </form>
+            <a href="{% url 'quiz:quiz_new' ids.0 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx'>Previous Question</button></a>
+            <button type="submit" style="margin-top:10px"  id='submit' onclick='submit()' name='xxx'>SUBMIT</button>
+            <a href="{% url 'quiz:quiz_new' ids.1 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx'>Next Question</button></a>
+            {% if messages %}
+            <div class="messages" style="color:green">
+              {% for message in messages %}
+              <p class={{message.tags}}>{{ message}}</p>
+              {% endfor %}
+            </div>
+            {% endif %}
                     {% else %}
                             <p style='color:orange'>Answer: {{answer}}</p>
                     {% endif%}
@@ -167,12 +172,6 @@
                             {%endif%}
                         {% endif %}
                     {% endif %}
-                    {% comment %} {% if submission_times > 0%}
-                    <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
-                    {% else %}
-                    <p> You can try, but your answers will not be recorded. </p>
-                    {% endif %} {% endcomment %}
-            </form>
             {% else %}
             <div class='a'>
                 <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
@@ -181,32 +180,19 @@
           </div>
         </div>
       </div>
-        {% comment %} <div class='question'>
-            {{quiz_description|markdownify}}
-        </div>
-        {% if user.is_authenticated %}
-        <form action="{% url 'quiz:check' question_title %}" method="post">
-            {% csrf_token %}
-            <div class='a'>
-            <label for="">Answer</label>
-            <input type="text" id="answer" name="answer" placeholde="Your Answer" required>
-            </div>
-            <br>
-            <div class= 'a'>
-            <button type="submit"> SUBMIT</button>
-            <div>
-                <p> You have <strong style='color:blue'>{{submission_times}}</strong> times left to submit. </p>
-                <p> <button><a href='{% url 'quiz:userface' user_id %}'> Main Menu </button></P>
-            </div>
-            </div>
-        </form>
-        {% else %}
-        <div class='a'>
-            <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
-        </div>
-        {% endif%} {% endcomment %}
-        <!-- <div class="footer">
-            <p>Support by CS201 TA Team</p>
-        </div> -->
+    <div>
+
+
+
+
+
+       {% comment %} {% if messages %}
+      <script>
+          {% for msg in messages %}
+              alert('{{ msg.message }}');
+          {% endfor %}
+      </script>
+  {% endif %}  {% endcomment %}
+    </div>
 </body>
 </html>

@@ -13,6 +13,7 @@ import os
 #from selectors import EpollSelector
 import sys
 import json
+import re
 from utils.settings import quiz_dir
 from utils.question_title import question_title_change 
 
@@ -51,7 +52,7 @@ def LoadQuestion(command_week):
             if question_id not in id_all:
                 q= Questiondict(question_type=json_content['quiz_type'],
                                 question_title=FindTitle(json_content['quiz_type'],question),
-                                question_content=json_content,
+                                question_content=ModifyContent(json_content,json_content['quiz_type'],question_id),
                                 question_id=json_content['id'],
                                 question_level=int(json_content['level']),
                                 question_week=FindWeek(question_id)
@@ -62,7 +63,7 @@ def LoadQuestion(command_week):
                 ## Just Update the quiz 
                 q.question_type = json_content['quiz_type']
                 q.question_title = FindTitle(json_content['quiz_type'],question)
-                q.question_content=json_content
+                q.question_content=ModifyContent(json_content,json_content['quiz_type'],question_id)
                 q.question_id=json_content['id']
                 q.question_level=int(json_content['level'])
                 q.question_week=FindWeek(question_id)
@@ -72,6 +73,31 @@ def LoadQuestion(command_week):
     print('finished')
 
     return specific_week_folder
+
+
+def ModifyContent(json_content,quiz_type,question_id):
+
+    
+
+
+    if json_content['description'].find('[image]'):
+        json_content['description']=json_content['description'].replace('[image](','[image](/static/quiz/images/')
+    ###
+    json_content['description']=replace_blanks(json_content['description'])
+
+    if quiz_type=='mult':
+        #quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
+        json_content['description']='### Problem'+str(question_id)[1:]+'\n'+json_content['description']
+        json_content['description']=json_content['description'].replace('%s','**Choices:**\n\n'+'\n\n'.join(json_content['choices']))
+    else:
+        json_content['description']='### Problem'+str(question_id)[1:]+'\n'+json_content['description'].lstrip('\n')[json_content['description'].lstrip('\n').find('\n')+1:]
+
+    return json_content
+
+    pass
+
+
+
 
 
 def FindTitle(quiz_type,question_title_raw):
@@ -95,5 +121,11 @@ def FindWeek(question_id):
         return 7
 
 
-
+def replace_blanks(question_description):
+    # Replace '__(1)__' with '__\___(1)_____'
+    r = '__[(][0-9]+[)]__'
+    m=re.findall(r,question_description)
+    for i in range(0,len(m)):
+        question_description=question_description.replace('__('+(str)(i)+')__','_____('+(str)(i)+')\___')
+    return question_description
 
