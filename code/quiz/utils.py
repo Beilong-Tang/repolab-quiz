@@ -12,7 +12,7 @@ def checkanswer(input_sets,question_id,question_type,student_name):
     if question_type=='blank':
         return checkanswer_blank(input_sets,Questiondict.objects.get(question_id=question_id).question_content.get('answers'))
     if question_type=='mult':
-        return checkanswer_mult(input_sets[0],Questiondict.objects.get(question_id=question_id).question_content.get('answers'))
+        return checkanswer_mult(input_sets,Questiondict.objects.get(question_id=question_id).question_content.get('answers'))
     if question_type=='code':
         return check_answer_code(Questiondict.objects.get(question_id=question_id).question_content,input_sets,student_name)
 
@@ -78,8 +78,10 @@ def checktime():
             return i+1
     return 8
 
-def getanswer(request, len):
+def getanswer(request, len,question_type):
     answers=[]
+    if question_type=='mult':
+        return request.POST.get('0')
     for i in range(0,len):
         answers.append(request.POST.get((str)(i)))
     return answers

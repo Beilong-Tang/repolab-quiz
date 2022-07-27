@@ -35,7 +35,7 @@ def check(request, question_id):
     quiz=student_current.question_set.get(question_id=question_id)
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_id=question_id)
-        answer=ut.getanswer(request,len(question_dict.question_content.get('answers')))
+        answer=ut.getanswer(request,len(question_dict.question_content.get('answers')),question_dict.question_type)
         quiz.logx+='\\'.join(answer)+','+str(datetime.datetime.utcnow())+" UTC"+';'
         quiz.save()
         if question_dict.question_week < week_now:
