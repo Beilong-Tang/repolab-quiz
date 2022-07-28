@@ -11,11 +11,12 @@
     /* text-align: center; */
   }
 h2 {
-  text-align: center;
+  text-align: left;
   font-family:Consolas;
         margin: 0;
         padding: 20px 0;
         color: #00539F;
+        margin-left: -10px;
         /*text-shadow: 3px 3px 1px black; */
 }
 .a{
@@ -72,3 +73,8 @@ code{
 .warning{
   color:orange;
 }
+
+input{
+  font-family:Consolas;
+}
+
