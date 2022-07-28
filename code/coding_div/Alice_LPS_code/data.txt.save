@@ -1,0 +1,26 @@
+|  Welcome to JShell -- Version 11.0.13
+|  For an introduction type: /help intro
+
+jshell> |  Error:
+|  cannot find symbol
+|    symbol:   variable x
+|                  if (x)
+|                      ^
+|  Error:
+|  illegal parenthesized expression
+|                  if (x)
+|                     ^-^
+|  Error:
+|  cannot find symbol
+|    symbol:   variable x
+|              if(x){return false;}
+|                 ^
+|  Error:
+|  illegal parenthesized expression
+|              if(x){return false;}
+|                ^-^
+
+jshell> 
+jshell> check()|  attempted to call method check() which cannot be invoked until variable LPS is declared
+
+jshell> 

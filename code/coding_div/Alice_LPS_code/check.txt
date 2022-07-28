@@ -1,0 +1,6 @@
+void check(){
+    String s = "babad";
+    String y = "AGCGATT";
+    String z = "WAXCWWDX";
+    System.out.println(LPS.longestPalindrome(s).equals("bab")&&LPS.longestPalindrome(y).equals("AGCGA") && LPS.longestPalindrome(z).equals("WW")); 
+}

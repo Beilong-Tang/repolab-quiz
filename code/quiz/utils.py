@@ -45,21 +45,6 @@ def checkuser(username,user_id):
     if (username!=user_web.username):
         return HttpResponse("You are not allowed to See the Page") 
     
-
-# def checkquestion(question_id, student):
-#     for i in student.question_set.all():
-#         if student.question_set.get(question_title=i).question_title==question_title:
-#             return True
-#     return False
-
-# def replace_blanks(question_description):
-#     # Replace '__(1)__' with '__\___(1)_____'
-#     r = '__[(][0-9]+[)]__'
-#     m=re.findall(r,question_description)
-#     for i in range(0,len(m)):
-#         question_description=question_description.replace('__('+(str)(i)+')__','_____('+(str)(i)+')\___')
-#     return question_description
-
 def checktime():
 
     # week=['2022-8-21 23:59','2022-8-28 23:59','2022-9-4 23:59','2022-9-11 23:59',
@@ -149,14 +134,12 @@ def check_answer_code(jsonfile, answer,student_name):
 
 def clean_all(filename):
     shutil.rmtree(filename)
-    # os.system('rm wdir-code/data.txt.save')
-    # os.system('rm wdir-code/*.txt')
+
+
 
 def findid(question_id , question_array_length):
     if str(question_id)[1:]=='01':
         return [question_id, question_id+1]
     if str(question_id)[1:]==str(question_array_length):
         return [question_id-1, question_id]
-    
-
     return [question_id-1,question_id+1]
