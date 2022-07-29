@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Beilong Tang">
+    <meta name="generator" content="Hugo 0.98.0">
     {% load static %}
-    <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/style.css' %}">
-    <title>Document</title>
+    {% comment %} <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/style.css' %}"> {% endcomment %}
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
+    <title>Sign In</title>
+  
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+          }
+    
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+    
+          .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+          }
+    
+          .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+          }
+    
+          .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+          }
+    
+          .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+          }
+    
+          .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+          }
+    
+          /* 
+           */
+           .form-signin {
+      max-width: 330px;
+      padding: 15px;
+    }
+    
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+    
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+
+    </style>
 </head>
-<body>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
     {% for message in messages %}
         <div class="alert alert-{{ messages.tags}} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{message}}
@@ -16,26 +99,48 @@
         <span aria-hidden='true'>&times;</span>
         </button>
         </div>
-         {% endfor %}
+    {% endfor %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+          <h3 style="text-align:center">CS201 Quiz</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+          </nav>
+        </div>
+      </header>
 
 
 
-    <h1>Sign In</h1>
-
+    <main class="form-signin w-100 m-auto">
+    
     <form action="{% url 'simple_judge:signin' %}" method="post">
     {% csrf_token %}
-    <div class = 'mydiv'>
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholde="Enter your username" required>
-        <br>
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholde="Enter your password" required>
-        <br>
-        
-        <button type="submit"> Sign In</button>
-         </form>
-        </div>
-        <div id="content"></div>
+    <h2 class="h3 mb-3 fw-normal">Sign in</h2>
+  
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name='username' placeholder="name@example.com" required>
+        <label for="floatingInput" style="color:black">ID</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" name='pass1' placeholder="Password" required>
+        <label for="floatingPassword" style="color:black">Password</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+    </main>
+
+
+        <footer class="mt-auto text-white-50" style="font-size:15px">
+            <p>Supported by <a class="text-white">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-white">bt132@duke.edu</a>) if you have problems.</p>
+        </footer>
+
+</div>
       
    
        

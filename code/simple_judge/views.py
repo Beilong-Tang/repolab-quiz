@@ -68,6 +68,7 @@ def signin(request):
     if request.method == 'POST':
         username= request.POST['username']
         pass1= request.POST['pass1']
+        
 
         user = authenticate(username=username,password=pass1)
 

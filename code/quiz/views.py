@@ -30,6 +30,32 @@ def userface(request,user_id):
     context['user_id']=user_id
     return render(request, 'quiz/problems.html', context)
 
+def assignment(request,user_id):
+    if checkuser(request , user_id) !=True:
+       return HttpResponse("You are not allowed to See the Page") 
+    student=Student.objects.get(student_name=request.user.username)
+    context={}
+    context['user_id']=user_id
+
+    ## All the assignments that are between the pub_date and due_date
+    question_due_dict= student.question_due_dict
+
+    due_date = [i[1] for i in question_due_dict.items()]
+
+    # filter the quiz that is not open, and show the quiz whose state is either open or passed  // open for 1, and passed for -1
+    due_dict = ut.checktime(question_due_dict)
+    # array=list(zip (a,b,d,e))
+
+    progress_array = ut.get_progress(student.question_set.all(),len(due_dict))
+
+    set=[101,201,301,401,501,101,701]
+    context['array']=list(zip( due_dict.keys(), due_dict.values(), progress_array, set,due_date))
+    
+
+    return render(request,'quiz/assignment.html',context)
+
+
+
 def check(request, question_id):
     student_current=Student.objects.get(student_name=request.user.username)
     quiz=student_current.question_set.get(question_id=question_id)
@@ -68,7 +94,7 @@ def quiz_new(request,question_id):
                 context['overdue']=True
 
             context['mult']=True
-
+            
             if question_dict.question_type=='blank' or question_dict.question_type=='code':
                 context['answers']=question_dict.question_content.get('answers')
                 context['mult']=False
@@ -95,7 +121,11 @@ def quiz_new(request,question_id):
             context['submission_times']=q.submission_times
             context['week']=question_week
             question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
+            context['length']=len(question_sets_temp1)
             context['question_sets']=question_sets_temp1
+            context['passed']=len(question_sets_temp1.filter(ifpassed=True))
+            context['failed']=len(question_sets_temp1.filter(submission_times=0))
+
             context['ids']=ut.findid(question_id,len(question_sets_temp1))
             context['ifpassed']= q.ifpassed
             set=[101,201,301,401,501,101,701]

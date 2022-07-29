@@ -1,15 +1,15 @@
 /* html {
     background-color: #00539F; 
   } */
-
+/* 
   body {
     /* width: 1600px; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* background-color: #ffffff; */
     /* padding: 0 20px 20px 20px; */
     /* border: 5px solid black; */
     /* text-align: center; */
-  }
+  
 h2 {
   text-align: left;
   font-family:Consolas;
@@ -25,12 +25,12 @@ h2 {
 }
 
 
-button{
+.submit{
   background-color: #2dd3e6;
   font-family:Consolas;
 }
 
-button:hover{
+.submit:hover{
   background-color: white;
   border: 2px solid aquamarine;
   font-family:Consolas;

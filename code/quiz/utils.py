@@ -45,24 +45,19 @@ def checkuser(username,user_id):
     if (username!=user_web.username):
         return HttpResponse("You are not allowed to See the Page") 
     
-def checktime():
-
-    # week=['2022-8-21 23:59','2022-8-28 23:59','2022-9-4 23:59','2022-9-11 23:59',
-    # '2022-9-18 23:59','2022-9-25 23:59','2022-10-2 23:59','2022-10-9 23:59']
-
-    ## Test Week
-    week=['2022-7-13 23:59','2022-7-14 23:59','2022-9-4 23:59','2022-9-11 23:59',
-    '2022-9-18 23:59','2022-9-25 23:59','2022-10-2 23:59','2022-10-9 23:59']
-
-    tim=datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
-    # 0 - 6 
-    for i in range(0, len(week)-1):
-        time_start= datetime.datetime.strptime(week[i],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
-        time_end= datetime.datetime.strptime(week[i+1],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
-        if (tim>time_start and tim < time_end):
-            return i+1
-    return 8
-
+def checktime(question_due_dict):
+    due_dict_after={}
+    
+    tim=datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc) # UTC
+    for i, j in question_due_dict.items():
+        time_start= datetime.datetime.strptime(j[0],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
+        time_end= datetime.datetime.strptime(j[1],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
+        if tim > time_end:
+            due_dict_after[i]=[False,time_end] ## passed
+        elif tim > time_start:
+            due_dict_after[i]=[True,time_end] ## open
+    return due_dict_after
+        
 def getanswer(request, len,question_type):
     answers=[]
     if question_type=='mult':
@@ -143,3 +138,18 @@ def findid(question_id , question_array_length):
     if str(question_id)[1:]==str(question_array_length):
         return [question_id-1, question_id]
     return [question_id-1,question_id+1]
+
+def get_progress(question_set, length):
+    # week 5, 1 2 3 4 5 
+    array=[]
+    for i in range(1,length+1):
+
+        count=0
+
+        week_question_sets=question_set.filter(question_id__gte=100*i , question_id__lte=100*(i+1))
+
+        for j in week_question_sets:
+            if j.ifpassed == True or j.submission_times==0:
+                count=count+1
+        array.append(str(count)+'/'+str(len(week_question_sets)))
+    return array

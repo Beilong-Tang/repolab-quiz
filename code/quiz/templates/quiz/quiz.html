@@ -47,6 +47,19 @@
         }
 
     </script>
+
+    <style>
+        .footer {
+            position:absolute;
+            bottom:0px;
+            width:100%;
+            height:30px;
+            background-color: #444; 
+            font-size:5px;
+            color: white;
+
+        }
+    </style>
     <title>Test</title>
 </head>
 <body>    
@@ -73,85 +86,70 @@
             {% endif %}
 
 
-    {% comment %} <div class="container"> {% endcomment %}
-
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
-            <div class="row-md-1" style=" background-color: #eaedf1; margin-left:10px;margin-right:20px;margin-top:5px">
-                <div style='margin-left:15%; '>
-                 <a href='{% url 'quiz:userface' user_id %}' style='color:black;left:10%;'> Main Menu </a><br>
-                 {% if week == 1 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.0 %}' >   Week1 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.0 %}' style="color:rgb(0, 0, 0)">   Week1 </a></button><br>
-                 {% endif %}
-                 {% if week == 2 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.1 %}' >   Week2 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.1 %}' style="color:rgb(0, 0, 0)">   Week2 </a></button><br>
-                 {% endif %}
-                 {% if week == 3 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.2  %}' >   Week3 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.2  %}' style="color:rgb(0, 0, 0)">   Week3 </a></button><br>
-                 {% endif %}
-                 {% if week == 4 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.3  %}' >   Week4 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.3  %}' style="color:rgb(0, 0, 0)">   Week4 </a></button><br>
-                 {% endif %}
-                 {% if week == 5 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.4  %}' >   Week5 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.4  %}' style="color:rgb(0, 0, 0)">   Week5 </a></button><br>
-                 {% endif %}
-                 {% if week == 6 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.5  %}' >   Week6 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.5  %}' style="color:rgb(0, 0, 0)">   Week6 </a></button><br>
-                 {% endif %}
-                 {% if week == 7 %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.6  %}' >   Week7 </a></button><br>
-                 {% else %}
-                 <a href='{% url 'quiz:quiz_new' quiz_to.6  %}' style="color:rgb(0, 0, 0)">   Week7 </a></button><br>
-                 {% endif %}
+            <div class="row-md-1" style="  margin-left:10px;margin-right:20px;margin-top:5px">
+                <div style="width:100%">
+                 {% comment %} <a href='{% url 'quiz:assignment' user_id %}' style='color:black;left:10%;'> Quizzes </a><br> {% endcomment %}
+                 <a href="{% url 'quiz:assignment' user_id %}" style="width:100%;" ><button type="button" class="btn btn-primary" style="width:100%;">Quizzes</button></a>
+                 {% comment %} <p> Week{{week}} </p> {% endcomment %}
                 </div>
+                <div style="margin-top:10px;margin-bottom:10px">
+
+                    <div class="bd-example-snippet bd-code-snippet" ><div class="bd-example">
+                        <div class="progress" title="WDNMG" id ="bar_id">
+                          {% comment %} <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> {% endcomment %}
+                          <div class="progress-bar bg-success" role="progressbar" style="" id="bar_success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ></div>
+                          <div class="progress-bar bg-danger" role="progressbar" style="" id="bar_failed" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          <script>
+                            var x = document.getElementById('bar_success');
+                            var result = '{{passed}}'/'{{length}}';
+                            x.style="width:"+result*100+"%";
+                            var y = document.getElementById('bar_failed');
+                            var result2 = '{{failed}}'/'{{length}}';
+                            y.style="width:"+result2*100+"%";
+                            var z = document.getElementById('bar_id');
+                            z.title="Passed: "+{{passed}}+' / '+{{length}}+" ; Failed: "+"{{failed}}"+" / "+"{{length}}";
+                          </script>
+                        </div>
+                        </div></div>
+                    
+                </div>
+
+
+
             </div>
             <div class="row-md-2" style=" background-color: #eaedf1; margin-top:5px ;margin-left:10px;margin-right:20px;" >
+
+                {% comment %} Progress bar {% endcomment %}
+
+
                 <div style= "margin-left:15%"> 
+                    
                 {% for quiz in question_sets %}
                  {% if quiz.submission_times <= 0 %}
-                    {%if question_title == quiz.question_title%}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:red;background-color: rgb(175, 248, 246);">Problem{{quiz.question_id|last2}}X</a> <br> 
-                    {%else %}
-                        <a href= "{% url 'quiz:quiz_new' quiz.question_id %}"style="color:red">Problem{{quiz.question_id|last2}}X</a> <br>
-                    {% endif %}
+                        <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:red" id='{{quiz.question_id}}' >Problem{{quiz.question_id|last2}}X</a> <br>
                 {% else %}
                     {% if quiz.ifpassed %}
-                        {%if question_id == quiz.question_id%}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:green;background-color: rgb(175, 248, 246);">Problem{{quiz.question_id|last2}}√</a> <br> 
-                        {%else %}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}"style="color:green">Problem{{quiz.question_id|last2}}√</a> <br>
-                        {% endif %}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="color:green" id ='{{quiz.question_id}}' >Problem{{quiz.question_id|last2}}√</a> <br>
                     {%else%}
-                        {%if question_id == quiz.question_id%}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" style="background-color: aquamarine;">Problem{{quiz.question_id|last2}}</a> <br> 
-                        {%else %}
-                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}">Problem{{quiz.question_id|last2}}</a> <br>
-                        {% endif %}
+                            <a href= "{% url 'quiz:quiz_new' quiz.question_id %}" id ='{{quiz.question_id}}' >Problem{{quiz.question_id|last2}}</a> <br>
                     {%endif%}
                 {%endif%}
               {% endfor %}
+                <script>
+                    var x = document.getElementById({{question_id}})
+                    x.style="background-color: aquamarine;"
+                </script>
                 </div>
             </div>
           </div>
           <div class="col-md-10"  >
             <div class='question' >
-                <h2 >sec-{{section}}: {{question_title}}</h2>
+                <h2 >Week{{week}}/sec-{{section}}: {{question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px;margin-right:40px ">
                 {{text|safe}}
-
                 </div>
             </div>
             {% if user.is_authenticated %}
@@ -179,9 +177,9 @@
                         <br>
                         <label for="" style="text-align: center; color:rgb(255, 157, 0);font-size: 13px; display:none ;" id ='check'>...CHECKING...</label>
             </form>
-            <a href="{% url 'quiz:quiz_new' ids.0 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx'>Previous Question</button></a>
-            <button type="submit" style="margin-top:10px"  id='submit' onclick='submit()' name='xxx'>SUBMIT</button>
-            <a href="{% url 'quiz:quiz_new' ids.1 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx'>Next Question</button></a>
+            <a href="{% url 'quiz:quiz_new' ids.0 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx' class='submit'>Previous Question</button></a>
+            <button type="submit" style="margin-top:10px"  id='submit' onclick='submit()' name='xxx' class='submit'>SUBMIT</button>
+            <a href="{% url 'quiz:quiz_new' ids.1 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx' class='submit'>Next Question</button></a>
                     {% else %}
                             <p style='color:orange'>Answer: {{answer}}</p>
                     {% endif%}
@@ -207,9 +205,26 @@
                 <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>
             </div>
             {% endif%}
+
         </div>
           </div>
+          
         </div>
+        
       </div>
+      
+
+        {% comment %} <footer class="d-flex flex-wrap justify-content-between align-items-center py-1 border-top " >
+          <p class="col-md-3 mb-0 text-muted" style='font-size:12px;margin-left:10px;'>Supported by CS201 TA Team</p>
+      
+          <p class="nav col-md-5 justify-content-end text-muted" style='font-size:12px;margin-right:12px;'>
+            Email Beilong Tang (bt132@duke.edu) if there are problems.
+          </p>
+        </footer>  {% endcomment %}
+        {% comment %} <footer class="h-50  text-black-50" style="font-size:15px">
+            <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
+          </footer> {% endcomment %}
+
+
 </body>
 </html>
