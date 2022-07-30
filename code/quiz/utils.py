@@ -6,7 +6,7 @@ import subprocess ,os,datetime,re
 import shutil
 
 ### Clean the output for the code
-clean_output=False
+clean_output=True
 ## Check Answer for Fill in the blank questions
 def checkanswer(input_sets,question_id,question_type,student_name):
     if question_type=='blank':
@@ -33,7 +33,7 @@ def checkanswer_mult(input_sets,answer_sets):
     for i in range(0,len(answer_sets)):
         if answer_sets[i]=='True':
             answer_arrays.append(i+97)
-    print(answer_arrays)
+    # print(answer_arrays)
     try:
         input_answer=[ ord(char.lower()) for char in input_sets]
     except:
@@ -153,3 +153,23 @@ def get_progress(question_set, length):
                 count=count+1
         array.append(str(count)+'/'+str(len(week_question_sets)))
     return array
+
+def check_time(time_start, time_end):
+    time_start = datetime.datetime.strptime(time_start,'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+    time_end = datetime.datetime.strptime(time_end,'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+    time_now = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
+    if time_now < time_start:
+        return 0 ## not-open
+    elif time_now <= time_end:
+        return 1 ## open
+    else:
+        return -1 ## pass the due
+
+
+def mult_answer_convert(mult_answer_sets):
+    # ['True','False','True',]
+    answer_arrays=[]
+    for i in range(0,len(mult_answer_sets)):
+        if mult_answer_sets[i]=='True':
+            answer_arrays.append(chr(i+97))
+    return answer_arrays

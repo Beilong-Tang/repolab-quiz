@@ -102,7 +102,7 @@
         <tr class= "table-primary">
           <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
           <td>{{k}}</td>
-          <td>{{j|status}}</td>
+          <td>{{j.0|status}}</td>
           <td>{{n.1}}</td>
         </tr>
         {% endfor %}

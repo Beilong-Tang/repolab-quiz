@@ -79,7 +79,7 @@ def signin(request):
             return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
         
         else:
-            messages.error(request, 'Bad Credentials')
+            messages.error(request, 'Either your id or your password is not right, please try again.')
             return HttpResponseRedirect(reverse('simple_judge:signin'))
 
     return render(request,'simple_judge/signin.html')

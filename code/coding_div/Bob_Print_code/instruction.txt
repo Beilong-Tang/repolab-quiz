@@ -1,0 +1,4 @@
+/open coding_div/Bob_Print_code/Print.txt
+/open coding_div/Bob_Print_code/check.txt
+check()
+/save -history coding_div/Bob_Print_code/data.txt

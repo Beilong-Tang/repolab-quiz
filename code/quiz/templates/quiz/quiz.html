@@ -63,29 +63,32 @@
     <title>Test</title>
 </head>
 <body>    
+    {% if messages %}
+    <div class="messages" style="position:absolute;margin-top:60px;margin-left:50%">
+        <a name="here"></a>
+      {% for message in messages %}
+      {% if message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+            {{ message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" id="closing"></button>
+        </div>
+      {% else %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{ message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" id ='closing'></button>
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <script>
+        window.setTimeout(function(){document.getElementById('closing').click();},1000); 
+    </script>
+
+    {% endif %}
     <div class="topmenu">
         <p>COMPSCI 201: Intro to prgramming and data structures</p>
     </div>
-            {% if messages %}
-            <div class="messages">
-                <a name="here"></a>
-              {% for message in messages %}
-              {% if message.tags == 'error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ message}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              {% else %}
-                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                    {{ message}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              {% endif %}
-              {% endfor %}
-            </div>
-            {% endif %}
-
-
+            
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
@@ -122,9 +125,6 @@
             </div>
             <div class="row-md-2" style=" background-color: #eaedf1; margin-top:5px ;margin-left:10px;margin-right:20px;" >
 
-                {% comment %} Progress bar {% endcomment %}
-
-
                 <div style= "margin-left:15%"> 
                     
                 {% for quiz in question_sets %}
@@ -147,7 +147,7 @@
           </div>
           <div class="col-md-10"  >
             <div class='question' >
-                <h2 >Week{{week}}/sec-{{section}}: {{question_title}}</h2>
+                <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px;margin-right:40px ">
                 {{text|safe}}
                 </div>
@@ -168,11 +168,13 @@
                                 {% endfor%}
                             {% endif %}
                         {% else%}
-                            {% for i in answers %}
-                            <input type="text" class= "answer" spellcheck=false id="answer1" name="{{forloop.counter0}}" placeholder="({{forloop.counter0}})"  required> 
-                            {%empty%}
-                            <input type="text" class= "answer" spellcheck=false id="answer1" name="0" placeholder="Your Answer" required> 
-                            {% endfor %}
+                            {% if mult %}
+                            <input type="text" class= "answer" spellcheck=false id="answer1" name="0" placeholder="Your Answer" value ="" required>
+                            {% else%}
+                                {% for i in answers %}
+                                    <input type="text" class= "answer" spellcheck=false id="answer1" name="{{forloop.counter0}}" placeholder="({{forloop.counter0}})"  required> 
+                                {% endfor %}
+                            {% endif %}
                         {% endif %}
                         <br>
                         <label for="" style="text-align: center; color:rgb(255, 157, 0);font-size: 13px; display:none ;" id ='check'>...CHECKING...</label>
@@ -181,19 +183,25 @@
             <button type="submit" style="margin-top:10px"  id='submit' onclick='submit()' name='xxx' class='submit'>SUBMIT</button>
             <a href="{% url 'quiz:quiz_new' ids.1 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx' class='submit'>Next Question</button></a>
                     {% else %}
-                            <p style='color:orange'>Answer: {{answer}}</p>
+                            <p style='color:grey'>Answer: </p>
+                            {% if mult != True %}
+                            <p style='color:orange;margin-top:-10px;white-space:pre-wrap'>{{answers|answer}}</p>
+                            {% else %}
+                            <p style='color:orange;margin-top:-10px;white-space:pre-wrap'>{{answers|mult_answer}}</p>
+                            {% endif %}
                     {% endif%}
+
                     {% if overdue == True %}
-                        <p style="color:red"> You have passed the due.</p>
+                        {% comment %} <p style="color:red"> You have passed the due.</p> {% endcomment %}
                     {% else %}
-                        {% if submission_times > 0%}
-                            {% if ifpassed %}
+                        {% if quiz.submission_times > 0%}
+                            {% if quiz.ifpassed %}
                                 <p style="color:green"> You have passed the quiz.</p>
                             {% else %}
-                                <p style="color:black"> You have {{submission_times}} times left.</p>
+                                <p style="color:black"> You have {{quiz.submission_times}} times left.</p>
                             {%endif%}
                         {% else %}
-                            {% if ifpassed %}
+                            {% if quiz.ifpassed %}
                                 <p style="color:red"> Your answer is correct but it will not be recorded.</p>
                             {%else%}
                                 <p style="color:red"> You have failed the quiz</p>

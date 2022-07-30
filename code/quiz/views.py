@@ -12,7 +12,6 @@ import markdown
 import datetime
 # Create your views here.
 
-week_now=1
 
 def checkuser(request,user_id):
     if request.user.username!=Student.objects.get(student_id=user_id).student_name:
@@ -50,10 +49,7 @@ def assignment(request,user_id):
 
     set=[101,201,301,401,501,101,701]
     context['array']=list(zip( due_dict.keys(), due_dict.values(), progress_array, set,due_date))
-    
-
     return render(request,'quiz/assignment.html',context)
-
 
 
 def check(request, question_id):
@@ -64,8 +60,6 @@ def check(request, question_id):
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')),question_dict.question_type)
         quiz.logx+='#'.join(answer)+'@'+str(datetime.datetime.utcnow())[:19]+'$'
         quiz.save()
-        if question_dict.question_week < week_now:
-            return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_id,)))
         if ut.checkanswer(answer,question_id,question_dict.question_type,request.user.username)!=True:    
             messages.error(request, 'Wrong Answer!')
             if quiz.submission_times > 0 and quiz.ifpassed==False:
@@ -84,58 +78,67 @@ def check(request, question_id):
 def quiz_new(request,question_id):
     if request.user.is_authenticated:
         student_current=Student.objects.get(student_name=request.user.username)
-        context={}
-        context['user_id']=student_current.student_id
         if True: 
             question_dict=Questiondict.objects.get(question_id=question_id)
             question_week=question_dict.question_week
-            context['overdue']=False
-            if question_week <week_now:
-                context['overdue']=True
-
-            context['mult']=True
-            
-            if question_dict.question_type=='blank' or question_dict.question_type=='code':
-                context['answers']=question_dict.question_content.get('answers')
-                context['mult']=False
-                
-            context['section']=question_dict.question_content.get('section')
-            context['question_title']=question_dict.question_title
-            context['question_id']=question_id
-            quiz_description=question_dict.question_content.get('description')
-            context['quiz_description']=quiz_description
             q= student_current.question_set.get(question_id=question_id)
+            quiz_description=question_dict.question_content.get('description')
+            mult=True
+            recent=False
+            context={}
+
+
+            time_array = student_current.question_due_dict.get("week"+str(question_week))
+            time_start = datetime.datetime.strptime(time_array[0],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+            time_end = datetime.datetime.strptime(time_array[1],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+            time_now = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
+            if time_now > time_end:
+                context['overdue']=True
+            elif time_now >= time_start:
+                pass
+            else:
+                return HttpResponse("The question is not open yet")
+
+            if question_dict.question_type=='blank' or question_dict.question_type=='code':
+                answers=question_dict.question_content.get('answers')
+                mult=False
+            else:
+                answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
 
             # Find latest history
-            context['recent']=False
             if q.logx!="":
                 answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
                 answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#')
                 context['recent_answer']=answer_sets
-                if context['mult']:
-                    #return HttpResponse(context['recent_answer'])
+                if mult:
                     context['recent_answer']=" ".join(answer_sets)
-                    #return HttpResponse(context['recent_answer'])
-                context['recent']=True
-            #    Math.max(x,Math.max(y,z))#Math.min(x,Math.min(y,z))#x+y+z-max-min@2022-07-28 06:56:09$
-            context['submission_times']=q.submission_times
-            context['week']=question_week
-            question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
-            context['length']=len(question_sets_temp1)
-            context['question_sets']=question_sets_temp1
-            context['passed']=len(question_sets_temp1.filter(ifpassed=True))
-            context['failed']=len(question_sets_temp1.filter(submission_times=0))
+                recent=True
 
-            context['ids']=ut.findid(question_id,len(question_sets_temp1))
-            context['ifpassed']= q.ifpassed
-            set=[101,201,301,401,501,101,701]
-            context['quiz_to']=set
+            question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
+
             text = markdown.markdown(quiz_description,extensions=[
             'markdown.extensions.fenced_code',
             'markdown.extensions.extra',
             'markdown.extensions.toc'
             ])
+
+ 
             context['text']=text
+            context['question_dict']=Questiondict.objects.get(question_id=question_id)
+            context['quiz']=q
+            context['user_id']=student_current.student_id
+            context['mult']=mult
+            context['answers']=answers
+            context['section']=question_dict.question_content.get('section')
+            context['question_id']=question_id
+            context['recent']=recent
+            context['length']=len(question_sets_temp1)
+            context['question_sets']=question_sets_temp1
+            context['passed']=len(question_sets_temp1.filter(ifpassed=True))
+            context['failed']=len(question_sets_temp1.filter(submission_times=0))
+            context['ids']=ut.findid(question_id,len(question_sets_temp1))
+            context['quiz_to']=[101,201,301,401,501,101,701]
+
             return render(request, 'quiz/quiz.html', context)
 
     else:
