@@ -14,6 +14,9 @@ from simple_judge.models import Student
 # Create your views here.
 def index(request):
     
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
+
     return render(request,'simple_judge/index.html')
 
 
@@ -69,13 +72,10 @@ def signin(request):
         username= request.POST['username']
         pass1= request.POST['pass1']
         
-
         user = authenticate(username=username,password=pass1)
-
 
         if user is not None:
             login(request, user)
-            fname=user.first_name
             return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
         
         else:
@@ -83,7 +83,7 @@ def signin(request):
             return HttpResponseRedirect(reverse('simple_judge:signin'))
 
     return render(request,'simple_judge/signin.html')
-    #return HttpResponseRedirect(reverse('quiz:userface', args=(request.user.pk,)))
+
 
 
 def signout(request):
@@ -100,7 +100,6 @@ def signin_from_question(request,week,question_title):
 
         user = authenticate(username=username,password=pass1)
 
-
         if user is not None:
             login(request, user)
             fname=user.first_name
@@ -112,6 +111,42 @@ def signin_from_question(request,week,question_title):
 
     return render(request,'simple_judge/signin_q.html',context)
 
+
+def change_password(request):
+    context={}
+    if request.method=='POST':
+        raw_pass = request.POST['raw_pass']
+        pass1 = request.POST['pass1']
+        #pass2 = request.POST['pass2']
+        
+        user = authenticate(username=request.user.username, password=raw_pass)
+
+        if user is not None:
+            u = User.objects.get(username=request.user.username)
+            u.set_password(pass1)
+            u.save()
+            messages.success(request, "Your new password is set up, please re-login.")
+            logout(request)
+            return HttpResponseRedirect(reverse('simple_judge:signin'))
+
+
+        else:
+            context['raw_pass']=raw_pass
+            context['pass1']=pass1
+            context['user_id']= Student.objects.get(student_netid=request.user.username).student_id
+            messages.error(request, "The current password is not right")
+            return render(request, 'simple_judge/change_password.html',context)
+
+
+
+    else:
+        user = User.objects.get(username=request.user.username)
+        context['user_id']= Student.objects.get(student_netid=request.user.username).student_id
+        return render(request, 'simple_judge/change_password.html',context)
+
+
+    return HttpResponse(user.password)
+    pass
 
 
 

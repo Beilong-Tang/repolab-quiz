@@ -37,6 +37,11 @@
       border-top-right-radius: 0;
     }
     </style>
+    <script>
+      function contact(){
+        alert("Please Contact Beilong Tang (bt132@duke.edu)")
+      }
+    </script>
 </head>
 
 <body class="d-flex h-100 text-center text-black bg-white">
@@ -76,7 +81,7 @@
   
       <div class="checkbox mb-3">
         <label>
-          <a href="#"> forget your password?</a>
+          <a onclick="contact()" href=""> forget your password? </a>
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
@@ -85,15 +90,9 @@
   <div class="messages" style="margin-top:10px;font-size:10px;color:red">
     {% for message in messages %}
     {% if message.tags == 'error' %}
-      {% comment %} <div class="alert alert-danger alert-dismissible fade show h-10" role="alert"> {% endcomment %}
           {{message}}
-          {% comment %} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="font-size:10px"></button>
-      </div> {% endcomment %}
     {% else %}
-      {% comment %} <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert"> {% endcomment %}
-          {{ message}}
-          {% comment %} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div> {% endcomment %}
+          <p style="color:green">{{message}}</p>
     {% endif %}
     {% endfor %}
   </div>

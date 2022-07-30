@@ -2,7 +2,6 @@
 <html lang="en" class="h-100">
   <head>
     <meta charset="utf-8">
-    {% comment %} <meta name="viewport" content="width=device-width+100, initial-scale=2.0"> {% endcomment %}
     <meta name="description" content="">
     <meta name="author" content="Beilong Tang">
     <meta name="generator" content="Hugo 0.98.0">
@@ -14,61 +13,13 @@
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
+</head>
+  
 
-    <style>
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        {% comment %} box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15); {% endcomment %}
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
-  </head>
-  <body class="d-flex h-100 text-center text-black bg-white">
+    <body class="d-flex h-100 text-center text-black bg-white">
     
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column ">
-    {% comment %} <div class="cover-container"> {% endcomment %}
+
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -77,10 +28,10 @@
 
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:userface' user_id %}" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment' user_id %}" class="nav-link">Quizzes</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Status</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
+        {% comment %} <li class="nav-item"><a href="#" class="nav-link">Status</a></li> {% endcomment %}
+        <li class="nav-item"><a href="{% url 'quiz:account' user_id %}" class="nav-link">Account</a></li>
         <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li>
       </ul>
     </header>
@@ -100,52 +51,3 @@
     
   </body>
 </html>
-
-
-{% comment %} <body>
-  <div class="topmenu">
-    <p>COMPSCI 201: Intro to prgramming and data structures</p>
-</div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
-        <div class="container-fluid">
-
-          <div class="collapse navbar-collapse" id="navbarsExample02">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active"  href="#">Main Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 1 %}">Week1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 2 %}">Week2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 3 %}">Week3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 4 %}">Week4</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 5 %}">Week5</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 6 %}">Week6</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'quiz:week' user_id 7 %}">Week7</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'simple_judge:index'%}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'simple_judge:signout'%}">Signout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-        <h1>Welcome to CS201 Quiz!</h1>
-
-         {% endcomment %}

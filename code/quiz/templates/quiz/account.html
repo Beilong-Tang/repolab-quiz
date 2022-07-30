@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    {% comment %} <meta name="viewport" content="width=device-width+100, initial-scale=2.0"> {% endcomment %}
+    <meta name="description" content="">
+    <meta name="author" content="Beilong Tang">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Home Page</title>
+
+
+{% load static %}
+{% load my_tags%}
+
+<link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
+<link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
+<link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
+
+    <!-- Custom styles for this template -->
+    {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
+  </head>
+  <body class="d-flex h-100 text-center text-black bg-white">
+    
+    <div class="cover-container d-flex w-100 h-100  mx-auto flex-column">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">CS201 Quiz</span>
+        </a>
+  
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="{% url 'quiz:userface' user_id %}" class="nav-link " aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="{% url 'quiz:assignment' user_id %}" class="nav-link">Quizzes</a></li>
+          {% comment %} <li class="nav-item"><a href="#" class="nav-link">Status</a></li> {% endcomment %}
+          <li class="nav-item"><a href="{% url 'quiz:account' user_id %}" class="nav-link active">Account</a></li>
+          <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li>
+        </ul>
+      </header>
+
+
+  <div class="bd-example-snippet bd-code-snippet" style="margin-left:20%;margin-right:20%;position:relative;margin-top:40px;"  >
+    <div class="bd-example ">
+    <table class="table table-borderless" >
+      <tbody>
+        <tr >
+          <th scope="row" >NetID</th>
+          <td>{{user.username}}</td>
+          {% comment %} <td>{{j.0|status}}</td> {% endcomment %}
+          {% comment %} <td>{{n.1}}</td> {% endcomment %}
+        </tr>
+        <tr >
+            <th scope="row" >Name</th>
+            <td>{{student.student_name}}</td>
+            {% comment %} <td>{{j.0|status}}</td> {% endcomment %}
+            {% comment %} <td>{{n.1}}</td> {% endcomment %}
+          </tr>
+          <tr >
+            <th scope="row" >Password</th>
+            <td><a href="{% url 'simple_judge:change_password' %}"> <button type="button" class="btn btn-primary btn-sm" >Change Password</button></a></td>
+          </tr>
+    
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+  <footer class="mt-auto text-black-50" style="font-size:15px">
+    <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>

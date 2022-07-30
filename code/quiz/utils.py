@@ -141,18 +141,22 @@ def findid(question_id , question_array_length):
 
 def get_progress(question_set, length):
     # week 5, 1 2 3 4 5 
-    array=[]
+    total_array=[]
+    passed_array=[]
     for i in range(1,length+1):
 
-        count=0
-
+        total_count=0
+        passed_count=0
         week_question_sets=question_set.filter(question_id__gte=100*i , question_id__lte=100*(i+1))
 
         for j in week_question_sets:
-            if j.ifpassed == True or j.submission_times==0:
-                count=count+1
-        array.append(str(count)+'/'+str(len(week_question_sets)))
-    return array
+            if j.ifpassed == True or j.submission_times==0 :
+                total_count+=1
+                if j.ifpassed == True:
+                    passed_count+=1
+        total_array.append(str(total_count)+'/'+str(len(week_question_sets)))
+        passed_array.append(str(passed_count)+'/'+str(len(week_question_sets)))
+    return total_array, passed_array
 
 def check_time(time_start, time_end):
     time_start = datetime.datetime.strptime(time_start,'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))

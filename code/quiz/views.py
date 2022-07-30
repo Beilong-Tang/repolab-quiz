@@ -14,7 +14,7 @@ import datetime
 
 
 def checkuser(request,user_id):
-    if request.user.username!=Student.objects.get(student_id=user_id).student_name:
+    if request.user.username!=Student.objects.get(student_id=user_id).student_netid:
         return False
     return True
 
@@ -45,12 +45,24 @@ def assignment(request,user_id):
     due_dict = ut.checktime(question_due_dict)
     # array=list(zip (a,b,d,e))
 
-    progress_array = ut.get_progress(student.question_set.all(),len(due_dict))
+    progress_array, passed_array = ut.get_progress(student.question_set.all(),len(due_dict))
+
+
 
     set=[101,201,301,401,501,101,701]
-    context['array']=list(zip( due_dict.keys(), due_dict.values(), progress_array, set,due_date))
+    context['array']=list(zip( due_dict.keys(), due_dict.values(), progress_array, set,due_date , passed_array))
     return render(request,'quiz/assignment.html',context)
 
+
+def account(request,user_id):
+    if checkuser(request , user_id) !=True:
+       return HttpResponse("You are not allowed to See the Page") 
+    context={}
+    context['user'] = request.user
+    context['student']=Student.objects.get(student_id=user_id)
+    context['user_id']=user_id
+
+    return render(request, 'quiz/account.html', context)
 
 def check(request, question_id):
     student_current=Student.objects.get(student_name=request.user.username)
