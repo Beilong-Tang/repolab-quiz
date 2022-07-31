@@ -1,4 +1,3 @@
-from simple_judge.models import Student
-from django.contrib.auth.models import User
-from utils.User import create_user as f
-f('bt132', 'Spiderman' ,10)
+from simple_judge.models import Questiondict
+from utils.AssginQuestion import AssignQuestion as f
+f()

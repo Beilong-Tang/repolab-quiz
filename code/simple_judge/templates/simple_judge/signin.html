@@ -39,7 +39,9 @@
     </style>
     <script>
       function contact(){
-        alert("Please Contact Beilong Tang (bt132@duke.edu)")
+        var x = document.getElementById('floatingPassword');
+        //alert(x.value);
+        alert("Please Contact Beilong Tang (bt132@duke.edu)");
       }
     </script>
 </head>
@@ -49,17 +51,8 @@
 
 <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    {% comment %} <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none text-center">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <div>
-      <span class="fs-4" >CS201 Quiz</span>
-      </div>
-    </a> {% endcomment %}
     <span class="fs-4">CS201 Quiz</span>
 
-    {% comment %} <ul class="nav nav-pills">
-      <li class="nav-item"><a href="{% url 'simple_judge:signin' %}" class="nav-link active" aria-current="page">Sign in</a></li>
-    </ul> {% endcomment %}
   </header>
 
 
@@ -71,17 +64,17 @@
     <h2 class="h3 mb-3 fw-normal">Sign in</h2>
   
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name='username' placeholder="name@example.com" required>
+        <input type="text" class="form-control" id="floatingInput" name='username' placeholder="name@example.com" value="{{username}}" required>
         <label for="floatingInput" style="color:black">ID</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" name='pass1' placeholder="Password" required>
+        <input type="password" class="form-control" id="floatingPassword" name='pass1' placeholder="Password" value="{{pass1}}" required>
         <label for="floatingPassword" style="color:black">Password</label>
       </div>
   
       <div class="checkbox mb-3">
         <label>
-          <a onclick="contact()" href=""> forget your password? </a>
+          <a onclick="contact()" href="#"> forget your password? </a>
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
