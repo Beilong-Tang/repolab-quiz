@@ -7,6 +7,7 @@ import shutil
 
 ### Clean the output for the code
 clean_output=True
+
 ## Check Answer for Fill in the blank questions
 def checkanswer(input_sets,question_id,question_type,student_name):
     if question_type=='blank':
@@ -67,7 +68,7 @@ def getanswer(request, len,question_type):
     return answers
 
 def check_answer_code(jsonfile, answer,student_name):
-    running_directory=os.getcwd()+'/utils'
+
     ### This is for local use
     ###
     # Get the code

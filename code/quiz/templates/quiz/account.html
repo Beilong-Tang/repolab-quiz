@@ -15,6 +15,8 @@
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
+<script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
+<script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
 
     <!-- Custom styles for this template -->
     {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
@@ -31,10 +33,10 @@
   
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="{% url 'quiz:userface' user_id %}" class="nav-link " aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="{% url 'quiz:assignment' user_id %}" class="nav-link">Quizzes</a></li>
-          {% comment %} <li class="nav-item"><a href="#" class="nav-link">Status</a></li> {% endcomment %}
-          <li class="nav-item"><a href="{% url 'quiz:account' user_id %}" class="nav-link active">Account</a></li>
-          <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:assignment' user_id %}" class="nav-link">Quizzes</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:account' user_id %}" class="nav-link active">Account</a></li>
+        {% comment %} <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li> {% endcomment %}
+        <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
 
