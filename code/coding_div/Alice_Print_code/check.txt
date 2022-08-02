@@ -1,5 +1,0 @@
-void check()
-{
-    String[]args={""};
-    Print.main(args);
-}

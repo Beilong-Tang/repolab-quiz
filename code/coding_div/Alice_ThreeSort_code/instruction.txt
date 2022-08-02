@@ -1,4 +1,0 @@
-/open coding_div/Alice_ThreeSort_code/ThreeSort.txt
-/open coding_div/Alice_ThreeSort_code/check.txt
-check()
-/save -history coding_div/Alice_ThreeSort_code/data.txt

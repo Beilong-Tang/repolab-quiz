@@ -1,4 +1,0 @@
-/open coding_div/Alice_LPS_code/LPS.txt
-/open coding_div/Alice_LPS_code/check.txt
-check()
-/save -history coding_div/Alice_LPS_code/data.txt

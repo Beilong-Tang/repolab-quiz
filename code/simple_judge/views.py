@@ -9,13 +9,12 @@ from django.contrib.auth.models import User
 
 from django.contrib import messages
 from django.urls import reverse
-from django.contrib.auth import authenticate, login, models, logout
-from simple_judge.models import Student
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
     
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
+        return HttpResponseRedirect(reverse('quiz:userface'))
 
     return render(request,'simple_judge/index.html')
 
@@ -23,7 +22,7 @@ def index(request):
 def signin(request):
 
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
+        return HttpResponseRedirect(reverse('quiz:userface'))
 
     if request.method == 'POST':
         username= request.POST['username']
@@ -33,7 +32,8 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username).student_id,)))
+            # return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username),)))
+            return HttpResponseRedirect(reverse('quiz:userface'))
         
         else:
             context={}
@@ -70,12 +70,10 @@ def change_password(request):
             context={}
             context['raw_pass']=raw_pass
             context['pass1']=pass1
-            context['user_id']= Student.objects.get(student_netid=request.user.username).student_id
             messages.error(request, "The current password is not right")
             return render(request, 'simple_judge/change_password.html',context)
 
     else:
         context={}
         user = User.objects.get(username=request.user.username)
-        context['user_id']= Student.objects.get(student_netid=request.user.username).student_id
         return render(request, 'simple_judge/change_password.html',context)
