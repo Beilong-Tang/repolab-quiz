@@ -13,3 +13,7 @@ question_due_dict={'week1':['2022-7-28 6:00','2022-8-29 23:59'],
                    'week7':['2022-7-28 6:00','2022-8-29 23:59'],
                    }
 
+quiz_necessary_elements = ['id','author', 'section','description','level','quiz_type'] # and id
+
+# These are the elements the old quiz has that are not necessary for the new quiz delivery
+quiz_non_necessary_elements = ['qzid', 'logx','passed','seed','from','submission']

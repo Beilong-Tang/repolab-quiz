@@ -15,27 +15,29 @@ import sys
 import json
 import re
 from utils.settings import quiz_dir
+from utils.settings import quiz_necessary_elements
+from utils.settings import quiz_non_necessary_elements
+
 from utils.question_title import question_title_change 
 
-#sys.path.append()
-#from simple_judge.models import *
 from simple_judge.models import Question, Student, Questiondict
-#from simple_judge.models  import *
-
-#print(os.listdir(quiz_dir))
 
 week=[100,200,300,400,500,600,700]
 
 def MergePath(a,b):
     return a+'/'+b
 
-def ConvertWeek(command_week):
-    week=int(command_week[4:])
-    return week
-
 # LoadQuestion('week1')
 def LoadQuestion(command_week):
-    week = ConvertWeek(command_week) # 1
+
+    dir_now=os.getcwd()
+
+    os.chdir(quiz_dir)
+
+    os.system('python3 manage.py '+command_week)
+
+    os.chdir(dir_now)
+    print('yess')
     specific_week_folder = MergePath( quiz_dir , command_week ) 
     question_array=list(filter(lambda x: x.endswith('.json'), os.listdir(specific_week_folder)))
 
@@ -77,9 +79,6 @@ def LoadQuestion(command_week):
 
 def ModifyContent(json_content,quiz_type,question_id):
 
-    
-
-
     if json_content['description'].find('[image]'):
         json_content['description']=json_content['description'].replace('[image](','[image](/static/quiz/images/')
     ###
@@ -95,9 +94,6 @@ def ModifyContent(json_content,quiz_type,question_id):
     return json_content
 
     pass
-
-
-
 
 
 def FindTitle(quiz_type,question_title_raw):
@@ -129,3 +125,81 @@ def replace_blanks(question_description):
         question_description=question_description.replace('__('+(str)(i)+')__','_____('+(str)(i)+')\___')
     return question_description
 
+
+def week_id_check(command,hw_dir):
+
+    
+    week_array = ['week1','week2','week3','week4','week5','week6','week7']
+
+    if command not in week_array:
+        assert "Please type in the correct command" and False
+    
+    week_quiz_array=list(filter(lambda x: x.endswith('.json'),os.listdir(hw_dir+'/'+command)))
+
+    if len(week_quiz_array)!=24:
+        print("Question number is not 24")
+
+    for quiz in week_quiz_array:
+        file=hw_dir+'/'+command+'/'+quiz
+        quiz_id=int(quiz[:quiz.find('.')])
+        file_raw=open(file,'r')
+        json_content=json.load(file_raw)
+        file_raw.close()
+        json_content['id']=int(command[4:])*100+quiz_id
+        # Check(command, json_content,quiz):
+        json_content=Check(command=command, json_content=json_content,quiz=quiz)[0]
+
+        with open(file,'w') as f:
+             json.dump(json_content,f,indent=2)
+
+def Check(command, json_content,quiz):
+    error = False
+    for key in quiz_necessary_elements:
+        if key  not in json_content.keys():
+            error = True
+            print('Warning:'+command+' '+quiz+' '+key+ ' not found')
+        else:
+            if key =='author':
+                if json_content[key]=="":
+                    error = True
+                    print('Warning:'+command+' '+quiz+' author not initialized') 
+            elif key =='section':
+                if json_content[key]=="":
+                    error = True
+                    print('Warning:'+command+' '+quiz+' section not initialized') 
+                else:
+                    try:
+                        flo = float(json_content[key])
+                    except:
+                        error = True
+                        print('Warning:'+command+' '+quiz+' section not in the right format.') 
+            elif key == 'description':
+                if json_content[key]=="":
+                    error = True
+                    print('Warning:'+command+' '+quiz+' description.') 
+            elif key == 'level':
+                if json_content[key]=="":
+                    error = True
+                    print('Warning:'+command+' '+quiz+' level not initialized.') 
+            elif key == 'quiz_type':
+                if json_content[key]=='JQ_UnorderedBlank':
+                    json_content[key]='blank'
+                elif json_content[key]=='JQ_MultiChoice':
+                    json_content[key]='mult'
+                elif json_content[key]=='JQ_Code':
+                    json_content[key]='code'
+    
+    for key in quiz_non_necessary_elements:
+        if key in json_content.keys():
+            del json_content[key]
+    
+    if 'explains' in json_content.keys():
+        if isinstance(json_content['explains'],list):
+            json_content['explains']="None"
+    else:
+        json_content['explains']="None"
+    return json_content, error
+
+
+if __name__=='__main__':
+    week_id_check('week1',quiz_dir)
