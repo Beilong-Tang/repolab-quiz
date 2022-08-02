@@ -47,8 +47,6 @@ def assignment(request,user_id):
 
     progress_array, passed_array = ut.get_progress(student.question_set.all(),len(due_dict))
 
-
-
     set=[101,201,301,401,501,601,701]
     context['array']=list(zip( due_dict.keys(), due_dict.values(), progress_array, set,due_date , passed_array))
     return render(request,'quiz/assignment.html',context)
