@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("simple_judge.urls")),
     path('cs201/', include('quiz.urls')),
+    path('cs201/forum',include('forum.urls'))
     ]
 
