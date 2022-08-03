@@ -141,4 +141,5 @@ cython_debug/
 /config
 
 # Migrations
-/code/simple_judge/migrations/*
+/code/simple_judge/migrations/*.#*
+*/.#*
