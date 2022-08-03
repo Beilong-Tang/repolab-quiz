@@ -11,6 +11,8 @@ class Student(models.Model):
     student_id=models.IntegerField(default=0)
     student_netid=models.CharField(max_length=8)
     question_due_dict=models.JSONField(default={'week1':['2022-7-29 6:00','2022-7-29 23:59']})
+    online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))
+    offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
     def __str__(self):
         return self.student_name
 
@@ -19,8 +21,6 @@ class Question(models.Model):
     question_title=models.CharField(max_length=50)
     question_id=models.IntegerField(default=0)
     ifpassed=models.BooleanField('ifpassed',default=False)
-    #pub_date=models.DateTimeField('date published', default=datetime.datetime.strptime('2022-7-13 23:59','%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))))
-    #due_date=models.DateTimeField('date due', default=datetime.datetime.strptime('2022-7-14 23:59','%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))))
     logx=models.TextField()
     submission_times=models.IntegerField(default=5)
     def __str__(self):

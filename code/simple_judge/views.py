@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 def index(request):
     
@@ -31,6 +32,8 @@ def signin(request):
         user = authenticate(username=username,password=pass1)
 
         if user is not None:
+            request.session['a']=11
+            request.session.set_expiry(1209600)
             login(request, user)
             # return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username),)))
             return HttpResponseRedirect(reverse('quiz:userface'))

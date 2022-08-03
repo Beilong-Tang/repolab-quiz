@@ -61,6 +61,12 @@
             <th scope="row" >Password</th>
             <td><a href="{% url 'simple_judge:change_password' %}"> <button type="button" class="btn btn-primary btn-sm" >Change Password</button></a></td>
           </tr>
+          {% if user.username == 'admin'%}
+          <tr >
+            <th scope="row" >Admin</th>
+            <td><a href="{% url 'quiz:admin' %}"> <button type="button" class="btn btn-primary btn-sm" >Admin page</button></a></td>
+          </tr>
+          {% endif %}
     
       </tbody>
     </table>
