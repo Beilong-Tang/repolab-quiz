@@ -60,7 +60,7 @@ def account(request):
 
 @login_required(login_url='/signin')
 def check(request, question_id):
-    student_current=Student.objects.get(student_name=request.user.username)
+    student_current=Student.objects.get(student_netid=request.user.username)
     quiz=student_current.question_set.get(question_id=question_id)
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_id=question_id)
@@ -85,7 +85,7 @@ def check(request, question_id):
 @login_required(login_url='/signin',redirect_field_name='/content/assignment')
 def quiz_new(request,question_id):
     
-    student_current=Student.objects.get(student_name=request.user.username)
+    student_current=Student.objects.get(student_netid=request.user.username)
     student_current.online_time, student_current.offline_time  = record_online_time()     
     student_current.save() 
     question_dict=Questiondict.objects.get(question_id=question_id)
@@ -133,7 +133,6 @@ def quiz_new(request,question_id):
     context['text']=text
     context['question_dict']=Questiondict.objects.get(question_id=question_id)
     context['quiz']=q
-    context['user_id']=student_current.student_id
     context['mult']=mult
     context['answers']=answers
     context['section']=question_dict.question_content.get('section')

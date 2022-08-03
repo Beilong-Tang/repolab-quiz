@@ -189,12 +189,12 @@ def AssignQuestion():
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 
-def CreateUser(net_id, student_name, student_id):
+def CreateUser(net_id, student_name, student_id,level):
     args = ""
     args+= "from simple_judge.models import Student\n"
     args+= "from django.contrib.auth.models import User\n"
     args+= "from utils.User import create_user as f\n"
-    args+="f('"+net_id+"', '"+student_name+"' ,"+ student_id+")"
+    args+="f('"+net_id+"', '"+student_name+"' ,'"+ student_id+"' ,"+str(level)+"  "+")"
     with open ('input.txt','w') as f:
         f.write(args)
     ain=open('input.txt','r')
@@ -213,42 +213,18 @@ def execute():
         return
 
     if sys.argv[1]=='create_user':
-        #net_id, student_name, student_id
-        CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
-        return 
+        #net_id, student_name, student_id, (level=0)
+        if len(sys.argv)==5:
+            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4],0 )
+            return
+        if len(sys.argv)==6:
+            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5] )
+            return
 
 
-    # if sys.argv[1]=='blank':
-    #     generate_input_file_blank()
-    #     return
-    # if sys.argv[1]=='mult':
-    #     generate_input_mult_choice()
-    #     return
-    # if sys.argv[1]=='code':
-    #     generate_input_code_question()
-    #     return
-    # if sys.argv[1]=='week':
-    #     if len(sys.argv)<3:
-    #         input_and_execute(week(default=True))
-    #         return
-    #     input_and_execute(week(default=False,week=(int)(sys.argv[2]), chap=(int)(sys.argv[3]), section=sys.argv[4]))
-    #     return
-    #if sys.argv[1]=='assign':
-      #  if len(sys.argv)<3:
-      #  assign(default)
-# def input_instruction():
-#     args="from simple_judge.models import *\n"
-#     pass
 
 
 
 if __name__=='__main__':
      execute()
 
-
-
-    #open('input.txt','w').write(x)
-    #ain=open('input.txt','r')
-    ## This will run the process of storing the data
-    #p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
-    #os.system(args)
