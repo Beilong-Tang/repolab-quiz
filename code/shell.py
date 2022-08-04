@@ -6,11 +6,8 @@ import utils as ut
 
 ## Change the home_dir at here 
 home_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/bank'
-
-ldir = os.path.dirname(os.path.abspath(__file__))
-
 home_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/bank'
-
+ldir = os.path.dirname(os.path.abspath(__file__))
 home_dir='%s/../../repolab-quiz/bank'% ldir
 ########################################
 instruction=""
