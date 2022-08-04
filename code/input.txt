@@ -1,3 +1,0 @@
-from simple_judge.models import Questiondict
-from utils.AssginQuestion import AssignQuestion as f
-f()

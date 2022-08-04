@@ -1,7 +1,10 @@
 # This file is a setting file
-
+import os
 # quiz week folder
 quiz_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/bank/week'
+
+ldir = os.path.dirname(os.path.abspath(__file__))
+quiz_dir='%s/../../../repolab-quiz/bank/week'% ldir
 
 # question_due_dict
 question_due_dict={'week1':['2022-7-28 6:00','2022-8-29 23:59'],

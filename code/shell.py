@@ -7,6 +7,11 @@ import utils as ut
 ## Change the home_dir at here 
 home_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/bank'
 
+ldir = os.path.dirname(os.path.abspath(__file__))
+
+home_dir='/mnt/c/Users/Beilong Tang/Desktop/Main/CODE/DJANGO_new/repolab-quiz/bank'
+
+home_dir='%s/../../repolab-quiz/bank'% ldir
 ########################################
 instruction=""
 quiz_set=""
@@ -200,10 +205,11 @@ def CreateUser(net_id, student_name, student_id,level):
     ain=open('input.txt','r')
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
-
+    pass
 
 
 def execute():
+
     if sys.argv[1] in first_command:
         LoadQuestion(sys.argv[1])
         return
@@ -228,3 +234,4 @@ def execute():
 if __name__=='__main__':
      execute()
 
+     print()
