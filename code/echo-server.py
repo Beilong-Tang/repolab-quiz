@@ -4,7 +4,7 @@ import socket, sys, os
 
 HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
 HOST=''
-PORT = 8070  # Port to listen on (non-privileged ports are > 1023)
+PORT = 8069  # Port to listen on (non-privileged ports are > 1023)
 
 first_command = ['week1','week2','week3','week4','week5','week6','week7']
 
@@ -39,6 +39,7 @@ if __name__ == '__main__':
                 #----------------------------------
                 # replace this with the update code
                 #----------------------------------
+                conn.sendall(b'repolab-quiz server: Updating (may take 7 seconds)\n')
                 update()
                 if not data:
                     break
