@@ -1,4 +1,5 @@
 from django import template
+import datetime
 register=template.Library()
 
 @register.filter
@@ -25,3 +26,7 @@ def answer(answers):
 @register.filter
 def mult_answer(answers):
     return " ".join(answers)
+
+@register.filter
+def date(date):
+    return date.date()

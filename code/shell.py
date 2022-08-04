@@ -177,11 +177,11 @@ def LoadQuestion(command):
     '''
 
 ## This will assign question for all students
-def AssignQuestion():
+def AssignQuestion(student_netid=""):
     args=""
     args+="from simple_judge.models import Questiondict\n"
     args+="from utils.AssginQuestion import AssignQuestion as f\n"
-    args+="f()"
+    args+="f( '"+student_netid+"' )"
 
     with open ('input.txt','w') as f:
         f.write(args)
@@ -189,12 +189,12 @@ def AssignQuestion():
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 
-def CreateUser(net_id, student_name, student_id,level):
+def CreateUser(net_id, student_name,level):
     args = ""
     args+= "from simple_judge.models import Student\n"
     args+= "from django.contrib.auth.models import User\n"
     args+= "from utils.User import create_user as f\n"
-    args+="f('"+net_id+"', '"+student_name+"' ,'"+ student_id+"' ,"+str(level)+"  "+")"
+    args+="f('"+net_id+"', '"+student_name+"' ,"+str(level)+")"
     with open ('input.txt','w') as f:
         f.write(args)
     ain=open('input.txt','r')
@@ -209,16 +209,20 @@ def execute():
         return
 
     if sys.argv[1]== 'assign':
-        AssignQuestion()
-        return
+        if len(sys.argv)==2:
+            AssignQuestion()
+            return
+        if len(sys.argv)==3:
+            AssignQuestion(sys.argv[2])
+            return 
 
     if sys.argv[1]=='create_user':
         #net_id, student_name, student_id, (level=0)
-        if len(sys.argv)==5:
-            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4],0 )
+        if len(sys.argv)==4:
+            CreateUser(sys.argv[2],sys.argv[3],0 )
             return
-        if len(sys.argv)==6:
-            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5] )
+        if len(sys.argv)==5:
+            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
             return
 
 

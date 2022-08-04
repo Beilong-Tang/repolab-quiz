@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    {% comment %} <meta name="viewport" content="width=device-width+100, initial-scale=2.0"> {% endcomment %}
+    <meta name="description" content="">
+    <meta name="author" content="Beilong Tang">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Home Page</title>
+
+
+{% load static %}
+{% load my_tags%}
+
+<link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
+<script type= "text/javascript" src = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
+<link rel = "stylesheet" type ="text/css" href = "{% static 'forum/sidebars.css' %}">
+<link rel="stylesheet" href= "{% static 'quiz/highlight/styles/default.min.css' %}">
+<script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
+<script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
+<script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
+<script>hljs.highlightAll();</script>
+{% comment %} <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script> {% endcomment %}
+
+    <!-- Custom styles for this template -->
+    {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
+  </head>
+  <body class="d-flex h-100 text-center text-black bg-white">
+    
+    <div class="container-fluid d-flex w-100 h-100  mx-auto flex-column">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">CS201 Forum</span>
+        </a>
+  
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
+        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link active">Forum</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
+        </ul>
+      </header>
+
+    <main class="d-flex flex-nowrap">
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 250px;font-size:10px;margin-left:5px">
+                <div style="width:250px"><a href = "{%url 'forum:create_post' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
+                <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                <div class="list-group list-group-flush border-bottom scrollarea">
+                  {% for c in post %}
+                  <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm" id="{{c.id}}" aria-current="true" >
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block">{{c.title}}</strong>
+                      <small class="text-muted">{{c.pub_date|date}}</small>
+                    </div>
+                    <div class="col-10 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">{{c.author_name}}</div>
+                  </a>
+                  {%endfor%}
+                  <script>
+                    var x = document.getElementById('{{current.id}}')
+                    x.style="background-color: #85a9de;"
+                  </script>
+                </div>
+              </div>
+        {% comment %} </div> {% endcomment %}
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:70%;'>
+          <div style="text-align:left;margin-left:100px;margin-right:100px;">{{text|safe}}</div>
+        </div>
+    </main>
+
+
+  <footer class="mt-auto text-black-50" style="font-size:15px">
+    <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>

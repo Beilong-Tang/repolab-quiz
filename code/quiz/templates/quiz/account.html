@@ -23,7 +23,8 @@
   </head>
   <body class="d-flex h-100 text-center text-black bg-white">
     
-    <div class="cover-container d-flex w-100 h-100  mx-auto flex-column">
+    {% comment %} <div class="cover-container d-flex w-100 h-100  mx-auto flex-column"> {% endcomment %}
+    <div class="container-fluid d-flex w-100 h-100  mx-auto flex-column">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -35,7 +36,7 @@
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link active">Account</a></li>
-        {% comment %} <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li> {% endcomment %}
+        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link ">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
@@ -61,7 +62,7 @@
             <th scope="row" >Password</th>
             <td><a href="{% url 'simple_judge:change_password' %}"> <button type="button" class="btn btn-primary btn-sm" >Change Password</button></a></td>
           </tr>
-          {% if user.username == 'admin'%}
+          {% if admin %}
           <tr >
             <th scope="row" >Admin</th>
             <td><a href="{% url 'quiz:admin' %}"> <button type="button" class="btn btn-primary btn-sm" >Admin page</button></a></td>

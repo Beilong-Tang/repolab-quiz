@@ -3,10 +3,9 @@ from django.http import (
     HttpResponse,
     HttpResponseRedirect,
 )
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from numpy import record
 from simple_judge.models import Student, Question, Questiondict
 from django.contrib.auth.decorators import login_required
 import quiz.utils as ut
@@ -56,6 +55,7 @@ def account(request):
     context={}
     context['user'] = request.user
     context['student']=student
+    context['admin']=Student.objects.get(student_netid=request.user.username).level>0
     return render(request, 'quiz/account.html', context)
 
 @login_required(login_url='/signin')
@@ -148,13 +148,14 @@ def quiz_new(request,question_id):
 ## Admin Page
 @login_required(login_url='/signin')
 def admin(request):
-    if request.user.username !='admin':
-        return HttpResponse("You are not the admin, so you cannot see the page")
+    #if request.user.username !='admin':
+    if Student.objects.get(student_netid=request.user.username).level<1:
+        return HttpResponse("You do not have the level to see this page, so you cannot see the page")
     
 
 
     tim = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) # UTC Time
-    online_people_array = Student.objects.filter(offline_time__gte=tim).filter(~Q(student_name= 'admin'))
+    online_people_array = Student.objects.filter(offline_time__gte=tim).filter(level=0)
     context={}
     #context['online']=online_people_array
     context['online_number']=online_people_array.count()
@@ -164,8 +165,8 @@ def admin(request):
 
 @login_required(login_url='/signin')
 def admin_assignment(request):
-    if request.user.username !='admin':
-        return HttpResponse("You are not the admin, so you cannot see the page")
+    if Student.objects.get(student_netid=request.user.username).level<1:
+        return HttpResponse("You do not have the level to see this page, so you cannot see the page")
     
     context={}
 
@@ -174,7 +175,7 @@ def admin_assignment(request):
     # context['array']=list(zip(question_due_dict.keys(), question_due_dict.values()))
 
     # Finished people number
-    s_array = Student.objects.filter(~Q(student_name = 'admin'))
+    s_array = Student.objects.filter(level=0)
     context['student_number'] = s_array.count()
     array_pass_num =[]
     array_almost_pass_num =[]
@@ -187,11 +188,12 @@ def admin_assignment(request):
         student_almost_pass_num = 0
         pass_question = 0
         pass_and_fail = 0
-        submit_times=0
+        submit_times = 0
 
-        for s in Student.objects.filter(~Q(student_name = 'admin')):
+        for s in Student.objects.filter(level=0):
 
             question_array = s.question_set.filter(question_id__gte=100*i , question_id__lte=100*(i+1))
+            ongoing_array = question_array.filter(~Q(Q(submission_times=5) & Q(ifpassed=False)))
             pass_and_fail_array =  question_array.filter( Q(ifpassed=True) | Q(submission_times=0))
             total_num = question_array.count()
             almost_pass_num = int(total_num * 0.8)
@@ -232,7 +234,8 @@ def admin_assignment(request):
 @login_required(login_url='/signin')
 # need to know the admin id
 def admin_quiz(request,week):
-    
+    if Student.objects.get(student_netid=request.user.username).level<1:
+        return HttpResponse("You do not have the level to see this page, so you cannot see the page")
     week_id = int(week[4:])
     q = Question.objects.filter(question_id__gte=100*week_id , question_id__lte=100*(week_id+1))
     q = q.order_by('submission_times')
@@ -245,13 +248,14 @@ def admin_quiz(request,week):
     for q in Questiondict.objects.filter(question_week=week_id):
         fail_num = Question.objects.filter(question_id=q.question_id).filter(submission_times=0).filter(~Q(id=12)).count()
         array[q.question_id]=fail_num
-        questions = Question.objects.filter(question_id=q.question_id).filter(~Q(id=12)).filter(~Q(Q(submission_times=5)&Q(ifpassed=False)))
-        if questions.count()==0:
+        questions = Question.objects.filter(question_id=q.question_id).filter(~Q(Q(submission_times=5)&Q(ifpassed=False)))
+        questions_after = [q for q in questions if Student.objects.get(id=q.student_id).level==0]
+        if len(questions_after)==0:
             continue
         num = 0
-        for q in questions:
+        for q in questions_after:
             num+=q.submission_times
-        num = round((5 *questions.count()-num)/questions.count(),2)
+        num = round((5 *len(questions_after)-num)/len(questions_after),2)
         array_submit_times[q.question_id]=num
 
 

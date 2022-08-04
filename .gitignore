@@ -142,3 +142,5 @@ cython_debug/
 
 # Migrations
 /code/simple_judge/migrations/*
+
+input.txt
