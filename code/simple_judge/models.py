@@ -8,7 +8,6 @@ import datetime
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     student_name=models.CharField(max_length=50)
-    student_id=models.IntegerField(default=0)
     student_netid=models.CharField(max_length=8)
     question_due_dict=models.JSONField(default={'week1':['2022-7-29 6:00','2022-7-29 23:59']})
     online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))

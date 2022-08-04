@@ -6,15 +6,15 @@ from django.contrib.auth.models import User
 import random as r
 
 ## This will create a user and assign the user a foreign key to the student
-def create_user(net_id, student_name, student_id, level=0):
+def create_user(net_id, student_name, level=0):
     u = User.objects.create(username=net_id)
     password= password_random_gen()
     u.set_password(password)
     u.save()    
-    s = Student(user = u, student_name=student_name, student_id = student_id,student_netid=net_id, level=level)
+    s = Student(user = u, student_name=student_name,student_netid=net_id, level=level)
     s.save()
     with open ('utils/user.txt','a') as f:
-        f.write(net_id+" "+student_name+" "+str(student_id)+" "+ password+' '+str(level)+"\n")
+        f.write(net_id+" "+student_name+" "+ password+' '+str(level)+" ;\n")
     print('finished')
     pass
 

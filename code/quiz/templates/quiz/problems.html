@@ -20,7 +20,7 @@
 
     <body class="d-flex h-100 text-center text-black bg-white">
     
-    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column ">
+    <div class="container-fluid d-flex w-100 h-100 mx-auto flex-column ">
 
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -33,7 +33,7 @@
         <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment' %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-        {% comment %} <li class="nav-item"><a href="{% url 'simple_judge:signout' %}" class="nav-link">Log out</a></li> {% endcomment %}
+        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link ">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
       </ul>
     </header>

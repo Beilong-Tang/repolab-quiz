@@ -32,16 +32,36 @@ question_title
 
 from simple_judge.models import Student, Question, Questiondict
 from utils.settings import question_due_dict as question_due
-def AssignQuestion():
+def AssignQuestion(student_netid=""):
     ## Gather all the id
     id_all =[]
     for q in Questiondict.objects.all():
         id_all.append(q.question_id)
 
+    if student_netid=="":
     ## All the student
-    for s in Student.objects.all():
+        for s in Student.objects.all():
 
-        ## question_dict_due
+            ## question_dict_due
+            if s.question_due_dict['week1'][0]=='2022-7-29 6:00':
+                s.question_due_dict=question_due
+                s.save()
+                pass
+
+            id_student=[]
+            for q in s.question_set.all():
+                id_student.append(q.question_id)
+
+
+            for id in id_all:
+                if id not in id_student:
+                    q = s.question_set.create(question_id=id,
+                                            question_title=Questiondict.objects.get(question_id=id).question_title)
+                    q.save()
+    else:
+        s= Student.objects.get(student_netid=student_netid)
+
+            ## question_dict_due
         if s.question_due_dict['week1'][0]=='2022-7-29 6:00':
             s.question_due_dict=question_due
             s.save()
@@ -55,9 +75,9 @@ def AssignQuestion():
         for id in id_all:
             if id not in id_student:
                 q = s.question_set.create(question_id=id,
-                                          question_title=Questiondict.objects.get(question_id=id).question_title)
+                                        question_title=Questiondict.objects.get(question_id=id).question_title)
                 q.save()
-    print('finished')
+print('finished')
 
 # This function will return an args
 def assign_week_main(default=True, week=0, chap=0, section="0"):
