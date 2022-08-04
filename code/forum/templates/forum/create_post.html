@@ -43,38 +43,42 @@
       </header>
 
     <main class="d-flex flex-nowrap">
-      {% comment %} <div class="col-md-2" > {% endcomment %}
-              {% comment %} <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 250px;font-size:10px;margin-left:5px">
-                <div style="width:250px"><a href = "{%url 'forum:forum' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
-                <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                <div class="list-group list-group-flush border-bottom scrollarea">
-                  {% for c in post %}
-                  <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm" id="{{c.id}}" aria-current="true" >
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block">{{c.title}}</strong>
-                      <small class="text-muted">{{c.pub_date|date}}</small>
-                    </div>
-                    <div class="col-10 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">{{c.author_name}}</div>
-                  </a>
-                  {%endfor%}
-                  <script>
-                    var x = document.getElementById('{{current.id}}')
-                    x.style="background-color: #85a9de;"
-                  </script>
-                </div>
-              </div> {% endcomment %}
-        {% comment %} </div> {% endcomment %}
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:1200px'>
             <div style="margin-left:20%;width:60%">
               <form action="#" method="post" autocomplete='off'>
                     {% csrf_token%}
                     <label for="exampleFormControlInput1">Title</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your title goes here" name="title" autocomplete="off" spellcheck="false" required>
+                          <div style="width:100%;"><label style="margin-left:0%;margin-top:10px;">Category </label></div>
+                          <div style="margin-top:5px;margin-bottom:10px;margin-left:1px;width:100%">
+                          <input type="radio" class="btn-check" name="category" id="option1" autocomplete="off" value ="0" checked='true' onclick="show_category()">
+                          <label class="btn btn-outline-primary" for="option1">POST</label>
+                          <input type="radio" class="btn-check" name="category" id="option2" autocomplete="off" value ="1" onclick="show_category()">
+                          <label class="btn btn-outline-success" for="option2">FAQ</label>
+                          <input type="radio" class="btn-check" name="category" id="option3" autocomplete="off" value ="2" onclick="show_category()">
+                          <label class="btn btn-outline-danger" for="option3">Assignments</label>
+                          <p style ='margin-top:15px;font-size:12px;color:grey' id="show_category">Your category: POST</p>
+                          <script>
+                            function show_category(){
+                            var x = document.getElementsByName('category');
+                            for (var i =0; i < x.length;i++){
+                              if (x[i].checked){
+                                  var y = x[i].value;
+                                  break;
+                              }
+                            }
+                            // alert(y==0)
+                            var x =document.getElementById('show_category')
+                            if (y==0){x.innerText='Your category: POST'       ;return}
+                            if (y==1){x.innerText='Your category: FAQ'        ;return}
+                            if (y==2){x.innerText='Your category: Assignments';return }
+                          }
+                            </script>
+                          </div>
+                          
+                    
+                    
+                    
                     <div class="form-group" style="margin-top:5px">
                       <label for="exampleFormControlTextarea1">Text</label>
                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" autocomplete='off' spellcheck='false' placeholder="Your text goes here" name ="text" required></textarea>
@@ -104,13 +108,17 @@
                             </span>
                           </label>
                         </div> {% endcomment %}
-                        <div class="form-check" style="text-align:left">
-                          <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-                          <label class="form-check-label" for="exampleRadio1">Default radio</label>
+                        <div class="form-check form-check-inline" style="text-align:left;margin-top:10px">
+                          <input type="radio" name="level" class="form-check-input" id="radio0" value="0" checked='true'>
+                          <label class="form-check-label" for="exampleRadio1">Default<small class="text-muted">  (visible to everyone)</small> </label>
                         </div>
-                        <div class="form-check" style="text-align:left" >
-                          <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-                          <label class="form-check-label" for="exampleRadio1">Default radio</label>
+                        <div class="form-check form-check-inline" style="text-align:left" >
+                          <input type="radio" name="level" class="form-check-input" id="radio1" value="1">
+                          <label class="form-check-label" for="exampleRadio1">Private <small class="text-muted">  (visible to you and staff)</small></label>
+                        </div>
+                        <div class="form-check form-check-inline" style="text-align:left" >
+                          <input type="radio" name="level" class="form-check-input" id="radio2" value="2">
+                          <label class="form-check-label" for="exampleRadio1">Anonymous<small class="text-muted">  (hide your name)</small> </label>
                         </div>
 
 

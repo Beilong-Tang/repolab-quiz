@@ -53,13 +53,16 @@ def create_post(request):
         # title = models.CharField(max_length=100)
         # level = models.IntegerField(default=0)
         # question_id = models.IntegerField(default=0)
+        # return HttpResponse(request.POST['level'])
         title  = request.POST['title']
         text = request.POST['text']
+        level= int(request.POST['level'])
+        category = int(request.POST['category'])
         author =  Student.objects.get(student_netid=request.user.username)
         author_name = author.student_name
         author_netid = author.student_netid
         pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
-        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date)
+        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category)
         p.save()
         return HttpResponseRedirect(reverse('forum:forum'))
 

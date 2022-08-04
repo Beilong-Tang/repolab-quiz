@@ -141,11 +141,6 @@ cython_debug/
 /config
 
 # Migrations
-<<<<<<< HEAD
-/code/simple_judge/migrations/*.#*
-*/.#*
-=======
 /code/simple_judge/migrations/*
 
 input.txt
->>>>>>> 9edfacc0163ef2c0e66baf79a17fa992b656039d
