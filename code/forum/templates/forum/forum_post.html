@@ -20,6 +20,7 @@
 <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script>hljs.highlightAll();</script>
 {% comment %} <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script> {% endcomment %}
 
@@ -51,7 +52,6 @@
     return;
   }
 
-
 </script>
 <style>
   h1{
@@ -75,6 +75,7 @@
   p{
     font-size:16px;
   }
+
 </style>
   
 
@@ -110,7 +111,7 @@
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-                <div class="list-group list-group-flush border-bottom scrollarea">
+                <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style='overflow:auto'>
                   {% for c in post %}
                   <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" >
                     <div class="d-flex w-100 align-items-center justify-content-between">
@@ -134,6 +135,8 @@
                   <script>
                     var x = document.getElementById('{{current.id}}');
                     x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
+                     var y = document.getElementById('siding');
+                     $("#siding").scrollTop(100);
                   </script>
                 </div>
               </div>
