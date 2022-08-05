@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 import datetime
+from forum.models import Post, Comment
 #from ..utils.AssignQuestionWeek import 
 # Create your models here.
 
@@ -13,6 +14,7 @@ class Student(models.Model):
     online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))
     offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
     level=models.IntegerField(default = 0)
+    forum_seen = models.TextField(default="")
     def __str__(self):
         return self.student_name
 

@@ -46,8 +46,8 @@
       </header>
 
     <main class="d-flex flex-nowrap">
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 250px;font-size:10px;margin-left:5px">
-                <div style="width:250px"><a href = "{%url 'forum:create_post' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 300px;font-size:10px;margin-left:5px">
+                <div ><a href = "{%url 'forum:create_post' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
                 <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -56,23 +56,50 @@
                 </ul>
                 <div class="list-group list-group-flush border-bottom scrollarea">
                   {% for c in post %}
-                  <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm" id="{{c.id}}" aria-current="true" >
+                  <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" >
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block">{{c.title}}</strong>
-                      <small class="text-muted">{{c.pub_date|date}}</small>
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">{{c.title}}</strong>
                     </div>
-                    <div class="col-10 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">{{c.author_name}}</div>
+                                      <div class='row'>
+                                        <div class="col-md-9 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
+                                        {%if c.id not in post_seen %}
+                                            {{c.author_name}} 
+                                            <small class="text-muted" style='margin-left:70px;'>{{c.pub_date|date}}</small>
+                                        </div>
+                                            <div class='col-md-3 mb-1 small' style=''><div style=''><strong style='color:red' >NEW</strong></div></div>
+                                    {%else%}
+                                          {{c.author_name}}
+                                          <small class="text-muted" style='margin-left:70px;'>{{c.pub_date|date}}</small>
+                                        </div>
+                                    {%endif%}
+                                      </div>
                   </a>
                   {%endfor%}
                   <script>
-                    var x = document.getElementById('{{current.id}}')
-                    x.style="background-color: #85a9de;"
+                    var x = document.getElementById('{{current.id}}');
+                    x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                   </script>
                 </div>
               </div>
         {% comment %} </div> {% endcomment %}
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:70%;'>
-          <div style="text-align:left;margin-left:100px;margin-right:100px;">{{text|safe}}</div>
+              <div>
+                          <div>
+                          
+                            <button type="button" class="btn btn-primary btn-lg" aria->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" aria-hidden="true">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                          </button>
+                        
+                      </div>
+                      <div>
+                        aaaaaa
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+              </div>
+                    <div style="text-align:left;margin-left:100px;margin-right:100px;">{{text|safe}}</div>
         </div>
     </main>
 

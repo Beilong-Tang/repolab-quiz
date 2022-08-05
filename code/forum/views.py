@@ -24,14 +24,30 @@ def userface(request):
 def forum(request):
     context={}
 
-    context['post']=Post.objects.all().order_by('-pub_date')
+    post=Post.objects.all().order_by('-pub_date')
 
+
+    post_seen = list(map(int,list(filter(lambda x:x!='',Student.objects.get(student_netid=request.user.username).forum_seen.split(',')))))
+
+
+    context['post_seen']=post_seen
+    context['post']=post
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id):
 
     context={}
     current_post = Post.objects.get(id=id)
+
+    student = Student.objects.get(student_netid=request.user.username)
+
+
+    if student.forum_seen.find(str(id)+',')==-1:
+        student.forum_seen+=str(id)+','
+        student.save()
+    
+    post_seen = list(map(int,(list(filter(lambda x: x!="",student.forum_seen.split(','))))))
+
     context['post']=Post.objects.all().order_by('-pub_date')
     
     context['current']=current_post
@@ -40,6 +56,8 @@ def forum_post(request, id):
     'markdown.extensions.extra',
     'markdown.extensions.toc'
     ])
+    context['post_seen']=post_seen
+
 
 
     return render(request, 'forum/forum_post.html', context)

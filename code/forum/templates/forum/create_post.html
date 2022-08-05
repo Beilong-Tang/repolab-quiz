@@ -19,6 +19,27 @@
 <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
+<script>
+  function cancel(){
+
+    var x = document.getElementById('title');
+    var y = document.getElementById('textarea');
+    if (x.value!="" || y.value!=""){
+      var x =confirm("Are you sure you want to cancel?")
+      if(x==true){
+        window.location.href='{%url 'forum:forum'%}';
+        return;
+      }
+    }
+    window.location.href='{%url 'forum:forum'%}';
+
+  }
+
+</script>
+
+
+
+
 
     <!-- Custom styles for this template -->
     {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
@@ -48,7 +69,7 @@
               <form action="#" method="post" autocomplete='off'>
                     {% csrf_token%}
                     <label for="exampleFormControlInput1">Title</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your title goes here" name="title" autocomplete="off" spellcheck="false" required>
+                    <input type="text" class="form-control" id="title" placeholder="Your title goes here" name="title" autocomplete="off" spellcheck="false" required>
                           <div style="width:100%;"><label style="margin-left:0%;margin-top:10px;">Category </label></div>
                           <div style="margin-top:5px;margin-bottom:10px;margin-left:1px;width:100%">
                           <input type="radio" class="btn-check" name="category" id="option1" autocomplete="off" value ="0" checked='true' onclick="show_category()">
@@ -81,7 +102,7 @@
                     
                     <div class="form-group" style="margin-top:5px">
                       <label for="exampleFormControlTextarea1">Text</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" autocomplete='off' spellcheck='false' placeholder="Your text goes here" name ="text" required></textarea>
+                      <textarea class="form-control" id="textarea" rows="10" autocomplete='off' spellcheck='false' placeholder="Your text goes here" name ="text" required></textarea>
                     </div>
                     
                     {% comment %}  {% endcomment %}
@@ -124,7 +145,7 @@
 
                         {% comment %}  {% endcomment %}
                         <div style="margin-top:10px">
-                          <a href = "{%url 'forum:forum' %}" style="width:250px;text-align:right;margin-right:100px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">Cancel</button></a>
+                          <a style="width:250px;text-align:right;margin-right:100px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px" onclick="cancel()">Cancel</button></a>
                           <a style="width:250px;text-align:left"><button type="submit" class="btn btn-primary btn-lg" style="margin-bottom:5px">Post</button></a>
                         </div>
                   
