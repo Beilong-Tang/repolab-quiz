@@ -37,6 +37,18 @@
     return;
   }
 
+  function another(id){
+    var length = $("#siding").scrollTop();
+    length=parseInt(length)
+
+    var url = "{% url 'forum:forum_post' 1 0  %}";
+    url=url.replace('/1:','/'+id+':')
+    url = url.replace(':0',':'+length);
+
+    window.location.href = url;
+  }
+
+
   function change(){
     var x = document.getElementById('staring');
     var y = document.getElementById('ifstar');
@@ -113,22 +125,26 @@
                 </ul>
                 <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style='overflow:auto'>
                   {% for c in post %}
-                  <a href="{%url 'forum:forum_post' c.id%}" class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" >
+                  <a  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
                       <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">{{c.title}}</strong>
                     </div>
                                       <div class='row'>
-                                        <div class="col-md-9 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
-                                        {%if c.id not in post_seen %}
+
+                                        <div class="col-md-5 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
                                             {{c.author_name}} 
-                                            <small class="text-muted" style='margin-left:70px;'>{{c.pub_date|date}}</small>
                                         </div>
-                                            <div class='col-md-3 mb-1 small' style=''><div style=''><strong style='color:red' >NEW</strong></div></div>
-                                    {%else%}
-                                          {{c.author_name}}
-                                          <small class="text-muted" style='margin-left:70px;'>{{c.pub_date|date}}</small>
-                                        </div>
-                                    {%endif%}
+
+                                          <div class ='col-md-5' style=''>
+                                            <small class="text-muted" style=''>{{c.pub_date|date}}</small>
+                                          </div>
+
+                                            <div class='col-md-2 mb-1 small' style=''>
+                                              {% if c.id not in post_seen%}
+                                              <strong style='color:red' >NEW</strong>
+                                              {%endif%}
+                                            </div>
+                                   
                                       </div>
                   </a>
                   {%endfor%}
@@ -136,7 +152,7 @@
                     var x = document.getElementById('{{current.id}}');
                     x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                      var y = document.getElementById('siding');
-                     $("#siding").scrollTop(100);
+                     $("#siding").scrollTop({{roll}});
                   </script>
                 </div>
               </div>

@@ -34,7 +34,7 @@ def forum(request):
     context['post']=post
     return render(request, 'forum/forum.html',context)
 
-def forum_post(request, id):
+def forum_post(request, id, roll):
 
     context={}
     current_post = Post.objects.get(id=id)
@@ -57,7 +57,7 @@ def forum_post(request, id):
     'markdown.extensions.toc'
     ])
     context['post_seen']=post_seen
-
+    context['roll'] = roll
 
 
     return render(request, 'forum/forum_post.html', context)
