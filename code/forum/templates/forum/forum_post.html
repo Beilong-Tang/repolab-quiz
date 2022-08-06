@@ -47,14 +47,14 @@
       x.style.fill='red';
       y.style.color='red';
       y.innerText="UNSTAR";
-      savestar(id);
+
 
       return;
     }
     x.style.fill='black';
     y.style.color='black';
     y.innerText="STAR";
-    deletestar(id);
+
     return;
   }
 
@@ -208,9 +208,9 @@
                                             </div>
 
                                               <div class='col-md-6' style=''>
-                                                          <form>
+                                                          <form method='post' action='{% url 'forum:save_star' current.id roll %}'>
                                                             {%csrf_token%}
-                                                                  <button onclick='change({{current.id}})' style='background:white;width:80px'>
+                                                                  <button type='submit' style='background:white;width:80px'>
                                                                     
                                                                         <div>
                                                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style='fill:black' class="bi bi-star-fill" viewBox="0 0 16 16" aria-hidden="true" onclick="change()" id="staring">
@@ -238,27 +238,10 @@
                               break;
                           }
                           
-                          function savestar(id){
-                            var token = $('input[name=csrfmiddlewaretoken]').val();
-                        
-                            $.ajax({
-                              url: "{% url 'forum:save_star' %}",
-                              data: {'star_id': id, csrfmiddlewaretoken: token,'save':'1'},
-                              type: 'POST'
-                            })
-                        
+                          
                         }
-                        function deletestar(id){
-                          var token = $('input[name=csrfmiddlewaretoken]').val();
                         
-                          $.ajax({
-                            url: "{% url 'forum:save_star' %}",
-                            data: {'star_id': id, csrfmiddlewaretoken: token,'save':'0'},
-                            type: 'POST'
-                          })
                         
-                        }
-                        }
                       </script>
               </div>
                     <div style="text-align:left;margin-left:100px;margin-right:100px;">

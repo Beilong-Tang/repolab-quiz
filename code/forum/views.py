@@ -36,6 +36,10 @@ def forum(request):
 
 def forum_post(request, id, roll):
 
+    
+
+
+
     context={}
     current_post = Post.objects.get(id=id)
 
@@ -88,20 +92,19 @@ def create_post(request):
     pass
 
 
-def save_star(request):
-    if request.method=='POST':
-        star_id = request.POST['star_id']
-        s = Student.objects.get(student_netid=request.user.username)
-        # save
-        if request.POST['save']=='1':
-            if s.forum_star.find(star_id+',')==-1:
-                s.forum_star+=star_id+','
-                s.save()
-        # delete
-        else:
-            if s.forum_star.find(star_id+',')!=-1:
-                s.forum_star=s.forum_star.replace(star_id+',','')
-                s.save()
+def save_star(request,id,roll):
 
-    
+    if request.method=='POST':
+        # star_id = request.POST['star_id']
+        id=str(id)
+        s = Student.objects.get(student_netid=request.user.username)
+        if s.forum_star.find(id+',')==-1:
+            s.forum_star+=id+','
+            s.save()
+        else:
+            s.forum_star=s.forum_star.replace(id+',','')
+            s.save()
+        # save
+
+    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,)) )
     pass
