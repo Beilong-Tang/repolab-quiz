@@ -6,7 +6,6 @@ from django.http import (
     HttpResponseRedirect,
 )
 from django.contrib.auth.models import User
-
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -80,3 +79,4 @@ def change_password(request):
         context={}
         user = User.objects.get(username=request.user.username)
         return render(request, 'simple_judge/change_password.html',context)
+

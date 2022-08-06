@@ -27,43 +27,46 @@
     <!-- Custom styles for this template -->
     {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
 <script>
-  function xxx(){
-    var x = document.getElementById('unstar');
-    if (x.className=='btn btn-primary'){
-      x.className ='btn btn-outline-primary';
-      return;
-    }
-    x.className='btn btn-primary';
-    return;
-  }
-
+  
   function another(id){
     var length = $("#siding").scrollTop();
     length=parseInt(length)
 
     var url = "{% url 'forum:forum_post' 1 0  %}";
-    url=url.replace('/1:','/'+id+':')
+    url=url.replace('1:',''+id+':')
     url = url.replace(':0',':'+length);
 
     window.location.href = url;
   }
 
 
-  function change(){
+  function change(id){
     var x = document.getElementById('staring');
     var y = document.getElementById('ifstar');
     if (x.style.fill=='black'){
       x.style.fill='red';
       y.style.color='red';
       y.innerText="UNSTAR";
+      savestar(id);
+
       return;
     }
     x.style.fill='black';
     y.style.color='black';
     y.innerText="STAR";
+    deletestar(id);
     return;
   }
 
+
+
+  function newpost(){
+    window.location.href = "{% url 'forum:create_post' %}"
+  }
+
+  window.onload = function(){
+    $(".gif").css("display","flex");
+}
 </script>
 <style>
   h1{
@@ -88,6 +91,29 @@
     font-size:16px;
   }
 
+  #logo {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+.gif {
+    position:absolute
+    left:0;
+    top:0;
+    height:100vh;
+    width:100vw;
+    z-index:1;
+    display:none;
+    align-items: center;
+    justify-content: center;
+}
+.gif>img {
+    height:11%;
+    width:11%;
+}
+
+
 </style>
   
 
@@ -99,12 +125,13 @@
     
     <div class="container-fluid d-flex w-100 h-100  mx-auto flex-column">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-4">CS201 Forum</span>
+          <button type="button" class="btn btn-primary btn-lg" style="margin-left:30px" onclick="newpost()">New Thread</button>
+          <span class="fs-4" style='margin-left:30px'>CS201 Forum</span>
         </a>
-  
-  
+        
+
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
@@ -115,8 +142,8 @@
       </header>
 
     <main class="d-flex flex-nowrap">
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 300px;font-size:10px;margin-left:5px">
-                <div ><a href = "{%url 'forum:create_post' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px">
+                
                 <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -125,34 +152,40 @@
                 </ul>
                 <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style='overflow:auto'>
                   {% for c in post %}
-                  <a  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
+                  <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
                       <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">{{c.title}}</strong>
                     </div>
                                       <div class='row'>
 
-                                        <div class="col-md-5 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
-                                            {{c.author_name}} 
+                                        <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
+                                            Assignment  {{c.author_name}} 
                                         </div>
 
-                                          <div class ='col-md-5' style=''>
+                                          <div class ='col-md-4' style=''>
                                             <small class="text-muted" style=''>{{c.pub_date|date}}</small>
                                           </div>
 
-                                            <div class='col-md-2 mb-1 small' style=''>
+                                            <div class='col-md-2 ' style='font-size:1px;margin-bottom:10px'>
                                               {% if c.id not in post_seen%}
-                                              <strong style='color:red' >NEW</strong>
-                                              {%endif%}
+                                              <strong style='color:red' id='status'>New</strong>
+                                              {% else %}
+                                                      {% if c.id in post_star %}
+                                                      <strong style='color:orange' id ='star' >Star</strong>
+                                                      {% endif %}
+                                              {% endif %}
                                             </div>
                                    
                                       </div>
-                  </a>
+                    </button>
                   {%endfor%}
                   <script>
                     var x = document.getElementById('{{current.id}}');
                     x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                      var y = document.getElementById('siding');
                      $("#siding").scrollTop({{roll}});
+                    
+                
                   </script>
                 </div>
               </div>
@@ -175,20 +208,58 @@
                                             </div>
 
                                               <div class='col-md-6' style=''>
-                                                        <button onclick='change()' style='background:white;width:80px'>
-                                                        <div>
-                                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style='fill:black' class="bi bi-star-fill" viewBox="0 0 16 16" aria-hidden="true" onclick="change()" id="staring">
-                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                          </svg>
-                                                            <div height='10px'>
-                                                            <p style='color:black;height:10px' id='ifstar'>STAR</p>
-                                                            </div>
-                                                        </div>
-                                                      </button>
+                                                          <form>
+                                                            {%csrf_token%}
+                                                                  <button onclick='change({{current.id}})' style='background:white;width:80px'>
+                                                                    
+                                                                        <div>
+                                                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style='fill:black' class="bi bi-star-fill" viewBox="0 0 16 16" aria-hidden="true" onclick="change()" id="staring">
+                                                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                                                          </svg>
+                                                                            <div height='10px'>
+                                                                            <p style='color:black;height:10px' id='ifstar'>STAR</p>
+                                                                            </div>
+                                                                        </div>
+                                                                </button>
+                                                          </form>
                                                 </div>
                                     </div>
                               </div>
-                      
+                      <script>
+                        var y = {{post_star}};
+                        var z = {{current.id}};
+                        for (var i =0;i<y.length;i++){
+                          if (z ==y[i]){
+                              var m = document.getElementById('ifstar');
+                              var x = document.getElementById('staring');
+                              x.style.fill='red';
+                              m.style.color='red';
+                              m.innerText="UNSTAR";
+                              break;
+                          }
+                          
+                          function savestar(id){
+                            var token = $('input[name=csrfmiddlewaretoken]').val();
+                        
+                            $.ajax({
+                              url: "{% url 'forum:save_star' %}",
+                              data: {'star_id': id, csrfmiddlewaretoken: token,'save':'1'},
+                              type: 'POST'
+                            })
+                        
+                        }
+                        function deletestar(id){
+                          var token = $('input[name=csrfmiddlewaretoken]').val();
+                        
+                          $.ajax({
+                            url: "{% url 'forum:save_star' %}",
+                            data: {'star_id': id, csrfmiddlewaretoken: token,'save':'0'},
+                            type: 'POST'
+                          })
+                        
+                        }
+                        }
+                      </script>
               </div>
                     <div style="text-align:left;margin-left:100px;margin-right:100px;">
                       

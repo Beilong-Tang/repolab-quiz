@@ -65,6 +65,9 @@
     y=parseInt(y);
     x.style.width=y-100+'px'
   }
+  function newpost(){
+    window.location.href = "{% url 'forum:create_post' %}"
+  }
 
 </script>
 
@@ -77,9 +80,10 @@
     
     <div class="container-fluid d-flex w-100 h-100  mx-auto flex-column" style='width:1800px'>
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-4">CS201 Forum</span>
+          <button type="button" class="btn btn-primary btn-lg" style="margin-left:30px" onclick="newpost()">New Thread</button>
+          <span class="fs-4" style='margin-left:30px'>CS201 Forum</span>
         </a>
   
   
@@ -95,7 +99,6 @@
     <main class="d-flex ">
       {% comment %} <div class="col-md-2" > {% endcomment %}
               <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 300px;font-size:10px;margin-left:5px;" id ='sidebar'>
-                <div ><a href = "{%url 'forum:create_post' %}" style="width:250px"><button type="button" class="btn btn-primary btn-lg" style="margin-bottom:5px">New Thread</button></a></div>
                 
                 
                 <div class='row'>

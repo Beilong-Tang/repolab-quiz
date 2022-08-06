@@ -193,7 +193,6 @@ def admin_assignment(request):
         for s in Student.objects.filter(level=0):
 
             question_array = s.question_set.filter(question_id__gte=100*i , question_id__lte=100*(i+1))
-            ongoing_array = question_array.filter(~Q(Q(submission_times=5) & Q(ifpassed=False)))
             pass_and_fail_array =  question_array.filter( Q(ifpassed=True) | Q(submission_times=0))
             total_num = question_array.count()
             almost_pass_num = int(total_num * 0.8)

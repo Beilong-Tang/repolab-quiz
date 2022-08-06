@@ -47,6 +47,7 @@ def forum_post(request, id, roll):
         student.save()
     
     post_seen = list(map(int,(list(filter(lambda x: x!="",student.forum_seen.split(','))))))
+    post_star = list(map(int,(list(filter(lambda x:x!="", student.forum_star.split(','))))))
 
     context['post']=Post.objects.all().order_by('-pub_date')
     
@@ -58,20 +59,13 @@ def forum_post(request, id, roll):
     ])
     context['post_seen']=post_seen
     context['roll'] = roll
+    context['post_star']=post_star
 
 
     return render(request, 'forum/forum_post.html', context)
 
 def create_post(request):
     if request.method=="POST":
-        # text=models.TextField()
-        # author_name= models.CharField(max_length=50)
-        # author_netid = models.CharField(max_length=8)
-        # pub_date = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=0))))
-        # title = models.CharField(max_length=100)
-        # level = models.IntegerField(default=0)
-        # question_id = models.IntegerField(default=0)
-        # return HttpResponse(request.POST['level'])
         title  = request.POST['title']
         text = request.POST['text']
         level= int(request.POST['level'])
@@ -80,7 +74,7 @@ def create_post(request):
         author_name = author.student_name
         author_netid = author.student_netid
         pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
-        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category)
+        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid)
         p.save()
         return HttpResponseRedirect(reverse('forum:forum'))
 
@@ -91,4 +85,23 @@ def create_post(request):
 
     return render(request, 'forum/create_post.html', context)
 
+    pass
+
+
+def save_star(request):
+    if request.method=='POST':
+        star_id = request.POST['star_id']
+        s = Student.objects.get(student_netid=request.user.username)
+        # save
+        if request.POST['save']=='1':
+            if s.forum_star.find(star_id+',')==-1:
+                s.forum_star+=star_id+','
+                s.save()
+        # delete
+        else:
+            if s.forum_star.find(star_id+',')!=-1:
+                s.forum_star=s.forum_star.replace(star_id+',','')
+                s.save()
+
+    
     pass

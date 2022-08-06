@@ -15,6 +15,7 @@ class Student(models.Model):
     offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
     level=models.IntegerField(default = 0)
     forum_seen = models.TextField(default="")
+    forum_star = models.TextField(default="")
     def __str__(self):
         return self.student_name
 
