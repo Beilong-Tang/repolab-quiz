@@ -30,3 +30,14 @@ def mult_answer(answers):
 @register.filter
 def date(date):
     return date.date()
+
+@register.filter
+def show_category(level):
+    if level==0:
+        return 'Post'
+    if level==1:
+        return 'FAQ'
+    if level==2:
+        return 'Assignment'
+    if level==3:
+        return 'Quiz'

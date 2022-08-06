@@ -26,19 +26,13 @@ def forum(request):
 
     post=Post.objects.all().order_by('-pub_date')
 
-
     post_seen = list(map(int,list(filter(lambda x:x!='',Student.objects.get(student_netid=request.user.username).forum_seen.split(',')))))
-
 
     context['post_seen']=post_seen
     context['post']=post
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id, roll):
-
-    
-
-
 
     context={}
     current_post = Post.objects.get(id=id)
@@ -50,8 +44,8 @@ def forum_post(request, id, roll):
         student.forum_seen+=str(id)+','
         student.save()
     
-    post_seen = list(map(int,(list(filter(lambda x: x!="",student.forum_seen.split(','))))))
-    post_star = list(map(int,(list(filter(lambda x:x!="", student.forum_star.split(','))))))
+    post_seen = list(map(int,(list(filter(lambda x: x!="", student.forum_seen.split(','))))))
+    post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
     context['post']=Post.objects.all().order_by('-pub_date')
     
@@ -82,20 +76,20 @@ def create_post(request):
         p.save()
         return HttpResponseRedirect(reverse('forum:forum'))
 
-        pass
+
 
     context={}
     context['post']=Post.objects.all().order_by('-pub_date')
 
     return render(request, 'forum/create_post.html', context)
 
-    pass
+
 
 
 def save_star(request,id,roll):
 
     if request.method=='POST':
-        # star_id = request.POST['star_id']
+
         id=str(id)
         s = Student.objects.get(student_netid=request.user.username)
         if s.forum_star.find(id+',')==-1:
@@ -104,7 +98,6 @@ def save_star(request,id,roll):
         else:
             s.forum_star=s.forum_star.replace(id+',','')
             s.save()
-        # save
+
 
     return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,)) )
-    pass

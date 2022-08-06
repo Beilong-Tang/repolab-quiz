@@ -17,109 +17,49 @@
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'forum/sidebars.css' %}">
 <link rel="stylesheet" href= "{% static 'quiz/highlight/styles/default.min.css' %}">
-<script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
+{% comment %} <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script> {% endcomment %}
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-<script>hljs.highlightAll();</script>
-{% comment %} <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script> {% endcomment %}
 
-    <!-- Custom styles for this template -->
-    {% comment %} <link href="cover.css" rel="stylesheet"> {% endcomment %}
 <script>
-  
+  hljs.highlightAll();
   function another(id){
-    var length = $("#siding").scrollTop();
-    length=parseInt(length)
-
+    var length = parseInt($("#siding").scrollTop());
     var url = "{% url 'forum:forum_post' 1 0  %}";
-    url=url.replace('1:',''+id+':')
-    url = url.replace(':0',':'+length);
-
+    url = url.replace('1:',''+id+':').replace(':0',':'+length);
     window.location.href = url;
+    return;
   }
-
-
   function change(id){
     var x = document.getElementById('staring');
     var y = document.getElementById('ifstar');
+
     if (x.style.fill=='black'){
       x.style.fill='red';
       y.style.color='red';
       y.innerText="UNSTAR";
-
-
       return;
     }
     x.style.fill='black';
     y.style.color='black';
     y.innerText="STAR";
-
     return;
   }
-
-
-
   function newpost(){
-    window.location.href = "{% url 'forum:create_post' %}"
+    window.location.href = "{% url 'forum:create_post' %}";
   }
-
-  window.onload = function(){
-    $(".gif").css("display","flex");
-}
 </script>
 <style>
-  h1{
-    font-size:30px;
-  }
-  h2{
-    font-size:27px;
-  }
-  h3{
-    font-size:24px;
-  }
-  h4{
-    font-size:21px;
-  }
-  h5{
-    font-size:18px;
-  }
-  h6{
-    font-size:15px;
-  }
-  p{
-    font-size:16px;
-  }
-
-  #logo {
-    box-sizing: border-box;
-    position: absolute;
-    width: 100%;
-    height: 100px;
-}
-.gif {
-    position:absolute
-    left:0;
-    top:0;
-    height:100vh;
-    width:100vw;
-    z-index:1;
-    display:none;
-    align-items: center;
-    justify-content: center;
-}
-.gif>img {
-    height:11%;
-    width:11%;
-}
-
-
+  h1{font-size:30px;}
+  h2{font-size:27px;}
+  h3{font-size:24px;}
+  h4{font-size:21px;}
+  h5{font-size:18px;}
+  h6{font-size:15px;}
+  p {font-size:16px;}
 </style>
   
-
-
-
-
   </head>
   <body class="d-flex h-100 text-center text-black bg-white">
     
@@ -133,7 +73,7 @@
         
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
         <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link active">Forum</a></li>
@@ -150,7 +90,7 @@
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-                <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style='overflow:auto'>
+                <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style=''>
                   {% for c in post %}
                   <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
@@ -159,19 +99,20 @@
                                       <div class='row'>
 
                                         <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
-                                            Assignment  {{c.author_name}} 
+                                          <a style='color:red' name='category'><strong>{{c.category|show_category}}</strong></a>
+                                           <a style='margin-left:10px'>{{c.author_name}}</a> 
                                         </div>
 
                                           <div class ='col-md-4' style=''>
                                             <small class="text-muted" style=''>{{c.pub_date|date}}</small>
                                           </div>
 
-                                            <div class='col-md-2 ' style='font-size:1px;margin-bottom:10px'>
+                                            <div class='col-md-2 ' style='font-size:1px'>
                                               {% if c.id not in post_seen%}
-                                              <strong style='color:red' id='status'>New</strong>
+                                              <strong style='color:red;display:none' id='status'>New</strong>
                                               {% else %}
                                                       {% if c.id in post_star %}
-                                                      <strong style='color:orange' id ='star' >Star</strong>
+                                                      <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
                                                       {% endif %}
                                               {% endif %}
                                             </div>
@@ -180,12 +121,17 @@
                     </button>
                   {%endfor%}
                   <script>
-                    var x = document.getElementById('{{current.id}}');
-                    x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
+                     var x = document.getElementById('{{current.id}}');
+                     x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                      var y = document.getElementById('siding');
                      $("#siding").scrollTop({{roll}});
-                    
-                
+                     var z = document.getElementsByName('category');
+                     for (var i =0;i<z.length;i++){
+                      if (z[i].innerText=='Post') {z[i].style='color:#4169e1';} //blue
+                      else if (z[i].innerText=='FAQ') {z[i].style='color:#006400';} //green
+                      else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
+                      else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
+                     }
                   </script>
                 </div>
               </div>
@@ -193,7 +139,7 @@
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:70%;'>
               <div>
                   <div style="text-align:left;margin-left:100px;margin-right:100px;">
-                      <h1 style='color:blue'>{{current.title}}</h1>
+                      <h1 style=''>{{current.title}}</h1>
                     </div>
 
 
@@ -207,10 +153,10 @@
                                               <p style='margin-left:100px;'><small class="text-muted">{{current.pub_date}}</small></p></div>
                                             </div>
 
-                                              <div class='col-md-6' style=''>
+                                              <div class='col-md-6' style='text-align:right'>
                                                           <form method='post' action='{% url 'forum:save_star' current.id roll %}'>
                                                             {%csrf_token%}
-                                                                  <button type='submit' style='background:white;width:80px'>
+                                                                  <button type='submit' style='background:white;width:80px;border:none;margin-top:20px;'>
                                                                     
                                                                         <div>
                                                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style='fill:black' class="bi bi-star-fill" viewBox="0 0 16 16" aria-hidden="true" onclick="change()" id="staring">
@@ -237,26 +183,20 @@
                               m.innerText="UNSTAR";
                               break;
                           }
-                          
-                          
                         }
-                        
-                        
                       </script>
               </div>
-                    <div style="text-align:left;margin-left:100px;margin-right:100px;">
-                      
-                        
 
+                    <div style="text-align:left;margin-left:100px;margin-right:100px;">
                       {{text|safe}}
                     </div>
               </div>
     </main>
 
 
-  <footer class="mt-auto text-black-50" style="font-size:15px">
+  {% comment %} <footer class="mt-auto text-black-50" style="font-size:15px">
     <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
-  </footer>
+  </footer> {% endcomment %}
 </div>
 
 
