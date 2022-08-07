@@ -26,11 +26,25 @@
   hljs.highlightAll();
   function another(id){
     var length = parseInt($("#siding").scrollTop());
-    var url = "{% url 'forum:forum_post' 1 0  %}";
+    var url = "{% url 'forum:forum_post' 1 0 0 %}";
     url = url.replace('1:',''+id+':').replace(':0',':'+length);
     window.location.href = url;
     return;
   }
+
+  function commentsubmit(){
+    if (document.getElementById('commenttextarea').value==""){alert('Your comment cannot be empty');return}
+
+    var x = document.getElementById('comment_form');
+    var length = parseInt($("#maintext").scrollTop());
+    var action = x.action;
+    action = action.replace(':0',':'+length);
+    x.action=action;
+    x.submit();
+  
+  }
+
+
   function change(id){
     var x = document.getElementById('staring');
     var y = document.getElementById('ifstar');
@@ -49,6 +63,33 @@
   function newpost(){
     window.location.href = "{% url 'forum:create_post' %}";
   }
+
+
+  function showcomment(){
+    var x = document.getElementById('comment_input');
+    if (x.style.display=='none'){
+    x.style.display='inline';
+    var length = parseInt($("#maintext").scrollTop());
+    length+=100;
+    $("#maintext").scrollTop(length);
+    }
+  }
+
+  function cancelcomment(){
+    var x = document.getElementById('commenttextarea');
+    if (x.value==""){
+      document.getElementById('comment_input').style.display='none';
+      return 
+    }
+
+    var y = confirm("Are you sure you want to cancel?")
+    if (y==true){
+      document.getElementById('comment_input').style.display='none';
+      x.value="";
+    }
+
+  }
+
 </script>
 <style>
   h1{font-size:30px;}
@@ -60,9 +101,19 @@
   p {font-size:16px;}
 
   img{
-    max-width:1200px;
-    max-height:1200px;
+    max-width:100%;
+    /* //max-height:700px; */
   }
+
+  .commentbutton{
+    background-color: #85a9de;
+}
+
+.commentbutton:hover{
+    background-color: white;
+    border: 2px solid aquamarine
+}
+
 </style>
   
   </head>
@@ -137,11 +188,12 @@
                       else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
                       else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
                      }
+                     
                   </script>
                 </div>
               </div>
         {% comment %} </div> {% endcomment %}
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:70%;'>
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-purple scrollarea" style='margin:0 auto;width:70%;' id ='maintext'>
               <div>
                   <div style="text-align:left;margin-left:100px;margin-right:100px;">
                       <h1 style=''>{{current.title}}</h1>
@@ -189,12 +241,56 @@
                               break;
                           }
                         }
+                        
                       </script>
               </div>
 
                     <div style="text-align:left;margin-left:100px;margin-right:100px;">
                       {{text|safe}}
                     </div>
+                    <script>
+                      var w = document.getElementsByTagName('img');
+                        for (var i =0;i<w.length;i++){
+                          var p = w[i].parentNode.innerHTML;
+                          var source = w[i].src;
+                          w[i].parentNode.innerHTML= "<a href='"+source+"' target='_blank'>"+p+"</a>"
+                        }
+                    </script>
+
+                    <div id = 'comment_area'>
+                      {% for comment in current.comment_set.all %}
+                      <div>
+                            <div class='row'>
+                                  <div class='col-md-4' style='text-align:center'>
+                                  {{comment.author_name}}
+                                  </div>
+                                  <div class='col-md-8' style="background:purple;word-wrap: break-word; word-break: normal;margin-bottom:10px">
+                                    {{comment}}
+                                  </div>
+                            </div>
+                      </div>
+                      {%endfor%}
+                    </div>
+
+                    <div style='margin-bottom:100px;text-align:left;margin-top:20px;margin-right:100px;margin-left:100px'>
+                      <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="" onclick="showcomment()">Add a Comment</button>
+                    
+                                <form method='post' name ='commentform' id='comment_form' action="{%url 'forum:save_comment' current.id roll text_roll %}">
+                            {%csrf_token%}
+                                <div id='comment_input' style='display:none;margin-left:100px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
+                                  <p style='color:#89cff0;margin-bottom:5px'>You :</p>
+                                  <textarea class="form-control" id="commenttextarea" rows="3" autocomplete='off' spellcheck='false' placeholder="Your comment goes here" name ="comment_text" required></textarea>
+                                      
+                                  <div style='text-align:right'>
+                                      <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="cancelcomment()">Cancel</button>
+                                      <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="commentsubmit()">Post</button>
+                                      </div>
+                                </div>
+                              </form>
+                            </div>
+                    <script>
+                      $("#maintext").scrollTop({{text_roll}});
+                    </script>
               </div>
     </main>
 

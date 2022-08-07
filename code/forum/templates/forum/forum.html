@@ -126,7 +126,7 @@
 
                 <div class="list-group list-group-flush border-bottom scrollarea" style="overflow:auto;white-space:nowrap">
                   {% for c in post %}
-                  <a href="{%url 'forum:forum_post' c.id 0 %}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true" >
+                  <a href="{%url 'forum:forum_post' c.id 0 0 %}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true" >
                     <div class="d-flex w-100 align-items-center justify-content-between">
                       <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block">{{c.title}}</strong>
                       

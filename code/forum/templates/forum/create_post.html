@@ -55,6 +55,7 @@
       var divBox = document.getElementById('mydiv');
       var newdiv = document.createElement('div');
       newdiv.class='image_and_preview';
+      newdiv.style='margin-top:20px'
       newdiv.id = number+"image_and_preview";
       newdiv.innerHTML="<img id ='"+number+"imgPreview'  width='0' height='0'/> <input type='file' id='"+number+"' name='"+number+"img' accept='image/gif, image/jpeg, image/png, image/jpg' onchange='preview(100,100,this.id)' > <a ></a>";
       divBox.appendChild(newdiv);

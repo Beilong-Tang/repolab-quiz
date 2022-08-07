@@ -35,7 +35,7 @@ def forum(request):
     context['post']=post
     return render(request, 'forum/forum.html',context)
 
-def forum_post(request, id, roll):
+def forum_post(request, id, roll,textroll):
 
     context={}
     current_post = Post.objects.get(id=id)
@@ -61,7 +61,7 @@ def forum_post(request, id, roll):
     context['post_seen']=post_seen
     context['roll'] = roll
     context['post_star']=post_star
-
+    context['text_roll']=textroll
 
     return render(request, 'forum/forum_post.html', context)
 
@@ -118,4 +118,27 @@ def save_star(request,id,roll):
             s.save()
 
 
-    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,)) )
+    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,0,)) )
+
+
+def save_comment(request, id, roll, textroll):
+
+
+    # post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # text = models.TextField()
+    # author_name = models.CharField(max_length=50)
+    # author_netid = models.CharField(max_length=8)
+    # pub_date = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M').astimezone(datetime
+
+    comment_text = request.POST['comment_text']
+    author = Student.objects.get(student_netid=request.user.username)
+    author_name = author.student_name
+    author_netid = author.student_netid
+    pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
+
+    post = Post.objects.get(id=id)
+    post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date)
+    post.save()
+    
+    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,)))
+
