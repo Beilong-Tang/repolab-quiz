@@ -69,6 +69,15 @@
     window.location.href = "{% url 'forum:create_post' %}"
   }
 
+  function another(id){
+    var url = "{% url 'forum:forum_post' 1 0 0 %}";
+    url = url.replace('1:',''+id+':');
+    window.location.href = url;
+    return;
+  }
+
+  
+
 </script>
 
 
