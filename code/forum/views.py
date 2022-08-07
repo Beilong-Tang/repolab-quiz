@@ -15,7 +15,10 @@ import markdown
 import datetime
 from utils.settings import question_due_dict
 from django.db.models import Q
+import os
+from repolab.settings import BASE_DIR
 
+savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
 # Create your views here.
 
 def userface(request):
@@ -63,9 +66,24 @@ def forum_post(request, id, roll):
     return render(request, 'forum/forum_post.html', context)
 
 def create_post(request):
+
     if request.method=="POST":
-        title  = request.POST['title']
         text = request.POST['text']
+        img_length=request.POST['img_length']
+        if img_length !='0':
+            #return HttpResponse(request.FILES.get('0img').name)
+            for i in range(0,int(img_length)):
+                img_title = str(i)+'img'
+                ## imgfile
+                img = request.FILES.get(img_title)
+                ## savedir
+                img_name = img.name
+                img_path = os.path.join(savedir, img_name)
+                with open(img_path, 'wb') as fp:
+                    for chunk in img.chunks():
+                        fp.write(chunk)
+                text=text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
+        title  = request.POST['title']
         level= int(request.POST['level'])
         category = int(request.POST['category'])
         author =  Student.objects.get(student_netid=request.user.username)
