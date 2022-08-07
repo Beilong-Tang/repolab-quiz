@@ -21,6 +21,7 @@
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
 
 <script>
   hljs.highlightAll();
@@ -257,14 +258,24 @@
                         }
                     </script>
 
-                    <div id = 'comment_area'>
+                    <div id = 'comment_area' style='margin-right:100px'>
+                      <div style='text-align:left;margin-left:100px;margin-top:100px;'>
+                      <h1> Comment</h1>
+                      </div>
                       {% for comment in current.comment_set.all %}
                       <div>
                             <div class='row'>
-                                  <div class='col-md-4' style='text-align:center'>
-                                  {{comment.author_name}}
+
+                                  <div class='' style='margin-top:10px;text-align:left'>
+                                        <div>
+                                        <p style='margin-left:100px;color:orange;font-size:20px'>{{comment.author_name}}</p>
+                                      </div>
+                                        <div style='margin-top:-20px'>
+                                        <p style='margin-left:100px;'><small class="text-muted">{{current.pub_date}}</small></p>
+                                      </div>
                                   </div>
-                                  <div class='col-md-8' style="background:purple;word-wrap: break-word; word-break: normal;margin-bottom:10px">
+                                  
+                                  <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:100px;width:90%;margin-right:100px;">
                                     {{comment}}
                                   </div>
                             </div>

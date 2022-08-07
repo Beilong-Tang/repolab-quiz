@@ -51,7 +51,7 @@ def forum_post(request, id, roll,textroll):
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
     context['post']=Post.objects.all().order_by('-pub_date')
-    
+
     context['current']=current_post
     context['text'] = markdown.markdown(current_post.text,extensions=[
     'markdown.extensions.fenced_code',

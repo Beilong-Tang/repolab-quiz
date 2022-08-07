@@ -98,7 +98,7 @@
 
     <main class="d-flex ">
       {% comment %} <div class="col-md-2" > {% endcomment %}
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 300px;font-size:10px;margin-left:5px;" id ='sidebar'>
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px;" id ='sidebar'>
                 
                 
                 <div class='row'>
@@ -126,29 +126,33 @@
 
                 <div class="list-group list-group-flush border-bottom scrollarea" style="overflow:auto;white-space:nowrap">
                   {% for c in post %}
-                  <a href="{%url 'forum:forum_post' c.id 0 0 %}" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true" >
+                  <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block">{{c.title}}</strong>
-                      
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">{{c.title}}</strong>
                     </div>
-                                    <div class='row'>
+                                      <div class='row'>
 
-                                      <div class="col-md-5 mb-1 small" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
-                                          {{c.author_name}} 
-                                      </div>
-
-                                        <div class ='col-md-5' style=''>
-                                          <small class="text-muted" style=''>{{c.pub_date|date}}</small>
+                                        <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
+                                          <a style='color:red' name='category'><strong>{{c.category|show_category}}</strong></a>
+                                           <a style='margin-left:10px'>{{c.author_name}}</a> 
                                         </div>
 
-                                          <div class='col-md-2 mb-1 small' style=''>
-                                            {% if c.id not in post_seen%}
-                                            <strong style='color:red' >NEW</strong>
-                                            {%endif%}
+                                          <div class ='col-md-4' style=''>
+                                            <small class="text-muted" style=''>{{c.pub_date|date}}</small>
                                           </div>
-                                
-                                    </div>
-                  </a>
+
+                                            <div class='col-md-2 ' style='font-size:1px'>
+                                              {% if c.id not in post_seen%}
+                                              <strong style='color:red;display:none' id='status'>New</strong>
+                                              {% else %}
+                                                      {% if c.id in post_star %}
+                                                      <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
+                                                      {% endif %}
+                                              {% endif %}
+                                            </div>
+                                   
+                                      </div>
+                    </button>
                   {%endfor%}
                 </div>
               </div>
