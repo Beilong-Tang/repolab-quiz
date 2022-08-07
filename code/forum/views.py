@@ -16,8 +16,9 @@ from utils.settings import question_due_dict
 from django.db.models import Q
 import os
 from repolab.settings import BASE_DIR
+from repolab.settings import STATIC_ROOT
 
-savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
+savedir = os.path.join(BASE_DIR,'static/forum/images/')
 # Create your views here.
 
 def userface(request):
