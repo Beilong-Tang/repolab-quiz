@@ -6,7 +6,6 @@ from django.http import (
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from numpy import record
 from simple_judge.models import Student, Question, Questiondict
 from forum.models import Comment, Post
 from django.contrib.auth.decorators import login_required
