@@ -23,17 +23,27 @@
 <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
+<script>hljs.highlightAll();</script>
+
 
 <script>
-  hljs.highlightAll();
+
+
+  // to a new post
   function another(id){
+    var forum_post_url = "{% url 'forum:forum_post' 1 0 0 filt %}";
     var length = parseInt($("#siding").scrollTop());
-    var url = "{% url 'forum:forum_post' 1 0 0 filt %}";
-    url = url.replace('1:',''+id+':').replace(':0',':'+length);
-    window.location.href = url;
-    return;
+    to_forum_post(id,forum_post_url,length);
   }
 
+  // create a new post 
+  function newpost(){
+    var create_post_url = "{% url 'forum:create_post' filt %}";
+    to_url(create_post_url);
+  }
+
+
+  // submit comment 
   function commentsubmit(){
     if (document.getElementById('commenttextarea').value==""){alert('Your comment cannot be empty');return}
 
@@ -46,7 +56,7 @@
   
   }
 
-
+  // change the star status (front-end involved)
   function change(id){
     var x = document.getElementById('staring');
     var y = document.getElementById('ifstar');
@@ -62,11 +72,9 @@
     y.innerText="STAR";
     return;
   }
-  function newpost(){
-    window.location.href = "{% url 'forum:create_post' %}";
-  }
+  
 
-
+  // After you click on 'comment button'. This will focus on the comment 
   function showcomment(){
     var x = document.getElementById('comment_input');
     if (x.style.display=='none'){
@@ -77,13 +85,13 @@
     }
   }
 
+  // Cancel your comment 
   function cancelcomment(){
     var x = document.getElementById('commenttextarea');
     if (x.value==""){
       document.getElementById('comment_input').style.display='none';
       return 
     }
-
     var y = confirm("Are you sure you want to cancel?")
     if (y==true){
       document.getElementById('comment_input').style.display='none';
@@ -186,13 +194,15 @@
                      x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                      var y = document.getElementById('siding');
                      $("#siding").scrollTop({{roll}});
+
+                     // Color the catogory 
                      var z = document.getElementsByName('category');
-                     for (var i =0;i<z.length;i++){
-                      if (z[i].innerText=='Post') {z[i].style='color:#4169e1';} //blue
-                      else if (z[i].innerText=='FAQ') {z[i].style='color:#006400';} //green
-                      else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
-                      else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
-                     }
+                          for (var i =0;i<z.length;i++){
+                            if (z[i].innerText=='Post') {z[i].style='color:#4169e1';} //blue
+                            else if (z[i].innerText=='FAQ') {z[i].style='color:#006400';} //green
+                            else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
+                            else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
+                          }
                      
                   </script>
                 </div>

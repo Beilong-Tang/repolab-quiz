@@ -42,16 +42,16 @@ def forum(request,filt):
         context['post']= post
     
     elif filt == 'Post':
-        context['post'] = Post.objects.filter(category=0)
+        context['post'] = Post.objects.filter(category=0).order_by('-pub_date')
     
     elif filt == 'FAQ':
-        context['post'] = Post.objects.filter(category=1) 
+        context['post'] = Post.objects.filter(category=1).order_by('-pub_date') 
     
     elif filt == 'Assignment':
-        context['post'] = Post.objects.filter(category=2) 
+        context['post'] = Post.objects.filter(category=2).order_by('-pub_date') 
 
     elif filt == 'Quiz':
-        context['post'] = Post.objects.filter(category=3) 
+        context['post'] = Post.objects.filter(category=3).order_by('-pub_date') 
 
     context['post_star']=post_star
     context['post_seen']=post_seen
@@ -71,10 +71,7 @@ def forum_post(request, id, roll,textroll,filt):
     if student.forum_seen.find(str(id)+',')==-1:
         student.forum_seen+=str(id)+','
         student.save()
-    
 
-
-    
     post_seen = list(map(int,(list(filter(lambda x: x!="", student.forum_seen.split(','))))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
@@ -87,16 +84,16 @@ def forum_post(request, id, roll,textroll,filt):
         context['post']= post
     
     elif filt == 'Post':
-        context['post'] = Post.objects.filter(category=0)
+        context['post'] = Post.objects.filter(category=0).order_by('-pub_date')
     
     elif filt == 'FAQ':
-        context['post'] = Post.objects.filter(category=1) 
+        context['post'] = Post.objects.filter(category=1).order_by('-pub_date') 
     
     elif filt == 'Assignment':
-        context['post'] = Post.objects.filter(category=2) 
+        context['post'] = Post.objects.filter(category=2).order_by('-pub_date') 
 
     elif filt == 'Quiz':
-        context['post'] = Post.objects.filter(category=3) 
+        context['post'] = Post.objects.filter(category=3).order_by('-pub_date') 
 
     context['current']=current_post
 
@@ -112,7 +109,7 @@ def forum_post(request, id, roll,textroll,filt):
 
 
 
-def create_post(request):
+def create_post(request,filt):
 
     if request.method=="POST":
         text = request.POST['text']
@@ -139,12 +136,15 @@ def create_post(request):
         pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
         p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid)
         p.save()
-        return HttpResponseRedirect(reverse('forum:forum'))
+
+
+        return HttpResponseRedirect(reverse('forum:forum', args=(filt,)))
 
 
 
     context={}
     context['post']=Post.objects.all().order_by('-pub_date')
+    context['filt']=filt
 
     return render(request, 'forum/create_post.html', context)
 

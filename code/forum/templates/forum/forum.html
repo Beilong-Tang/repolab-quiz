@@ -49,39 +49,19 @@
 
 
 <script>
-
-
-  function increase(){ 
-    var x = document.getElementById('sidebar');
-    var y = x.style.width;
-    if (y=='500px'){return;}
-    y = y.substr(0,3);
-    y=parseInt(y);
-    x.style.width=y+100+'px';
-  }
-
-  function decrease(){
-    var x = document.getElementById('sidebar');
-    var y = x.style.width;
-    if (y=='200px'){return;}
-    y = y.substr(0,3);
-    y=parseInt(y);
-    x.style.width=y-100+'px'
-  }
-  function newpost(){
-    window.location.href = "{% url 'forum:create_post' %}"
-  }
+  // forum post page url 
 
   function another(id){
-    var url = "{% url 'forum:forum_post' 1 0 0 filt %}";
-    url = url.replace('1:',''+id+':');
-    var length = parseInt($("#siding").scrollTop());
-    url=url.replace(':0',':'+length);
-    window.location.href = url;
-    return;
+    var forum_post_url = "{% url 'forum:forum_post' 1 0 0 filt %}"; 
+    sidebar_length = parseInt($("#siding").scrollTop());
+    to_forum_post(id,forum_post_url,sidebar_length);
   }
 
   
+  function newpost(){
+    var create_post_url = "{% url 'forum:create_post' filt %}";
+    to_url(create_post_url);
+  }
 
 </script>
 
@@ -190,9 +170,9 @@
     </main>
 
 
-  <footer class="mt-auto text-black-50" style="font-size:15px">
+  {% comment %} <footer class="mt-auto text-black-50" style="font-size:15px">
     <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
-  </footer>
+  </footer> {% endcomment %}
 </div>
 
 
