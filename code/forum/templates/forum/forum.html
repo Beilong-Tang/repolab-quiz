@@ -18,6 +18,7 @@
 <link rel = "stylesheet" type ="text/css" href = "{% static 'forum/sidebars.css' %}">
 <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
 <style>
   @media screen and (max-width: 1280px) {
@@ -48,6 +49,8 @@
 
 
 <script>
+
+
   function increase(){ 
     var x = document.getElementById('sidebar');
     var y = x.style.width;
@@ -70,8 +73,10 @@
   }
 
   function another(id){
-    var url = "{% url 'forum:forum_post' 1 0 0 %}";
+    var url = "{% url 'forum:forum_post' 1 0 0 filt %}";
     url = url.replace('1:',''+id+':');
+    var length = parseInt($("#siding").scrollTop());
+    url=url.replace(':0',':'+length);
     window.location.href = url;
     return;
   }
@@ -100,7 +105,7 @@
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link active">Forum</a></li>
+        <li class="nav-item"><a href="{% url 'forum:forum' 'a' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
@@ -110,30 +115,34 @@
               <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px;" id ='sidebar'>
                 
                 
-                <div class='row'>
-                  {% comment %} <div class='col-md-1'>
-                    <button type="button" class="" style="height:18px;font-size:12px" onclick='increase()'>+</button>
-                  </div> {% endcomment %}
+                    <div class='row'>
+                      {% comment %} <div class='col-md-1'>
+                        <button type="button" class="" style="height:18px;font-size:12px" onclick='increase()'>+</button>
+                      </div> {% endcomment %}
 
-                  <div class='col-md-12'>
-                    <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </div>
-                    
-                  {% comment %} <div class='col-md-1'>
-                    <button type="button" class="" style='height:18px;margin-left:-21px' onclick='decrease()'>-</button>
-                  </div> {% endcomment %}
+                          <div class='col-md-12'>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt}}</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'All' %}">All</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Star' %}">Star</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Post' %}">Post</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'FAQ' %}">FAQ</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Assignment' %}">Assignment</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Quiz' %}">Quiz</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </div>
+                        
+                      {% comment %} <div class='col-md-1'>
+                        <button type="button" class="" style='height:18px;margin-left:-21px' onclick='decrease()'>-</button>
+                      </div> {% endcomment %}
 
 
-                </div>
+                    </div>
 
 
 
-                <div class="list-group list-group-flush border-bottom scrollarea" style="overflow:auto;white-space:nowrap">
+                <div class="list-group list-group-flush border-bottom scrollarea" style="overflow:auto;white-space:nowrap" id='siding'>
                   {% for c in post %}
                   <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
@@ -152,7 +161,7 @@
 
                                             <div class='col-md-2 ' style='font-size:1px'>
                                               {% if c.id not in post_seen%}
-                                              <strong style='color:red;display:none' id='status'>New</strong>
+                                              <strong style='color:red;display:inline' id='status'>New</strong>
                                               {% else %}
                                                       {% if c.id in post_star %}
                                                       <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
@@ -165,6 +174,15 @@
                   {%endfor%}
                 </div>
               </div>
+              <script>
+                var z = document.getElementsByName('category');
+                     for (var i =0;i<z.length;i++){
+                      if (z[i].innerText=='Post') {z[i].style='color:#4169e1';} //blue
+                      else if (z[i].innerText=='FAQ') {z[i].style='color:#006400';} //green
+                      else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
+                      else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
+                     }
+              </script>
         {% comment %} </div> {% endcomment %}
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style='background-color:purple;margin:0 auto;width:800px;margin-top:200px'>
           Select a post to see

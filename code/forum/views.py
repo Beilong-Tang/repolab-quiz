@@ -24,46 +24,93 @@ savedir = os.path.join(BASE_DIR,'static/forum/images/')
 def userface(request):
     return HttpResponse("Hello")
 
-def forum(request):
+def forum(request,filt):
     context={}
 
-    post=Post.objects.all().order_by('-pub_date')
+    
+    student = Student.objects.get(student_netid=request.user.username)
 
     post_seen = list(map(int,list(filter(lambda x:x!='',Student.objects.get(student_netid=request.user.username).forum_seen.split(',')))))
+    post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
+    
+    if filt == 'All':
+        context['post']=Post.objects.all().order_by('-pub_date')
+        
+    elif filt =='Star':
 
+        post = [Post.objects.get(id=star_id) for star_id in post_star]
+        context['post']= post
+    
+    elif filt == 'Post':
+        context['post'] = Post.objects.filter(category=0)
+    
+    elif filt == 'FAQ':
+        context['post'] = Post.objects.filter(category=1) 
+    
+    elif filt == 'Assignment':
+        context['post'] = Post.objects.filter(category=2) 
+
+    elif filt == 'Quiz':
+        context['post'] = Post.objects.filter(category=3) 
+
+    context['post_star']=post_star
     context['post_seen']=post_seen
-    context['post']=post
+
+    context['filt']=filt
+    
     return render(request, 'forum/forum.html',context)
 
-def forum_post(request, id, roll,textroll):
+def forum_post(request, id, roll,textroll,filt):
 
     context={}
     current_post = Post.objects.get(id=id)
 
     student = Student.objects.get(student_netid=request.user.username)
-
+    #return HttpResponse(student.forum_seen)
 
     if student.forum_seen.find(str(id)+',')==-1:
         student.forum_seen+=str(id)+','
         student.save()
     
+
+
+    
     post_seen = list(map(int,(list(filter(lambda x: x!="", student.forum_seen.split(','))))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
-    context['post']=Post.objects.all().order_by('-pub_date')
+    if filt == 'All':
+        context['post']=Post.objects.all().order_by('-pub_date')
+        
+    elif filt =='Star':
+
+        post = [Post.objects.get(id=star_id) for star_id in post_star]
+        context['post']= post
+    
+    elif filt == 'Post':
+        context['post'] = Post.objects.filter(category=0)
+    
+    elif filt == 'FAQ':
+        context['post'] = Post.objects.filter(category=1) 
+    
+    elif filt == 'Assignment':
+        context['post'] = Post.objects.filter(category=2) 
+
+    elif filt == 'Quiz':
+        context['post'] = Post.objects.filter(category=3) 
 
     context['current']=current_post
-    context['text'] = markdown.markdown(current_post.text,extensions=[
-    'markdown.extensions.fenced_code',
-    'markdown.extensions.extra',
-    'markdown.extensions.toc'
-    ])
+
+    context['filt']=filt
+
+    context['text']=current_post.text
     context['post_seen']=post_seen
     context['roll'] = roll
     context['post_star']=post_star
     context['text_roll']=textroll
 
     return render(request, 'forum/forum_post.html', context)
+
+
 
 def create_post(request):
 
@@ -104,7 +151,7 @@ def create_post(request):
 
 
 
-def save_star(request,id,roll):
+def save_star(request,id,roll,filt):
 
     if request.method=='POST':
 
@@ -118,10 +165,10 @@ def save_star(request,id,roll):
             s.save()
 
 
-    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,0,)) )
+    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,0,filt,)) )
 
 
-def save_comment(request, id, roll, textroll):
+def save_comment(request, id, roll, textroll,filt):
 
 
     # post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -140,5 +187,5 @@ def save_comment(request, id, roll, textroll):
     post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date)
     post.save()
     
-    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,)))
+    return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,filt,)))
 

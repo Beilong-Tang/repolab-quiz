@@ -11,6 +11,7 @@
 
 {% load static %}
 {% load my_tags%}
+{% load markdownify %}
 
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
 <script type= "text/javascript" src = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -27,7 +28,7 @@
   hljs.highlightAll();
   function another(id){
     var length = parseInt($("#siding").scrollTop());
-    var url = "{% url 'forum:forum_post' 1 0 0 %}";
+    var url = "{% url 'forum:forum_post' 1 0 0 filt %}";
     url = url.replace('1:',''+id+':').replace(':0',':'+length);
     window.location.href = url;
     return;
@@ -133,7 +134,7 @@
         <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link active">Forum</a></li>
+        <li class="nav-item"><a href="{% url 'forum:forum' 'a' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
@@ -141,11 +142,14 @@
     <main class="d-flex flex-nowrap">
               <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px">
                 
-                <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">Filter</a>
+                <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt}}</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'All' %}">All</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'Star' %}">Star</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'Post' %}">Post</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'FAQ' %}">FAQ</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'Assignment' %}">Assignment</a></li>
+                  <li><a class="dropdown-item" href="{%url 'forum:forum' 'Quiz' %}">Quiz</a></li>
                 </ul>
                 <div class="list-group list-group-flush border-bottom scrollarea" id ='siding'style=''>
                   {% for c in post %}
@@ -166,7 +170,7 @@
 
                                             <div class='col-md-2 ' style='font-size:1px'>
                                               {% if c.id not in post_seen%}
-                                              <strong style='color:red;display:none' id='status'>New</strong>
+                                              <strong style='color:red;display:inline' id='status'>New</strong>
                                               {% else %}
                                                       {% if c.id in post_star %}
                                                       <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
@@ -212,7 +216,7 @@
                                             </div>
 
                                               <div class='col-md-6' style='text-align:right'>
-                                                          <form method='post' action='{% url 'forum:save_star' current.id roll %}'>
+                                                          <form method='post' action='{% url 'forum:save_star' current.id roll filt %}'>
                                                             {%csrf_token%}
                                                                   <button type='submit' style='background:white;width:80px;border:none;margin-top:20px;'>
                                                                     
@@ -247,7 +251,7 @@
               </div>
 
                     <div style="text-align:left;margin-left:100px;margin-right:100px;">
-                      {{text|safe}}
+                      {{text|markdownify}}
                     </div>
                     <script>
                       var w = document.getElementsByTagName('img');
@@ -260,7 +264,9 @@
 
                     <div id = 'comment_area' style='margin-right:100px'>
                       <div style='text-align:left;margin-left:100px;margin-top:100px;'>
-                      <h1> Comment</h1>
+                      {%if current.comment_set.all %}
+                      <h1> {{ current.comment_set.all.count }}  Comments: </h1>
+                      {%endif%}
                       </div>
                       {% for comment in current.comment_set.all %}
                       <div>
@@ -276,7 +282,7 @@
                                   </div>
                                   
                                   <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:100px;width:90%;margin-right:100px;">
-                                    {{comment}}
+                                    {{comment.text|markdownify}}
                                   </div>
                             </div>
                       </div>
@@ -286,7 +292,7 @@
                     <div style='margin-bottom:100px;text-align:left;margin-top:20px;margin-right:100px;margin-left:100px'>
                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="" onclick="showcomment()">Add a Comment</button>
                     
-                                <form method='post' name ='commentform' id='comment_form' action="{%url 'forum:save_comment' current.id roll text_roll %}">
+                                <form method='post' name ='commentform' id='comment_form' action="{%url 'forum:save_comment' current.id roll text_roll filt %}">
                             {%csrf_token%}
                                 <div id='comment_input' style='display:none;margin-left:100px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
                                   <p style='color:#89cff0;margin-bottom:5px'>You :</p>

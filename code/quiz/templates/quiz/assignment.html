@@ -35,7 +35,7 @@
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
           <li class="nav-item"><a href="{% url 'quiz:assignment' %}" class="nav-link active">Quizzes</a></li>
           <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-          <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link ">Forum</a></li>
+          <li class="nav-item"><a href="{% url 'forum:forum' 'All' %}" class="nav-link ">Forum</a></li>
           <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
@@ -59,12 +59,22 @@
           <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
           <td>{{k}}</td>
           <td>{{p}}</td>
-          <td>{{j.0|status}}</td>
+          <td name='status'><strong>{{j.0|status}}</strong></td>
           <td>{{n.1}}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+
+    <script>
+      var x = document.getElementsByName('status');
+      for (var i = 0; i < x.length; i++ ){
+        if(x[i].innerText=='Open'){x[i].style='color:green'}
+        if(x[i].innerText=='Closed'){x[i].style='color:orange'}
+      }
+      
+    </script>
   </div>
 </div>
 

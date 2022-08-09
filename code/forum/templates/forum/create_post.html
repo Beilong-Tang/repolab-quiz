@@ -20,23 +20,24 @@
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
 <script>
-  function cancel(){
+  // href list; all the href goes here:
+  var forum_url_All = "{%url 'forum:forum' 'All' %}";
 
+  function cancel(){
     var x = document.getElementById('title');
     var y = document.getElementById('textarea');
     if (x.value!="" || y.value!=""){
       var x =confirm("Are you sure you want to cancel?")
       if(x==true){
-        window.location.href='{%url 'forum:forum'%}';
+        window.location.href=forum_url_All;
         return;
       }
+      
     }
-    window.location.href='{%url 'forum:forum'%}';
-
+    window.location.href=forum_url_All;
+    return;
   }
-
   var number = 0;
-
   function preview(width, height,id){
       var x = document.getElementById(id);
       console.log(x.value);
@@ -116,7 +117,7 @@
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-        <li class="nav-item"><a href="{% url 'forum:forum' %}" class="nav-link active">Forum</a></li>
+        <li class="nav-item"><a href="{% url 'forum:forum' 'All' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
