@@ -10,7 +10,9 @@
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
     <script src="{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" href= "{% static 'quiz/highlight/styles/default.min.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
     <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
+    <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
     <script>hljs.highlightAll();</script>
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
     <script>
@@ -76,10 +78,12 @@
     </script>
 
     {% endif %}
+
+    
     <div class="topmenu">
         <p>COMPSCI 201: Intro to prgramming and data structures</p>
     </div>
-            
+        
         <div class="row">
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
@@ -199,6 +203,11 @@
                             {%endif%}
                         {% endif %}
                     {% endif %}
+
+                    <button type = 'botton' onclick='open_chat_room()' > Go to Chat Room </button>
+
+
+
             {% else %}
             <div class='a'>
                 <P style="text-align:center;color:orange"> <a href= "{% url 'simple_judge:signin_from_question' question_title %}" >Please Login to see the page </a></p>

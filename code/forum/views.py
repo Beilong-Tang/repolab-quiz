@@ -32,7 +32,9 @@ def forum(request,filt):
 
     post_seen = list(map(int,list(filter(lambda x:x!='',Student.objects.get(student_netid=request.user.username).forum_seen.split(',')))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
-    
+
+    ## Second level filter 
+
     if filt == 'All':
         context['post']=Post.objects.all().order_by('-pub_date')
         
@@ -41,17 +43,19 @@ def forum(request,filt):
         post = [Post.objects.get(id=star_id) for star_id in post_star]
         context['post']= post
     
-    elif filt == 'Post':
-        context['post'] = Post.objects.filter(category=0).order_by('-pub_date')
-    
-    elif filt == 'FAQ':
-        context['post'] = Post.objects.filter(category=1).order_by('-pub_date') 
-    
-    elif filt == 'Assignment':
-        context['post'] = Post.objects.filter(category=2).order_by('-pub_date') 
+    elif filt[0:2]=='We':
+        week = int(filt[4:])
+        context['post'] = Post.objects.filter(question_id__gte=week*100 ,question_id__lte=(week+1)*100).order_by('-pub_date')
+        context['first']=filt
+        context['problem'] = Questiondict.objects.filter(question_id__gte=week*100 ,question_id__lte=(week+1)*100).order_by('question_id')
 
-    elif filt == 'Quiz':
-        context['post'] = Post.objects.filter(category=3).order_by('-pub_date') 
+    else :
+        question_id = int(filt)
+        week = int(filt[0:1])
+        context['post'] = Post.objects.filter(question_id=question_id).order_by('-pub_date') 
+        context['problem']=Questiondict.objects.filter(question_id__gte=100*week,question_id__lte=100*(week+1)).order_by('question_id')
+        context['first']="Week"+str(week)
+    
 
     context['post_star']=post_star
     context['post_seen']=post_seen
@@ -83,17 +87,18 @@ def forum_post(request, id, roll,textroll,filt):
         post = [Post.objects.get(id=star_id) for star_id in post_star]
         context['post']= post
     
-    elif filt == 'Post':
-        context['post'] = Post.objects.filter(category=0).order_by('-pub_date')
-    
-    elif filt == 'FAQ':
-        context['post'] = Post.objects.filter(category=1).order_by('-pub_date') 
-    
-    elif filt == 'Assignment':
-        context['post'] = Post.objects.filter(category=2).order_by('-pub_date') 
+    elif filt[0:2]=='We':
+        week = int(filt[4:])
+        context['post'] = Post.objects.filter(question_id__gte=week*100 ,question_id__lte=(week+1)*100).order_by('-pub_date')
+        context['first']=filt
+        context['problem'] = Questiondict.objects.filter(question_id__gte=week*100 ,question_id__lte=(week+1)*100).order_by('question_id')
 
-    elif filt == 'Quiz':
-        context['post'] = Post.objects.filter(category=3).order_by('-pub_date') 
+    else :
+        question_id = int(filt)
+        week = int(filt[0:1])
+        context['post'] = Post.objects.filter(question_id=question_id).order_by('-pub_date') 
+        context['problem']=Questiondict.objects.filter(question_id__gte=100*week,question_id__lte=100*(week+1)).order_by('question_id')
+        context['first']="Week"+str(week)
 
     context['current']=current_post
 
@@ -110,7 +115,7 @@ def forum_post(request, id, roll,textroll,filt):
 
 
 def create_post(request,filt):
-
+    
     if request.method=="POST":
         text = request.POST['text']
         img_length=request.POST['img_length']
@@ -127,17 +132,19 @@ def create_post(request,filt):
                     for chunk in img.chunks():
                         fp.write(chunk)
                 text=text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
+        
         title  = request.POST['title']
         level= int(request.POST['level'])
         category = int(request.POST['category'])
+        problem = int(request.POST['question_input'])
+        question_id = (category+1)*100+problem
         author =  Student.objects.get(student_netid=request.user.username)
         author_name = author.student_name
         author_netid = author.student_netid
-        pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
-        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid)
+        pub_date = (datetime.datetime.utcnow()+datetime.timedelta(hours=8)).astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
+        p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid,question_id=question_id)
         p.save()
-
-
+        
         return HttpResponseRedirect(reverse('forum:forum', args=(filt,)))
 
 
@@ -145,6 +152,7 @@ def create_post(request,filt):
     context={}
     context['post']=Post.objects.all().order_by('-pub_date')
     context['filt']=filt
+    context['week_question_number'] = [ Questiondict.objects.filter(question_week =i ).count() for i in range(1,8)]
 
     return render(request, 'forum/create_post.html', context)
 

@@ -1,5 +1,6 @@
 from django import template
 import datetime
+
 register=template.Library()
 
 @register.filter
@@ -34,10 +35,34 @@ def date(date):
 @register.filter
 def show_category(level):
     if level==0:
-        return 'Post'
+        return 'Week1'
     if level==1:
-        return 'FAQ'
+        return 'Week2'
     if level==2:
-        return 'Assignment'
+        return 'Week3'
     if level==3:
-        return 'Quiz'
+        return 'Week4'
+    if level==4:
+        return 'Week5'
+    if level==5:
+        return 'Week6'
+    if level==6:
+        return 'Week7'
+    
+@register.filter
+def show_question(question_id):
+    s = str(question_id)[1:]
+    return 'Problem'+s
+
+## Name 
+@register.filter
+def title1(name):
+    if name[0:2]!='We' and name[0:2]!='St' and name[0:2]!='Al':
+        return 'Week' + str(name[0:1])
+    return name
+
+@register.filter
+def title2(name):
+    if name[0:2]=='We':
+        return 'All'
+    return 'Problem' + str(int(name[1:]))

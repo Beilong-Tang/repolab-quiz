@@ -119,7 +119,7 @@ def quiz_new(request,question_id):
         context['recent_answer']=answer_sets
         if mult:
             context['recent_answer']=" ".join(answer_sets)
-        recent=True
+
 
     question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
 

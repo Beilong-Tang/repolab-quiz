@@ -15,10 +15,20 @@
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
 <script type= "text/javascript" src = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
-<link rel = "stylesheet" type ="text/css" href = "{% static 'forum/sidebars.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
 <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
+<style>
+  .buttons:hover{
+    background: rgb(204, 198, 198);
+  }
+
+  .buttons{
+    background:white;
+    border:none;
+  }
+</style>
 <script>
   // href list; all the href goes here:
   var forum_url_All = "{%url 'forum:forum' 'All' %}";
@@ -83,7 +93,7 @@
       }
       if( document.getElementById('title').value=="") {alert('Your title is empty');return;}
       if( document.getElementById('textarea').value=="") {alert('Your text is empty');return;}
-
+      if( document.getElementById('question_input').value==0) {alert('Please specify your problem');return;}
       document.getElementById('forum_form').submit()
 
   }
@@ -129,19 +139,27 @@
                     {% csrf_token%}
                     <label for="exampleFormControlInput1">Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Your title goes here" name="title" autocomplete="off" spellcheck="false" required>
-                          <div style="width:100%;"><label style="margin-left:0%;margin-top:10px;">Category </label></div>
+                          <div style="width:100%;"><label style="margin-left:0%;margin-top:10px;">Week </label></div>
                           <div style="margin-top:5px;margin-bottom:10px;margin-left:1px;width:100%">
                           <input type="radio" class="btn-check" name="category" id="option1" autocomplete="off" value ="0" checked='true' onclick="show_category()">
-                          <label class="btn btn-outline-primary" for="option1">POST</label>
+                          <label class="btn btn-outline-primary" for="option1">Week1</label>
                           <input type="radio" class="btn-check" name="category" id="option2" autocomplete="off" value ="1" onclick="show_category()">
-                          <label class="btn btn-outline-success" for="option2">FAQ</label>
+                          <label class="btn btn-outline-primary" for="option2">Week2</label>
                           <input type="radio" class="btn-check" name="category" id="option3" autocomplete="off" value ="2" onclick="show_category()">
-                          <label class="btn btn-outline-danger" for="option3">Assignment</label>
+                          <label class="btn btn-outline-primary" for="option3">Week3</label>
                           <input type="radio" class="btn-check" name="category" id="option4" autocomplete="off" value ="3" onclick="show_category()">
-                          <label class="btn btn-outline-info" for="option4">Quiz</label>
-                          <p style ='margin-top:15px;font-size:12px;color:grey' id="show_category">Your category: POST</p>
+                          <label class="btn btn-outline-primary" for="option4">Week4</label>
+                          <input type="radio" class="btn-check" name="category" id="option5" autocomplete="off" value ="4" onclick="show_category()">
+                          <label class="btn btn-outline-primary" for="option5">Week5</label>
+                          <input type="radio" class="btn-check" name="category" id="option6" autocomplete="off" value ="5" onclick="show_category()">
+                          <label class="btn btn-outline-primary" for="option6">Week6</label>
+                          <input type="radio" class="btn-check" name="category" id="option7" autocomplete="off" value ="6" onclick="show_category()">
+                          <label class="btn btn-outline-primary" for="option7">Week7</label>
+                          <p style ='margin-top:15px;font-size:12px;color:grey' id="show_category">Week1</p>
                           <script>
+
                             function show_category(){
+                            var q = document.getElementById('question_dropdown');
                             var x = document.getElementsByName('category');
                             for (var i =0; i < x.length;i++){
                               if (x[i].checked){
@@ -150,18 +168,44 @@
                               }
                             }
                             // alert(y==0)
-                            var x =document.getElementById('show_category')
-                            if (y==0){x.innerText='Your category: POST'       ;return}
-                            if (y==1){x.innerText='Your category: FAQ'        ;return}
-                            if (y==2){x.innerText='Your category: Assignment';return }
-                            if (y==3){x.innerText='Your category: Quiz';return }
+                            var x =document.getElementById('show_category');
+                            y=parseInt(y)+1;
+                            x.innerText='Week'+y;
+                            var tex = select(y,'{{week_question_number.0}}','{{week_question_number.1}}','{{week_question_number.2}}','{{week_question_number.3}}','{{week_question_number.4}}','{{week_question_number.5}}','{{week_question_number.6}}');
+                            q.innerHTML=tex;
+
+                            var x = document.getElementById('question_input');
+                            x.value=0;
+                            var p = document.getElementById('show_question');
+                            p.innerText="Please specify your problem";
+                            return;
+                          }
+
+
+                          function show_question(id){
+                            var x = document.getElementById('question_input');
+                            x.value=id;
+                            var p = document.getElementById('show_question');
+                            p.innerText='Problem'+id;
                           }
                             </script>
+                            
                           </div>
                           
                     
+                          <div class="dropdown" style='' id='week_problems'>
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                              Problem
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style='max-height:250px; overflow-y:scroll;' id ='question_dropdown'>
+                              
+                              <li><button onclick='alert(1)' style='border:none;background:white' id='problem1'><a class='dropdown-item' href='#'>Problem1</a></button></li>
+                            </ul>
+                            <p style ='margin-top:15px;font-size:16px;color:grey' id="show_question">Please specify your question</p>
+                            <input value =0 name='question_input' id = 'question_input' style='display:none'>
+                          </div>
                     
-                    
+                          <script>window.onload=show_category();</script>
                     <div class="form-group" style="margin-top:5px">
                       <label for="exampleFormControlTextarea1">Text</label>
                       <textarea class="form-control" id="textarea" rows="10" autocomplete='off' spellcheck='false' placeholder="Your text goes here" name ="text" required></textarea>
@@ -200,7 +244,7 @@
                         {% comment %} hidden input {% endcomment %}
                     
               </form>
-
+            
             </div>
         </div>
         

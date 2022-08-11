@@ -16,6 +16,7 @@
 <script type= "text/javascript" src = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
 <link rel = "stylesheet" type ="text/css" href = "{% static 'forum/sidebars.css' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
 <script type= "text/javascript" src="{% static 'forum/sidebars.js' %}"></script>
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
@@ -76,7 +77,7 @@
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <button type="button" class="btn btn-primary btn-lg" style="margin-left:30px" onclick="newpost()">New Thread</button>
+          <button type="button" class="btn btn-primary btn-lg" style="margin-left:30px" onclick="newpost()">New Post</button>
           <span class="fs-4" style='margin-left:30px'>CS201 Forum</span>
         </a>
   
@@ -101,32 +102,40 @@
                       </div> {% endcomment %}
 
                           <div class='col-md-12'>
-                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt}}</a>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt|title1}}</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
                               <li><a class="dropdown-item" href="{%url 'forum:forum' 'All' %}">All</a></li>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' 'Star' %}">Star</a></li>
-                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Post' %}">Post</a></li>
-                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'FAQ' %}">FAQ</a></li>
-                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Assignment' %}">Assignment</a></li>
-                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Quiz' %}">Quiz</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week1' %}">Week1</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week2' %}">Week2</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week3' %}">Week3</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week4' %}">Week4</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week5' %}">Week5</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week6' %}">Week6</a></li>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' 'Week7' %}">Week7</a></li>
                               <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                           </div>
-                        
-                      {% comment %} <div class='col-md-1'>
-                        <button type="button" class="" style='height:18px;margin-left:-21px' onclick='decrease()'>-</button>
-                      </div> {% endcomment %}
 
+                          {% if problem %}
+                          <div class='col-md-12'>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey;margin-top:4px">{{filt|title2}}</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown01" style='max-height:400px;overflow-y:scroll;text-align:center'>
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' first %}">All</a></li>
+                              {%for i in problem%}
+                              <li><a class="dropdown-item" href="{%url 'forum:forum' i.question_id %}">Problem{{forloop.counter}}</a></li>
+                              {%endfor%}
+                            </ul>
+                          </div>
+                          {% endif %}
 
                     </div>
-
-
 
                 <div class="list-group list-group-flush border-bottom scrollarea" style="overflow:auto;white-space:nowrap" id='siding'>
                   {% for c in post %}
                   <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">{{c.title}}</strong>
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;"><strong style='color:green'>{{c.question_id|show_question}}</strong> {{c.title}}</strong>
                     </div>
                                       <div class='row'>
 
@@ -157,10 +166,7 @@
               <script>
                 var z = document.getElementsByName('category');
                      for (var i =0;i<z.length;i++){
-                      if (z[i].innerText=='Post') {z[i].style='color:#4169e1';} //blue
-                      else if (z[i].innerText=='FAQ') {z[i].style='color:#006400';} //green
-                      else if (z[i].innerText=='Assignment') {z[i].style='color:#f08080';} //red
-                      else if (z[i].innerText=='Quiz') {z[i].style='color:#89cff0';} //light blue
+                      {z[i].style='color:#4169e1';} //blue
                      }
               </script>
         {% comment %} </div> {% endcomment %}
@@ -170,9 +176,7 @@
     </main>
 
 
-  {% comment %} <footer class="mt-auto text-black-50" style="font-size:15px">
-    <p>Supported by <a class="text-black">CS201 TA Team</a>. Contact Beilong Tang (<a class="text-black">bt132@duke.edu</a>) if you have problems.</p>
-  </footer> {% endcomment %}
+
 </div>
 
 
