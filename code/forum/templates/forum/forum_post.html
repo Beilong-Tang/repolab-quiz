@@ -143,7 +143,7 @@
         <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
-        <li class="nav-item"><a href="{% url 'forum:forum' 'a' %}" class="nav-link active">Forum</a></li>
+        <li class="nav-item"><a href="{% url 'forum:forum' 'All' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
       </header>
@@ -171,7 +171,7 @@
 
                     {% if problem %}
                           <div class='col-md-12'>
-                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey;margin-top:4px">{{filt}}</a>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey;margin-top:4px">{{filt|title2}}</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01" style='max-height:400px;overflow-y:scroll;text-align:center'>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' first %}">All</a></li>
                               {%for i in problem%}

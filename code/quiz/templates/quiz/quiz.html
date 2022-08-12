@@ -204,7 +204,7 @@
                         {% endif %}
                     {% endif %}
 
-                    <button type = 'botton' onclick='open_chat_room()' > Go to Chat Room </button>
+                    <a href = "{%url 'forum:forum' question_id %}" target='_blank'><button type='button' class='submit' >Go to Chat Room ({{post_number}})</button></a>
 
 
 

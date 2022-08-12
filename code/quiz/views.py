@@ -7,6 +7,7 @@ from django.http import (
 from django.contrib import messages
 from django.urls import reverse
 from simple_judge.models import Student, Question, Questiondict
+from forum.models import Post
 from django.contrib.auth.decorators import login_required
 import quiz.utils as ut
 import markdown
@@ -142,6 +143,7 @@ def quiz_new(request,question_id):
     context['passed']=len(question_sets_temp1.filter(ifpassed=True))
     context['failed']=len(question_sets_temp1.filter(submission_times=0))
     context['ids']=ut.findid(question_id,len(question_sets_temp1))
+    context['post_number'] = Post.objects.filter(question_id=question_id).count()
     return render(request, 'quiz/quiz.html', context)
 
 
