@@ -86,6 +86,7 @@
           <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:message'  %}" class="nav-link">Message</a></li>
         <li class="nav-item"><a href="{% url 'forum:forum' 'All' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
@@ -102,7 +103,7 @@
                       </div> {% endcomment %}
 
                           <div class='col-md-12'>
-                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt|title1}}</a>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:rgb(66, 141, 195)">{{filt|title1}}</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
                               <li><a class="dropdown-item" href="{%url 'forum:forum' 'All' %}">All</a></li>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' 'Star' %}">Star</a></li>
@@ -119,7 +120,7 @@
 
                           {% if problem %}
                           <div class='col-md-12'>
-                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey;margin-top:4px">{{filt|title2}}</a>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:rgb(50, 182, 129);margin-top:4px">{{filt|title2}}</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01" style='max-height:400px;overflow-y:scroll;text-align:center'>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' first %}">All</a></li>
                               {%for i in problem%}
@@ -146,7 +147,7 @@
 
                                         <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
                                           <a style='color:red' name='category'><strong>{{c.category|show_category}}</strong></a>
-                                           <a style='margin-left:10px'>{{c.author_name}}</a> 
+                                          <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong>
                                         </div>
 
                                           <div class ='col-md-4' style=''>
@@ -179,7 +180,18 @@
           Select a post to see
         </div>
     </main>
+    <script>
+      function changecolor(){
+        var x = document.getElementsByName('colorauthor');
 
+        for (var i = 0 ; i< x.length; i++){
+          x[i].style.color=numberFromText(x[i].innerText);
+        }
+      }
+    </script>
+    <script>
+      window.onload = changecolor();
+    </script>
 
 
 </div>

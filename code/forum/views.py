@@ -62,7 +62,7 @@ def forum(request,filt):
     context['post_seen']=post_seen
 
     context['filt']=filt
-    context['comment_seen']=comment_seen
+    context['comment_seen']= [Comment.objects.get(id=comment_id).post_id for comment_id in comment_seen]
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id, roll,textroll,filt):
@@ -79,14 +79,25 @@ def forum_post(request, id, roll,textroll,filt):
         student.forum_seen=student.forum_seen.replace(str(id)+',','')
         student.save()
 
-    if student.comment_seen.find(str(id)+',')!=-1:
-        student.comment_seen=student.comment_seen.replace(str(id)+',','')
-        student.save()
-
 
     post_seen = list(map(int,(list(filter(lambda x: x!="", student.forum_seen.split(','))))))
-    comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
+    comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
+    message_seen = list(map(int,(list(filter(lambda x: x!="", student.messages.split(','))))))
+
+    for comment_id in comment_seen:
+        if Comment.objects.get(id=comment_id) in Comment.objects.filter(post_id=id):
+            student.comment_seen = student.comment_seen.replace(str(comment_id)+',','')
+    
+    for message_id in message_seen:
+        if Comment.objects.get(id=message_id) in Comment.objects.filter(post_id=id):
+            student.messages = student.messages.replace(str(message_id)+',','')
+    
+    student.save()
+
+    comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
+
+
 
     if filt == 'All':
         context['post']=Post.objects.all().order_by('-pub_date')
@@ -118,7 +129,7 @@ def forum_post(request, id, roll,textroll,filt):
     context['roll'] = roll
     context['post_star']=post_star
     context['text_roll']=textroll
-    context['comment_seen']=comment_seen
+    context['comment_seen']=[Comment.objects.get(id=comment_id).post_id for comment_id in comment_seen]
     
     comment = current_post.comment_set.filter(reply=-1)
     context['comment_length']=comment.count()
@@ -205,13 +216,6 @@ def save_star(request,id,roll,filt):
 
 def save_comment(request, id, roll, textroll,filt):
 
-
-    # post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    # text = models.TextField()
-    # author_name = models.CharField(max_length=50)
-    # author_netid = models.CharField(max_length=8)
-    # pub_date = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M').astimezone(datetime
-
     comment_text = request.POST['comment_text']
     reply=int(request.POST['comment_id'])
     author = Student.objects.get(student_netid=request.user.username)
@@ -220,11 +224,32 @@ def save_comment(request, id, roll, textroll,filt):
     pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
 
     post = Post.objects.get(id=id)
-    post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date,reply=reply)
+    comment = post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date,reply=reply)
     post.save()
     
+    
     for student in Student.objects.all():
-        student.comment_seen += str(id)+','
+        student.comment_seen += str(comment.id)+','
         student.save()
+
+    ## Think of who involved in the POST, need to send messages to them!
+    comments = post.comment_set.all()
+
+    ## This author is the author that we would need to send messages, so that it filters the author him/herself
+    authors = []
+    for comment in comments:
+        if comment.author_netid not in authors and comment.author_netid != author_netid:
+            authors.append(comment.author_netid)
+
+
+    Poster = Student.objects.get(student_netid=post.author_netid)
+    Commenters = [Student.objects.get(student_netid=author_netid) for author_netid in authors]
+
+    Poster.messages+=str(comment.id)+','
+    Poster.save()
+    for commenter in Commenters:
+        commenter.messages+=str(comment.id)+','
+        commenter.save()
+
     return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,filt,)))
 

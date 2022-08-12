@@ -189,7 +189,7 @@
               <div class='row'>
 
                   <div class = 'col-md-12'>
-                      <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey">{{filt|title1}}</a>
+                      <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:rgb(66, 141, 195)">{{filt|title1}}</a>
                       <ul class="dropdown-menu" aria-labelledby="dropdown01">
                         <li><a class="dropdown-item" href="{%url 'forum:forum' 'All' %}">All</a></li>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' 'Star' %}">Star</a></li>
@@ -206,7 +206,7 @@
 
                     {% if problem %}
                           <div class='col-md-12'>
-                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:grey;margin-top:4px">{{filt|title2}}</a>
+                            <a class="nav-link dropdown-toggle " href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background:rgb(50, 182, 129);margin-top:4px">{{filt|title2}}</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01" style='max-height:400px;overflow-y:scroll;text-align:center'>
                               <li><a class="dropdown-item" href="{%url 'forum:forum' first %}">All</a></li>
                               {%for i in problem%}

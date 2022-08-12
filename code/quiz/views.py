@@ -7,7 +7,7 @@ from django.http import (
 from django.contrib import messages
 from django.urls import reverse
 from simple_judge.models import Student, Question, Questiondict
-from forum.models import Post
+from forum.models import Post, Comment
 from django.contrib.auth.decorators import login_required
 import quiz.utils as ut
 import markdown
@@ -148,6 +148,24 @@ def quiz_new(request,question_id):
 
 @login_required(login_url='/signin')
 def message(request):
+    context={}
+    student = Student.objects.get(student_netid=request.user.username)
+
+    ## including reply and messages
+    message_id_arrays = list(map(int,(list(filter(lambda x: x!="", student.messages.split(','))))))
+
+    post = []
+    comment=[]
+
+    for msg_id in message_id_arrays:
+        msg = Comment.objects.get(id=msg_id)
+        comment.append(msg)
+        post.append(Post.objects.get(id=msg.post_id))
+    
+    context['post_and_comment']=list(zip(post,comment))
+
+
+    return render(request, 'quiz/message.html',context)
     pass
 
 
