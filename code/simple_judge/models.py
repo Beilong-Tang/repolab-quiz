@@ -16,6 +16,8 @@ class Student(models.Model):
     level=models.IntegerField(default = 0)
     forum_seen = models.TextField(default="")
     forum_star = models.TextField(default="")
+    messages = models.TextField(default="")
+    comment_seen = models.TextField(default="")
     def __str__(self):
         return self.student_name
 

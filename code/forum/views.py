@@ -30,7 +30,8 @@ def forum(request,filt):
     
     student = Student.objects.get(student_netid=request.user.username)
 
-    post_seen = list(map(int,list(filter(lambda x:x!='',Student.objects.get(student_netid=request.user.username).forum_seen.split(',')))))
+    post_seen = list(map(int,list(filter(lambda x:x!='',student.forum_seen.split(',')))))
+    comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
     ## Second level filter 
@@ -61,7 +62,7 @@ def forum(request,filt):
     context['post_seen']=post_seen
 
     context['filt']=filt
-    
+    context['comment_seen']=comment_seen
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id, roll,textroll,filt):
@@ -72,11 +73,19 @@ def forum_post(request, id, roll,textroll,filt):
     student = Student.objects.get(student_netid=request.user.username)
     #return HttpResponse(student.forum_seen)
 
-    if student.forum_seen.find(str(id)+',')==-1:
-        student.forum_seen+=str(id)+','
+
+    # post_seen is actually post unseen
+    if student.forum_seen.find(str(id)+',')!=-1:
+        student.forum_seen=student.forum_seen.replace(str(id)+',','')
         student.save()
 
+    if student.comment_seen.find(str(id)+',')!=-1:
+        student.comment_seen=student.comment_seen.replace(str(id)+',','')
+        student.save()
+
+
     post_seen = list(map(int,(list(filter(lambda x: x!="", student.forum_seen.split(','))))))
+    comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
 
     if filt == 'All':
@@ -109,6 +118,19 @@ def forum_post(request, id, roll,textroll,filt):
     context['roll'] = roll
     context['post_star']=post_star
     context['text_roll']=textroll
+    context['comment_seen']=comment_seen
+    
+    comment = current_post.comment_set.filter(reply=-1)
+    context['comment_length']=comment.count()
+    reply_array = current_post.comment_set.filter(~Q(reply=-1))
+    reply=[]
+
+    for c in comment:
+        re = list(filter(lambda x: x.reply==c.id, reply_array))
+        reply.append(re)
+    
+    context['comment_and_reply']=list(zip(comment,reply))
+    
 
     return render(request, 'forum/forum_post.html', context)
 
@@ -144,6 +166,11 @@ def create_post(request,filt):
         pub_date = (datetime.datetime.utcnow()+datetime.timedelta(hours=8)).astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
         p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid,question_id=question_id)
         p.save()
+
+        for student in Student.objects.all():
+            student.forum_seen+=str(p.id)+','
+            student.save()
+
         
         return HttpResponseRedirect(reverse('forum:forum', args=(filt,)))
 
@@ -186,14 +213,18 @@ def save_comment(request, id, roll, textroll,filt):
     # pub_date = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M').astimezone(datetime
 
     comment_text = request.POST['comment_text']
+    reply=int(request.POST['comment_id'])
     author = Student.objects.get(student_netid=request.user.username)
     author_name = author.student_name
     author_netid = author.student_netid
     pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
 
     post = Post.objects.get(id=id)
-    post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date)
+    post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date,reply=reply)
     post.save()
     
+    for student in Student.objects.all():
+        student.comment_seen += str(id)+','
+        student.save()
     return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,filt,)))
 

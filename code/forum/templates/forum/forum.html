@@ -93,7 +93,7 @@
 
     <main class="d-flex ">
       {% comment %} <div class="col-md-2" > {% endcomment %}
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px;" id ='sidebar'>
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 325px;font-size:10px;margin-left:5px;" id ='sidebar'>
                 
                 
                     <div class='row'>
@@ -135,7 +135,12 @@
                   {% for c in post %}
                   <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;"><strong style='color:green'>{{c.question_id|show_question}}</strong> {{c.title}}</strong>
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">
+                        
+                        {%if c.id in post_star%}
+                        <strong style='color:red'>Star</strong>
+                        {%endif%}
+                        <strong style='color:green'>{{c.question_id|show_question}}</strong> {{c.title}}</strong>
                     </div>
                                       <div class='row'>
 
@@ -149,11 +154,11 @@
                                           </div>
 
                                             <div class='col-md-2 ' style='font-size:1px'>
-                                              {% if c.id not in post_seen%}
+                                              {% if c.id in post_seen%}
                                               <strong style='color:red;display:inline' id='status'>New</strong>
                                               {% else %}
-                                                      {% if c.id in post_star %}
-                                                      <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
+                                                      {% if c.id in comment_seen %}
+                                                      <strong style='color:orange;font-size:100%' id ='comment' >Update</strong>
                                                       {% endif %}
                                               {% endif %}
                                             </div>

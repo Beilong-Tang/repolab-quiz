@@ -146,6 +146,19 @@ def quiz_new(request,question_id):
     context['post_number'] = Post.objects.filter(question_id=question_id).count()
     return render(request, 'quiz/quiz.html', context)
 
+@login_required(login_url='/signin')
+def message(request):
+    pass
+
+
+
+
+
+
+
+
+
+
 
 ## Admin Page
 @login_required(login_url='/signin')

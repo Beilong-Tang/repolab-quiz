@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 import datetime
 
@@ -21,7 +22,10 @@ class Comment(models.Model):
     author_name = models.CharField(max_length=50)
     author_netid = models.CharField(max_length=8)
     pub_date = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=0))))
+    reply = models.IntegerField(default=-1)
     def __str__(self):
         return self.text
+
+# Second-level comment
 
 ## reply

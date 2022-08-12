@@ -66,3 +66,7 @@ def title2(name):
     if name[0:2]=='We':
         return 'All'
     return 'Problem' + str(int(name[1:]))
+
+@register.filter
+def cap(name):
+    return name[0:1]

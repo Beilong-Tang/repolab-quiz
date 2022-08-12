@@ -28,7 +28,7 @@
 
 
 <script>
-
+  var previous_reply_id = 0;
 
   // to a new post
   function another(id){
@@ -98,8 +98,43 @@
       document.getElementById('comment_input').style.display='none';
       x.value="";
     }
-
   }
+
+
+  // Cancel your comment 
+  function cancelreply(id){
+    var x = document.getElementById('input_text'+id);
+    if (x.value==""){
+      document.getElementById('reply_input'+id).style.display='none';
+      return 
+    }
+    var y = confirm("Are you sure you want to cancel?")
+    if (y==true){
+      document.getElementById('reply_input'+id).style.display='none';
+      x.value="";
+    }
+  }
+
+  function reply(id){
+    var x = document.getElementById('reply_input'+id);
+    x.style.display='inline';
+    
+  }
+
+  function replysubmit(id){
+    if (document.getElementById('input_text'+id).value==""){alert('Your Reply cannot be empty');return}
+
+    var x = document.getElementById('reply_form'+id);
+    var length = parseInt($("#maintext").scrollTop());
+    var action = x.action;
+    action = action.replace(':0',':'+length);
+    x.action=action;
+    x.submit();
+  
+  }
+
+
+
 
 </script>
 <style>
@@ -149,7 +184,7 @@
       </header>
 
     <main class="d-flex flex-nowrap">
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 320px;font-size:10px;margin-left:5px">
+              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 325px;font-size:10px;margin-left:5px">
                 
               <div class='row'>
 
@@ -187,13 +222,17 @@
                   {% for c in post %}
                   <button  class="list-group-item list-group-item-action py-3 lh-sm  " id="{{c.id}}" aria-current="true" onclick='another({{c.id}})'>
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;"><strong style='color:green'>{{c.question_id|show_question}}</strong> {{c.title}}</strong>
+                      <strong class="mb-1" style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;">
+                        {%if c.id in post_star%}
+                        <strong style='color:red'>Star</strong>
+                        {%endif%}
+                        <strong style='color:green'>{{c.question_id|show_question}}</strong> {{c.title}}</strong>
                     </div>
                                       <div class='row'>
 
                                         <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
                                           <a style='color:red' name='category'><strong>{{c.category|show_category}}</strong></a>
-                                           <a style='margin-left:10px'>{{c.author_name}}</a> 
+                                           <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong> 
                                         </div>
 
                                           <div class ='col-md-4' style=''>
@@ -201,12 +240,12 @@
                                           </div>
 
                                             <div class='col-md-2 ' style='font-size:1px'>
-                                              {% if c.id not in post_seen%}
+                                              {% if c.id in post_seen%}
                                               <strong style='color:red;display:inline' id='status'>New</strong>
                                               {% else %}
-                                                      {% if c.id in post_star %}
-                                                      <strong style='color:orange;font-size:100%' id ='star' >Star</strong>
-                                                      {% endif %}
+                                                        {% if c.id in comment_seen %}
+                                                        <strong style='color:orange;font-size:100%' id ='comment' >Update</strong>
+                                                        {% endif %}
                                               {% endif %}
                                             </div>
                                    
@@ -239,10 +278,19 @@
                               <div>
                                     <div class='row' style='width:90%' >
                                             <div class='col-md-6' style='margin-top:10px;text-align:left'>
-                                              <div>
-                                              <p style='margin-left:100px;color:orange;font-size:20px'>{{current.author_name}}</p></div>
-                                              <div style='margin-top:-10px'>
-                                              <p style='margin-left:100px;'><small class="text-muted">{{current.pub_date}}</small></p></div>
+                                                              <div class='row'>
+                                                                <div class='col-md-1'>
+                                                                      <div style='margin-left:100px'>
+                                                                      <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="45px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
+                                                                        <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{current.author_name|cap}}</text></svg>
+                                                                      </div>
+                                                                  </div>
+
+                                                                  <div class='col-md-11'>
+                                                                    <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{current.author_name}}</p>
+                                                                    <p style='margin-left:100px;margin-top:-20px'><small class="text-muted">{{current.pub_date}}</small></p>
+                                                                </div>
+                                                              </div>
                                             </div>
 
                                               <div class='col-md-6' style='text-align:right'>
@@ -295,25 +343,85 @@
                     <div id = 'comment_area' style='margin-right:100px'>
                       <div style='text-align:left;margin-left:100px;margin-top:100px;'>
                       {%if current.comment_set.all %}
-                      <h1> {{ current.comment_set.all.count }}  Comments: </h1>
+                      <h1> {{ comment_length }}  Comments: </h1>
                       {%endif%}
                       </div>
-                      {% for comment in current.comment_set.all %}
+                      {% for comment,r in comment_and_reply %}
                       <div>
                             <div class='row'>
+                              <div class = 'col-md-6'>
+                                        <div class='row' style='text-align:left'>
+                                          <div class='col-md-1'>
+                                                <div style='margin-left:100px'>
+                                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="45px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
+                                                  <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{comment.author_name|cap}}</text></svg>
+                                                </div>
+                                            </div>
 
-                                  <div class='' style='margin-top:10px;text-align:left'>
-                                        <div>
-                                        <p style='margin-left:100px;color:orange;font-size:20px'>{{comment.author_name}}</p>
-                                      </div>
-                                        <div style='margin-top:-20px'>
-                                        <p style='margin-left:100px;'><small class="text-muted">{{current.pub_date}}</small></p>
-                                      </div>
-                                  </div>
+                                            <div class='col-md-11'>
+                                              <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                              <p style='margin-left:100px;margin-top:-20px'><small class="text-muted">{{comment.pub_date}}</small></p>
+                                          </div>
+                                        </div>
+                            </div>
                                   
+                              
                                   <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:100px;width:90%;margin-right:100px;">
                                     {{comment.text|markdownify}}
+                                    
+                        
                                   </div>
+                                  
+                                  <div style='margin-top:-10px'>
+                                            {% for reply in r %}
+
+                                      <div class='' style='margin-top:-30px;text-align:left;margin-left:100px'>
+                                        <div class='row' style='width:90%' >
+                                          <div class='col-md-6' style='margin-top:10px;text-align:left'>
+                                                            <div class='row'>
+                                                              <div class='col-md-1'>
+                                                                    <div style='margin-left:100px'>
+                                                                    <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="30px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
+                                                                      <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{reply.author_name|cap}}</text></svg>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class='col-md-11'>
+                                                                  <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a><small class="text-muted">{{reply.author_name}}</small></p>
+                                                              </div>
+                                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:145px;width:90%;margin-right:100px;margin-top:-30px">
+                                              <p>{{reply.text|markdownify}}</p>
+                                        </div>
+
+                                      </div>
+
+                                            {% endfor %}
+                                </div>
+
+                                          <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:100px;width:90%;margin-right:100px;">
+                                            <button type="button" class="button" id='replybutton' style="border:none;background:white;margin-left:-8px;margin-top:-20px;color:grey" onclick="reply({{comment.id}})" style="">Reply</button>
+                                            <form method='post' name ='replyform' id='reply_form{{comment.id}}' action="{%url 'forum:save_comment' current.id roll text_roll filt %}">
+                                              {%csrf_token%}
+                                                  <div id='reply_input{{comment.id}}' name='reply_div' style='display:none;margin-left:250px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
+                                                    <p style='margin-bottom:5px' >Reply to <a name='colorauthor'>{{comment.author_name}}</a> :</p>
+                                                    <textarea class="form-control" id="input_text{{comment.id}}" rows="3" autocomplete='off' spellcheck='false' placeholder="Your Reply goes here" name ="comment_text" required></textarea>
+                                                      <input name = 'comment_id' value = {{comment.id}}  style='display:none'>
+                                                    <div style='text-align:right'>
+                                                        <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="cancelreply({{comment.id}})">Cancel</button>
+                                                        <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="replysubmit({{comment.id}})">Post</button>
+                                                        </div>
+                                                  </div>
+                                                </form>
+                                          </div>
+
+
+
+
+
+                                        
                             </div>
                       </div>
                       {%endfor%}
@@ -327,7 +435,7 @@
                                 <div id='comment_input' style='display:none;margin-left:100px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
                                   <p style='color:#89cff0;margin-bottom:5px'>You :</p>
                                   <textarea class="form-control" id="commenttextarea" rows="3" autocomplete='off' spellcheck='false' placeholder="Your comment goes here" name ="comment_text" required></textarea>
-                                      
+                                      <input name = 'comment_id' value = -1  style='display:none'>
                                   <div style='text-align:right'>
                                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="cancelcomment()">Cancel</button>
                                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="commentsubmit()">Post</button>
@@ -335,9 +443,32 @@
                                 </div>
                               </form>
                             </div>
+                            <script>
+                              function changecolor(){
+                                var x = document.getElementsByName('colorauthor');
+
+                                for (var i = 0 ; i< x.length; i++){
+                                  x[i].style.color=numberFromText(x[i].innerText);
+                                }
+                              }
+
+                              function assigncolor(){
+                                var x = document.getElementsByName('icon_svg');
+                                for(var i =0; i<x.length;i++){
+                                  var child = x[i].childNodes[2];
+                                  var text = child.innerHTML;
+                                  var color = numberFromText(text);
+                                  x[i].childNodes[0].style='fill:'+color;
+                                }
+                              }
+
+                            </script>
                     <script>
                       $("#maintext").scrollTop({{text_roll}});
+                      window.onload=changecolor();
+                      window.onload=assigncolor();
                     </script>
+                    
               </div>
     </main>
 
