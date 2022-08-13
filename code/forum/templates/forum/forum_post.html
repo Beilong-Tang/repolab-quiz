@@ -256,7 +256,16 @@
                      var x = document.getElementById('{{current.id}}');
                      x.className = "list-group-item list-group-item-action py-3 lh-sm list-group-item-primary";
                      var y = document.getElementById('siding');
-                     $("#siding").scrollTop({{roll}});
+                     var roll = {{roll}};
+                     if (roll!=-1){
+                     $("#siding").scrollTop(roll);}
+                     else{
+                      var roll = $('#'+x.id).offset().top-145;
+                      next_url =  "{% url 'forum:forum_post' 1 '0' 0 filt %}" ; 
+                      to_forum_post(x.id,next_url,roll)
+                      
+                     }
+                     
 
                      // Color the catogory 
                      var z = document.getElementsByName('category');
@@ -294,7 +303,9 @@
                                             </div>
 
                                               <div class='col-md-6' style='text-align:right'>
-                                                          <form method='post' action='{% url 'forum:save_star' current.id roll filt %}'>
+
+                                                <form method='post' action='{% url 'forum:save_star' current.id 0 filt %}'>
+
                                                             {%csrf_token%}
                                                                   <button type='submit' style='background:white;width:80px;border:none;margin-top:20px;'>
                                                                     
@@ -360,7 +371,12 @@
 
                                             <div class='col-md-11'>
                                               <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
-                                              <p style='margin-left:100px;margin-top:-20px'><small class="text-muted">{{comment.pub_date}}</small></p>
+                                              <p style='margin-left:100px;margin-top:-20px'>
+                                                <small class="text-muted">{{comment.pub_date}}</small>
+                                                {% if comment.id in message_seen%}
+                                                <strong style='color:red'>New</strong>
+                                                {%endif%}
+                                              </p>
                                           </div>
                                         </div>
                             </div>
@@ -387,7 +403,12 @@
                                                                 </div>
 
                                                                 <div class='col-md-11'>
-                                                                  <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a><small class="text-muted">{{reply.author_name}}</small></p>
+                                                                  <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
+                                                                    <small class="text-muted">{{reply.pub_date}}</small>
+                                                                    {%if reply.id in message_seen %}
+                                                                    <strong style='color:red'>New</strong>
+                                                                    {%endif%}
+                                                                  </p>
                                                               </div>
                                                             </div>
                                           </div>
@@ -403,7 +424,11 @@
 
                                           <div class='' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:100px;width:90%;margin-right:100px;">
                                             <button type="button" class="button" id='replybutton' style="border:none;background:white;margin-left:-8px;margin-top:-20px;color:grey" onclick="reply({{comment.id}})" style="">Reply</button>
+                                          {% if roll < 0 %}
+                                          <form method='post' name ='replyform' id='reply_form{{comment.id}}' action="{%url 'forum:save_comment' current.id 0 text_roll filt %}">
+                                          {% else %}
                                             <form method='post' name ='replyform' id='reply_form{{comment.id}}' action="{%url 'forum:save_comment' current.id roll text_roll filt %}">
+                                          {%endif%}
                                               {%csrf_token%}
                                                   <div id='reply_input{{comment.id}}' name='reply_div' style='display:none;margin-left:250px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
                                                     <p style='margin-bottom:5px' >Reply to <a name='colorauthor'>{{comment.author_name}}</a> :</p>
@@ -429,9 +454,12 @@
 
                     <div style='margin-bottom:100px;text-align:left;margin-top:20px;margin-right:100px;margin-left:100px'>
                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="" onclick="showcomment()">Add a Comment</button>
-                    
+                    {%if roll < 0 %}
+                    <form method='post' name ='commentform' id='comment_form' action="{%url 'forum:save_comment' current.id 0 text_roll filt %}">
+                    {%else%}
                                 <form method='post' name ='commentform' id='comment_form' action="{%url 'forum:save_comment' current.id roll text_roll filt %}">
-                            {%csrf_token%}
+                    {%endif%} 
+                                  {%csrf_token%}
                                 <div id='comment_input' style='display:none;margin-left:100px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
                                   <p style='color:#89cff0;margin-bottom:5px'>You :</p>
                                   <textarea class="form-control" id="commenttextarea" rows="3" autocomplete='off' spellcheck='false' placeholder="Your comment goes here" name ="comment_text" required></textarea>

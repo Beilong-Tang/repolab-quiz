@@ -13,5 +13,5 @@ urlpatterns = [
     path('admin/',views.admin,name='admin')  ,
     path('admin/assignment',views.admin_assignment,name='admin_assignment'),
     path('admin/quiz/<str:week>',views.admin_quiz,name='admin_quiz'),
-    path('messages/',views.message,name='message')
+    path('message/',views.message,name='message')
 ]

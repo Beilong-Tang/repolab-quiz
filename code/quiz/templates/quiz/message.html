@@ -11,11 +11,25 @@
 {% load static %}
 {%load my_tags%}
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
-<link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}">
+<script src="{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
 <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
+
+<script>
+  function go_to_forum_post(id ,level){
+    var week = level+1;
+
+    var forum_post_url = "{% url 'forum:forum_post' 1 0 0 'filt' %}";
+    forum_post_url = forum_post_url.replace('filt','Week'+week)
+    sidebar_length = -1;
+    to_forum_post(id,forum_post_url,sidebar_length);
+  }
+</script>
+
+
+
 
 <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
 </head>
@@ -47,17 +61,30 @@
     <div style="margin-top:10%;width:50%;margin-left:25%">
       {%for p,c in post_and_comment %}
       
+      <script>
+          function deletemsg(id){
+            var x = document.getElementById('delete');
+            x.value = id ; 
+            document.deleteform.submit();
+          }
+
+      </script>
       
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <p><a style='color:red'>{{c.author_name}}</a> commented in </p>
         
-        <p><a style='color:blue'>{{p.level|show_category}}</a> <a style='color:green'>{{p.question_id|show_question}}</a> {{p.title}} </p>
+        <p><a style='color:blue'>{{p.level|show_category}}</a> <a style='color:green'>{{p.question_id|show_question}}</a> <button style='border:none;background:none' onclick='go_to_forum_post({{p.id}},{{p.level}})'><a href="#">{{p.title}}</a></button> </p>
 
 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick='alert(11)'></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick='deletemsg({{c.id}})'></button>
       </div>
       {%endfor%}
     </div>
+
+    <form method='post' action="{%url 'quiz:message' %}" style='display:none' name='deleteform'>
+      {%csrf_token%}
+        <input name ='delete' value = 0 id='delete'>
+    </form>
 
   
   <footer class="mt-auto text-black-50" style="font-size:15px">

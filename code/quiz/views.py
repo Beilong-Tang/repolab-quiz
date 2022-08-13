@@ -148,9 +148,20 @@ def quiz_new(request,question_id):
 
 @login_required(login_url='/signin')
 def message(request):
-    context={}
+    
     student = Student.objects.get(student_netid=request.user.username)
 
+
+    if request.method=='POST':
+        delete_msg_id = request.POST['delete']
+        student.messages=student.messages.replace(delete_msg_id+',','')
+        student.save()
+        return HttpResponseRedirect(reverse('quiz:message',args=()))
+    
+    
+    
+    
+    context={}
     ## including reply and messages
     message_id_arrays = list(map(int,(list(filter(lambda x: x!="", student.messages.split(','))))))
 

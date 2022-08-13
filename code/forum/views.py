@@ -66,7 +66,7 @@ def forum(request,filt):
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id, roll,textroll,filt):
-
+    roll = int(roll)
     context={}
     current_post = Post.objects.get(id=id)
 
@@ -84,15 +84,16 @@ def forum_post(request, id, roll,textroll,filt):
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
     message_seen = list(map(int,(list(filter(lambda x: x!="", student.messages.split(','))))))
+    context['message_seen'] = message_seen
 
     for comment_id in comment_seen:
         if Comment.objects.get(id=comment_id) in Comment.objects.filter(post_id=id):
             student.comment_seen = student.comment_seen.replace(str(comment_id)+',','')
-    
-    for message_id in message_seen:
-        if Comment.objects.get(id=message_id) in Comment.objects.filter(post_id=id):
-            student.messages = student.messages.replace(str(message_id)+',','')
-    
+    if(roll!=-1):
+        for message_id in message_seen:
+            if Comment.objects.get(id=message_id) in Comment.objects.filter(post_id=id):
+                student.messages = student.messages.replace(str(message_id)+',','')
+        
     student.save()
 
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
@@ -129,7 +130,8 @@ def forum_post(request, id, roll,textroll,filt):
     context['roll'] = roll
     context['post_star']=post_star
     context['text_roll']=textroll
-    context['comment_seen']=[Comment.objects.get(id=comment_id).post_id for comment_id in comment_seen]
+    context['comment_seen']=[Comment.objects.get(id=comment_id).post_id for comment_id in comment_seen] # This is actually the post id 
+    
     
     comment = current_post.comment_set.filter(reply=-1)
     context['comment_length']=comment.count()
