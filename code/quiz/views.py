@@ -167,26 +167,23 @@ def message(request):
 
     post = []
     comment=[]
+    ## if it is a reply
+    reply=[]
 
     for msg_id in message_id_arrays:
         msg = Comment.objects.get(id=msg_id)
+        if msg.reply!=-1:
+            reply.append(Comment.objects.get(id=msg.reply).author_name)
+        else:
+            reply.append("")
         comment.append(msg)
         post.append(Post.objects.get(id=msg.post_id))
     
-    context['post_and_comment']=list(zip(post,comment))
+    context['post_and_comment']=list(zip(post,comment,reply))
 
 
     return render(request, 'quiz/message.html',context)
     pass
-
-
-
-
-
-
-
-
-
 
 
 ## Admin Page

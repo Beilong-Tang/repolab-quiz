@@ -4,21 +4,23 @@ from django.http import (
     HttpResponseRedirect,
 )
 from django.contrib.auth.models import User
-from django.contrib import messages
 from django.urls import reverse
 from simple_judge.models import Student, Question, Questiondict
 from forum.models import Comment, Post
 from django.contrib.auth.decorators import login_required
-import quiz.utils as ut
-import markdown
+
+
 import datetime
-from utils.settings import question_due_dict
 from django.db.models import Q
 import os
+import random
 from repolab.settings import BASE_DIR
-from repolab.settings import STATIC_ROOT
 
-savedir = os.path.join(BASE_DIR,'static/forum/images/')
+## This is online img path
+#savedir = os.path.join(BASE_DIR,'static/forum/images/')
+
+## This is local img path
+savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
 # Create your views here.
 
 def userface(request):
@@ -84,17 +86,19 @@ def forum_post(request, id, roll,textroll,filt):
     post_star = list(map(int,(list(filter(lambda x: x!="", student.forum_star.split(','))))))
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
     message_seen = list(map(int,(list(filter(lambda x: x!="", student.messages.split(','))))))
-    context['message_seen'] = message_seen
+    context['new_comment'] = comment_seen
 
-    for comment_id in comment_seen:
-        if Comment.objects.get(id=comment_id) in Comment.objects.filter(post_id=id):
-            student.comment_seen = student.comment_seen.replace(str(comment_id)+',','')
+    # delete the comment in commen seen 
     if(roll!=-1):
+        for comment_id in comment_seen:
+            if Comment.objects.get(id=comment_id) in Comment.objects.filter(post_id=id):
+                student.comment_seen = student.comment_seen.replace(str(comment_id)+',','')
+
         for message_id in message_seen:
             if Comment.objects.get(id=message_id) in Comment.objects.filter(post_id=id):
                 student.messages = student.messages.replace(str(message_id)+',','')
         
-    student.save()
+        student.save()
 
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
 
@@ -154,20 +158,7 @@ def create_post(request,filt):
     if request.method=="POST":
         text = request.POST['text']
         img_length=request.POST['img_length']
-        if img_length !='0':
-            #return HttpResponse(request.FILES.get('0img').name)
-            for i in range(0,int(img_length)):
-                img_title = str(i)+'img'
-                ## imgfile
-                img = request.FILES.get(img_title)
-                ## savedir
-                img_name = img.name
-                img_path = os.path.join(savedir, img_name)
-                with open(img_path, 'wb') as fp:
-                    for chunk in img.chunks():
-                        fp.write(chunk)
-                text=text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
-        
+
         title  = request.POST['title']
         level= int(request.POST['level'])
         category = int(request.POST['category'])
@@ -176,9 +167,34 @@ def create_post(request,filt):
         author =  Student.objects.get(student_netid=request.user.username)
         author_name = author.student_name
         author_netid = author.student_netid
-        pub_date = (datetime.datetime.utcnow()+datetime.timedelta(hours=8)).astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
+        time_now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
+        pub_date = time_now.astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc+8 now
         p = Post(text=text, title=title, author_name = author_name, pub_date=pub_date,level=level,category=category,author_netid=author_netid,question_id=question_id)
         p.save()
+
+        if img_length !='0':
+            #return HttpResponse(request.FILES.get('0img').name)
+            for i in range(0,int(img_length)):
+                img_title = str(i)+'img'
+                ## imgfile
+                img = request.FILES.get(img_title)
+                ## savedir
+
+                # student_netid + post_id + img.name
+                # example : bt132_10_HelloWorld.jpg
+                
+
+                back = img.name[img.name.find('.'):]
+
+                img_name = request.user.username +'_'+str(p.id)+'_'+datetime.datetime.strftime(time_now,'%Y-%m-%d-%H-%M-%S')+back
+
+
+                img_path = os.path.join(savedir, img_name)
+                with open(img_path, 'wb') as fp:
+                    for chunk in img.chunks():
+                        fp.write(chunk)
+                p.text=p.text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
+                p.save()
 
         for student in Student.objects.all():
             student.forum_seen+=str(p.id)+','
@@ -223,16 +239,46 @@ def save_comment(request, id, roll, textroll,filt):
     author = Student.objects.get(student_netid=request.user.username)
     author_name = author.student_name
     author_netid = author.student_netid
-    pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #utc now
+    pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=8))) #utc now
 
     post = Post.objects.get(id=id)
     comment = post.comment_set.create(text=comment_text, author_name=author_name, author_netid=author_netid, pub_date=pub_date,reply=reply)
     post.save()
     
+    img_length = request.POST['img_length']
+
+    if img_length != '0':
+        
+        for i in range(0,int(img_length)):
+            img_title = str(i)+'img'
+
+            img = request.FILES.get(img_title)
+            ## savedir
+            
+            # student_netid + post_id +i + img.name
+            # example : Alice_108_2022-08-13-19-27-55_1.png
+            
+
+            back = img.name[img.name.find('.'):]
+
+            img_name = request.user.username +'_'+str(comment.id)+'_'+datetime.datetime.strftime(datetime.datetime.utcnow()+datetime.timedelta(hours=8),'%Y-%m-%d-%H-%M-%S')+'_'+str(i)+back
+
+
+            img_path = os.path.join(savedir, img_name)
+            with open(img_path, 'wb') as fp:
+                for chunk in img.chunks():
+                    fp.write(chunk)
+            comment.text=comment.text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
+         
+        comment.save()
+
+
+
     
     for student in Student.objects.all():
-        student.comment_seen += str(comment.id)+','
-        student.save()
+        if str(id)+',' not in student.forum_seen:
+            student.comment_seen += str(comment.id)+','
+            student.save()
 
     ## Think of who involved in the POST, need to send messages to them!
     comments = post.comment_set.all()

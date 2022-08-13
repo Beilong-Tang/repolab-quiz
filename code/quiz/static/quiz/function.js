@@ -105,3 +105,48 @@ function select(y,week1,week2,week3,week4,week5,week6,week7){
   }
   
 }
+
+function add(id){
+  var divBox = document.getElementById('mydiv'+id);
+  var newdiv = document.createElement('div');
+  number  = divBox.childElementCount-3;
+  newdiv.class='image_and_preview';
+  newdiv.style='margin-top:20px';
+  newdiv.id = number+"image_and_preview"+id;
+  newdiv.innerHTML="<img id ='"+number+"imgPreview"+id+"'  width='0' height='0'/> <input type='file' id='"+number+'_'+id+"' name='"+number+"img' accept='image/gif, image/jpeg, image/png, image/jpg' onchange='preview(100,100,"+number+","+id+")' > <a ></a>";
+  divBox.appendChild(newdiv);
+}
+
+function del(id){
+  var divBox = document.getElementById('mydiv'+id);
+  number  = divBox.childElementCount-3;
+  if (number!=0) number--;
+  var x = document.getElementById(number+'image_and_preview'+id);
+  x.parentNode.removeChild(x);
+}
+
+function preview(width, height,number,id){
+  var x = document.getElementById(number+'_'+id);
+
+  var name = x.files[0];
+  if (window.URL != undefined && name){
+      url = window.URL.createObjectURL(name);
+  }
+  var z = url;
+  var y = document.getElementById(number+'imgPreview'+id);
+  
+  if (x.value=="") {y.src="";y.width=0;y.height=0}
+  else{y.width=width;y.height=height;y.src=z;}
+}
+
+function assign_size_img(img_tags){
+  for (var i =0; i < img_tags.length;i++){
+    var img = img_tags[i];
+    if (img.parentElement.parentElement.parentElement.className=='comment'){
+      img.style='max-height:300px;max-width:90%';
+    }
+    else if (img.parentElement.parentElement.parentElement.className=='reply'){
+      img.style='max-height:200px;max-width:80%';
+    }
+  }
+}
