@@ -3,17 +3,15 @@ from django.http import (
     HttpResponse,
     HttpResponseRedirect,
 )
-from django.contrib.auth.models import User
+
 from django.urls import reverse
-from simple_judge.models import Student, Question, Questiondict
+from simple_judge.models import Student, Questiondict
 from forum.models import Comment, Post
-from django.contrib.auth.decorators import login_required
 
 
 import datetime
 from django.db.models import Q
 import os
-import random
 from repolab.settings import BASE_DIR
 
 ## This is online img path
@@ -186,7 +184,7 @@ def create_post(request,filt):
 
                 back = img.name[img.name.find('.'):]
 
-                img_name = request.user.username +'_'+str(p.id)+'_'+datetime.datetime.strftime(time_now,'%Y-%m-%d-%H-%M-%S')+back
+                img_name = request.user.username +'_'+str(p.id)+'_'+datetime.datetime.strftime(time_now,'%Y-%m-%d-%H-%M-%S')+'_'+str(i)+'_'+back
 
 
                 img_path = os.path.join(savedir, img_name)
@@ -194,7 +192,7 @@ def create_post(request,filt):
                     for chunk in img.chunks():
                         fp.write(chunk)
                 p.text=p.text+"\n\n"+"![image](/static/forum/images/"+img_name+")"
-                p.save()
+            p.save()
 
         for student in Student.objects.all():
             student.forum_seen+=str(p.id)+','

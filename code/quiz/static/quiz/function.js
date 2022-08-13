@@ -109,7 +109,7 @@ function select(y,week1,week2,week3,week4,week5,week6,week7){
 function add(id){
   var divBox = document.getElementById('mydiv'+id);
   var newdiv = document.createElement('div');
-  number  = divBox.childElementCount-3;
+  number  = divBox.childElementCount-5;
   newdiv.class='image_and_preview';
   newdiv.style='margin-top:20px';
   newdiv.id = number+"image_and_preview"+id;
@@ -117,10 +117,19 @@ function add(id){
   divBox.appendChild(newdiv);
 }
 
+
+
+
 function del(id){
   var divBox = document.getElementById('mydiv'+id);
-  number  = divBox.childElementCount-3;
+  number  = divBox.childElementCount-5;
+
   if (number!=0) number--;
+  else{
+    var bu = document.getElementById('addimg'+id);
+    bu.style.display='inline';
+    divBox.style.display='none';
+  }
   var x = document.getElementById(number+'image_and_preview'+id);
   x.parentNode.removeChild(x);
 }
@@ -149,4 +158,10 @@ function assign_size_img(img_tags){
       img.style='max-height:200px;max-width:80%';
     }
   }
+}
+
+function show_img(id,this_id){
+  var x = document.getElementById(id);
+  x.style.display='inline';
+  document.getElementById(this_id).style.display='none';
 }

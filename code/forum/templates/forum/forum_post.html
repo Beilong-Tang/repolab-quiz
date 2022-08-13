@@ -48,7 +48,7 @@
     if (document.getElementById('commenttextarea').value==""){alert('Your comment text cannot be empty');return}
 
     var divBox =document.getElementById('mydiv-1');
-    var number  = divBox.childElementCount-3;
+    var number  = divBox.childElementCount-5;
     if (number!=0){
       for(var i =0;i<number;i++){
         var x = document.getElementById(i+'_-1');
@@ -145,7 +145,7 @@
   function replysubmit(id){
     if (document.getElementById('input_text'+id).value==""){alert('Your Reply cannot be empty');return}
     var divBox =document.getElementById('mydiv'+id);
-    var number  = divBox.childElementCount-3;
+    var number  = divBox.childElementCount-5;
     if (number!=0){
       for(var i =0;i<number;i++){
         var x = document.getElementById(i+'_'+id);
@@ -163,9 +163,6 @@
     x.submit();
   
   }
-
-
-
 
 </script>
 <style>
@@ -210,6 +207,7 @@
         <li class="nav-item"><a href="{% url 'quiz:userface' %}" class="nav-link " aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'quiz:assignment'  %}" class="nav-link">Quizzes</a></li>
         <li class="nav-item"><a href="{% url 'quiz:account'  %}" class="nav-link">Account</a></li>
+        <li class="nav-item"><a href="{% url 'quiz:message'  %}" class="nav-link">Message</a></li>
         <li class="nav-item"><a href="{% url 'forum:forum' 'All' %}" class="nav-link active">Forum</a></li>
         <li class="nav-item"><a href="#" class="nav-link" onclick="go()">Log out</a></li>
         </ul>
@@ -460,13 +458,16 @@
                                                     <textarea class="form-control" id="input_text{{comment.id}}" rows="3" autocomplete='off' spellcheck='false' placeholder="Your Reply goes here" name ="comment_text" required></textarea>
                                                       <input name = 'comment_id' value = {{comment.id}}  style='display:none'>
                                                     <div style='text-align:right'>
+                                                      <button type="button" class="btn btn-primary btn-sm" id='addimg{{comment.id}}' style="float:left;margin-top:10px" onclick="show_img('mydiv{{comment.id}}',this.id)">Add Image</button>
                                                         <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="cancelreply({{comment.id}})">Cancel</button>
                                                         <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="replysubmit({{comment.id}})">Post</button>
                                                         </div>
                                                         {% comment %}  {% endcomment %}
-                                                                <div>
-                                                                  <label for="" style='margin-bottom:10px'>Image</label>
-                                                                  <div id='mydiv{{comment.id}}'>
+                                                                <div >
+                                                                  
+                                                                  <div id='mydiv{{comment.id}}' style='display:none'>
+                                                                    <label for="" style='margin-bottom:10px'>Image</label>
+                                                                    <br>
                                                                     <button type = 'button' id ='nextbotton' class='btn btn-primary btn-sm' onclick="add({{comment.id}})">Add</button>
                                                                     <button type='button' id ='nextbotton'  class='btn btn-primary btn-sm' onclick="del({{comment.id}})">Delete</button>
                                                                   <input name='img_length' id='img_length{{comment.id}}' value=0 style='display:none'>
@@ -498,14 +499,17 @@
                                   <textarea class="form-control" id="commenttextarea" rows="3" autocomplete='off' spellcheck='false' placeholder="Your comment goes here" name ="comment_text" required></textarea>
                                       <input name = 'comment_id' value = -1  style='display:none'>
                                   <div style='text-align:right'>
+                                    <button type="button" class="btn btn-primary btn-sm" id='addimg-1' style="float:left;margin-top:10px" onclick="show_img('mydiv-1',this.id)">Add Image</button>
                                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="cancelcomment()">Cancel</button>
                                       <button type="button" class="btn btn-primary btn-sm" id='commentbutton' style="align:right;margin-top:10px" onclick="commentsubmit()">Post</button>
 
                                       </div>
                                       {% comment %}  {% endcomment %}
                                             <div>
-                                              <label for="" style='margin-bottom:10px'>Image</label>
-                                              <div id='mydiv-1'>
+                                              
+                                              <div id='mydiv-1' style='display:none'>
+                                                <label for="" style='margin-bottom:10px'>Image</label>
+                                                <br>
                                                 <button type = 'button' id ='nextbotton' class='btn btn-primary btn-sm' onclick="add(-1)">Add</button>
                                                 <button type='button' id ='nextbotton'  class='btn btn-primary btn-sm' onclick="del(-1)">Delete</button>
                                               <input name='img_length' id='img_length-1' value=0 style='display:none'>
