@@ -70,3 +70,4 @@ def title2(name):
 @register.filter
 def cap(name):
     return name[0:1]
+

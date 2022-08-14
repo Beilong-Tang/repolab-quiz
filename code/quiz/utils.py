@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from simple_judge.models import Questiondict
 from django.http import HttpResponse
-import subprocess ,os,datetime,re
+import subprocess ,os,datetime
 import shutil
 
 ### Clean the output for the code
@@ -23,7 +23,7 @@ def checkanswer_blank(input_sets, answer_sets):
     if len(input_sets)!=len(answer_sets):
         return False
     for i in range(0,len(input_sets)):
-        if input_sets[i]!=answer_sets[i]:
+        if input_sets[i].lower()!=answer_sets[i].lower():
             return False
     return True
 ## Check Answer for multi choice questions
@@ -57,6 +57,7 @@ def checktime(question_due_dict):
             due_dict_after[i]=[False,time_end] ## passed
         elif tim > time_start:
             due_dict_after[i]=[True,time_end] ## open
+            #due_dict_after[i]=[True,time_end] ## open
     return due_dict_after
         
 def getanswer(request, len,question_type):

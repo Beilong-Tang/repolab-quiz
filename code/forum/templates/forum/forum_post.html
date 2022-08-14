@@ -261,7 +261,12 @@
 
                                         <div class="col-md-6 " style="overflow: hidden;text-overflow: ellipsis;word-break:keep-all;white-space:nowrap;display:block;text-align:left">
                                           <a style='color:red' name='category'><strong>{{c.category|show_category}}</strong></a>
-                                           <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong> 
+                                          {% if c.level == 0 %}
+                                            <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong>
+                                          {% else %}
+                                            <strong style='margin-left:10px' name='colorauthor'>Anonymous</strong>
+                                          {% endif %}
+                                            
                                         </div>
 
                                           <div class ='col-md-4' style=''>
@@ -320,12 +325,26 @@
                                                                 <div class='col-md-1'>
                                                                       <div style='margin-left:100px'>
                                                                       <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="45px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
-                                                                        <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{current.author_name|cap}}</text></svg>
+                                                                          {%if current.level == 0 %}
+                                                                          <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{current.author_name|cap}}</text>
+                                                                          {%else%}
+                                                                          <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">A</text>
+                                                                          {%endif%}
+                                                                        </svg>
                                                                       </div>
                                                                   </div>
 
                                                                   <div class='col-md-11'>
+                                                                    {% comment %} {% if c.level == 0 %}
+                                                                      <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong>
+                                                                    {% else %}
+                                                                      <strong style='margin-left:10px' name='colorauthor'>Anonymous</strong>
+                                                                    {% endif %} {% endcomment %}
+                                                                    {%if current.level == 0 %}
                                                                     <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{current.author_name}}</p>
+                                                                    {% else %}
+                                                                    <p style='margin-left:100px;font-size:20px' name ='colorauthor'>Anonymous</p>
+                                                                    {% endif %}
                                                                     <p style='margin-left:100px;margin-top:-20px'><small class="text-muted">{{current.pub_date}}</small></p>
                                                                 </div>
                                                               </div>
@@ -387,12 +406,30 @@
                                           <div class='col-md-1'>
                                                 <div style='margin-left:100px'>
                                                 <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="45px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
-                                                  <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{comment.author_name|cap}}</text></svg>
+                                                  
+                                                    {% if comment.author_name == current.author_name%}
+                                                          {%if current.level == 0 %}
+                                                          <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{comment.author_name|cap}}</text>
+                                                          {% else %}
+                                                          <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">A</text>
+                                                          {%endif%}
+                                                  {%else%}
+                                                      <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{comment.author_name|cap}}</text>
+                                                  {%endif%}
+                                                  </svg>
                                                 </div>
                                             </div>
 
                                             <div class='col-md-11'>
-                                              <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                                  {% if comment.author_name == current.author_name%}
+                                                          {%if current.level == 0 %}
+                                                        <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                                          {% else %}
+                                                          <p style='margin-left:100px;font-size:20px' name ='colorauthor'>Anonymous</p>
+                                                          {%endif%}
+                                                  {%else%}
+                                                      <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                                  {%endif%}
                                               <p style='margin-left:100px;margin-top:-20px'>
                                                 <small class="text-muted">{{comment.pub_date}}</small>
                                                 {% if comment.id in new_comment %}
@@ -420,16 +457,37 @@
                                                               <div class='col-md-1'>
                                                                     <div style='margin-left:100px'>
                                                                     <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="30px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
-                                                                      <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{reply.author_name|cap}}</text></svg>
+                                                                        {%if reply.author_name == current.author_name %}
+                                                                                {%if current.level == 0 %}
+                                                                                <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{reply.author_name|cap}}</text>
+                                                                                {%else%}
+                                                                                <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">A</text> 
+                                                                                {%endif%}
+                                                                        {%else%}
+                                                                          <text x="50" y="71.5" font-family="Arial" font-size="60" font-weight="700" text-anchor="middle" fill="#ffffff" class="la2-text">{{reply.author_name|cap}}</text>
+                                                                        {%endif%}
+                                                                      </svg>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class='col-md-11'>
+
+                                                                  
+                                                                  {%if reply.author_name == current.author_name %}
+                                                                        {%if current.level == 0 %}
+                                                                          <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
+                                                                        {%else%}
+                                                                         <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>Anonymous </a>
+                                                                        {%endif%}
+
+                                                                  {%else%}
                                                                   <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
-                                                                    <small class="text-muted">{{reply.pub_date}}</small>
-                                                                    {%if reply.id in new_comment %}
-                                                                    <strong style='color:red'>New</strong>
-                                                                    {%endif%}
+                                                                  {%endif%}
+
+                                                                      <small class="text-muted">{{reply.pub_date}}</small>
+                                                                      {%if reply.id in new_comment %}
+                                                                      <strong style='color:red'>New</strong>
+                                                                      {%endif%}
                                                                   </p>
                                                               </div>
                                                             </div>
@@ -454,7 +512,23 @@
                                           {%endif%}
                                               {%csrf_token%}
                                                   <div id='reply_input{{comment.id}}' name='reply_div' style='display:none;margin-left:250px;margin-top:-90px;margin-bottom:100px;margin-right:100px;text-align:left'>
-                                                    <p style='margin-bottom:5px' >Reply to <a name='colorauthor'>{{comment.author_name}}</a> :</p>
+                                                    <p style='margin-bottom:5px' >Reply to 
+
+                                                      <a name='colorauthor'>
+
+                                                        {% if comment.author_name == current.author_name%}
+                                                              {%if current.level == 0 %}
+                                                                  {{comment.author_name}}
+                                                              {% else %}
+                                                                  Anonymous
+                                                              {%endif%}
+                                                        {%else%}
+                                                            {{comment.author_name}}
+                                                        {%endif%}
+                                                      
+                                                      </a> 
+                                                      
+                                                      :</p>
                                                     <textarea class="form-control" id="input_text{{comment.id}}" rows="3" autocomplete='off' spellcheck='false' placeholder="Your Reply goes here" name ="comment_text" required></textarea>
                                                       <input name = 'comment_id' value = {{comment.id}}  style='display:none'>
                                                     <div style='text-align:right'>
@@ -533,6 +607,7 @@
                                 for(var i =0; i<x.length;i++){
                                   var child = x[i].childNodes[2];
                                   var text = child.innerHTML;
+                                  console.log(text);
                                   var color = numberFromText(text);
                                   x[i].childNodes[0].style='fill:'+color;
                                 }

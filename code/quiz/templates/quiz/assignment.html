@@ -56,13 +56,13 @@
       </tr>
       </thead>
       <tbody>
-        {% for i, j, k,m,n,p in array %}
+        {% for i, j, k, m , p in array %}
         <tr class= "table-primary">
           <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
           <td>{{k}}</td>
           <td>{{p}}</td>
           <td name='status'><strong>{{j.0|status}}</strong></td>
-          <td>{{n.1}}</td>
+          <td>{{j.1}}</td>
         </tr>
         {% endfor %}
       </tbody>

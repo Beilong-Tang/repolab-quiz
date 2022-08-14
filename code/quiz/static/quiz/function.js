@@ -99,7 +99,7 @@ function select(y,week1,week2,week3,week4,week5,week6,week7){
     var z = parseInt(week7);
     var t = "";
     for( var i = 0 ; i <z ; i++){
-      t=t+"<li><button onclick='show_question()' style='' id='problem"+(i+1)+"' type='button' class ='buttons' >Problem"+(i+1)+"</button></li>"
+      t=t+"<li><button onclick='show_question("+(i+1)+")' style='' id='problem"+(i+1)+"' type='button' class ='buttons' >Problem"+(i+1)+"</button></li>"
     }
     return t;
   }
