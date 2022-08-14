@@ -13,7 +13,7 @@ class Student(models.Model):
     question_due_dict=models.JSONField(default={'week1':['2022-7-29 6:00','2022-7-29 23:59']})
     online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))
     offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
-    level=models.IntegerField(default = 0)
+    level= models.IntegerField(default = 0)
     forum_seen = models.TextField(default="")
     forum_star = models.TextField(default="")
     messages = models.TextField(default="")
