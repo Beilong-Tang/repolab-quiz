@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
   <head>
     <meta charset="utf-8">
-    {% comment %} <meta name="viewport" content="width=device-width+100, initial-scale=2.0"> {% endcomment %}
+    <meta name="viewport" content="width=device-width+100, initial-scale=2.0">
     <meta name="description" content="">
     <meta name="author" content="Beilong Tang">
     <meta name="generator" content="Hugo 0.98.0">
@@ -335,17 +335,14 @@
                                                                   </div>
 
                                                                   <div class='col-md-11'>
-                                                                    {% comment %} {% if c.level == 0 %}
-                                                                      <strong style='margin-left:10px' name='colorauthor'>{{c.author_name}}</strong>
-                                                                    {% else %}
-                                                                      <strong style='margin-left:10px' name='colorauthor'>Anonymous</strong>
-                                                                    {% endif %} {% endcomment %}
+                                                                    <div style='margin-left:20px'>
                                                                     {%if current.level == 0 %}
                                                                     <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{current.author_name}}</p>
                                                                     {% else %}
                                                                     <p style='margin-left:100px;font-size:20px' name ='colorauthor'>Anonymous</p>
                                                                     {% endif %}
                                                                     <p style='margin-left:100px;margin-top:-20px'><small class="text-muted">{{current.pub_date}}</small></p>
+                                                                    </div>
                                                                 </div>
                                                               </div>
                                             </div>
@@ -421,21 +418,23 @@
                                             </div>
 
                                             <div class='col-md-11'>
-                                                  {% if comment.author_name == current.author_name%}
-                                                          {%if current.level == 0 %}
-                                                        <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
-                                                          {% else %}
-                                                          <p style='margin-left:100px;font-size:20px' name ='colorauthor'>Anonymous</p>
-                                                          {%endif%}
-                                                  {%else%}
-                                                      <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
-                                                  {%endif%}
-                                              <p style='margin-left:100px;margin-top:-20px'>
-                                                <small class="text-muted">{{comment.pub_date}}</small>
-                                                {% if comment.id in new_comment %}
-                                                <strong style='color:red'>New</strong>
-                                                {%endif%}
-                                              </p>
+                                                    <div style='margin-left:20px'>
+                                                        {% if comment.author_name == current.author_name%}
+                                                                {%if current.level == 0 %}
+                                                              <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                                                {% else %}
+                                                                <p style='margin-left:100px;font-size:20px' name ='colorauthor'>Anonymous</p>
+                                                                {%endif%}
+                                                        {%else%}
+                                                            <p style='margin-left:100px;font-size:20px' name ='colorauthor'>{{comment.author_name}}</p>
+                                                        {%endif%}
+                                                    <p style='margin-left:100px;margin-top:-20px'>
+                                                      <small class="text-muted">{{comment.pub_date}}</small>
+                                                      {% if comment.id in new_comment %}
+                                                      <strong style='color:red'>New</strong>
+                                                      {%endif%}
+                                                    </p>
+                                                  </div>
                                           </div>
                                         </div>
                             </div>
@@ -450,12 +449,12 @@
                                   <div style='margin-top:-10px'>
                                             {% for reply in r %}
 
-                                      <div class='' style='margin-top:-30px;text-align:left;margin-left:100px'>
+                                      <div class='' style='text-align:left;margin-left:100px'>
                                         <div class='row' style='width:90%' >
-                                          <div class='col-md-6' style='margin-top:10px;text-align:left'>
-                                                            <div class='row'>
-                                                              <div class='col-md-1'>
-                                                                    <div style='margin-left:100px'>
+                                          {% comment %} <div class='col-md-6' style='margin-top:10px;text-align:left'> {% endcomment %}
+                                                            <div class='row' style='margin-left:10%'>
+                                                              <div class style='width:7%;'>
+                                                                    <div style=''>
                                                                     <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" viewBox="0, 0, 100, 100" width="30px" class="letterAvatar2 li-la2-gxmikey" name="icon_svg"><circle cx="50" cy="50" r="49"  style="fill:#fc1111" stroke="#ffffff" stroke-width="1" class="la2-circle" id='icon' />
                                                                         {%if reply.author_name == current.author_name %}
                                                                                 {%if current.level == 0 %}
@@ -470,33 +469,34 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class='col-md-11'>
+                                                                    <div class style='width:93%;'>
+                                                                                <div style=''>
+                                                                              
+                                                                                    {%if reply.author_name == current.author_name %}
+                                                                                          {%if current.level == 0 %}
+                                                                                            <p style='font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
+                                                                                          {%else%}
+                                                                                          <p style='font-size:15px' ><a name ='colorauthor'>Anonymous </a>
+                                                                                          {%endif%}
 
-                                                                  
-                                                                  {%if reply.author_name == current.author_name %}
-                                                                        {%if current.level == 0 %}
-                                                                          <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
-                                                                        {%else%}
-                                                                         <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>Anonymous </a>
-                                                                        {%endif%}
+                                                                                    {%else%}
+                                                                                    <p style='font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
+                                                                                    {%endif%}
 
-                                                                  {%else%}
-                                                                  <p style='margin-left:100px;font-size:15px' ><a name ='colorauthor'>{{reply.author_name}} </a>
-                                                                  {%endif%}
-
-                                                                      <small class="text-muted">{{reply.pub_date}}</small>
-                                                                      {%if reply.id in new_comment %}
-                                                                      <strong style='color:red'>New</strong>
-                                                                      {%endif%}
-                                                                  </p>
-                                                              </div>
+                                                                                  <small class="text-muted">{{reply.pub_date}}</small>
+                                                                                  {%if reply.id in new_comment %}
+                                                                                  <strong style='color:red'>New</strong>
+                                                                                  {%endif%}
+                                                                              </p>
+                                                                          </div>
+                                                                          <div class='reply' style='margin-top:-10px'>
+                                                                          <p >{{reply.text|markdownify}}</p>
+                                                                          </div>
+                                                                </div>
                                                             </div>
-                                          </div>
+                                          
                                         </div>
-                                        <div class='reply' style="text-align:left;word-wrap: break-word; word-break: normal;margin-bottom:40px;margin-left:145px;width:90%;margin-right:100px;margin-top:-30px">
-                                              <p>{{reply.text|markdownify}}</p>
-                                        </div>
-
+                                        
                                       </div>
 
                                             {% endfor %}
