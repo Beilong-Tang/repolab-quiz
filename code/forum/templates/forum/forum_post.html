@@ -598,7 +598,7 @@
                                 var x = document.getElementsByName('colorauthor');
 
                                 for (var i = 0 ; i< x.length; i++){
-                                  x[i].style.color=numberFromText(x[i].innerText);
+                                  x[i].style.color=numberFromText(x[i].innerText.split(' ')[0]);
                                 }
                               }
 
