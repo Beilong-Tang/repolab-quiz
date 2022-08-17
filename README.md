@@ -210,9 +210,163 @@ We don't need to understand the principle behind it, since it is a bit complicat
 |  False   |        +         |    ongoing     |
 |  False   |        0         |      fail      |
 
+We only need to keep this form in mind to tell if a quiz is passed, failed or ongoing.
+
+---
+
+#### logx (textfield)
+
+This string field records the history of a student's submission. 
 
 
 
+> Even if a student has passed or failed the test, he/she can still do the test and the history will be recorded. 
+
+Each submission is combined with the previous submission history into a string. 
+
+
+
+> The part below can be ignored.
+
+For example:
+
+```
+d#d#d#d@2022-08-12 09:06:39$d#d#d#d@2022-08-12 09:06:41$d#d#d#d@2022-08-12 09:06:43$d#d#d#d@2022-08-12 09:06:45$d#d#d#d@2022-08-12 09:06:46$
+```
+
+This is an example of a logx. Each submission is separated by **$**. In each submission, each blank/choice is separated by **#**, and each submission time is followed by a **@**.
+
+
+
+---
+
+---
+
+### Questiondict
+
+**Location:** simple-judge/models
+
+This model contains the basic content of each quiz.
+
+Here the fields of Questiondict:
+
+---
+
+#### question_type 
+
+The type a question contains mult, blank, and code.
+
+---
+
+#### 	question_title 
+
+This is the title of the question, which is determined by the question json file name in repolab-quiz/bank/week.
+
+---
+
+#### question_content (jsonfield)
+
+For simplicity, this field is equals the quiz json file, including author, answer etc.
+
+---
+
+#### question_id
+
+This id is unique to each quiz. We use it to distinguish between each quiz.
+
+---
+
+#### question_week
+
+This field is not that important. It specifies the week the question belongs to. 
+
+---
+
+#### question_level
+
+This shows the level of the question.
+
+---
+
+---
+
+### Post
+
+**Location:** forum/models
+
+This model focuses on the information of a student's post.
+
+**Note that this Post is only used for the CS201 Quiz Post instead of the whole cs201 forum post website. Ed still needs to be used for assignment etc.!**
+
+Here are the fields of the **Post**:
+
+---
+
+#### text
+
+The text of the post.
+
+---
+
+#### author_name
+
+The author of the post, it should be the same as the student_name.
+
+---
+
+#### author_netid
+
+The author's netid of the post, it should be the same as student_netid
+
+---
+
+#### pub_date
+
+This is the publication date of the post. Note that the pub_date's time zone is CST (UTC+8) instead of UTC.
+
+---
+
+#### title
+
+The title of the post
+
+---
+
+#### level (int)
+
+For now , this int field should only have two values, 0 and 1.
+
+If the value is 0, it means that your post as well as your author_name is shown to everyone.
+
+If the value is 1, it means that your name will be hidden (anonymous).
+
+---
+
+
+
+
+
+[image]('/static/forum/images/Bob_92_2022-08-13-21-22-56_0_.png')
+
+
+
+
+
+
+
+## Instruction
+
+Below are some instructions of the website. Make sure you are in our project main directory _(simple-judge/code)_.
+
+### How to Create user
+
+```
+python3 shell.py create_user bt132 Beilong_Tang 0
+```
+
+This will create a user whose name is 'Beilong Tang', and his netid is 'bt132'. His level is 0.
+
+> You should have a '_' between the first name and last name of the student name.
 
 
 

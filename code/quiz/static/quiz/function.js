@@ -11,6 +11,11 @@ function to_url(url){
   return
 }
 
+function to_url_new_page(url){
+  window.open(url);
+  return
+}
+
 // forum post page
 function to_forum_post(id,url,length){
   url = url.replace('1:',''+id+':').replace(':0',':'+length);

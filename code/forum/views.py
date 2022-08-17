@@ -100,8 +100,6 @@ def forum_post(request, id, roll,textroll,filt):
 
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
 
-
-
     if filt == 'All':
         context['post']=Post.objects.all().order_by('-pub_date')
         

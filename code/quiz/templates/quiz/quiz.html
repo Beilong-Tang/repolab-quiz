@@ -84,7 +84,7 @@
         <p>COMPSCI 201: Intro to prgramming and data structures</p>
     </div>
         
-        <div class="row">
+        <div class="row" style='margin-right:25px'>
           <div class="col-md-2" >
             {% comment %} This is the one that shows on the top left {% endcomment %}
             <div class="row-md-1" style="  margin-left:10px;margin-right:20px;margin-top:5px">
@@ -137,12 +137,12 @@
         <div class="col-md-10"  >
             <div class='question' >
                 <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
-                <div class='text' style="margin-bottom: 0; margin-left:-10px;margin-right:40px ">
+                <div class='text' style="margin-bottom: 0; margin-left:-10px; ">
                 {{text|safe}}
                 </div>
             </div>
             {% if user.is_authenticated %}
-            <div style="margin-left:-10px;margin-right:40px">
+            <div style="margin-left:-10px;">
             <form action="{% url 'quiz:check' question_id %}" method="post" autocomplete='off' style="margin-top:30px;position:relative;border-top:1px dashed rgb(106, 100, 100);"  name='myform' >
                 {% csrf_token %}
                     {% if overdue != True%}
@@ -204,7 +204,7 @@
                         {% endif %}
                     {% endif %}
 
-                    <a href = "{%url 'forum:forum' question_id %}" target='_blank'><button type='button' class='submit' >Go to Chat Room ({{post_number}})</button></a>
+                    <a href = "{%url 'forum:forum' question_id %}" ><button type='button' class='submit' >Go to Chat Room ({{post_number}})</button></a>
 
 
 

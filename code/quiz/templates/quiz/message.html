@@ -5,14 +5,13 @@
     <meta name="description" content="">
     <meta name="author" content="Beilong Tang">
     <meta name="generator" content="Hugo 0.98.0">
-    <title>Home Page</title>
+    <title>Messages</title>
 
 
 {% load static %}
 {%load my_tags%}
 <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
 <script src="{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<link rel = "stylesheet" type ="text/css" href = "{% static 'simple_judge/cover.css' %}">
 <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
 <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
 <script>function go(){var x = "{% url 'simple_judge:signout' %}";confirmation(x);}</script>
