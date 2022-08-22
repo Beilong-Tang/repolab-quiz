@@ -58,6 +58,7 @@ def AssignQuestion(student_netid=""):
                     q = s.question_set.create(question_id=id,
                                             question_title=Questiondict.objects.get(question_id=id).question_title)
                     q.save()
+            print(s.student_netid,'finished')
     else:
         s= Student.objects.get(student_netid=student_netid)
 
@@ -77,7 +78,7 @@ def AssignQuestion(student_netid=""):
                 q = s.question_set.create(question_id=id,
                                         question_title=Questiondict.objects.get(question_id=id).question_title)
                 q.save()
-print('finished')
+        print('finished')
 
 # This function will return an args
 def assign_week_main(default=True, week=0, chap=0, section="0"):

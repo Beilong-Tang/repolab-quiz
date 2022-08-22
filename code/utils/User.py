@@ -2,8 +2,10 @@
 
 from simple_judge.models import Student
 from django.contrib.auth.models import User
-
+from utils.settings import user_raw_path as user_raw_file
+from utils.settings import password_yaml as password_yaml
 import random as r
+import yaml
 
 ## This will create a user and assign the user a foreign key to the student
 def create_user(net_id, student_name, level=0):
@@ -52,3 +54,30 @@ def password_random_gen():
 
     return "".join(r.sample(letter,8))
     
+
+def importing_user():
+    with open(user_raw_file,'r') as f:
+        for line in f.readlines():
+            line = line.rstrip('\n')
+            line_array = line.split(',') #"Tang, Beilong",bt132@duke.edu,lunji.zhu@dukekunshan.edu.cn,TA#
+            student_name = (line_array[1]+line_array[0]).lstrip(' ').replace('""','_')
+            netid = line_array[2][0:line_array[2].find('@')]
+            #print(line_array[4]==)
+            level = 0 if line_array[4]=='Student' else 1 if line_array[4]=='TA' else 2
+            create_user(net_id = netid, student_name= student_name, level = level)
+
+def change_passowrd_yaml():
+    password_list = yaml.load(open(password_yaml,'r').read())['passwd']
+    print(password_list)
+    student_netid_list = [s.username for s in User.objects.all()]
+    for i in password_list:
+        if i[0] in student_netid_list:
+            u = User.objects.get(username = i[0])
+            u.set_password(str(i[1]))
+            u.save()
+            print (i[0],'finished')
+        else:
+            print(i[0] ,'is not in the list')
+            
+if __name__ == '__main__':
+    importing_user()

@@ -204,6 +204,29 @@ def CreateUser(net_id, student_name,level):
 
     pass
 
+def ImportUser():
+    args = ""
+    args+= "from simple_judge.models import Student\n"
+    args+= "from django.contrib.auth.models import User\n"
+    args+= "from utils.User import importing_user as f\n"
+    args+="from utils.settings import user_raw_path as user_raw_file\n"
+    args+="f()"
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
+def change_password_yaml():
+    args = ""
+    args+= "from simple_judge.models import Student\n"
+    args+= "from django.contrib.auth.models import User\n"
+    args+= "from utils.User import change_passowrd_yaml as f\n"
+    args+="f()"
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
 
 def execute():
 
@@ -227,7 +250,12 @@ def execute():
         if len(sys.argv)==5:
             CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
             return
-
+    if sys.argv[1]=='import_user':
+        ImportUser()
+        return
+    if sys.argv[1]=='change_password':
+        change_password_yaml()
+        return
 
 
 
