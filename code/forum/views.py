@@ -21,6 +21,10 @@ from repolab.settings import BASE_DIR
 savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
 # Create your views here.
 
+def record_online_time(minute = 30):
+    tim = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #UTC Time
+    return tim, tim+datetime.timedelta(minutes=minute)
+
 def userface(request):
     return HttpResponse("Hello")
 
@@ -29,6 +33,8 @@ def forum(request,filt):
 
     
     student = Student.objects.get(student_netid=request.user.username)
+    student.online_time, student.offline_time  = record_online_time()     
+    student.save()
 
     post_seen = list(map(int,list(filter(lambda x:x!='',student.forum_seen.split(',')))))
     comment_seen = list(map(int,(list(filter(lambda x: x!="", student.comment_seen.split(','))))))
@@ -66,12 +72,15 @@ def forum(request,filt):
     return render(request, 'forum/forum.html',context)
 
 def forum_post(request, id, roll,textroll,filt):
+    
     roll = int(roll)
     context={}
     current_post = Post.objects.get(id=id)
 
     student = Student.objects.get(student_netid=request.user.username)
-    #return HttpResponse(student.forum_seen)
+    
+    student.online_time, student.offline_time  = record_online_time()     
+    student.save()
 
 
     # post_seen is actually post unseen
@@ -161,6 +170,8 @@ def create_post(request,filt):
         problem = int(request.POST['question_input'])
         question_id = (category+1)*100+problem
         author =  Student.objects.get(student_netid=request.user.username)
+        author.online_time, author.offline_time  = record_online_time()     
+        author.save()
         author_name = author.student_name
         author_netid = author.student_netid
         time_now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
@@ -217,6 +228,8 @@ def save_star(request,id,roll,filt):
 
         id=str(id)
         s = Student.objects.get(student_netid=request.user.username)
+        s.online_time, s.offline_time  = record_online_time()     
+        s.save()
         if s.forum_star.find(id+',')==-1:
             s.forum_star+=id+','
             s.save()
@@ -233,6 +246,8 @@ def save_comment(request, id, roll, textroll,filt):
     comment_text = request.POST['comment_text']
     reply=int(request.POST['comment_id'])
     author = Student.objects.get(student_netid=request.user.username)
+    author.online_time, author.offline_time  = record_online_time()     
+    author.save()
     author_name = author.student_name
     author_netid = author.student_netid
     pub_date = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=8))) #utc now

@@ -243,7 +243,7 @@ def execute():
             return 
 
     if sys.argv[1]=='create_user':
-        #net_id, student_name, student_id, (level=0)
+        #net_id, student_name, (level=0)
         if len(sys.argv)==4:
             CreateUser(sys.argv[2],sys.argv[3],0 )
             return
