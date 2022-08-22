@@ -34,4 +34,4 @@ user_raw_path = os.path.dirname(os.path.abspath(__file__))+'/user_raw.txt'
 password_yaml = os.path.dirname(os.path.abspath(__file__))+'/password.yaml'
 
 if __name__=='__main__':
-    print(backup_path)
+    os.copy

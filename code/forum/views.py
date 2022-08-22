@@ -269,7 +269,6 @@ def save_comment(request, id, roll, textroll,filt):
             # student_netid + post_id +i + img.name
             # example : Alice_108_2022-08-13-19-27-55_1.png
             
-
             back = img.name[img.name.find('.'):]
 
             img_name = request.user.username +'_'+str(comment.id)+'_'+datetime.datetime.strftime(datetime.datetime.utcnow()+datetime.timedelta(hours=8),'%Y-%m-%d-%H-%M-%S')+'_'+str(i)+back
@@ -283,9 +282,6 @@ def save_comment(request, id, roll, textroll,filt):
          
         comment.save()
 
-
-
-    
     for student in Student.objects.all():
         if str(id)+',' not in student.forum_seen:
             student.comment_seen += str(comment.id)+','
@@ -311,4 +307,3 @@ def save_comment(request, id, roll, textroll,filt):
         commenter.save()
 
     return HttpResponseRedirect(reverse('forum:forum_post' ,args=(id,roll,textroll,filt,)))
-
