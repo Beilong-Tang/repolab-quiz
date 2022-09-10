@@ -141,13 +141,19 @@ cython_debug/
 /config
 
 # Migrations
-code/simple_judge/migrations/*
+/code/simple_judge/migrations/*
 
-code/input.txt
+/code/input.txt
 
 mysite_uwsgi.ini
 
 uwsgi_params
 
-code/db.sqlite3
+/code/db.sqlite3
+
+/code/static/
+
+/code/simple_judge.sock
+
+/code/utils/status.txt
 
