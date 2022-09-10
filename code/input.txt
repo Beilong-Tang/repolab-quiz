@@ -1,3 +1,0 @@
-from simple_judge.models import Student, Question 
-from utils.User import check_user_data as f
-f(1)
