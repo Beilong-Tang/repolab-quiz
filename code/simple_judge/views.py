@@ -29,7 +29,7 @@ def signin(request):
 
         if user is not None:
             request.session['a']=11
-            request.session.set_expiry(1209600)
+            request.session.set_expiry(86400)
             login(request, user)
             # return HttpResponseRedirect(reverse('quiz:userface', args=(Student.objects.get(student_name=request.user.username),)))
             return HttpResponseRedirect(reverse('quiz:userface'))

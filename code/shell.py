@@ -217,6 +217,10 @@ def ImportUser():
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 def change_password_yaml():
+    a = input('Warning: this function will reset all users\' passowrd to its raw status [y/n]')
+    if a!='y':
+        print('cancelled')
+        return
     args = ""
     args+= "from simple_judge.models import Student\n"
     args+= "from django.contrib.auth.models import User\n"
@@ -227,6 +231,30 @@ def change_password_yaml():
     ain=open('input.txt','r')
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
+def change_passowrd(netid,new_password):
+    a = input('Are u sure you want to change a password for a user? [y/n]')
+    if a!='y':
+        print('cancelled')
+        return
+    args = ""
+    args+= "from django.contrib.auth.models import User\n"
+    args+= "from utils.User import change_password as f\n"
+    args+= "f('%s','%s')" % (netid, new_password)
+    print(args)
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
+def make_status(week):
+    args = ""
+    args+= "from simple_judge.models import Student, Question \n"
+    args+= "from utils.User import check_user_data as f\n"
+    args+= "f("+str(week)+")"
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 def execute():
 
@@ -253,10 +281,20 @@ def execute():
     if sys.argv[1]=='import_user':
         ImportUser()
         return
-    if sys.argv[1]=='change_password':
+    if sys.argv[1]=='change_password_yaml':
         change_password_yaml()
         return
 
+    if sys.argv[1]=='change_password':
+        change_passowrd(sys.argv[2],sys.argv[3])
+        return 
+
+    if sys.argv[1]=='status':
+        if len(sys.argv)==2:
+            print("Please input the the correct week")
+        else:
+            make_status(sys.argv[2])
+        return
 
 
 

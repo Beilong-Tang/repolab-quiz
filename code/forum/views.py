@@ -15,10 +15,10 @@ import os
 from repolab.settings import BASE_DIR
 
 ## This is online img path
-#savedir = os.path.join(BASE_DIR,'static/forum/images/')
+savedir = os.path.join(BASE_DIR,'static/forum/images/')
 
 ## This is local img path
-savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
+#savedir = os.path.join(BASE_DIR,'forum/static/forum/images/')
 # Create your views here.
 
 def record_online_time(minute = 30):
@@ -73,7 +73,7 @@ def forum(request,filt):
 
 def forum_post(request, id, roll,textroll,filt):
     
-    roll = int(roll)
+    roll = int(float(roll))
     context={}
     current_post = Post.objects.get(id=id)
 

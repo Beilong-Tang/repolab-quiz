@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 from utils.settings import user_raw_path as user_raw_file
 from utils.settings import password_yaml as password_yaml
 import random as r
+from django.db.models import Q
 import yaml
+import os
+status_path = os.path.dirname(os.path.abspath(__file__))
 
 ## This will create a user and assign the user a foreign key to the student
 def create_user(net_id, student_name, level=0):
@@ -78,6 +81,16 @@ def change_passowrd_yaml():
             print (i[0],'finished')
         else:
             print(i[0] ,'is not in the list')
-            
+
+def check_user_data(week):
+    output = "week"+ str(week) + '\n'
+    for s in Student.objects.filter(level=0):
+        x = s.question_set.filter(ifpassed=True, question_id__gte=week*100,question_id__lte=(week+1)*100 ).count()
+        output+=str(x) + ' , ' + s.student_name +' , ' + s.student_netid + ' , \n'
+    with open (status_path+'/status.txt','w') as f:
+        f.write(output)
+    print('finished')
+
+
 if __name__ == '__main__':
-    importing_user()
+    print(status_path)
