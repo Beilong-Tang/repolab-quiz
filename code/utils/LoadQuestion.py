@@ -14,6 +14,7 @@ import os
 import sys
 import json
 import re
+
 from utils.settings import quiz_dir
 from utils.settings import quiz_necessary_elements
 from utils.settings import quiz_non_necessary_elements
@@ -27,7 +28,60 @@ week=[100,200,300,400,500,600,700]
 def MergePath(a,b):
     return a+'/'+b
 
+def DumpQuestion(command_week):
+    print("DumpQuestion " , command_week)
+    if not os.path.exists('qbank'): os.system('mkdir qbank')
+    for q in Questiondict.objects.all():
+        a = {}
+        a['question_type'] = q.question_type
+        a['question_title'] = q.question_title
+        a['question_content'] = q.question_content
+        a['question_level'] = q.question_level
+        a['question_id'] = q.question_id
+        a['question_week' ] = q.question_week
+        w = 'qbank/week' + str(a['question_week'])
+        fname = 'qbank/week%s/%s.json'% (a['question_week'], a['question_id'])
+        if not os.path.exists(w): os.system('mkdir '+w)
+        open(fname, 'w').write(json.dumps(a,indent=2))
+        pass
+    pass
 # LoadQuestion('week1')
+def LoadQuestion2(command_week):
+    # load everything from the week
+    id_all=[]
+    for q in Questiondict.objects.all():
+        id_all.append(q.question_id)
+        pass
+    w = 'qbank/'+ command_week
+    question_array=list(filter(lambda x: x.endswith('.json'), os.listdir(w)))
+    for i in question_array:
+        f = w + '/' + i
+#        print(f)
+        d = json.loads(open(f,'r').read())
+        
+        if  d['question_id'] not in id_all:
+            
+            print('init: ', d['question_id'])
+            q= Questiondict(question_type= d['question_type'],
+                            question_title=d['question_title'],
+                            question_content=d['question_content'],
+                            question_id=d['question_id'],
+                            question_level= int(d['question_level']),
+                            question_week=d['question_week'],
+                            )
+            q.save()
+        else:
+            print('update: ', d['question_id'])
+            q = Questiondict.objects.get(question_id= d['question_id'])
+            ## Just Update the quiz 
+            q.question_type= d['question_type']
+            q.question_title=d['question_title']
+            q.question_content=d['question_content']
+            #        q.question_id=d['question_id']
+            q.question_level=int(d['question_level'])
+            q.question_week=int(d['question_week'])
+            q.save()
+            
 def LoadQuestion(command_week):
 
     dir_now=os.getcwd()

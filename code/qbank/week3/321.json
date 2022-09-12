@@ -1,0 +1,26 @@
+{
+  "question_type": "blank",
+  "question_title": "Memory requirments for primitive types",
+  "question_content": {
+    "description": "### Problem21\n\n\nAnswer the typical memory requirements for primitive types\n\n- byte: _____(0)\\___ bit(s);\n- byte: _____(1)\\___ byte(s);\n- boolean: _____(2)\\___ byte(s);\n- char: _____(3)\\___ byte(s);\n- int: _____(4)\\___ byte(s);\n- float: _____(5)\\___ byte(s);\n- long: _____(6)\\___ byte(s);\n- double: _____(7)\\___ byte(s);",
+    "explains": "None",
+    "answers": [
+      "8",
+      "1",
+      "1",
+      "2",
+      "4",
+      "4",
+      "8",
+      "8"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.1",
+    "id": 321
+  },
+  "question_level": 1,
+  "question_id": 321,
+  "question_week": 3
+}

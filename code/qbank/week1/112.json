@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "AddOne",
+  "question_content": {
+    "description": "### Problem12\n\nLook at the following java code:\n\n```java\npublic class AddOne\n{\n    public static void main(String[]args)\n    {\n        System.out.println(args[0]+1);\n    }\n}\n```\n\nWhat is the output if we do:\njavac AddOne.java\njava AddOne 3 1\n\n**Choices:**\n\na. 4\n\nb. 2\n\nc. AddOne1\n\nd. 31\n\ne. compile-time error\n\n",
+    "author": "Beilong Tang",
+    "choices": [
+      "a. 4",
+      "b. 2",
+      "c. AddOne1",
+      "d. 31",
+      "e. compile-time error"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "True",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "1.2",
+    "id": 112,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 112,
+  "question_week": 1
+}

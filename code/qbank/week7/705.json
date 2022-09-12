@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Sum-of-products representation",
+  "question_content": {
+    "description": "### Problem05\nx, y, z are boolean variables. MAJ (x,y,z) is 1 if the majority of x, y, and z is 1.\n\n\nPlease select the following choices that are correct:\n\n**Choices:**\n\na. Every boolean function can be represented with an expression using AND, OR and NOT operators.\n\nb. MAJ (x, y, z) = x'y'z + x'yz' + xy'z' + xyz \n\nc. Any boolean function can be represented as a sum of products of its arguments and negation.\n\nd. MAJ (x, y, z) = x'yz + xy'z + xyz' + xyz \n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      "a. Every boolean function can be represented with an expression using AND, OR and NOT operators.",
+      "b. MAJ (x, y, z) = x'y'z + x'yz' + xy'z' + xyz ",
+      "c. Any boolean function can be represented as a sum of products of its arguments and negation.",
+      "d. MAJ (x, y, z) = x'yz + xy'z + xyz' + xyz"
+    ],
+    "answers": [
+      "True",
+      "False",
+      "True",
+      "True"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "7.1",
+    "id": 705,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 705,
+  "question_week": 7
+}

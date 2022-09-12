@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "midway computation",
+  "question_content": {
+    "description": "### Problem15\n\n\nExplain why we use `lo + (hi - lo) / 2` to compute the index midway\nbetween lo and hi instead of using `(lo + hi) / 2`.\n\nAnswer: The latter fails when `lo + hi` _____(0)\\___ an java `int`\ntype.\n\nHint: calculates corrects overflows evaluates underflows",
+    "explains": "None",
+    "answers": [
+      "overflows"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 415
+  },
+  "question_level": 3,
+  "question_id": 415,
+  "question_week": 4
+}

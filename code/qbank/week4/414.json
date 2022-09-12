@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Shadow",
+  "question_content": {
+    "description": "### Problem14\nA shadow in a Java data type implementation refers to which of the following?\n\n**Choices:**\n\nTwo constructors with the same name\n\nAn instance method with the same name as a static method\n\nA local variable with the same name as an instance variable\n\nAn instance variable with the same name as a constructor\n\nAn instance method with the same name as a constructor",
+    "author": "Yantao Mei",
+    "choices": [
+      "Two constructors with the same name",
+      "An instance method with the same name as a static method",
+      "A local variable with the same name as an instance variable",
+      "An instance variable with the same name as a constructor",
+      "An instance method with the same name as a constructor"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.3",
+    "id": 414
+  },
+  "question_level": 2,
+  "question_id": 414,
+  "question_week": 4
+}

@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Instance variable",
+  "question_content": {
+    "description": "### Problem17\nWhat does an instance variable refer to in an instance method?\n\n**Choices:**\n\nA. A value in the scope of the constructor associated with the method\n\nB. A value in the scope of the method\n\nC. A value associated with the object that was used to invoke the method\n\nD. A value in the scope of the method's client\n\nE. An object that was created by the constructor associated with the method",
+    "author": "Yantao Mei",
+    "choices": [
+      "A. A value in the scope of the constructor associated with the method",
+      "B. A value in the scope of the method",
+      "C. A value associated with the object that was used to invoke the method",
+      "D. A value in the scope of the method's client",
+      "E. An object that was created by the constructor associated with the method"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.2",
+    "id": 317
+  },
+  "question_level": 2,
+  "question_id": 317,
+  "question_week": 3
+}

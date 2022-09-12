@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Order of growth application",
+  "question_content": {
+    "description": "### Problem24\nThe Java function below returns a string of length n whose characters are all x. What is the order of growth of its running time? (Recall that concatenating two strings in Java takes time proportional to the length of the resulting string.)\n\n```java\npublic static String method3(int n)\n{\n   if (n == 0) return \"\";\n   if (n == 1) return \"x\";\n   return method3(n/2) + method3(n - n/2);\n}\n```\n\n**Choices:**\n\na.linear\n\nb.linearithmic\n\nc.quadratic\n\nd.cubic\n\ne.exponential",
+    "author": "Yantao Mei",
+    "choices": [
+      "a.linear",
+      "b.linearithmic",
+      "c.quadratic",
+      "d.cubic",
+      "e.exponential"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "4.1",
+    "id": 324
+  },
+  "question_level": 2,
+  "question_id": 324,
+  "question_week": 3
+}

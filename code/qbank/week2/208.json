@@ -1,0 +1,32 @@
+{
+  "question_type": "mult",
+  "question_title": "StdOut printf()",
+  "question_content": {
+    "description": "### Problem08\nLook at the line below:\n\n```java\nStdOut.printf(\"%-9.3f\",3.1415926);\n```\n\n**Choices:**\n\nWhich choices are right?\n\na. The output of the line will be \"    3.142\".\n\nb. The output of the line will be \"3.142    \".\n\nc. In the format string of StdOut.printf(), the conversion specification can be omitted.\n\nd. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.141\"\n\ne. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.142\".\n\n",
+    "choices": [
+      "Which choices are right?",
+      "a. The output of the line will be \"    3.142\".",
+      "b. The output of the line will be \"3.142    \".",
+      "c. In the format string of StdOut.printf(), the conversion specification can be omitted.",
+      "d. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.141\"",
+      "e. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.142\"."
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "False",
+      "True",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "1.5",
+    "id": 208,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 208,
+  "question_week": 2
+}

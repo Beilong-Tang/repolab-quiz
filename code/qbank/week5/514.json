@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "DFA3",
+  "question_content": {
+    "description": "### Problem14\n##DFA3\n\nConsider a two-state DFA with a binary alphabet having the following transitions: Stay in state 0 if the input is 0 and stay in state 1 if the input is 1, otherwise switch to the other state. If state 0 is the accept state, which of the following does this DFA accept? \n\n**Choices:**\n\nA. Bitstrings with an equal number of occurrences of 0 and 1  \n\nB. Bitstrings with at least one 0 \n\nC. Bitstrings with an equal number of occurrences of 01 and 10  \n\nD. Bitstrings that end in 0  \n\nE. Bitstrings with more 0s than 1s  \n### Quote\nCoursera lecture slides <https://introcs.cs.princeton.edu/java/lectures/keynote/CS.14.IntroTheory.pdf> \n\n",
+    "choices": [
+      "A. Bitstrings with an equal number of occurrences of 0 and 1  ",
+      "B. Bitstrings with at least one 0 ",
+      "C. Bitstrings with an equal number of occurrences of 01 and 10  ",
+      "D. Bitstrings that end in 0  ",
+      "E. Bitstrings with more 0s than 1s "
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "True",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 514
+  },
+  "question_level": 2,
+  "question_id": 514,
+  "question_week": 5
+}

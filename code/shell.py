@@ -159,11 +159,15 @@ def input_and_execute(args):
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 
-def LoadQuestion(command):
+def LoadQuestion(command, version =1):
 
     args=""
     args+="from simple_judge.models import Questiondict\n"
-    args+="from utils.LoadQuestion import LoadQuestion as f\n"
+    if version == 1 :
+        args+="from utils.LoadQuestion import LoadQuestion as f\n"
+    else:
+        args+="from utils.LoadQuestion import LoadQuestion2 as f\n"
+
     args+="f('"+command+"')"
 
     with open ('input.txt','w') as f:
@@ -177,6 +181,25 @@ def LoadQuestion(command):
     from utils import LoadQuestion.LoadQuestion as f
     f()
     '''
+    pass
+def DumpQuestion(command):
+    
+    args=""
+    args+="from simple_judge.models import Questiondict\n"
+    args+="from utils.LoadQuestion import DumpQuestion as f\n"
+    args+="f('"+command+"')"
+    
+    with open ('input.txt','w') as f:
+        f.write(args)
+        ain=open('input.txt','r')
+        p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+        
+        
+        '''
+        from simple_judge.models import Questiondict
+        from utils import LoadQuestion.LoadQuestion as f
+        f()
+        '''
 
 ## This will assign question for all students
 def AssignQuestion(student_netid=""):
@@ -259,8 +282,13 @@ def make_status(week):
 def execute():
 
     if sys.argv[1] in first_command:
-        LoadQuestion(sys.argv[1])
-        return
+        if '-dump'  in sys.argv:
+            DumpQuestion(sys.argv[1])
+        elif '-v2' in sys.argv:
+            LoadQuestion(sys.argv[1], 2)
+        else:
+            LoadQuestion(sys.argv[1])
+            return
 
     if sys.argv[1]== 'assign':
         if len(sys.argv)==2:

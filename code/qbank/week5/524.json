@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "5 1 6",
+  "question_content": {
+    "description": "### Problem24\n\n\n Write a regular expression to describe inputs over the alphabet {a, b, c} that are in sorted order: _____(0)\\___\n### Quote\nBooksite <https://introcs.cs.princeton.edu/java/51language/>",
+    "explains": "None",
+    "answers": [
+      "a*b*c*"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 524
+  },
+  "question_level": 2,
+  "question_id": 524,
+  "question_week": 5
+}

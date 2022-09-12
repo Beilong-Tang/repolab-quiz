@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Aliasing",
+  "question_content": {
+    "description": "### Problem11\n\n\nSee the following code fragment\n```java\nColor a = new Color(160, 82, 45);\nColor b = new Color(160, 82, 45);\nColor c = b;\n```\nNow write the result (True or False) for the following fragent\n- a == b result: _____(0)\\___\n- c == b result: _____(1)\\___",
+    "explains": "None",
+    "answers": [
+      "False",
+      "True"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "3.1",
+    "id": 311
+  },
+  "question_level": 2,
+  "question_id": 311,
+  "question_week": 3
+}

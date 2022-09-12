@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Modular programming",
+  "question_content": {
+    "description": "### Problem22\n\nTraditionally, programmers use the term _____(0)\\___ to refer to code that can be compiled and run independently; in Java, each _____(1)\\___ is a module (literally from sec-2.2).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "module",
+      "class"
+    ],
+    "quiz_type": "blank",
+    "section": "2.2",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 222,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 222,
+  "question_week": 2
+}

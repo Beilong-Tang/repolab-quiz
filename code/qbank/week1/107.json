@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Integer Circle",
+  "question_content": {
+    "description": "### Problem07\n\nWhat is the value of '(int)(2147483647+2)'?\n\nValue:_____(0)\\___.",
+    "answers": [
+      "-2147483647"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Beilong_Tang",
+    "section": "1.2",
+    "id": 107,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 107,
+  "question_week": 1
+}

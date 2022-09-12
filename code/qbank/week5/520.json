@@ -1,0 +1,24 @@
+{
+  "question_type": "blank",
+  "question_title": "Regular languages",
+  "question_content": {
+    "description": "### Problem20\n\n\nWe now consider an important class of formal languages known as the *regular languages* to solve the specification and recognition problems.\n\n*Basic operations* \n\n- The _____(0)\\___ R | S of two formal languages R and S is the set of strings that are in either R or S (or both). \n\n- The _____(1)\\___ RS of two formal languages R and S is the set of strings that is formed by appending a string from R to a string from S \n\n- The _____(2)\\___ R* of a formal language is the concatenation of zero or more strings taken from the language. \n\nWe use parentheses or rely on a defined operator precedence order to resolve such ambiguities. For REs, closure is performed before concatenation, and concatenation is performed before union.\n\n*Regular expressions*\n- A _____(3)\\___  _____(4)\\___ is a string of symbols that specifies a formal language. \n\nSpecifically, every regular expression is either an alphabet symbol, specifying the singleton set containing that symbol, or composed from the following operations (where R and S are REs):\n* Union: R | S, specifying the union of the sets R and S,\n* Concatenation: RS, specifying the concatenation of the sets R and S,\n* Closure: R*, specifying the closure of the set R,\n* Parentheses: (R), specifying the same set as R.\n\n*Regular languages*\n- A language is _____(5)\\___ if and only if it can be specified by an RE.\n\nThe significance of REs is that they can allow us to move away from the informal descriptions because they provide a way to specify languages that is both natural for an important class of applications and rigorous.  \nExamples of regular expressions, over various alphabets are shown in textbook p.726.",
+    "explains": "None",
+    "answers": [
+      "union",
+      "concatenation",
+      "closure",
+      "regular",
+      "expression",
+      "regular"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 520
+  },
+  "question_level": 1,
+  "question_id": 520,
+  "question_week": 5
+}

@@ -1,0 +1,26 @@
+{
+  "question_type": "mult",
+  "question_title": "Uninitialized variables",
+  "question_content": {
+    "description": "### Problem13\nWhat error will the following code lead to?\n\n```java\nString bad;\nboolean value = bad.startsWith(\"Hello\");\n```\n\n**Choices:**\n\na.logical errors\n\nb.Compile-time errors\n\nc.Run time errors\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "author": "Yantao Mei",
+    "choices": [
+      "a.logical errors",
+      "b.Compile-time errors",
+      "c.Run time errors"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.1",
+    "id": 313
+  },
+  "question_level": 2,
+  "question_id": 313,
+  "question_week": 3
+}

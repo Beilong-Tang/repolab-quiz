@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Stack Basic",
+  "question_content": {
+    "description": "### Problem01\n\n\nA pushdown stack (or just a stack) is a collection that is based on the _____(0)\\___ - in _____(1)\\___ - out policy. ",
+    "explains": "None",
+    "answers": [
+      "last",
+      "first"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao Mei",
+    "section": "4.3",
+    "id": 501
+  },
+  "question_level": 1,
+  "question_id": 501,
+  "question_week": 5
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY-8 Fibonacci",
+  "question_content": {
+    "description": "### Problem24\n\nImagine you have a TOY-8 machine whose word is 4 bytes (32 bits):\n\nThe initial memroy value is as followed:\n\n```\nMEM[6]=1\nMEM[7]=1\nMEM[8]=1\nMEM[9]=2\nMEM[A]=6\nMEM[B]=-6\nMEM[C]=1\n```\n\nLook at the following instruction in the memory:\n\n```\n1   A9  # R = M[9]\n    2B  # R = R-6\n    E5  # Jump to 5 if R is 0\n    2A  # R = R + 6\n2   2C  # R = R + 1\n    C9  # M[9] = R\n    A7  # R = M[7]\n    26  # R = R + M[6]\n3   C8  # M[8] = R\n    A7  # R = M[7]\n    C6  # M[6] = R\n    A8  # R = M[8]\n4   C7  # M[7] = R \n    A0  # R = 0\n    E1  # Jump tp 1 if R is 0\n    00  #--No instruction here--\n5   A8  # R = M[8]\n    00\n    00\n    00\n```\n\nThe PC starts at 1. After it goes through 5, what will be the value of R?\n\nAnswer: _____(0)\\___.",
+    "answers": [
+      "8"
+    ],
+    "quiz_type": "blank",
+    "section": "7.5",
+    "level": "3",
+    "author": "Beilong Tang",
+    "id": 724,
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 724,
+  "question_week": 7
+}

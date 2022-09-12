@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "3 1 13",
+  "question_content": {
+    "description": "### Problem03\n\nWhat does the following code fragment print?\n\n\n```java\nString string1 = \"hello\";\nString string2 = string1;\nstring1 = \"world\";\nStdOut.println(string1);\nStdOut.println(string2);\n```\n- Line 1: _____(0)\\___\n- Line 2: _____(1)\\___",
+    "explains": "None",
+    "answers": [
+      "world",
+      "hello"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "3.1",
+    "id": 403
+  },
+  "question_level": 2,
+  "question_id": 403,
+  "question_week": 4
+}

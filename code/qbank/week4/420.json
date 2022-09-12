@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Mergesort running time",
+  "question_content": {
+    "description": "### Problem20\n\n\n- In the best case the time complexity of MergeSort is O(_____(0)\\___) (1/n/logn/nlogn/n^2/n^3).\n- In the worse case the time complexity of MergeSort is O(_____(1)\\___) (1/n/logn/nlogn/n^2/n^3).\n- In the average case the time complexity of MergeSort is O(_____(2)\\___) (1/n/logn/nlogn/n^2/n^3).",
+    "explains": "None",
+    "answers": [
+      "nLogn",
+      "nLogn",
+      "nLogn"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 420
+  },
+  "question_level": 1,
+  "question_id": 420,
+  "question_week": 4
+}

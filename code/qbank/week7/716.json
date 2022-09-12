@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Stable",
+  "question_content": {
+    "description": "### Problem16\n\n![image](/static/quiz/images/7.4.1.fig.png)\n\nThe circuit _____(0)\\___ (is/isn't) stable (the input will not change because of the output).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "is"
+    ],
+    "quiz_type": "blank",
+    "section": "7.4",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 716,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 716,
+  "question_week": 7
+}

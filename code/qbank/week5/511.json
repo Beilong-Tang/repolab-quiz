@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "2",
+  "question_content": {
+    "description": "### Problem11\n## RE recognition\n\nWhich of the following strings match the RE a*b(ab|ba)* ? \n\nPlease select the choices that are correct. \n\n**Choices:**\n\nA. abb\n\nB. aaba\n\nC. abba\n\nD. bbaab\n\nE. cbb",
+    "choices": [
+      "A. abb",
+      "B. aaba",
+      "C. abba",
+      "D. bbaab",
+      "E. cbb"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "True",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 511
+  },
+  "question_level": 1,
+  "question_id": 511,
+  "question_week": 5
+}

@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Binary search running time",
+  "question_content": {
+    "description": "### Problem18\n\n\nThe time complexity of the binary search algorithm is O(_____(0)\\___)(1/n/logn/nlogn/n^2). The best-case time complexity would be O(_____(1)\\___)(1/n/logn/nlogn/n^2) when the central index would directly match the desired value. The worst-case scenario could be the values at either extremity of the list or values not in the list. ",
+    "explains": "None",
+    "answers": [
+      "logn",
+      "1"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 418
+  },
+  "question_level": 1,
+  "question_id": 418,
+  "question_week": 4
+}

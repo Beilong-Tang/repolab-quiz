@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Binary search",
+  "question_content": {
+    "description": "### Problem22\nSuppose that an array of strings contains [\"blueberry\", \"chocolate\", \"coconut\", \"coffee\", \"mint\", \"strawberry\", \"vanilla\"]. How many compares are used for a successful search for \"mint\" with binary search?\n\n**Choices:**\n\n2\n\n3\n\n4\n\n5\n\n6",
+    "author": "Yantao Mei",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answers": [
+      "True",
+      "False",
+      "False",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "4.2",
+    "id": 422
+  },
+  "question_level": 2,
+  "question_id": 422,
+  "question_week": 4
+}

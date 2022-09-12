@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "doubling hypothesis",
+  "question_content": {
+    "description": "### Problem07\nWhich statements that characterize the doubling hypothesis? Mark all that apply.\n\n**Choices:**\n\nA way to avoid mathematical analysis of program performance\n\nA way to avoid empirical tests of program performance\n\nA way to determine the order of growth of the running time of a program\n\nA way to better understand the performance of a program\n\nA way to improve the performance of a program",
+    "author": "Yantao Mei",
+    "choices": [
+      "A way to avoid mathematical analysis of program performance",
+      "A way to avoid empirical tests of program performance",
+      "A way to determine the order of growth of the running time of a program",
+      "A way to better understand the performance of a program",
+      "A way to improve the performance of a program"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "True",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "4.1",
+    "id": 407
+  },
+  "question_level": 1,
+  "question_id": 407,
+  "question_week": 4
+}

@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Decoding instruction",
+  "question_content": {
+    "description": "### Problem20\nWhich of the following decodes instructions?\n\n**Choices:**\n\na. ALU\n\nb. Clock\n\nc. Control\n\nd. Memory\n\ne. PC\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      "a. ALU",
+      "b. Clock",
+      "c. Control",
+      "d. Memory",
+      "e. PC"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "False",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "7.5",
+    "id": 720,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 720,
+  "question_week": 7
+}

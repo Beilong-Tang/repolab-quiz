@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Flip Flops",
+  "question_content": {
+    "description": "### Problem14\n\nBy adding two control inputs to our cross-coupled circuit, we can create a _____(0)\\___, our basic implementation of one bit of memory (literally from sec-7.4).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "flip-flop"
+    ],
+    "quiz_type": "blank",
+    "section": "7.4",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 714,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 714,
+  "question_week": 7
+}

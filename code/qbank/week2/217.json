@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "HowManyTimes",
+  "question_content": {
+    "description": "### Problem17\n\nLook at the following code.\n\n```java\npublic class HowManyTimes\n{\n    public static void cube(int i)\n    {\n        i=i*i*i;\n    }\n    \n    public static void main(String[] args) \n    {   \n        for ( int i =0;i<10;i++)\n        {\n            cube(i);\n        }\n    }\n}\n```\n\nThe for loop will execute for _____(0)\\___ times.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "10"
+    ],
+    "quiz_type": "blank",
+    "section": "2.1",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 217,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 217,
+  "question_week": 2
+}

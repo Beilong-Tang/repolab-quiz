@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "FACTOR",
+  "question_content": {
+    "description": "### Problem10\n## FACTOR \n\n Assume that P = NP. Mark all correct options for FACTOR. \n\n\n### Quote \n Booksite <https://introcs.cs.princeton.edu/java/55intractability/>  \n\n",
+    "choices": [
+      "A. is computable  ",
+      "B. is in P  ",
+      "C. is in NP  ",
+      "D. is intractable  ",
+      "E. is NP-complete "
+    ],
+    "answers": [
+      "True",
+      "True",
+      "True",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "author": "Yike Guo",
+    "level": "2",
+    "section": "5.5",
+    "id": 610
+  },
+  "question_level": 2,
+  "question_id": 610,
+  "question_week": 6
+}

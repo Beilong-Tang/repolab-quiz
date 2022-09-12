@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "4 4 17",
+  "question_content": {
+    "description": "### Problem08\n\n\nTrue or False: \nGiven a BST, let x be a leaf node, and let p be its parent. Then either \n(1) the key of p is the smallest key in the BST larger than the key of x or \n(2) the key of p is the largest key in the BST smaller than the key of x. \n\nAnswer: _____(0)\\___",
+    "explains": "None",
+    "answers": [
+      "False"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "section": "4.4",
+    "author": "Yantao Mei",
+    "id": 508
+  },
+  "question_level": 2,
+  "question_id": 508,
+  "question_week": 5
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Memory bit",
+  "question_content": {
+    "description": "### Problem15\n\nImagine our word size is 4 bytes (32 bits), and we are using 10 bits in our instruction as address bits. How many bits at least will the memory have in total?\n\nAnswer: _____(0)\\___ bits (exact number).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "32768"
+    ],
+    "quiz_type": "blank",
+    "section": "7.5",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 715,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 715,
+  "question_week": 7
+}

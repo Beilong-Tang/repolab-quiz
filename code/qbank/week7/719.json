@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Fundamental 2 ",
+  "question_content": {
+    "description": "### Problem19\nWhich of the following are not combinational circuits?\n\n**Choices:**\n\n. Clock\n\nb. ALU\n\nc. Control\n\nd. Memory\n\ne. Incrementer\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      ". Clock",
+      "b. ALU",
+      "c. Control",
+      "d. Memory",
+      "e. Incrementer"
+    ],
+    "answers": [
+      "True",
+      "False",
+      "False",
+      "True",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "1",
+    "section": "7.5",
+    "id": 719,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 719,
+  "question_week": 7
+}

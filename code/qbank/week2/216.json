@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Pass by Value and Pass by Reference",
+  "question_content": {
+    "description": "### Problem16\nLook at the code below:\n\n```java\npublic class Change\n{\n    public static void change(int[] a)\n    {\n        a[0]=1;\n    }\n\n    public static void change(int n)\n    {\n        n=1;\n    }\n\n    public static void main(String[]args)\n    {\n        int []a = {2,2};\n        int n =2;\n        change(a);\n        change(n);\n        System.out.println(a[0]);\n    }\n}\n```\n\nConsider the code above, which of the following choices are correct?\n\n**Choices:**\n\na. The output of the program is 2.\n\nb. The output of the program is 1.\n\nc. After running the program, the value of 'n' is 1.\n\nd. A method that takes an array as argument can assign different values to the elements in that array.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      "a. The output of the program is 2.",
+      "b. The output of the program is 1.",
+      "c. After running the program, the value of 'n' is 1.",
+      "d. A method that takes an array as argument can assign different values to the elements in that array."
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "True"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "2.1",
+    "id": 216,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 216,
+  "question_week": 2
+}

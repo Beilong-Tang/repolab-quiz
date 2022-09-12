@@ -1,0 +1,23 @@
+{
+  "question_type": "blank",
+  "question_title": "Binary Representation",
+  "question_content": {
+    "description": "### Problem11\n\nPlease finish the form below to convert between binary number to decimal number.\n\n|   Binary    |Decimal |\n|  :---:  | :---: |\n|    100        | _____(0)\\___ |\n|    1001        | _____(1)\\___|\n|    01101       | _____(2)\\___|\n|_____(3)\\___      |   37|\n|_____(4)\\___      |   156|\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "4",
+      "9",
+      "13",
+      "100101",
+      "10011100"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 111,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 111,
+  "question_week": 1
+}

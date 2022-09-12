@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Casting",
+  "question_content": {
+    "description": "### Problem09\n\nIn Java, you can change an expression from one primitive type to another by using a device called _____(0)\\___.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "cast"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 109,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 109,
+  "question_week": 1
+}

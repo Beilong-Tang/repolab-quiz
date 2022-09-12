@@ -1,0 +1,28 @@
+{
+  "question_type": "blank",
+  "question_title": "6 2 5",
+  "question_content": {
+    "description": "### Problem24\n\n\nFill in the blanks in the following TOY program that reads two inputs from Stdin, multiplies them using repeated addition, and prints the result to StdOut.\n\n10: 8 A F F  \nreads from StdIn to R[A]  \n11: 8 B F F  \nreads from StdIn to R[B]  \n\n12: 7 C O O  \nR[C] <- 0000  \n\n13: 7 1 0 1   \nR[1] <- 0001  \n\n14: C A _____(0)\\___ _____(1)\\___  \nHINT: if R[A] == 0, we have our answer!  \n\n15: 1 C _____(2)\\___ _____(3)\\___  \nHINT: add something to R[C]  \n\n16: 2 A _____(4)\\___ _____(5)\\___  \nHINT: subtract something from R[A]\n\n17: _____(6)\\___ _____(7)\\___ _____(8)\\___ _____(9)\\___   \nHINT: we're not done yet!\n\n18: 9 C F F  \nprint R[C] to StdOut\n\n19: 0 0 0 0   \nhalt",
+    "explains": "None",
+    "answers": [
+      "1",
+      "8",
+      "B",
+      "C",
+      "A",
+      "1",
+      "C",
+      "0",
+      "1",
+      "4"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
+    "author": "Yike Guo",
+    "section": "6.2",
+    "id": 624
+  },
+  "question_level": 3,
+  "question_id": 624,
+  "question_week": 6
+}

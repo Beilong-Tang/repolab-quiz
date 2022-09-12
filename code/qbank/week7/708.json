@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Output",
+  "question_content": {
+    "description": "### Problem08\n\n![image](/static/quiz/images/7.2.1.fig.png)\n\nAnswer (from top to down): _____(0)\\___ _____(1)\\___.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "0",
+      "0"
+    ],
+    "quiz_type": "blank",
+    "section": "7.2",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 708
+  },
+  "question_level": 2,
+  "question_id": 708,
+  "question_week": 7
+}

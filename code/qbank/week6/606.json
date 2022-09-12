@@ -1,0 +1,32 @@
+{
+  "question_type": "mult",
+  "question_title": "Universality",
+  "question_content": {
+    "description": "### Problem06\n\nWhich of the following models of computation are universal? Mark all that apply.  \n\n**Choices:**\n\nA. Turing machines  \n\nB. Java  \n\nC. regular expressions\n\nD. Conway\u2019s Game of Life  \n\nE. NFAs  \n\nF. your mobile phone \nCoursera lecture quiz\n\n",
+    "choices": [
+      "A. Turing machines  ",
+      "B. Java  ",
+      "C. regular expressions",
+      "D. Conway\u2019s Game of Life  ",
+      "E. NFAs  ",
+      "F. your mobile phone "
+    ],
+    "answers": [
+      "True",
+      "True",
+      "False",
+      "True",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "author": "Yike Guo",
+    "level": "2",
+    "section": "5.3",
+    "id": 606
+  },
+  "question_level": 2,
+  "question_id": 606,
+  "question_week": 6
+}

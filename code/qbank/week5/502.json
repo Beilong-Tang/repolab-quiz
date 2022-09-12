@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "FIFO queues",
+  "question_content": {
+    "description": "### Problem02\n\n\nA FIFO queue (or just a queue) is a collection that is based on the _____(0)\\___ - in _____(1)\\___ - out policy. ",
+    "explains": "None",
+    "answers": [
+      "first",
+      "first"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao Mei",
+    "section": "4.3",
+    "id": 502
+  },
+  "question_level": 1,
+  "question_id": 502,
+  "question_week": 5
+}

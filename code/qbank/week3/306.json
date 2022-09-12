@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Fibonacci Dynamic Programming",
+  "question_content": {
+    "description": "### Problem06\nLook at the following Java code:\n\n```java\npublic class Fibonacci\n{\n    private static int[] f = new int[51];\n\n    public static int fibonacci(int n )\n    {\n        if (n==0) return 0;\n        if (n==1) return 1;\n        if (f[n]>0) return f[n];\n        f[n]=fibonacci(n-1)+fibonacci(n-2);\n        return f[n];\n    }\n    public static void main(String[]args)\n    {\n        System.out.println(fibonacci(50));\n    }   \n}\n```\n\nPlease select the choices that are correct.\n\n**Choices:**\n\na. 'f' is a global variable, but it cannot be used in the main() method because it is defined in 'private'.\n\nb. The output of the program will be 12586269025 (which is exactly the 50th number in fibonacci array).\n\nc. The static method is a bottum-up dynamic programming.\n\nd. This static method is a top-down dynamic programming.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.\n\n",
+    "author": "Beilong Tang",
+    "choices": [
+      "a. 'f' is a global variable, but it cannot be used in the main() method because it is defined in 'private'.",
+      "b. The output of the program will be 12586269025 (which is exactly the 50th number in fibonacci array).",
+      "c. The static method is a bottum-up dynamic programming.",
+      "d. This static method is a top-down dynamic programming."
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "2.3",
+    "id": 306
+  },
+  "question_level": 2,
+  "question_id": 306,
+  "question_week": 3
+}

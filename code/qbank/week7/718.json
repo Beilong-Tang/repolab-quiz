@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Fundamental 1",
+  "question_content": {
+    "description": "### Problem18\nWhich of the followig modules are found in a memory ?\n\n**Choices:**\n\na. flip-flop\n\nb. decoder\n\nc. multiplexer\n\nd. odd parity\n\ne. majority\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      "a. flip-flop",
+      "b. decoder",
+      "c. multiplexer",
+      "d. odd parity",
+      "e. majority"
+    ],
+    "answers": [
+      "True",
+      "True",
+      "True",
+      "False",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "1",
+    "section": "7.5",
+    "id": 718,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 718,
+  "question_week": 7
+}

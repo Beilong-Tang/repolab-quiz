@@ -1,0 +1,28 @@
+{
+  "question_type": "code",
+  "question_title": "LibrarayLook at the following program",
+  "question_content": {
+    "description": "### Problem24\n\nLook at the following program:\n\n```java\n// Lib.java\npublic class Lib{\n\n    // Sum of the array\n    public static int Sum(int[]a){\n        int sum =0;\n        for (int i =0;i<a.length;i++){\n            __0__;\n        }\n        return sum;\n    }\n\n    // Maximum element of the array\n    public static int FindMax(int[]a){\n        int max = Integer.MIN_VALUE;\n        for (int i =0; i < a.length;i++ ){\n            if (__1__){\n                max=a[i];\n            }\n        }\n        return max;\n    }\n}\n//-------------------------------------------\n\n// Calculation.java\n// Lib.java is already imported\npublic class Calculation{\n\n    public static boolean CompareIfLarger(int[]a , int[]b){\n        if (Lib.Sum(a) > __2__){return true;}\n        else {return false;}\n    }\n\n    public static boolean CompareMax (int[]a, int[]b){\n        if (__3__) {return true;}\n        else {return false;}\n    }\n}\n//-------------------------------------------\n```\n\nLib.java and Calculation.java is in the same folder, and they are already compiled. Their source codes are shown above. The Lib.java is considered to be a Java library which contains two methods which are 'sum()' and 'findmax()'. The 'sum()' method returns the sum of an int array. The 'findmax()' method returns the maximum value of an int array. Calculation.java is our main program. This program should import the methods in Lib.java, and use them to complete 'CompareIfLarger()' method and 'CompareMax' method. 'CompareIfLarger()' takes int[]a and int[]b as its arguments, and it returns true if the sum of int[]a is larger than sum of int[]b, otherwise, it will return false. 'CompareMax()' takse int[]a and int[]b as its arguments, and it returns true if the maximum element of int[]a is larger than the maximum element of int[]b, otherwise, it will return false. Please complete Lib.java and Calculation.java to satisfy these features.\n",
+    "code": "// Lib.java\npublic class Lib{\n\n    // Sum of the array\n    public static int Sum(int[]a){\n        int sum =0;\n        for (int i =0;i<a.length;i++){\n            __0__;\n        }\n        return sum;\n    }\n\n    // Maximum element of the array\n    public static int FindMax(int[]a){\n        int max = Integer.MIN_VALUE;\n        for (int i =0; i < a.length;i++ ){\n            if (__1__){\n                max=a[i];\n            }\n        }\n        return max;\n    }\n}\n//-------------------------------------------\n\n// Calculation.java\n// Lib.java is already imported\npublic class Calculation{\n\n    public static boolean CompareIfLarger(int[]a , int[]b){\n        if (Lib.Sum(a) > __2__){return true;}\n        else {return false;}\n    }\n\n    public static boolean CompareMax (int[]a, int[]b){\n        if (__3__) {return true;}\n        else {return false;}\n    }\n}\n//-------------------------------------------",
+    "check": "void check(){\n    int[]a1={1,2,3,4,5,6,6,6,6,6}; int[]b1={2,2,3,4,5,7};\n    boolean t1 = Calculation.CompareIfLarger(a1,b1) && !Calculation.CompareMax(a1,b1);\n\n    int[]a2={1,2,3,4,5}; int[]b2={1,2,3,4,5};\n    boolean t2 = !Calculation.CompareIfLarger(a2,b2) && !Calculation.CompareMax(a2,b2);\n\n    int[]a3={3,3,3}; int[]b3={2,4,3};\n    boolean t3 = !Calculation.CompareIfLarger(a3,b3) && !Calculation.CompareMax(a3,b3);\n\n    boolean t = t1 && t2 && t3;\n    System.out.println(t);\n}",
+    "instruction": "/open quiz-gen/Lib.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "Lib",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": null,
+    "answers": [
+      "sum+=a[i]",
+      "a[i]>max",
+      "Lib.Sum(b)",
+      "Lib.FindMax(a)>Lib.FindMax(b)"
+    ],
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "2.2",
+    "id": 224,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 224,
+  "question_week": 2
+}

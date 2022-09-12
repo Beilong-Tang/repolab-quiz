@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Array Basics",
+  "question_content": {
+    "description": "### Problem03\nPlease select the following choices that ara right.\n\n**Choices:**\n\na. In Java, we can change the length of an array after creation.\n\nb. In Java, we can store elements with different data types in an array.\n\nc. In Java, if a boolean array is created without initialization, then the value of each element in the boolean array will be false.\n\nd. In Java, if a boolean array is created without initialization, then the value of each element in the boolean array will be true.\n\ne. In Java, if an int array is created without initialization, then the value of each element in the int array will be 0.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "author": "Beilong Tang",
+    "choices": [
+      "a. In Java, we can change the length of an array after creation.",
+      "b. In Java, we can store elements with different data types in an array.",
+      "c. In Java, if a boolean array is created without initialization, then the value of each element in the boolean array will be false.",
+      "d. In Java, if a boolean array is created without initialization, then the value of each element in the boolean array will be true.",
+      "e. In Java, if an int array is created without initialization, then the value of each element in the int array will be 0."
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "False",
+      "True"
+    ],
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "1.4",
+    "id": 203,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 203,
+  "question_week": 2
+}

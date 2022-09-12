@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "DFA2",
+  "question_content": {
+    "description": "### Problem13\n##DFA2\n\nWhich of the following strings does this DFA accept?  \n\n![image](/static/quiz/images/Users/carol/Desktop/CHAPTER05/../../../../5.1.6fig.jpg)  \n\n**Choices:**\n\nA. Bitstrings with at least one 1 \n\nB. Bitstrings with equal number of occurrences of 01 and 10\n\nC. Bitstrings with an equal number of occurrences of 0 and 1  \n\nD. Bitstrings that end in 1   \n### Quote\nCoursera lecture slides <https://introcs.cs.princeton.edu/java/lectures/keynote/CS.14.IntroTheory.pdf> \n\n",
+    "choices": [
+      "A. Bitstrings with at least one 1 ",
+      "B. Bitstrings with equal number of occurrences of 01 and 10",
+      "C. Bitstrings with an equal number of occurrences of 0 and 1  ",
+      "D. Bitstrings that end in 1  "
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 513
+  },
+  "question_level": 2,
+  "question_id": 513,
+  "question_week": 5
+}

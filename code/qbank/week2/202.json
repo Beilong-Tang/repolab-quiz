@@ -1,0 +1,24 @@
+{
+  "question_type": "blank",
+  "question_title": "Making an array",
+  "question_content": {
+    "description": "### Problem02\n\nMaking an array in a Java program involves three distinct steps:\n- _____(0)\\___ the array.\n- _____(1)\\___ the array.\n- _____(2)\\___ the array.\n\nTo declare an array, you need to specify a _____(3)\\___ and the _____(4)\\___ of data it will contain. To create it, you need to specify its _____(5)\\___ (the number of elements). (literally from sec1.4)\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "Declare",
+      "Create",
+      "Initialize",
+      "name",
+      "type",
+      "length"
+    ],
+    "quiz_type": "blank",
+    "section": "1.4",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 202,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 202,
+  "question_week": 2
+}

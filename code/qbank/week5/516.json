@@ -1,0 +1,26 @@
+{
+  "question_type": "mult",
+  "question_title": "Summary2",
+  "question_content": {
+    "description": "### Problem16\n##Summary2\n\nWhich is more powerful, DFA or NFA ?\n\n**Choices:**\n\nA. DFA\n\nB. NFA\n\nC. Both",
+    "choices": [
+      "A. DFA",
+      "B. NFA",
+      "C. Both"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 516
+  },
+  "question_level": 1,
+  "question_id": 516,
+  "question_week": 5
+}

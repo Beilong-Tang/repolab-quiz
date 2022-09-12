@@ -1,0 +1,27 @@
+{
+  "question_type": "code",
+  "question_title": "SameArray",
+  "question_content": {
+    "description": "### Problem18\n\n```java\npublic class isSame\n{\n    public static boolean isSame(int[]a,int[]b)\n    {\n        int a_length=a.length;\n        int b_length=b.length;\n        if (__0__)\n        {\n            return false;\n        }\n        for ( int i = 0;i<a_length;i++){\n            if (__1__){return false;}\n        }\n        return __2__;\n    }\n}\n```\n\nFinish the static method 'isSame' so that it takes two int[]arrays and returns true if they are the same(the length and the elements are exactly the same), otherwise, it returns false.\n\nExample1:\nint[]a={1,2,3};\nint[]b={1,2,3};\nisSame(a,b)=true;\n\nExample2:\nint[]a={1,2,3};\nint[]b={1,2};\nisSame(a,b)=false;\n\nExample3:\nint[]a={1,2,3};\nint[]b={1,3,3};\nisSame(a,b)=false;\n",
+    "code": "public class isSame\n{\n    public static boolean isSame(int[]a,int[]b)\n    {\n        int a_length=a.length;\n        int b_length=b.length;\n        if (__0__)\n        {\n            return false;\n        }\n        for ( int i = 0;i<a_length;i++){\n            if (__1__){return false;}\n        }\n        return __2__;\n    }\n}",
+    "check": "void check(){\n    int[]a1={1,2,3};\n    int[]b1={1,2,3};\n    boolean t1=isSame.isSame(a1,b1);\n    int[]a2={1,2};\n    int[]b2={1,2,3};\n    boolean t2=isSame.isSame(a2,b2);\n    int[]a3={1,2,3};\n    int[]b3={1,3,3};\n    boolean t3=isSame.isSame(a3,b3);\n    int[]a4={1,2,3,4,4,5};\n    int[]b4={1,2,3,2,4,5};\n    boolean t4=isSame.isSame(a4,b4);\n    System.out.println(t1==true && t2==false && t3==false && t4==false);\n}",
+    "instruction": "/open quiz-gen/isSame.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "isSame",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": null,
+    "answers": [
+      "a_length!=b_length",
+      "a[i]!=b[i]",
+      "true"
+    ],
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "2.1",
+    "id": 218,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 218,
+  "question_week": 2
+}

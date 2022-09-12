@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Stack",
+  "question_content": {
+    "description": "### Problem04\n##Stack\n\nSuppose that you start with an empty stack and interpret a letter to mean push and \u2013 to mean pop. Mark the sequences below that leave <mark style=\"background-color: #FFFF00\">e</mark> at the bottom of the stack.\n\n**Choices:**\n\nA. a \u2013 b c \u2013 \u2013 d \u2013 e f g \u2013 h\n\nB. a \u2013 b c \u2013 d \u2013 e \u2013 f g \u2013 h\n\nC. a \u2013 b \u2013 c \u2013 d \u2013 e f g \u2013 h\n\nD. a b c d \u2013 \u2013 \u2013 \u2013 e f g \u2013 h\n\nE. a \u2013 b c \u2013 \u2013 d \u2013 e f g h \u2013",
+    "choices": [
+      "A. a \u2013 b c \u2013 \u2013 d \u2013 e f g \u2013 h",
+      "B. a \u2013 b c \u2013 d \u2013 e \u2013 f g \u2013 h",
+      "C. a \u2013 b \u2013 c \u2013 d \u2013 e f g \u2013 h",
+      "D. a b c d \u2013 \u2013 \u2013 \u2013 e f g \u2013 h",
+      "E. a \u2013 b c \u2013 \u2013 d \u2013 e f g h \u2013"
+    ],
+    "answers": [
+      "True",
+      "False",
+      "True",
+      "True",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "author": "Yantao Mei",
+    "level": "1",
+    "section": "4.3",
+    "id": 504
+  },
+  "question_level": 1,
+  "question_id": 504,
+  "question_week": 5
+}

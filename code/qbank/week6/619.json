@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY_Register",
+  "question_content": {
+    "description": "### Problem19\n\n\nA register is a machine component that holds a sequence of _____(0)\\___, much like a word in main memory. Registers serve the function of _____(1)\\___ (do not forgot the verb tense) intermediate results during computation.",
+    "explains": "None",
+    "answers": [
+      "bits",
+      "holding"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao Mei",
+    "section": "6.2",
+    "id": 619
+  },
+  "question_level": 1,
+  "question_id": 619,
+  "question_week": 6
+}

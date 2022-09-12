@@ -1,0 +1,32 @@
+{
+  "question_type": "mult",
+  "question_title": "Summary1",
+  "question_content": {
+    "description": "### Problem15\n##Summary1\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\n \n\nA. Every NFA can be simulated by some DFA  \n\nB. All formal languages are regular  \n\nC. NFAs and REs are equivalent \n\nD. Every formal language can be recognized by some NFA  \n\nE. Every DFA can be simulated by some NFA   \n### Quote\nCoursera lecture quiz\n\n",
+    "choices": [
+      " ",
+      "A. Every NFA can be simulated by some DFA  ",
+      "B. All formal languages are regular  ",
+      "C. NFAs and REs are equivalent ",
+      "D. Every formal language can be recognized by some NFA  ",
+      "E. Every DFA can be simulated by some NFA  "
+    ],
+    "answers": [
+      "True",
+      "False",
+      "True",
+      "False",
+      "True",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 515
+  },
+  "question_level": 1,
+  "question_id": 515,
+  "question_week": 5
+}

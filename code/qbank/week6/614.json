@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "6 1 6",
+  "question_content": {
+    "description": "### Problem14\n\nGiven two positive integers a and b, what result does the following Java code fragment leave in c : a _____(0)\\___ b\n\n```java\nc = 0;\nwhile (b > 0) {\n   if (b & 1 == 1) c = c + a;\n   b = b >> 1;\n   a = a << 1;\n}\n```",
+    "explains": "None",
+    "answers": [
+      "*"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yike Guo",
+    "section": "6.1",
+    "id": 614
+  },
+  "question_level": 2,
+  "question_id": 614,
+  "question_week": 6
+}

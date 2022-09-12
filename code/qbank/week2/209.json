@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "StdIn readInt",
+  "question_content": {
+    "description": "### Problem09\n\nPlease take a look at the following java program:\n\n```java\npublic class Read\n{\n    public static void main(String[] args) \n    {\n        int a = StdIn.readInt(); \n        int b = StdIn.readInt(); \n        int c = -1;\n        int d = 0;\n\n        if (StdIn.readInt()>4){\n            c = StdIn.readInt(); \n        }\n        if (StdIn.isEmpty()){\n            d =StdIn.readInt();\n        }\n\n        int e = a + b ; \n\n    }\n}\n```\n\nSuppose the content of the file ```data.txt``` is ' 3 2 5 3 1 2 2 2 '. Read.java is already compiled, and StdIn is imported.\n\nWe do:\n\n```\njava Read < data.txt\n```\n\nThe value of e is _____(0)\\___, and the value of c is _____(1)\\___, and the value of d is _____(2)\\___.",
+    "answers": [
+      "5",
+      "3",
+      "0"
+    ],
+    "quiz_type": "blank",
+    "section": "1.5",
+    "level": "2",
+    "author": "Beilong_Tang",
+    "id": 209,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 209,
+  "question_week": 2
+}

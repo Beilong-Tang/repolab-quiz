@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Basic elements of a data type 2",
+  "question_content": {
+    "description": "### Problem14\n\n\n- A _____(0)\\___ is a special method that creates an object and provides a reference to that object.\n- Each class can define its own _____(1)\\___() method, which we typically reserve for testing the data type.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "explains": "None",
+    "answers": [
+      "constructor",
+      "main"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "3.2",
+    "id": 314
+  },
+  "question_level": 1,
+  "question_id": 314,
+  "question_week": 3
+}

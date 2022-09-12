@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Reference",
+  "question_content": {
+    "description": "### Problem15\nWhat does the following code fragment print?\n\n```java\nString string1 = \"hello\";\nString string2 = string1;\nstring1 = \"world\";\nStdOut.println(string1 + string2);\n```\n\n**Choices:**\n\na. hellohello\n\nb. helloworld\n\nc. worldworld\n\nd. worldhello",
+    "author": "Yantao Mei",
+    "choices": [
+      "a. hellohello",
+      "b. helloworld",
+      "c. worldworld",
+      "d. worldhello"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.2",
+    "id": 315
+  },
+  "question_level": 2,
+  "question_id": 315,
+  "question_week": 3
+}

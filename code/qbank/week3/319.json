@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Order-of-growth classifications 3",
+  "question_content": {
+    "description": "### Problem19\n\n\n- We use the term _____(0)\\___ to describe programs whose running time for a problem of size n has order of growth n log n.\n- A typical program whose running time has order of growth _____(1)\\___ (n^2) has double nested for _____(2)\\___, used for some calculation involving all pairs of n elements.",
+    "explains": "None",
+    "answers": [
+      "linearithmic",
+      "quadratic",
+      "loops"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.1",
+    "id": 319
+  },
+  "question_level": 1,
+  "question_id": 319,
+  "question_week": 3
+}

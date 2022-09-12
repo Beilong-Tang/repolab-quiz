@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "boolean algebra proofs",
+  "question_content": {
+    "description": "### Problem06\nx, y, and z are boolean variables.\n\nPlease select the following choices that are correct (Hint: can use truth table to prove it).\n\n**Choices:**\n\na. y + x'y = x + y\n\nb. x'+ y'+ xyz' = x' + y' + z'\n\nc. xy + x'z + yz = xy + x'z\n\nd. x + yz = (x + y)(y + z)",
+    "choices": [
+      "a. y + x'y = x + y",
+      "b. x'+ y'+ xyz' = x' + y' + z'",
+      "c. xy + x'z + yz = xy + x'z",
+      "d. x + yz = (x + y)(y + z)"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "True",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "3",
+    "section": "7.1",
+    "id": 706,
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 706,
+  "question_week": 7
+}

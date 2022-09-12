@@ -1,0 +1,23 @@
+{
+  "question_type": "blank",
+  "question_title": "Implement_of_Loop",
+  "question_content": {
+    "description": "### Problem23\n\n\nIn Java, we implement a loop like the following code fragment\n\n``` java\ndo{\n    <Statements>\n} while (<Boolean vriable or logical statement> == true) \n```\n\nIn Toy, we implement the loop as\n\nyy: Experssions (Leaving 0 in R[1] if _____(0)\\___)\n\n--: C 1 _____(1)\\___ _____(2)\\___\n\n--: Statements\n\n--: C 0 _____(3)\\___ _____(4)\\___\n\nxx: Statements after the loop",
+    "explains": "None",
+    "answers": [
+      "false",
+      "x",
+      "x",
+      "y",
+      "y"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao Mei",
+    "section": "6.2",
+    "id": 623
+  },
+  "question_level": 2,
+  "question_id": 623,
+  "question_week": 6
+}

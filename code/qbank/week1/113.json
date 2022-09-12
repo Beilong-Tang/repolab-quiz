@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Truth Table",
+  "question_content": {
+    "description": "### Problem13\n\nSuppose that both a and b are boolean variables.\n\n```java\nboolean x = !(( !a && b ) || ( b || !a ));\n```\n\nIf both a and b are false, the value of x is _____(0)\\___ (true/false).\n\nIf a is true and b is false, the value of x is _____(1)\\___ (true/false).\n\nIf a is false and b is true, the value of x is _____(2)\\___ (true/false).",
+    "answers": [
+      "false",
+      "true",
+      "false"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 113,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 113,
+  "question_week": 1
+}
