@@ -1,0 +1,32 @@
+{
+  "question_type": "mult",
+  "question_title": "Summary3",
+  "question_content": {
+    "description": "### Problem17\n##Summary3\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\nA. There is formal language that can be recognized by some NFA and not by any DFA\n\nB. A language is regular if and only if it can be specified by an RE\n\nC. Not all formal language can be recognized by some DFA\n\nD. Some RE cannot be simulated by NFA\n\nE. Any language described by any RE, DFA, or NFA is regular",
+    "choices": [
+      "A. There is formal language that can be recognized by some NFA and not by any DFA",
+      "B. A language is regular if and only if it can be specified by an RE",
+      "C. Not all formal language can be recognized by some DFA",
+      "D. Some RE cannot be simulated by NFA",
+      "E. Any language described by any RE, DFA, or NFA is regular"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "True",
+      "False",
+      "True",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 517
+  },
+  "question_level": 1,
+  "question_id": 517,
+  "question_week": 5
+}

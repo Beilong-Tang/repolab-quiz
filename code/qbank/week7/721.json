@@ -1,0 +1,22 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY-8",
+  "question_content": {
+    "description": "### Problem21\n\nToy-8 has _____(0)\\___ words of memory, _____(1)\\___ bit words, _____(2)\\___ register in total. Every instruction _____(3)\\___ (need/don't-need) register references.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "16",
+      "8",
+      "1",
+      "don't-need"
+    ],
+    "quiz_type": "blank",
+    "section": "7.5",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 721,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 721,
+  "question_week": 7
+}

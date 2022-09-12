@@ -1,0 +1,25 @@
+{
+  "question_type": "blank",
+  "question_title": "Truth Table",
+  "question_content": {
+    "description": "### Problem04\n\nPlease complete the following truth table (fill in the blanks from top to down).\n\n| x|\ty |\tz|\tx'y+z|\t  (y+z) XOR x|\n|:---:|:---:|:---:|:---:|:---:|\n| 0\t|0\t|0\t  |_____(0)\\___\t         |0|\n| 0\t|0\t|_____(1)\\___\t  |1\t         |1|\n| 0\t|1\t|0\t  |1\t         |_____(2)\\___|\n| 0\t|1\t|1\t  |_____(3)\\___\t         |1|\n| 1\t|0\t|0\t  |0\t         |_____(4)\\___|\n| 1\t|0\t|1\t|  1\t         |_____(5)\\___|\n| 1\t|1\t|0\t | 0\t         |0|\n| 1\t|_____(6)\\___\t|1\t  |1\t         |0|",
+    "answers": [
+      "0",
+      "1",
+      "1",
+      "1",
+      "1",
+      "0",
+      "1"
+    ],
+    "quiz_type": "blank",
+    "section": "7.1",
+    "level": "2",
+    "author": "Beilong_Tang",
+    "id": 704,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 704,
+  "question_week": 7
+}

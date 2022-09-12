@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Symbol table",
+  "question_content": {
+    "description": "### Problem09\n\n\nA symbol table is a collection of _____(0)\\___ - _____(1)\\___ pairs. ",
+    "explains": "None",
+    "answers": [
+      "key",
+      "value"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "section": "4.4",
+    "author": "Yantao Mei",
+    "id": 509
+  },
+  "question_level": 1,
+  "question_id": 509,
+  "question_week": 5
+}

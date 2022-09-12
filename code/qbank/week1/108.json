@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Math round and Math ceil",
+  "question_content": {
+    "description": "### Problem08\n\nThe data type of 'Math.round(10.5)' is _____(0)\\___ (int/double/long).\n\nThe data type of 'Math.ceil(10.5)' is _____(1)\\___ (int/double/long).",
+    "answers": [
+      "long",
+      "double"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yike Guo",
+    "section": "1.2",
+    "id": 108,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 108,
+  "question_week": 1
+}

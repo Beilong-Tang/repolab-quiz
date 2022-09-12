@@ -1,0 +1,26 @@
+{
+  "question_type": "code",
+  "question_title": "Largest Power Of 3",
+  "question_content": {
+    "description": "### Problem22\n\n```java\npublic class LP3 \n{\n    public static void main(String[] args) \n    {\n        int n = Integer.parseInt(args[0]);\n\n        int power =1;\n\n        while ( __0__ )\n        {\n            power = __1__;\n        }\n\n        System.out.println(power);\n    }\n}\n```\n\nTry to finish the code to compute the largest number which is the power of 3 that is less than or equal to a given positive integer n, and store the value to 'power'.\n\nExample1:\n\n```\njava LP3 10\n```\n\nOutput:\n\n```\n9\n```\n",
+    "code": "public class LP3 \n{\n    public static void main(String[] args) \n    {\n        int n = Integer.parseInt(args[0]);\n\n        int power =1;\n\n        while ( __0__ )\n        {\n            power = __1__;\n        }\n\n        System.out.println(power);\n    }\n}",
+    "check": "void check()\n{\n    String[]x={\"8\"};\n    LP3.main(x);\n    String[]y={\"9\"};\n    LP3.main(y);\n    String[]z={\"49\"};\n    LP3.main(z);\n    String[]m={\"82\"};\n    LP3.main(m);\n}",
+    "instruction": "/open quiz-gen/LP3.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "LP3",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": "3 9 27 81",
+    "answers": [
+      "power<=n/3",
+      "3 * power"
+    ],
+    "author": "Beilong Tang",
+    "level": "3",
+    "section": "1.3",
+    "id": 122,
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 122,
+  "question_week": 1
+}

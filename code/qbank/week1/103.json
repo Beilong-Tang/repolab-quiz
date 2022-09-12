@@ -1,0 +1,27 @@
+{
+  "question_type": "code",
+  "question_title": "Your first program",
+  "question_content": {
+    "description": "### Problem03\n:jq_level=1:\n\n```java\npublic class Print\n{\n    public static __0__ main(__1__args)\n    {\n        __2__;\n    }\n}\n```\n\nFinish the code above to print \"HelloWorld\".\n",
+    "code": "public class Print\n{\n    public static __0__ main(__1__args)\n    {\n        __2__;\n    }\n}",
+    "check": "void check()\n{\n    String[]args={\"\"};\n    Print.main(args);\n}",
+    "instruction": "/open quiz-gen/Print.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "Print",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": "HelloWorld",
+    "answers": [
+      "void",
+      "String[]",
+      "System.out.println() or System.out.print"
+    ],
+    "level": "1",
+    "id": 103,
+    "author": "Beilong Tang",
+    "section": "1.1",
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 103,
+  "question_week": 1
+}

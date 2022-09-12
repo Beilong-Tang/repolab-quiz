@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "3 3 24",
+  "question_content": {
+    "description": "### Problem12\n\n\nIs the following class immutable?\n```java\nimport java.util.Date;\npublic class Appointment\n{\n    private Date date;\n    private String contact;\n    public Appointment(Date date)\n    {\n        this.date = date;\n        this.contact = contact;\n    }\n    public Date getDate()\n    { \n        return date; \n    }\n}\n```\nAnswer: _____(0)\\___ (Yes or No).",
+    "explains": "None",
+    "answers": [
+      "No"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "3.3",
+    "id": 412
+  },
+  "question_level": 2,
+  "question_id": 412,
+  "question_week": 4
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "6 1 7",
+  "question_content": {
+    "description": "### Problem15\n\nWhat is the 4-digit hexadecimal two\u2019s complement representation of the decimal number \u2013256 : _____(0)\\___\n\n### Quote\n\n*coursera lecture slide*",
+    "explains": "None",
+    "answers": [
+      "FFF0"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yike Guo",
+    "section": "6.1",
+    "id": 615
+  },
+  "question_level": 2,
+  "question_id": 615,
+  "question_week": 6
+}

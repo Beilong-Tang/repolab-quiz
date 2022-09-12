@@ -1,0 +1,22 @@
+{
+  "question_type": "blank",
+  "question_title": "Using Data Types",
+  "question_content": {
+    "description": "### Problem08\n\n\n1.Discribe the following code fragment\n```java\nString s;\ns = new String(\"Hello, World\");\n```\n- The first line _____(0)\\___ a variable s of type _____(1)\\___.\n- The sencond line _____(2)\\___ a constructor to create an _____(3)\\___.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "explains": "None",
+    "answers": [
+      "declares",
+      "String",
+      "invokes",
+      "object"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "3.1",
+    "id": 308
+  },
+  "question_level": 2,
+  "question_id": 308,
+  "question_week": 3
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Operation Practice",
+  "question_content": {
+    "description": "### Problem20\n\nLook at the following java code:\n\n```java\nint x = 4;\nint y = 3;\nint z = ++x / y--;\n```\n\nValue of z is _____(0)\\___. (Hint: check the Q&A in sec-1.3)",
+    "answers": [
+      "1"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Beilong Tang",
+    "section": "1.3",
+    "id": 120,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 120,
+  "question_week": 1
+}

@@ -1,0 +1,27 @@
+{
+  "question_type": "code",
+  "question_title": "RECheck",
+  "question_content": {
+    "description": "### Problem18\n\n\nComplete the following code to write a regular expression that can identify a string which contains at least three consecutive 1s. Use only the basic operations:  \n\n\n```java\n\npublic class RECheck{\n    public static boolean check(String s){\n        String regxp = __0__ ;\n        return __1__ ;\n    }\n}\n```\n",
+    "code": "public class RECheck{\n    public static boolean check(String s){\n        String regxp = __0__ ;\n        return __1__ ;\n    }\n}",
+    "check": "void check(){\n    String t1 = \"11111110\";\n    String t2 = \"0111010101111\";\n    String t3 = \"11001\";\n    String t4 = \"01101\";\n    String t5 = \"110110\";\n    boolean check = RECheck.check(t1) && RECheck.check(t2) && !RECheck.check(t3) && !RECheck.check(t4) && !RECheck.check(t5);\n    System.out.println(check);\n}",
+    "instruction": "/open quiz-gen/RECheck.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "RECheck",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": null,
+    "answers": [
+      " ",
+      "\"(0|1)*111(0|1)*\"",
+      "s.matches(regxp)"
+    ],
+    "author": "Yike Guo",
+    "level": " 2",
+    "id": 518,
+    "section": "5.1",
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 518,
+  "question_week": 5
+}

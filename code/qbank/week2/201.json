@@ -1,0 +1,22 @@
+{
+  "question_type": "blank",
+  "question_title": "Definition of Array",
+  "question_content": {
+    "description": "### Problem01\n\nA one-dimensional array (or array) is a _____(0)\\___  _____(1)\\___ that stores a sequence of values, all of the _____(2)\\___ type. We refer to the components of an array as its _____(3)\\___. (literally from sec-1.4)\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "data",
+      "structure",
+      "same",
+      "elements"
+    ],
+    "quiz_type": "blank",
+    "section": "1.4",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 201,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 201,
+  "question_week": 2
+}

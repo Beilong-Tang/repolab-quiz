@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Inserstion sort running time",
+  "question_content": {
+    "description": "### Problem19\n\n\nInsertion sort has an average and worst-case running time of O(_____(0)\\___)(1/n/logn/nlogn/n^2).",
+    "explains": "None",
+    "answers": [
+      "n^2"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 419
+  },
+  "question_level": 1,
+  "question_id": 419,
+  "question_week": 4
+}

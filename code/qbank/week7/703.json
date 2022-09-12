@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Boolean Algebra",
+  "question_content": {
+    "description": "### Problem03\n\n_____(0)\\___ _____(1)\\___ refers to symbolic manipulation of expressions made up of boolean variables and boolean operators (from sec-7.1).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "Boolean",
+      "Algebra"
+    ],
+    "quiz_type": "blank",
+    "section": "7.1",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 703,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 703,
+  "question_week": 7
+}

@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Linked lists",
+  "question_content": {
+    "description": "### Problem03\n\n\n A singly linked list comprises a sequence of _____(0)\\___, with each containing a reference (or link) to its successor. \n\n By convention, the link in the last node is _____(1)\\___, to indicate that it terminates the list.",
+    "explains": "None",
+    "answers": [
+      "nodes",
+      "null"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "section": "4.3",
+    "author": "Yantao Mei",
+    "id": 503
+  },
+  "question_level": 1,
+  "question_id": 503,
+  "question_week": 5
+}

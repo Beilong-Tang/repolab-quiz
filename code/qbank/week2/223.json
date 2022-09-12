@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Advantages of Modular Programming",
+  "question_content": {
+    "description": "### Problem23\n\nThe advantages of modular programming are:\n\n1. We can have programs of a resonable size, even in large systems.\n\n2. _____(0)\\___ is restricted to small pieces of code.\n\n3. We can _____(1)\\___ code without having to re-implement it.\n\n4. Maintaining (and improving) code is much simpler.\n(literally from sec-2.2)\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "Debugging",
+      "reuse"
+    ],
+    "quiz_type": "blank",
+    "section": "2.2",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 223,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 223,
+  "question_week": 2
+}

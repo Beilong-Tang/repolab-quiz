@@ -1,0 +1,24 @@
+{
+  "question_type": "blank",
+  "question_title": "Programming in Java",
+  "question_content": {
+    "description": "### Problem01\n\nTo introduce you to developing Java programs, we break the process down into three steps. To program in Java, you need to:\n\n- _____(0)\\___ a program by typing it into a file named, say, MyProgram.java.\n\n- _____(1)\\___ it by typing _____(2)\\___ MyProgram.java in a _____(3)\\___ window.\n\n- _____(4)\\___ (or run) it by typing java MyProgram in the _____(5)\\___ window (literally from sec-1.1).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "Create",
+      "Compile",
+      "javac",
+      "terminal",
+      "Execute",
+      "terminal"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Beilong Tang",
+    "section": "1.1",
+    "id": 101
+  },
+  "question_level": 1,
+  "question_id": 101,
+  "question_week": 1
+}

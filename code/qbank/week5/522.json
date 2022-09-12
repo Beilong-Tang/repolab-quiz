@@ -1,0 +1,22 @@
+{
+  "question_type": "blank",
+  "question_title": "Nondeterministic finite-state automata",
+  "question_content": {
+    "description": "### Problem22\n\n\n- The behavior of a DFA is _____(0)\\___: for each input symbol and each state, there is exactly one possible state transition. \n\n- A _____(1)\\___ _____(2)\\___ _____(3)\\___ (NFA) is an abstract machine that allows other possibilities.",
+    "explains": "None",
+    "answers": [
+      "deterministic",
+      "nondeterministic",
+      "finite",
+      "automaton"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 522
+  },
+  "question_level": 1,
+  "question_id": 522,
+  "question_week": 5
+}

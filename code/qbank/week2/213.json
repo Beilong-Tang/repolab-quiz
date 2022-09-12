@@ -1,0 +1,24 @@
+{
+  "question_type": "blank",
+  "question_title": "Function Basics and Scope Basics",
+  "question_content": {
+    "description": "### Problem13\n\nFunctions, which are known as _____(0)\\___ _____(1)\\___ in java, are important because they allow us to clearly separate tasks within a program and because they provide general mechanism that enables us to reuse code (literally from sec-2.1).\n\nLook at the following code:\n\n```java\n1   public static double harmonic (int n)\n2   {\n3       double sum =0.0\n4       for (int i = 1; i <= n; i++) sum += 1.0/i;\n5       return sum;\n6   }\n```\n\nThe first line is called a _____(2)\\___ of the function. The \"double\" in the first line is called the _____(3)\\___ _____(4)\\___ of the function (literally from an image of sec-2.1). Can we use the \"sum\" defined in the harmonic function in our main() method? Answer:_____(5)\\___ (y/n).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "static",
+      "methods",
+      "signature",
+      "return",
+      "type",
+      "n"
+    ],
+    "quiz_type": "blank",
+    "section": "2.1",
+    "level": "1",
+    "author": "Beilong_Tang",
+    "id": 213,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 213,
+  "question_week": 2
+}

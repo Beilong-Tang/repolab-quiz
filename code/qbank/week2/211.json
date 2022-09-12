@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Piping",
+  "question_content": {
+    "description": "### Problem11\nLook at the following two pieces of code:\n\nCode A:\n\n```java\npublic class A\n{\n    public static void main(String[] args) \n    {\n        StdOut.print(5+\" \");\n        StdOut.print(7+\" \");\n    }\n\n}\n```\n\nCode B:\n\n```java\npublic class B\n{\n    public static void main(String[]args)\n    {\n        int x =StdIn.readInt();\n        StdOut.println(x);\n    }\n}\n```\n\nWhat will be the output if we do\n\njava A | java B\n\n**Choices:**\n\na. There will be an exception \n\nb. 5\n\nc. 7\n\nd. 5 7\n\ne. nothing",
+    "choices": [
+      "a. There will be an exception ",
+      "b. 5",
+      "c. 7",
+      "d. 5 7",
+      "e. nothing"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "False",
+      "False"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "3",
+    "section": "1.5",
+    "id": 211,
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 211,
+  "question_week": 2
+}

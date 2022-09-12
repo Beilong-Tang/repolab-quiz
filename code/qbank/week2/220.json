@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Clients",
+  "question_content": {
+    "description": "### Problem20\n\nThe term client is to refer to a program that calls a given _____(0)\\___ method (literally from sec-2.2). For all our programs that call Math.sqrt() or Math.random(), they are clients of Math.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "library"
+    ],
+    "quiz_type": "blank",
+    "section": "2.2",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 220,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 220,
+  "question_week": 2
+}

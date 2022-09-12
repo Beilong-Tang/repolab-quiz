@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "4 3 7",
+  "question_content": {
+    "description": "### Problem06\n\nWhat does the following code fragment print when n is 50? \n\n\n```java\nStack<Integer> stack = new Stack<Integer>();\nwhile (n > 0)\n{\n    stack.push(n % 2);\n    n /= 2;\n}\nwhile (!stack.isEmpty())\n    StdOut.print(stack.pop());\nStdOut.println();\n```\nAnswer: _____(0)\\___.",
+    "explains": "None",
+    "answers": [
+      "110010"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao Mei",
+    "section": "4.3",
+    "id": 506
+  },
+  "question_level": 2,
+  "question_id": 506,
+  "question_week": 5
+}

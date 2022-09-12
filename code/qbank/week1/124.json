@@ -1,0 +1,28 @@
+{
+  "question_type": "code",
+  "question_title": "Median_Value",
+  "question_content": {
+    "description": "### Problem24\n\n```java\npublic class MedianValue\n{\n    public static void main (String[]args)\n    {\n        // Initialize the Value\n        int max= -1;\n        int second_max = -2;\n        int third_max =-3;\n\n        // Iterate all the elements in args\n        for (int i =0;i<5;i++)\n        {\n            int num = Integer.parseInt(args[i]);\n            if      (num >= max)        { third_max = second_max; second_max = max; max = num; }\n            else if (num>=second_max)   { third_max = __0__; second_max = __1__; }\n            else if ( __2__ )    { __3__; }\n        }\n        // Output line\n        System.out.println(third_max);\n    }\n}\n```\n\nComplete MedianValue.java so that it takes 5 int values from command line and print out the median one (the third largest one). Note: all int values from the command line are greater than 0.\n\nExample:\njava MedianValue 1 3 4 2 5\nOutput:\n3\n",
+    "code": "public class MedianValue\n{\n    public static void main (String[]args)\n    {\n        // Initialize the Value\n        int max= -1;\n        int second_max = -2;\n        int third_max =-3;\n\n        // Iterate all the elements in args\n        for (int i =0;i<5;i++)\n        {\n            int num = Integer.parseInt(args[i]);\n            if      (num >= max)        { third_max = second_max; second_max = max; max = num; }\n            else if (num>=second_max)   { third_max = __0__; second_max = __1__; }\n            else if ( __2__ )    { __3__; }\n        }\n        // Output line\n        System.out.println(third_max);\n    }\n}",
+    "check": "void check(){\n    String[]a={\"1\",\"3\",\"4\",\"2\",\"5\"};\n    MedianValue.main(a);\n    String[]b={\"56\",\"34\",\"88\",\"23\",\"7\"};\n    MedianValue.main(b);\n    String[]c={\"1\",\"3\",\"4\",\"4\",\"4\"};\n    MedianValue.main(c);\n}",
+    "instruction": "/open quiz-gen/MedianValue.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "MedianValue",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": "3 34 4",
+    "answers": [
+      "second_max",
+      "num",
+      "num>=third_max",
+      "third_max=num"
+    ],
+    "author": "Beilong Tang",
+    "level": "3",
+    "id": 124,
+    "section": "1.3",
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 124,
+  "question_week": 1
+}

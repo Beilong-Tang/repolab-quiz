@@ -1,0 +1,36 @@
+{
+  "question_type": "mult",
+  "question_title": "Distinction between instance methods and static methods ",
+  "question_content": {
+    "description": "### Problem10\nWhich choices are static mathods?\n\n**Choices:**\n\na. s.startsWith(\"Hello\")  \n\nb. Math.sqrt(2.0)  \n\nc. object name (or object reference)   \n\nd. class name  \n\ne. parameters reference to invoking object and   argument(s)   \n\nf. argument(s)  \n\ng. manipulate object\u2019s value   \n\nh. compute return value",
+    "author": "Yantao Mei",
+    "choices": [
+      "a. s.startsWith(\"Hello\")  ",
+      "b. Math.sqrt(2.0)  ",
+      "c. object name (or object reference)   ",
+      "d. class name  ",
+      "e. parameters reference to invoking object and   argument(s)   ",
+      "f. argument(s)  ",
+      "g. manipulate object\u2019s value   ",
+      "h. compute return value"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "True",
+      "False",
+      "True",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.1",
+    "id": 310
+  },
+  "question_level": 2,
+  "question_id": 310,
+  "question_week": 3
+}

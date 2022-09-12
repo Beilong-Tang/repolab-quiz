@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "String Characteristics",
+  "question_content": {
+    "description": "### Problem10\n\nLook at the following Java code (part):\n\n```java\nString x =\"201\";\nSystem.out.println(\"CS201\"==\"CS\"+x);\nSystem.out.println(\"CS201\"==\"CS\"+\"201\");\n```\n\nThe output of the program will be:\n\n_____(0)\\___\n\n_____(1)\\___.\n\nHint: This problem is modified from 'Q&A(Strings)'.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "false",
+      "true"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
+    "author": "Beilong_Tang",
+    "id": 110,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 110,
+  "question_week": 1
+}

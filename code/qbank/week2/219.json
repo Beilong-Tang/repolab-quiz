@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Understand the program",
+  "question_content": {
+    "description": "### Problem19\n\nHere is a piece of java code. This quiz is really to train you the ability to read a program. Understand what a program is doing by simply reading it is very important especially in a big program where it is impossible to run every function. Try not to use java code to run it, and try to find the output by simply looking into the program (because you will not have the opportunity to run a program in our exam). After this quiz, you will also understand the importance to write comments oftenly to make your program readable by others.\n\n```java\npublic class Sum\n{\n    public static int sum(int[] a)\n    {\n        int sum=0;\n        for(int i = 0;i<a.length;i++)\n        {\n            sum+=a[i];\n        }\n        return sum;\n    }\n    public static int[] sum(int[][] n)\n    {\n        int [] sum = new int [n.length];\n        for ( int i =0;i<n.length;i++)\n        {\n            sum[i]= sum(n[i]);\n        }\n        return sum;\n    }\n    public static void main(String[]args)\n    {\n        int[][]a={\n            {1,2,3},\n            {4,2,3,2},\n            {1,1,1}\n        };\n        int [] sum=sum(a);\n        for(int i=0;i<sum.length;i++ )\n        {\n            System.out.print(sum[i]+\" \");\n        }\n    }   \n}\n```\n\nThe output of the program will be _____(0)\\___ _____(1)\\___ _____(2)\\___.",
+    "answers": [
+      "6",
+      "11",
+      "3"
+    ],
+    "quiz_type": "blank",
+    "section": "2.1",
+    "level": "3",
+    "author": "Beilong Tang",
+    "id": 219,
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 219,
+  "question_week": 2
+}

@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "BST",
+  "question_content": {
+    "description": "### Problem21\nIn the BST built from the keys \"is this an easy question\" which key is in the root of the left subtree of the root?\n\n**Choices:**\n\nA is\n\nB an\n\nC easy\n\nD this\n\nE question",
+    "author": "Yantao Mei",
+    "choices": [
+      "A is",
+      "B an",
+      "C easy",
+      "D this",
+      "E question"
+    ],
+    "answers": [
+      "False",
+      "True",
+      "False",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "4.2",
+    "id": 421
+  },
+  "question_level": 1,
+  "question_id": 421,
+  "question_week": 4
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Kleene",
+  "question_content": {
+    "description": "### Problem23\n\n\nThere is a striking connection among regular expressions, DFAs, and NFAs that has dramatic practical and theoretical consequences, which is known as Kleene\u2019s theorem.\n\n Theorem. (Kleene, 1951) REs, DFAs, and NFAs are ______(0)\\____ models, in the sense that they all characterize the regular languages.\n\nAny language described by any RE, DFA, or NFA is regular, and any regular language can be described by some RE, DFA, or NFA.",
+    "explains": "None",
+    "answers": [
+      "equivalent"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 523
+  },
+  "question_level": 1,
+  "question_id": 523,
+  "question_week": 5
+}

@@ -1,0 +1,25 @@
+{
+  "question_type": "code",
+  "question_title": "String 2 Length",
+  "question_content": {
+    "description": "### Problem09\n\n```java\npublic class string{\n    public static int len (String x) \n    {\n        return __0__;\n    }\n}\n```\n\nComplete static method 'len' so that it takes a string argument, and it returns the length of the string. \n\nExample:\nlen(\"abch\")==4\n",
+    "code": "public class string{\n    public static int len (String x) \n    {\n        return __0__;\n    }\n}",
+    "check": "void check(){\n    String x = \"abchdef\";\n    String y = \"acvdw\";\n    String z = \"hdxh\";\n    System.out.println(string.len(x)==7 && string.len(y)==5 && string.len(z)==4);\n}",
+    "instruction": "/open quiz-gen/string.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "string",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": null,
+    "answers": [
+      "x.length()"
+    ],
+    "author": "Beilong_Tang",
+    "level": "1",
+    "section": "3.1",
+    "id": 309,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 309,
+  "question_week": 3
+}

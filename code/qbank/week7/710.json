@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Decoders, demuxes, and muxes",
+  "question_content": {
+    "description": "### Problem10\nPlease select the following choices that are correct.\n\n(2^3=2*2*2=8, so the sign '^' stands for power)\n\n**Choices:**\n\na. A decoder is a combinational circuit with n input wires and 1 output wires.\n\nb. A demultiplexer, has n input wires and 2^n outputs.\n\nc. A decoder is a combinational circuit with n input wires and 2^n output wires.\n\nd. A multiplexer, has n+2^n input wires and one output wire.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "choices": [
+      "a. A decoder is a combinational circuit with n input wires and 1 output wires.",
+      "b. A demultiplexer, has n input wires and 2^n outputs.",
+      "c. A decoder is a combinational circuit with n input wires and 2^n output wires.",
+      "d. A multiplexer, has n+2^n input wires and one output wire."
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "True"
+    ],
+    "quiz_type": "mult",
+    "author": "Beilong Tang",
+    "level": "1",
+    "section": "7.3",
+    "id": 710,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 710,
+  "question_week": 7
+}

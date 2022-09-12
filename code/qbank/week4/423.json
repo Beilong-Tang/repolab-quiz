@@ -1,0 +1,38 @@
+{
+  "question_type": "mult",
+  "question_title": "Insertion sort",
+  "question_content": {
+    "description": "### Problem23\nWhich of the following running times for a program sorting N 10-character strings is consistent with the hypothesis that the program is using insertion sort? Mark all that apply.\n\n## Choices:\n\n1 second for N = 10,000, 2 seconds for N = 20,000, 16 seconds for N = 160,000\n\n\n1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 8 seconds for N = 4,000,000\n\n\n1 second for N = 10,000, 4 seconds for N = 20,000, 64 seconds for N = 80,000\n\n\n1 second for N = 10,000, 4 seconds for N = 20,000, 256 seconds for N = 160,000\n\n\n1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 16 seconds for N = 4,000,000\n\n### Answers:\n\nc d e\n**Choices:**\n\nsort\n\n:jq_level=2:\n\nWhich of the following running times for a program sorting N 10-character strings is consistent with the hypothesis that the program is using insertion sort? Mark all that apply.\n\n## Choices:\n\n1 second for N = 10,000, 2 seconds for N = 20,000, 16 seconds for N = 160,000\n\n1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 8 seconds for N = 4,000,000\n\n1 second for N = 10,000, 4 seconds for N = 20,000, 64 seconds for N = 80,000\n\n1 second for N = 10,000, 4 seconds for N = 20,000, 256 seconds for N = 160,000\n\n1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 16 seconds for N = 4,000,000",
+    "author": "Yantao Mei",
+    "choices": [
+      "sort",
+      ":jq_level=2:",
+      "Which of the following running times for a program sorting N 10-character strings is consistent with the hypothesis that the program is using insertion sort? Mark all that apply.",
+      "## Choices:",
+      "1 second for N = 10,000, 2 seconds for N = 20,000, 16 seconds for N = 160,000",
+      "1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 8 seconds for N = 4,000,000",
+      "1 second for N = 10,000, 4 seconds for N = 20,000, 64 seconds for N = 80,000",
+      "1 second for N = 10,000, 4 seconds for N = 20,000, 256 seconds for N = 160,000",
+      "1 second for N = 1,000,000, 4 seconds for N = 2,000,000, 16 seconds for N = 4,000,000"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False",
+      "False",
+      "False"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "4.2",
+    "id": 423
+  },
+  "question_level": 2,
+  "question_id": 423,
+  "question_week": 4
+}

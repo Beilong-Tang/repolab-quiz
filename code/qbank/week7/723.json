@@ -1,0 +1,23 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY-8 Control Lines",
+  "question_content": {
+    "description": "### Problem23\n\nThe initial memory value for a TOY-8 machine is as followed:\n\n```\nM[A] = 1\nM[B] = 1\n```\n\nLook at the following TOY-8 Program.\n\n```\n1 AA # R = M[A]\n2 4B # R = R & M[B]\n3 2A # R = R + M[A]\n4 E6 # if (R == 0), PC = 6\n5 CC # M[C] = R\n6 00 # halt\n```\n\nThe PC is set to 1, and run the program. After running the program, the value of M[C] is _____(0)\\___.\n\nThe control line 'CLOCK halt' is activated for 1 times.\n\nThe control line 'MA Mux PC' is activated for _____(1)\\___ times.\n\nThe control line 'PC increment' is activated for _____(2)\\___ times.\n\nThe control line 'MEMORY Write' is activated for _____(3)\\___ times.\n\nThe control line 'PC load' is activated for _____(4)\\___ times.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "2",
+      "6",
+      "5",
+      "1",
+      "0"
+    ],
+    "quiz_type": "blank",
+    "section": "7.5",
+    "level": "2",
+    "author": "Beilong Tang",
+    "id": 723,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 723,
+  "question_week": 7
+}

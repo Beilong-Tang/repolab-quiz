@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Memory allocation",
+  "question_content": {
+    "description": "### Problem04\n\nWhen you use the keyword new to create an array, Java reserves sufficient space in memory to store the specified number of elements. This process is called _____(0)\\___ _____(1)\\___(literally from sec-1.4).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "memory",
+      "allocation"
+    ],
+    "quiz_type": "blank",
+    "section": "1.4",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 204,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 204,
+  "question_week": 2
+}

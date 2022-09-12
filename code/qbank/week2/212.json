@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Double Buffering",
+  "question_content": {
+    "description": "### Problem12\n\nWhen double buffering is enabled by calling enableDoubleBuffering(), all drawing takes place on the _____(0)\\___ canvas. The offscreen canvas is not diplayed; it exists only in computer memory. Only when you call _____(1)\\___ (type a method name. Remember to have '()' at the end) does your drawing get copied from the offscreen canvas to the onscreen canvas (literally from sec-1.5) \n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "answers": [
+      "offscreen",
+      "show()"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Beilong_Tang",
+    "section": "1.5",
+    "id": 212,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 212,
+  "question_week": 2
+}

@@ -1,0 +1,24 @@
+{
+  "question_type": "mult",
+  "question_title": "NP-complete1",
+  "question_content": {
+    "description": "### Problem08\n## NP-complete1 \n\n Suppose that X is NP-complete, X reduces to Y, and Y reduces to X. Is Y necessarily NP-complete ? \n\n",
+    "choices": [
+      "A. Yes",
+      "B. No  "
+    ],
+    "answers": [
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "author": "Yike Guo",
+    "level": "1",
+    "section": "5.5",
+    "id": 608
+  },
+  "question_level": 1,
+  "question_id": 608,
+  "question_week": 6
+}

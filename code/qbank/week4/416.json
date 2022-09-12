@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Postfix expression",
+  "question_content": {
+    "description": "### Problem16\n\n\nEvaluate the Postfix expression 1 1 1 1 1 1 + + * + *\n\nThe answer is: _____(0)\\___",
+    "explains": "None",
+    "answers": [
+      "4"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 416
+  },
+  "question_level": 1,
+  "question_id": 416,
+  "question_week": 4
+}

@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Command-line arguments and redirecting",
+  "question_content": {
+    "description": "### Problem07\n\nBy convention, both Java and the operating system process the arguments as _____(0)\\___ (string/int/double).\n\nThere is a program called Output, we want to write the output of the program to data.txt. We can do java Output _____(1)\\___ data.txt in the terminal window (>/</|).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "string",
+      ">"
+    ],
+    "quiz_type": "blank",
+    "section": "1.5",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 207,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 207,
+  "question_week": 2
+}

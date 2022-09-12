@@ -1,0 +1,26 @@
+{
+  "question_type": "code",
+  "question_title": "Largest value of an array",
+  "question_content": {
+    "description": "### Problem05\n\n```java\npublic class FindMax\n{\n    public static void main (String[]args)\n    {\n        // Create an int[] numbers from String[] args\n        int[]numbers=new int[args.length];\n        for (int i =0;i<args.length;i++)\n        {\n            numbers[i]=Integer.parseInt(args[i]);\n        }\n\n        // Your code goes here:\n        int maximum=-1;\n        for (int i =0;i<numbers.length;i++)\n        {\n            if (__0__)\n            {\n                __1__;\n            }\n        }\n\n        //Output Line:\n        System.out.println(maximum);\n    }\n}\n```\n\nComplete FindMax.java to print the largest value in the int[] numbers. Note: All elements in int[]numbers are non-negative.\n\nExample:\njava FindMax 1 5 2 3\nOutput:\n5\n",
+    "code": "public class FindMax\n{\n    public static void main (String[]args)\n    {\n        // Create an int[] numbers from String[] args\n        int[]numbers=new int[args.length];\n        for (int i =0;i<args.length;i++)\n        {\n            numbers[i]=Integer.parseInt(args[i]);\n        }\n\n        // Your code goes here:\n        int maximum=-1;\n        for (int i =0;i<numbers.length;i++)\n        {\n            if (__0__)\n            {\n                __1__;\n            }\n        }\n\n        //Output Line:\n        System.out.println(maximum);\n    }\n}",
+    "check": "void check(){\n    String[]a={\"1\",\"5\",\"2\",\"3\"};\n    String[]b={\"2\",\"2\",\"2\",\"3\"};\n    String[]c={\"1\",\"10\",\"28\",\"5\"};\n    String[]d={\"5\",\"5\",\"2\",\"5\"};\n    FindMax.main(a);\n    FindMax.main(b);\n    FindMax.main(c);\n    FindMax.main(d);\n}",
+    "instruction": "/open quiz-gen/FindMax.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "FindMax",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": "5 3 28 5",
+    "answers": [
+      "numbers[i]>maximum",
+      "maximum=numbers[i]"
+    ],
+    "author": "Beilong Tang",
+    "level": "2",
+    "section": "1.4",
+    "id": 205,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 205,
+  "question_week": 2
+}

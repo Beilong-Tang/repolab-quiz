@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Grep",
+  "question_content": {
+    "description": "### Problem10\n\nLook at the code below:\n\n```java\n1    public class Grep\n2    {\n3        public static void main(String[] args) \n4        {\n5            int x =1;\n6            for(int i =0;i<10;i++)\n7            { //x\n8                System.out.println(x);\n9            }\n10        }\n11    }\n```\n\nWhich lines will be printed if we do\n\n```\ngrep x < Grep.java\n```\n\nAnswer: _____(0)\\___, _____(1)\\___, _____(2)\\___ (In an ascending order).",
+    "answers": [
+      "5",
+      "7",
+      "8"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Beilong_Tang",
+    "section": "1.5",
+    "id": 210,
+    "explains": "None"
+  },
+  "question_level": 2,
+  "question_id": 210,
+  "question_week": 2
+}

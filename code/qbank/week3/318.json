@@ -1,0 +1,25 @@
+{
+  "question_type": "code",
+  "question_title": "String 7 DNA",
+  "question_content": {
+    "description": "### Problem18\n\n```java\npublic class string{\n   public static String Convert (String DNA) \n    {\n       //One line code is only needed \n       __0__;\n    }\n}\n```\n\nComplete static method 'Convert' so that it takes a string DNA which is composed of 'A','G','C','T', and it returns a string that converts 'A' to 'T', 'G' to 'C', 'T' to 'A', and 'C' to 'G'. (Hint: .replace() and .toUpperCase() might be needed)\n\nExample:\nConvert(\"AGCT\")=\"TCGA\";\nConvert(\"TATACG\")=\"ATATGC\";\n",
+    "code": "public class string{\n   public static String Convert (String DNA) \n    {\n       //One line code is only needed \n       __0__;\n    }\n}",
+    "check": "void check(){\n    String x = \"AGCTTAGCTT\"; \n    String y = \"TAGCGCATCGTAT\"; \n    String z = \"ATTCCGGATAT\";\n    System.out.println(string.Convert(x).equals(\"TCGAATCGAA\") && string.Convert(y).equals(\"ATCGCGTAGCATA\") && string.Convert(z).equals(\"TAAGGCCTATA\"));\n}",
+    "instruction": "/open quiz-gen/string.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "string",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": null,
+    "answers": [
+      "return DNA.replace(\"A\",\"t\").replace(\"C\",\"g\").replace(\"T\",\"a\").replace(\"G\",\"c\").toUpperCase()"
+    ],
+    "author": "Beilong_Tang",
+    "level": "4",
+    "section": "3.2",
+    "id": 318,
+    "explains": "None"
+  },
+  "question_level": 4,
+  "question_id": 318,
+  "question_week": 3
+}

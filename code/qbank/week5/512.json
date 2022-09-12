@@ -1,0 +1,26 @@
+{
+  "question_type": "mult",
+  "question_title": "DFA1",
+  "question_content": {
+    "description": "### Problem12\n##DFA1\n\nWhich of the following strings does this DFA accept?  \n\n![image](/static/quiz/images/Users/carol/Desktop/CHAPTER05/../../../../5.1.5fig.jpg)\n\n**Choices:**\n\nA. bbabaaba\n\nB. ababbabb\n\nC. bbabbbaa ",
+    "choices": [
+      "A. bbabaaba",
+      "B. ababbabb",
+      "C. bbabbbaa "
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "1",
+    "section": "5.1",
+    "author": "Yike Guo",
+    "id": 512
+  },
+  "question_level": 1,
+  "question_id": 512,
+  "question_week": 5
+}

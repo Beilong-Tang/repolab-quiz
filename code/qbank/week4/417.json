@@ -1,0 +1,23 @@
+{
+  "question_type": "blank",
+  "question_title": "Binary search",
+  "question_content": {
+    "description": "### Problem17\n\n\nThe binary search follows the recursive strategy:\n\n- Base case: If hi - lo equals 1, then the secret number is _____(0)\\___ (hi/mid/lo).\n- Reduction step : Otherwise, ask whether the secret number is greater than or equal to the number mid = lo + ( hi - lo )/2. If so, look for the number in [_____(1)\\___, _____(2)\\___] (hi/mid/lo); if not, look for the number in [_____(3)\\___ , _____(4)\\___] (hi/mid/lo).",
+    "explains": "None",
+    "answers": [
+      "lo",
+      "lo",
+      "mid",
+      "mid",
+      "hi"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao_Mei",
+    "section": "4.2",
+    "id": 417
+  },
+  "question_level": 1,
+  "question_id": 417,
+  "question_week": 4
+}

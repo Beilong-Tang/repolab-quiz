@@ -1,0 +1,30 @@
+{
+  "question_type": "mult",
+  "question_title": "Constructor",
+  "question_content": {
+    "description": "### Problem16\nWhat does a constructor return?\n\n**Choices:**\n\nA.Instance variable values\n\nB.A method that creates an object\n\nC.An object\n\nD.Nothing (no return value)\n\nE.A reference to an object",
+    "author": "Yantao Mei",
+    "choices": [
+      "A.Instance variable values",
+      "B.A method that creates an object",
+      "C.An object",
+      "D.Nothing (no return value)",
+      "E.A reference to an object"
+    ],
+    "answers": [
+      "False",
+      "False",
+      "False",
+      "False",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "3.2",
+    "id": 316
+  },
+  "question_level": 2,
+  "question_id": 316,
+  "question_week": 3
+}

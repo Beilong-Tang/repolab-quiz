@@ -1,0 +1,25 @@
+{
+  "question_type": "blank",
+  "question_title": "Towers of Hanoi",
+  "question_content": {
+    "description": "### Problem04\n\nLook at the Java code below (You can chcek 'Towers of Hanoi' in the textbook, but the code below is a bit different from the one on the textbook).\n\n```java\npublic class RevisedTowersOfHanoi\n{\n    public static void moves(int n, boolean left)\n    {\n        if (n==0) return;\n        moves(n-1,!left);\n        moves(n-1, !left);\n        if(left) StdOut.print(n+\"L \");\n        else  StdOut.print(n+\"R \");\n    }\n    public static void main(String[]args)\n    {\n       moves(Integer.parseInt(args[0]), true);\n    }   \n}\n```\n\nIf we do 'java test 3', the output will be _____(0)\\___ _____(1)\\___ _____(2)\\___ _____(3)\\___ _____(4)\\___ _____(5)\\___ _____(6)\\___ (Try not to use a program to run it).\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "explains": "None",
+    "answers": [
+      "1L",
+      "1L",
+      "2R",
+      "1L",
+      "1L",
+      "2R",
+      "3L"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
+    "author": "Beilong_Tang",
+    "section": "2.3",
+    "id": 304
+  },
+  "question_level": 3,
+  "question_id": 304,
+  "question_week": 3
+}

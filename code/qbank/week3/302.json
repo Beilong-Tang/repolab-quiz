@@ -1,0 +1,28 @@
+{
+  "question_type": "mult",
+  "question_title": "Recursion",
+  "question_content": {
+    "description": "### Problem02\nLook at the following two Java functions:\n\n```java\npublic static double recursive_harmonic(int n )\n    {\n        if(n==1) return 1.0;\n        return recursive_harmonic(n-1)+1.0/n;\n    }\n\n    public static double not_recursive_harmonic(int n )\n    {\n        double value=0;\n        for (int i =1;i<=n;i++)\n        {\n            value+=1.0/i;\n        }\n        return value;\n    }\n```\nPlease select choices that are correct.\n\n**Choices:**\n\na. The 'recursive_harmonic()' takes the same memory space as the 'not_recursive_harmonic()' method.\n\nb. There are situations when iteration (loop) is the only option rather than recursion that is avalibable to address a problem. \n\nc. Any recursive function can be replaced by an iterative counterpart.\n\nd. System keeps track of each recursive call in Java using a data structure called stack.\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.\n\n",
+    "author": "Beilong Tang",
+    "choices": [
+      "a. The 'recursive_harmonic()' takes the same memory space as the 'not_recursive_harmonic()' method.",
+      "b. There are situations when iteration (loop) is the only option rather than recursion that is avalibable to address a problem. ",
+      "c. Any recursive function can be replaced by an iterative counterpart.",
+      "d. System keeps track of each recursive call in Java using a data structure called stack."
+    ],
+    "answers": [
+      "False",
+      "False",
+      "True",
+      "True"
+    ],
+    "explains": "None",
+    "quiz_type": "mult",
+    "level": "2",
+    "section": "2.3",
+    "id": 302
+  },
+  "question_level": 2,
+  "question_id": 302,
+  "question_week": 3
+}

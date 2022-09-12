@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Data type",
+  "question_content": {
+    "description": "### Problem05\n\nA data type is a set of _____(0)\\___ followed by a set of _____(1)\\___ defined on those _____(2)\\___.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "answers": [
+      "values",
+      "operations",
+      "values"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Beilong_Tang",
+    "id": 105,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 105,
+  "question_week": 1
+}

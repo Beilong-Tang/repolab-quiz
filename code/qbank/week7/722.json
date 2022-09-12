@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY-8 s modules",
+  "question_content": {
+    "description": "### Problem22\n\nThe Toy-8 has 7 modules, which are ALU, processor register (R), _____(0)\\___ register, program counter (PC), memory, fetch-execute _____(1)\\___, and Control circuit. The bus connections consist of _____(2)\\___ wires in TOY-8.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "instruction",
+      "clock",
+      "8"
+    ],
+    "quiz_type": "blank",
+    "section": "7.5",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 722,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 722,
+  "question_week": 7
+}

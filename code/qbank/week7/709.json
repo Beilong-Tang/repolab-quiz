@@ -1,0 +1,24 @@
+{
+  "question_type": "blank",
+  "question_title": "Combinational Circuits and Gates",
+  "question_content": {
+    "description": "### Problem09\n\nCombinational circuits' output values _____(0)\\___ (only/not-only) depend on their input values.\n\nAs with all circuits, each gate is within a small box and is built with _____(1)\\___ _____(2)\\___ (which reach to the edge of the box), _____(3)\\___ _____(4)\\___ (which extend past the edge of the box) and _____(5)\\___, all connected together by other wires (literally from sec-7.3)\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "only",
+      "input",
+      "wires",
+      "output",
+      "wires",
+      "switches"
+    ],
+    "quiz_type": "blank",
+    "section": "7.3",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 709
+  },
+  "question_level": 1,
+  "question_id": 709,
+  "question_week": 7
+}

@@ -1,0 +1,23 @@
+{
+  "question_type": "blank",
+  "question_title": "Circuit",
+  "question_content": {
+    "description": "### Problem07\n\nA circuit is an interconnected network of _____(0)\\___, _____(1)\\___ _____(2)\\___, and _____(3)\\___ _____(4)\\___ that transforms values on input wires to values on output wires (literally from sec-7.2).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "wires",
+      "power",
+      "connections",
+      "controlled",
+      "switches"
+    ],
+    "quiz_type": "blank",
+    "section": "7.2",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 707
+  },
+  "question_level": 1,
+  "question_id": 707,
+  "question_week": 7
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "What happens if I try to access a private instance variable or method from a class in another file ",
+  "question_content": {
+    "description": "### Problem11\n\n\nYou get a _____(0)\\___ error that says the given instance variable or method has private access in the given class.",
+    "explains": "None",
+    "answers": [
+      "compile-time"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "3.3",
+    "id": 411
+  },
+  "question_level": 2,
+  "question_id": 411,
+  "question_week": 4
+}

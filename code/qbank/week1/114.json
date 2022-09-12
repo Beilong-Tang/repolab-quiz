@@ -1,0 +1,25 @@
+{
+  "question_type": "code",
+  "question_title": "Ascending Order",
+  "question_content": {
+    "description": "### Problem14\n\n```java\npublic class Ascending\n{\n    public static void main (String[]args)\n    {\n        int x = Integer.parseInt(args[0]);\n        int y = Integer.parseInt(args[1]);\n        int z = Integer.parseInt(args[2]);\n        System.out.println(__0__);\n    }\n}\n```\n\nComplete Ascending.java so that it will take 3 int values from command lines and print 'true' if they are in an ascending order (x<y<z), otherwise, it will print 'false'.\n\nExample:\n\n```\njava Ascending 1 2 3 \n```\n\nOutput:\n\n```\ntrue\n```\n",
+    "code": "public class Ascending\n{\n    public static void main (String[]args)\n    {\n        int x = Integer.parseInt(args[0]);\n        int y = Integer.parseInt(args[1]);\n        int z = Integer.parseInt(args[2]);\n        System.out.println(__0__);\n    }\n}",
+    "check": "void check()\n{\n    String[]x={\"1\",\"2\",\"3\"};\n    Ascending.main(x);\n    String[]y={\"1\",\"1\",\"1\"};\n    Ascending.main(y);\n    String[]z={\"10\",\"22\",\"333\"};\n    Ascending.main(z);\n    String[]w={\"18\",\"2\",\"3\"};\n    Ascending.main(w);\n}",
+    "instruction": "/open quiz-gen/Ascending.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "title": "Ascending",
+    "quiz_type": "code",
+    "import": "",
+    "main_output": "true false true false",
+    "answers": [
+      "x<y && y<z"
+    ],
+    "author": "Beilong Tang",
+    "level": "3",
+    "id": 114,
+    "section": "1.2",
+    "explains": "None"
+  },
+  "question_level": 3,
+  "question_id": 114,
+  "question_week": 1
+}

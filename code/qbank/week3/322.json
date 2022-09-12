@@ -1,0 +1,28 @@
+{
+  "question_type": "blank",
+  "question_title": "String operations runtime",
+  "question_content": {
+    "description": "### Problem22\n\n\nHint: Type C for constant time, L for linear time in the length of the string, PA for proportional to the number of characters needed to resolve the answer, and PR for proportional time to the total number of characters in the result.\n\n- toLowerCase() (_____(0)\\___)\n- compareTo() (_____(1)\\___)\n- length() (_____(2)\\___)\n- equals() (_____(3)\\___)\n- charAt() (_____(4)\\___)\n- indexOf() (_____(5)\\___)\n- replace() (_____(6)\\___)\n- substring() (_____(7)\\___)\n- startsWith() (_____(8)\\___)\n- endsWith() (_____(9)\\___)",
+    "explains": "None",
+    "answers": [
+      "L",
+      "PA",
+      "C",
+      "PA",
+      "C",
+      "PA",
+      "L",
+      "PC",
+      "PA",
+      "PA"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
+    "author": "Yantao_Mei",
+    "section": "4.1",
+    "id": 322
+  },
+  "question_level": 3,
+  "question_id": 322,
+  "question_week": 3
+}

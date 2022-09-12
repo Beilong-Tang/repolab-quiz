@@ -1,0 +1,27 @@
+{
+  "question_type": "blank",
+  "question_title": "Turing machine model",
+  "question_content": {
+    "description": "### Problem01\n\n\n\nThe object of our study is an abstract machine model that is only slightly more complicated than the DFA model of the previous section, which is known as the _____(0)\\___ _____(1)\\___ (TM).   \n\n>Each TM consists of\n>* A _____(2)\\___ number of states, each of which is designated as either a left state, a right state, a _____(3)\\___ state, an _____(4)\\___ state, or a _____(5)\\___ state.\n>* A set of _____(6)\\___(s) that specify which state is next and which symbol to write. Each state has one transition for each symbol in the alphabet.\n>* A _____(7)\\___ that holds a string of symbols.\n>* A tape head capable of reading or _____(8)\\___ (be careful with the format of the word here!) a symbol and moving left or right to read the next symbol.\n\n*Execution*    \n\nA TM operates by starting in state 0 with the tape head positioned on the first (leftmost) input symbol, then reading and writing the tape and changing state in discrete steps according to the following rules:\n* Read the input symbol from the active cell.\n* Look up the transition rule associated with the current state and input symbol.\n* Overwrite the input symbol with the new symbol.\n* Change the current state according to the transition rule.\n* Shift the tape head one cell to the left or right, according to the new state's designation.\n\nThese steps are repeated until the current state is labeled H for halt, Y (in which case the machine answers yes) or N (in which case the machine answers no). It is possible that the machine runs forever without ever reaching one of these terminating states.\n\nThree examples should be read carefully to for you to better understand how TM works.\n![image](/static/quiz/images/Users/carol/Desktop/CHAPTER05/../../../../5.2basic1.jpg)\n\n\n*DFAs vs TMs* \n\n>Similarities  \n>* Simple model of computation  \n>* Input on tape is a finite string with symbols from a finite alphabet.\n>* Finite number of states.\n>* State transitions determined by current state and input symbol.\n\n>Differences\n>|  DFAs   |   TMs  |\n>|  ",
+    "explains": "None",
+    "answers": [
+      "Turing",
+      "machine",
+      "finite",
+      "halt",
+      "accept",
+      "reject",
+      "transition",
+      "tape",
+      "writing"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike_Guo",
+    "section": "5.2",
+    "id": 601
+  },
+  "question_level": 1,
+  "question_id": 601,
+  "question_week": 6
+}

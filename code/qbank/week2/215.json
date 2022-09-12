@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "Definition of Pass By Value",
+  "question_content": {
+    "description": "### Problem15\n\nThe method working directly with the calling code's arguments is called pass by _____(0)\\___ (value/reference) approach. The method working with the value of the calling code's arguments instead of the arguments themselves is called pass by _____(1)\\___ (value/reference).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "reference",
+      "value"
+    ],
+    "quiz_type": "blank",
+    "section": "2.1",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 215,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 215,
+  "question_week": 2
+}

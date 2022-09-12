@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "4 1 9",
+  "question_content": {
+    "description": "### Problem23\n\n\nDetermine the order of growth of the running time of this statement in ThreeSum as a function of the number of integers n on standard input:\n\n```java\nint[] a = StdIn.readAllInts();\n```\n\nAnswer: _____(0)\\___.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "explains": "None",
+    "answers": [
+      "Linear"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yantao_Mei",
+    "section": "4.1",
+    "id": 323
+  },
+  "question_level": 2,
+  "question_id": 323,
+  "question_week": 3
+}
