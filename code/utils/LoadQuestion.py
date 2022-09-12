@@ -28,10 +28,11 @@ week=[100,200,300,400,500,600,700]
 def MergePath(a,b):
     return a+'/'+b
 
+# DumpQuestion(week1)
 def DumpQuestion(command_week):
     print("DumpQuestion " , command_week)
     if not os.path.exists('qbank'): os.system('mkdir qbank')
-    for q in Questiondict.objects.all():
+    for q in Questiondict.objects.filter(question_week = int(command_week[4])):
         a = {}
         a['question_type'] = q.question_type
         a['question_title'] = q.question_title
@@ -49,7 +50,7 @@ def DumpQuestion(command_week):
 def LoadQuestion2(command_week):
     # load everything from the week
     id_all=[]
-    for q in Questiondict.objects.all():
+    for q in Questiondict.objects.filter(question_week = int(command_week[4])):
         id_all.append(q.question_id)
         pass
     w = 'qbank/'+ command_week
