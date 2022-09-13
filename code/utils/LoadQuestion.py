@@ -46,8 +46,32 @@ def DumpQuestion(command_week):
         open(fname, 'w').write(json.dumps(a,indent=2))
         pass
     pass
+
+def LoadQuestion3_single(id):
+    try: 
+        id = int(id)
+    except:
+        print("Error, id not legal")
+        return
+    q = Questiondict.objects.get(question_id=id)
+    week = id // 100
+    with open('qbank/week%s/%s.json' % (str(week), str(id)),'r') as f:
+        d = json.load(f)
+    q.question_type= d['question_type']
+    q.question_title=d['question_title']
+    q.question_content=d['question_content']
+            #        q.question_id=d['question_id']
+    q.question_level=int(d['question_level'])
+    q.question_week=int(d['question_week'])
+    q.save()
+    print('question%s loaded' % str(id))
+    return
+
+
+
+
 # LoadQuestion('week1')
-def LoadQuestion2(command_week):
+def LoadQuestion2(command_week ,id):
     # load everything from the week
     id_all=[]
     for q in Questiondict.objects.filter(question_week = int(command_week[4])):

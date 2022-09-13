@@ -165,8 +165,10 @@ def LoadQuestion(command, version =1):
     args+="from simple_judge.models import Questiondict\n"
     if version == 1 :
         args+="from utils.LoadQuestion import LoadQuestion as f\n"
-    else:
+    elif version == 2:
         args+="from utils.LoadQuestion import LoadQuestion2 as f\n"
+    else :
+        args+="from utils.LoadQuestion import LoadQuestion3_single as f\n"
 
     args+="f('"+command+"')"
 
@@ -280,15 +282,20 @@ def make_status(week):
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 def execute():
-
-    if sys.argv[1] in first_command:
+    # load or dump question from each week
+    if sys.argv[1] in first_command: #week1 or week2 or week3 ...
         if '-dump'  in sys.argv:
             DumpQuestion(sys.argv[1])
         elif '-v2' in sys.argv:
             LoadQuestion(sys.argv[1], 2)
         else:
             LoadQuestion(sys.argv[1])
-            return
+        return
+
+    # update simple question
+    if sys.argv[1]=='update':
+        LoadQuestion(sys.argv[2],3) # python3 shell.py update 102
+        return
 
     if sys.argv[1]== 'assign':
         if len(sys.argv)==2:

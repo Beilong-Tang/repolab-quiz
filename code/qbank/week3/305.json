@@ -2,13 +2,13 @@
   "question_type": "blank",
   "question_title": "Dynamic programming",
   "question_content": {
-    "description": "### Problem05\n\nA general approach to implementing recursive programs, known as _____(0)\\___ _____(1)\\___, provides effective and elegant solutions to a wide class of problems. In _____(2)\\___ (top-down/bottum-up) dynamic programming, we store or cache the result of each subproblem that we solve. In _____(3)\\___ (top-down/bottum-up) dynamic programming, we compute solutions to all of the subproblems, starting with the \"simplest\" subproblems and gradually building up solutions to more and more complicated subproblems (from sec-2.3).\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "description": "### Problem05\n\nA general approach to implementing recursive programs, known as _____(0)\\___ _____(1)\\___, provides effective and elegant solutions to a wide class of problems. In _____(2)\\___ (top-down/bottom-up) dynamic programming, we store or cache the result of each subproblem that we solve. In _____(3)\\___ (top-down/bottom-up) dynamic programming, we compute solutions to all of the subproblems, starting with the \"simplest\" subproblems and gradually building up solutions to more and more complicated subproblems (from sec-2.3).\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
     "explains": "None",
     "answers": [
       "dynamic",
       "programming",
       "top-down",
-      "bottum-up"
+      "bottom-up"
     ],
     "quiz_type": "blank",
     "level": "1",
