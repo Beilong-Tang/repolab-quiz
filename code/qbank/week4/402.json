@@ -2,8 +2,8 @@
   "question_type": "mult",
   "question_title": "Pointers",
   "question_content": {
-    "description": "### Problem02\n:author=BL\n\nPlease select the following choices that are correct. \n\n**Choices:**\n\na. In Java, there is only one way to create a reference and only one way to manipulate the reference.\n\nb. In Java, the only things that a programmer can do with references is to create and copy them.\n\nc. In Java, programmers need to use pointers to allocate memroy space.\n\nd. In Java, programmers can change the reference.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.\n\n",
-    "author": "BL\n\nPlease select the following choices that are correct. \n\n### Choices",
+    "description": "### Problem02\n\nPlease select the following choices that are correct. \n\n**Choices:**\n\na. In Java, there is only one way to create a reference (with new) and only one way to manipulate the reference (with an assignment statement).\n\nb. In Java, the only things that a programmer can do with references is to create and copy them.\n\nc. In Java, programmers need to use pointers to allocate memroy space.\n\nd. Java references are known as safe pointers.\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._\n\n",
+    "author": "Beilong Tang",
     "choices": [
       "a. In Java, there is only one way to create a reference and only one way to manipulate the reference.",
       "b. In Java, the only things that a programmer can do with references is to create and copy them.",
@@ -14,7 +14,7 @@
       "True",
       "True",
       "False",
-      "False"
+      "True"
     ],
     "explains": "None",
     "quiz_type": "mult",

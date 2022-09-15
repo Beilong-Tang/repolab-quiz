@@ -1,6 +1,6 @@
 {
   "question_type": "blank",
-  "question_title": "4 1 11  edited ",
+  "question_title": "Order of growth determination",
   "question_content": {
     "description": "### Problem04\n\n\nSuppose the running times of an algorithm for inputs of sizes 1,000, 2,000, 3,000, and 4,000 are 5 seconds, 20 seconds, 45 seconds, and 80 seconds, respectively. Is the algorithm linear, linearithmic, quadratic, cubic, or exponential?\n\nAnswer: _____(0)\\___.",
     "explains": "None",
