@@ -1,15 +1,15 @@
 {
   "question_type": "blank",
-  "question_title": "midway computation",
+  "question_title": "Why \"lo + (hi-lo)/2\" ",
   "question_content": {
-    "description": "### Problem15\n\n\nExplain why we use `lo + (hi - lo) / 2` to compute the index midway\nbetween lo and hi instead of using `(lo + hi) / 2`.\n\nAnswer: The latter fails when `lo + hi` _____(0)\\___ an java `int`\ntype.\n\nHint: calculates corrects overflows evaluates underflows",
+    "description": "### Problem15\n\n\nIn the Binary Search method from the textbook (from sec-4.2), there is a line which is\n\n```java\nint mid = lo + (hi-lo)/2;\n```\n\nYou may wonder why this line is not written as:\n\n```java\nint mid = (lo + hi)/2;\n```\n\nImagine you have a very very long array, and you would like to use binary search to search for one element in the array. Using '(lo + hi) /2' is _____(0)\\___ (more/less) likely to cause an overflow compared to 'lo + (hi-lo)/2'.",
     "explains": "None",
     "answers": [
-      "overflows"
+      "more"
     ],
     "quiz_type": "blank",
     "level": "3",
-    "author": "Yantao_Mei",
+    "author": "Yantao_Mei (Modified by Beilong Tang)",
     "section": "4.2",
     "id": 415
   },

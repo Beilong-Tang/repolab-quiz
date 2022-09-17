@@ -2,17 +2,15 @@
   "question_type": "mult",
   "question_title": "Debug",
   "question_content": {
-    "description": "### Problem13\nS\u200buppose you want to add a constructor to Complex that takes a double value as its argument and creates a Complex number with that value as the real part (and imaginary part equal to 0). You write the following code:\n\n```java\npublic void Complex(double real)\n{\n    re = real;\n    im = 0.0;\n}\n```\n\nB\u200but then the statement Complex c = new Complex(1.0) does not compile. Why?\n\n**Choices:**\n\nT\u200bhe types of re and im are not declared.\n\nA\u200b class can only have one constructor.\n\nC\u200bonstructors do not have return types, not even void.\n\nT\u200bhe return type should be Complex, not void.\n\nN\u200bone of the above.",
+    "description": "### Problem13\nSuppose you want to create your own data type of Complex. Below is the code you wrote. There are now two constructors. What is wrong with the Constructor? \n\n```java\nclass Complex{\n    double re;\n    double im;\n\n    // Constructor 1\n    public void Complex(double Cre, double Cim){\n        re = Cre;\n        im = Cim;\n    }\n\n    // Constructor 2\n    public Complex(){\n        this.re = 1;\n        this.im = 1;\n    }\n\n\n    public static void main(String[] args) {\n        Complex a = new Complex(1.0,2.0);\n        System.out.println(a.re);\n    }\n}\n```\n\na. The 're' and 'im' in the constructor 1 are not defined.\n\nb. The first construtor should not have any return type, even void.\n\nc. The Complex class cannot have two constructors.\n\nd. None of the above.",
     "author": "Yantao Mei",
     "choices": [
-      "T\u200bhe types of re and im are not declared.",
-      "A\u200b class can only have one constructor.",
-      "C\u200bonstructors do not have return types, not even void.",
-      "T\u200bhe return type should be Complex, not void.",
-      "N\u200bone of the above."
+      "a. The 're' and 'im' in the constructor 1 are not defined.",
+      "b. The first construtor should not have any return type, even void.",
+      "c. The Complex class cannot have two constructors.",
+      "d. None of the above."
     ],
     "answers": [
-      "False",
       "False",
       "True",
       "False",

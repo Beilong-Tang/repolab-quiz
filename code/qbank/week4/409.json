@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Encapsulation",
   "question_content": {
-    "description": "### Problem09\n\n\n- The process of separating clients from implementations by hiding information is known as _____(0)\\___.\n- The idea of breaking large programs into small modules that can be developed and debugged independently in computer science can be called as _____(1)\\___ programming.\n- Java\u2019s language support for enforcing encapsulation is the private access modifier. When you declare an instance variable (or method) to be _____(2)\\___, you are making it impossible for any client (code in another class) to directly access that instance variable (or method).",
+    "description": "### Problem09\n\n\n- The process of separating clients from implementations by hiding information is known as _____(0)\\___.\n- The idea of breaking large programs into small modules that can be developed and debugged independently in computer science can be called as _____(1)\\___ programming.\n- Java\u2019s language support for enforcing encapsulation is the private access modifier. When you declare an instance variable (or method) to be _____(2)\\___(type a keyword), you are making it impossible for any client (code in another class) to directly access that instance variable (or method).\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
     "explains": "None",
     "answers": [
       "encapsulation",

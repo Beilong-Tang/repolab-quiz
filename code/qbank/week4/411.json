@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "What happens if I try to access a private instance variable or method from a class in another file ",
+  "question_title": "Accessing a private value",
   "question_content": {
-    "description": "### Problem11\n\n\nYou get a _____(0)\\___ error that says the given instance variable or method has private access in the given class.",
+    "description": "### Problem11\n\n\nYou get a _____(0)\\___ (run-time, compile-time, logical) error that says the given instance variable or method has private access in the given class.",
     "explains": "None",
     "answers": [
       "compile-time"

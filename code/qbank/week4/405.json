@@ -1,6 +1,6 @@
 {
   "question_type": "blank",
-  "question_title": "4 1 19",
+  "question_title": "Reverse String performance",
   "question_content": {
     "description": "### Problem05\n\n\nWhat is the order of growth of the running time of the following two functions? Each function takes a string as an argument and returns the string reversed.\n\n```java\npublic static String reverse1(String s)\n{\n int n = s.length();\n String reverse = \"\";\n for (int i = 0; i < n; i++)\n reverse = s.charAt(i) + reverse;\n return reverse;\n}\n```\nOrder of growth: _____(0)\\___ (linear, linearithmic, quadratic, cubic, exponential).\n\n```java\npublic static String reverse2(String s)\n{\n int n = s.length();\n if (n <= 1) return s;\n String left = s.substring(0, n/2);\n String right = s.substring(n/2, n);\n return reverse2(right) + reverse2(left);\n}\n```\n\nOrder of growth: _____(1)\\___.",
     "explains": "None",

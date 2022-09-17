@@ -2,14 +2,14 @@
   "question_type": "mult",
   "question_title": "doubling hypothesis application",
   "question_content": {
-    "description": "### Problem08\nWhich of the following running times for a program  consistent with the hypothesis that the order of growth of the program is quadratic (check all that apply)? Mark all that apply.\n\n**Choices:**\n\n1 second for N = 1,000,000, 2 seconds for N = 2,000,000, 8 seconds for N = 8,000,000\n\n1 second for N = 100,000, 4 seconds for N = 200,000, 16 seconds for N = 400,000\n\n1 second for N = 100,000, 8 seconds for N = 200,000, 64 seconds for N = 400,000\n\n1 second for N = 100,000, 4 seconds for N = 200,000, 32 seconds for N = 800,000\n\n1 second for N = 100,000, 4 seconds for N = 200,000, 64 seconds for N = 800,000",
+    "description": "### Problem08\nWhich of the following running times for a program  consistent with the hypothesis that the order of growth of the program is quadratic? Please choose all that apply.\n\n**Choices:**\n\na. 1 second for N = 1,000,000, 2 seconds for N = 2,000,000, 8 seconds for N = 8,000,000\n\nb. 1 second for N = 100,000, 4 seconds for N = 200,000, 16 seconds for N = 400,000\n\nc. 1 second for N = 100,000, 8 seconds for N = 200,000, 64 seconds for N = 400,000\n\nd. 1 second for N = 100,000, 4 seconds for N = 200,000, 32 seconds for N = 800,000\n\ne. 1 second for N = 100,000, 4 seconds for N = 200,000, 64 seconds for N = 800,000",
     "author": "Yantao Mei",
     "choices": [
-      "1 second for N = 1,000,000, 2 seconds for N = 2,000,000, 8 seconds for N = 8,000,000",
-      "1 second for N = 100,000, 4 seconds for N = 200,000, 16 seconds for N = 400,000",
-      "1 second for N = 100,000, 8 seconds for N = 200,000, 64 seconds for N = 400,000",
-      "1 second for N = 100,000, 4 seconds for N = 200,000, 32 seconds for N = 800,000",
-      "1 second for N = 100,000, 4 seconds for N = 200,000, 64 seconds for N = 800,000"
+      "a. 1 second for N = 1,000,000, 2 seconds for N = 2,000,000, 8 seconds for N = 8,000,000",
+      "b. 1 second for N = 100,000, 4 seconds for N = 200,000, 16 seconds for N = 400,000",
+      "c. 1 second for N = 100,000, 8 seconds for N = 200,000, 64 seconds for N = 400,000",
+      "d. 1 second for N = 100,000, 4 seconds for N = 200,000, 32 seconds for N = 800,000",
+      "e. 1 second for N = 100,000, 4 seconds for N = 200,000, 64 seconds for N = 800,000"
     ],
     "answers": [
       "False",
