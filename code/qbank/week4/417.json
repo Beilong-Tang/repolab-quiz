@@ -2,10 +2,10 @@
   "question_type": "blank",
   "question_title": "Binary search",
   "question_content": {
-    "description": "### Problem17\n\n\nThe binary search follows the recursive strategy:\n\n- Base case: If hi - lo equals 1, then the secret number is _____(0)\\___ (hi/mid/lo).\n- Reduction step : Otherwise, ask whether the secret number is greater than or equal to the number mid = lo + ( hi - lo )/2. If so, look for the number in [_____(1)\\___, _____(2)\\___] (hi/mid/lo); if not, look for the number in [_____(3)\\___ , _____(4)\\___] (hi/mid/lo).",
+    "description": "### Problem17\n\n\nThe binary search follows the recursive strategy from the mid=lo+(hi-lo)/2. There are two base cases: \n\n1. the search range is an empty range.\n\n2. the target number is at location __(0)\\__.\n\nIn the recursive step, if the target number is less than or equal to a[mid], then, it would look for the number in array index range [_____(1)\\___, _____(2)\\___) (hi/mid/lo); if not, look for the number in range [_____(3)\\___ +1 , _____(4)\\___) (hi/mid/lo).",
     "explains": "None",
     "answers": [
-      "lo",
+      "mid",
       "lo",
       "mid",
       "mid",

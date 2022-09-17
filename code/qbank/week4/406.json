@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "ADT 1",
   "question_content": {
-    "description": "### Problem06\n\nLook at the following code:\n\n```java\nclass Person{\n    int age = 10;\n    String name;\n\n    Person () {\n        age = 100;\n    }\n\n    void PlusAge(int age){\n        age = age +1 ;\n    }\n\n    void PlusAge(){\n        age = age + 1;\n    }\n\n    void ShowAge(){\n        System.out.println(age);\n    }\n\n    public static void main(String[] args) {\n        Person x = new Person();\n        x.PlusAge();\n        Person y = new Person();\n        y.PlusAge(y.age);\n        int z = y.age;\n        System.out.println(y.name);\n    }\n}\n```\n### Choices:\n\nPlease select the following choices that are correct:\n\na. The output of the program will be \"\".\n\nb. The output of the program will be \"null\".\n\nc. After executing the program, the value of x.age is 101.\n\nd. After executing the program, the value of z is 101.\n\n",
+    "description": "### Problem06\n\nLook at the following code:\n\n```java\nclass Person{\n    int age = 10;\n    String name;\n\n    Person () {\n        age = 100;\n    }\n\n    void PlusAge(int age){\n        age = age +1 ;\n    }\n\n    void PlusAge(){\n        age = age + 1;\n    }\n\n    void ShowAge(){\n        System.out.println(age);\n    }\n\n    public static void main(String[] args) {\n        Person x = new Person();\n        x.PlusAge();\n        Person y = new Person();\n        y.PlusAge(y.age);\n        int z = y.age;\n        System.out.println(y.name);\n    }\n}\n```\n**Choices:**\n\nPlease select the following choices that are correct:\n\na. The output of the program will be \"\".\n\nb. The output of the program will be \"null\".\n\nc. After executing the program, the value of x.age is 101.\n\nd. After executing the program, the value of z is 101.\n\n",
     "author": "Beilong Tang",
     "choices": [
       "a. The output of the program will be \"\".",
@@ -23,6 +23,6 @@
     "id": 406
   },
   "question_level": 2,
-  "question_id": 402,
+  "question_id": 406,
   "question_week": 4
 }

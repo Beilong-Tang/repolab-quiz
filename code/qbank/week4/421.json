@@ -1,27 +1,19 @@
 {
-  "question_type": "mult",
-  "question_title": "BST",
+  "question_type": "blank",
+  "question_title": "Java terminology on variables",
   "question_content": {
-    "description": "### Problem21\nIn the BST built from the keys \"is this an easy question\" which key is in the root of the left subtree of the root?\n\n**Choices:**\n\nA is\n\nB an\n\nC easy\n\nD this\n\nE question",
-    "author": "Yantao Mei",
-    "choices": [
-      "A is",
-      "B an",
-      "C easy",
-      "D this",
-      "E question"
-    ],
+    "description": "### Problem21\nSo far we have learned all the Java constructs, functions and ADT. We\nhave encountered four different kinds of variables based on their\ndeclations, please list them (Note that the 4 answers begin with 'i', 'p', 's', 'l' respectfully, in this order):\n\n1. _____(0)\\___ variables\n2. _____(1)\\___ variables\n3. _____(2)\\___ variables\n4. _____(3)\\___ variables\n\nEach of the answer consists of a single English word.",
+    "author": "Jiang Long",
     "answers": [
-      "False",
-      "True",
-      "False",
-      "False",
-      "False"
+      "instance",
+      "parameter",
+      "static",
+      "local"
     ],
     "explains": "None",
-    "quiz_type": "mult",
+    "quiz_type": "blank",
     "level": "1",
-    "section": "4.2",
+    "section": "3.3",
     "id": 421
   },
   "question_level": 1,

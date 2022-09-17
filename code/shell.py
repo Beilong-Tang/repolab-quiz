@@ -296,6 +296,9 @@ def execute():
     if sys.argv[1]=='update':
         LoadQuestion(sys.argv[2],3) # python3 shell.py update 102
         return
+    # Export one single question from the db.
+    # if sys.argv[1]=='export':
+
 
     if sys.argv[1]== 'assign':
         if len(sys.argv)==2:

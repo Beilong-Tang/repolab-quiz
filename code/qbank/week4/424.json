@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Bubble sort",
   "question_content": {
-    "description": "### Problem24\nWhich of the following best describes the order of growth of the worst-case running time of bubble sort?\n\n**Choices:**\n\nlogarithmic\n\nlinear\n\nlinearithmic\n\nquadratic",
+    "description": "### Problem24\nWhich of the following best describes the order of growth of the worst-case running time of bubble sort?\n\n**Choices:**\n\na. logarithmic\n\nb. linear\n\nc. linearithmic\n\nd. quadratic",
     "author": "Yantao Mei",
     "choices": [
       "logarithmic",
