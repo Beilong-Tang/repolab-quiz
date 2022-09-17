@@ -2,14 +2,15 @@
   "question_type": "blank",
   "question_title": "Postfix expression",
   "question_content": {
-    "description": "### Problem16\n\n\nEvaluate the Postfix expression 1 1 1 1 1 1 + + * + *\n\nThe answer is: _____(0)\\___",
+    "description": "### Problem16\n\n\nThe Java package java.util contains the static methods Arrays._____(0)\\___ and Arrays._____(1)\\___ that implement mergesort and binary search, respectively (literally from Q&A sec-4.2).",
     "explains": "None",
     "answers": [
-      "4"
+      "sort()",
+      "binarySearch()"
     ],
     "quiz_type": "blank",
     "level": "1",
-    "author": "Yantao_Mei",
+    "author": "Beilong Tang",
     "section": "4.2",
     "id": 416
   },
