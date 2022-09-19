@@ -23,7 +23,7 @@ def checkanswer_blank(input_sets, answer_sets):
     if len(input_sets)!=len(answer_sets):
         return False
     for i in range(0,len(input_sets)):
-        if input_sets[i].lower()!=answer_sets[i].lower():
+        if input_sets[i].lower().lstrip(' ').rstrip(' ')!=answer_sets[i].lower():
             return False
     return True
 ## Check Answer for multi choice questions

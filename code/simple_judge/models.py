@@ -14,19 +14,19 @@ class Student(models.Model):
     online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))
     offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
     level= models.IntegerField(default = 0)
-    forum_seen = models.TextField(default="")
-    forum_star = models.TextField(default="")
-    messages = models.TextField(default="")
-    comment_seen = models.TextField(default="")
+    forum_seen = models.TextField(default="",blank=True)
+    forum_star = models.TextField(default="",blank=True)
+    messages = models.TextField(default="",blank=True)
+    comment_seen = models.TextField(default="",blank=True)
     def __str__(self):
         return self.student_name
 
 class Question(models.Model):
     student=models.ForeignKey(Student, on_delete=models.CASCADE)
-    question_title=models.CharField(max_length=50)
+    question_title=models.CharField(max_length=100)
     question_id=models.IntegerField(default=0)
     ifpassed=models.BooleanField('ifpassed',default=False)
-    logx=models.TextField()
+    logx=models.TextField(blank=True)
     submission_times=models.IntegerField(default=5)
     def __str__(self):
         return self.question_title
