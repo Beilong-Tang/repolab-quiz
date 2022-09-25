@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "4 4 17",
+  "question_title": "BST Basics 1",
   "question_content": {
-    "description": "### Problem08\n\n\nTrue or False: \nGiven a BST, let x be a leaf node, and let p be its parent. Then either \n(1) the key of p is the smallest key in the BST larger than the key of x or \n(2) the key of p is the largest key in the BST smaller than the key of x. \n\nAnswer: _____(0)\\___",
+    "description": "### Problem08\n\n\nLook at the following statement: \n\nGiven a BST, let x be a leaf node, and let p be its parent. Then either \n(1) the key of p is the smallest key in the BST larger than the key of x or \n(2) the key of p is the largest key in the BST smaller than the key of x. \n\n Please tell whether this statement is true or false.\n\n Answer: _____(0)\\___ (true or false).",
     "explains": "None",
     "answers": [
       "False"

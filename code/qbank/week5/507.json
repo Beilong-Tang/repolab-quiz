@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "4 4 15",
+  "question_title": "Top Three Nodes",
   "question_content": {
-    "description": "### Problem07\n\n\nSuppose that the following 31 keys appear (in some order) in a BST of height 4:\n\n10 15 18 21 23 24 30 31 38 41 42 45 50 55 59 60 61 63 71 77 78 83 84 85 86 88 91 92 93 94 98\n\nDraw the top three nodes of the tree (the root and its two children).  \nTop three:  \nRoot node: _____(0)\\___  \nLeft children node: _____(1)\\___  \nRight children node: _____(2)\\___",
+    "description": "### Problem07\n\n\nSuppose that the following 31 keys (in an ascending order) appear in a BST of height 4:\n\n10 15 18 21 23 24 30 31 38 41 42 45 50 55 59 60 61 63 71 77 78 83 84 85 86 88 91 92 93 94 98\n\n Note that in this BST, the keys in the left node are always smaller than those in the right node. \n\nPlease write the key of the top three nodes of the tree (the root and its two children).  \nTop three:  \nRoot node: _____(0)\\___  \nLeft children node: _____(1)\\___  \nRight children node: _____(2)\\___",
     "explains": "None",
     "answers": [
       "60",
