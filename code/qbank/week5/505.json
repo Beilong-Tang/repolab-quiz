@@ -4,8 +4,8 @@
   "question_content": {
     "description": "### Problem05\n\n```java\npublic class StackCheck\n{\n    public static boolean check (int [] a)\n    {\n        Stack <Integer> stack =  new Stack<>();\n        for (int i : a )\n        {\n            if (stack.size()==0){stack.push(i);continue;}\n            if (__0__){stack.pop(); continue;}\n            stack.push(i);\n        }\n        return __1__;\n    }\n}\n```\n\nPlease complete the method check() above so that it can tell if the number of 0 and 1 in the int[]a is the same.\n\nExample_1:\n\nint[]a={0,1,1}\ncheck(a)=false\n\nExample_2\n\nint[]a={0,1,1,0}\ncheck(a)=true\n\nYour answer:\n",
     "code": "public class StackCheck\n{\n    public static boolean check (int [] a)\n    {\n        Stack <Integer> stack =  new Stack<>();\n        for (int i : a )\n        {\n            if (stack.size()==0){stack.push(i);continue;}\n            if (__0__){stack.pop(); continue;}\n            stack.push(i);\n        }\n        return __1__;\n    }\n}",
-    "check": "void check()\n{\n    int [] t1= {0};\n    int [] t2= {0,1,1};\n    int [] t3= {0,1,1,0};\n    int [] t4= {0,1,1,0,0,0,1,1};\n    boolean check = !StackCheck.check(t1) && !StackCheck.check(t2) && StackCheck.check(t3) && StackCheck.check(t4);\n    System.out.println(check);\n}",
-    "instruction": "/open ../../../shared/stdlib/Stack.java\n/open ../../../shared/stdlib/StdIn.java\n/open ../../../shared/stdlib/StdOut.java\n/open quiz-gen/StackCheck.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
+    "check": "void checking()\n{\n    int [] t1= {0};\n    int [] t2= {0,1,1};\n    int [] t3= {0,1,1,0};\n    int [] t4= {0,1,1,0,0,0,1,1};\n    boolean check = !StackCheck.check(t1) && !StackCheck.check(t2) && StackCheck.check(t3) && StackCheck.check(t4);\n    System.out.println(check);\n}",
+    "instruction": "/open ../stdlib/Stack.java\n/open ../stdlib/StdIn.java\n/open ../stdlib/StdOut.java\n/open quiz-gen/StackCheck.txt\n/open quiz-gen/check.txt\ncheck()\n/save -history quiz-gen/data.txt",
     "title": "StackCheck",
     "quiz_type": "code",
     "import": "\nStack.java\nStdIn.java\nStdOut.java\n\n",

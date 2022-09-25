@@ -1,0 +1,1 @@
+void check(){    int [] t1= {0};    int [] t2= {0,1,1};    int [] t3= {0,1,1,0};    int [] t4= {0,1,1,0,0,0,1,1};    boolean check = !StackCheck.check(t1) && !StackCheck.check(t2) && StackCheck.check(t3) && StackCheck.check(t4);    System.out.println(check);}

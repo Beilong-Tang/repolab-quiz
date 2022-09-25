@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Linked lists",
   "question_content": {
-    "description": "### Problem03\n\n\n A singly linked list comprises a sequence of _____(0)\\___, with each containing a reference (or link) to its successor. \n\n By convention, the link in the last node is _____(1)\\___, to indicate that it terminates the list.",
+    "description": "### Problem03\n\n\n A singly linked list comprises a sequence of _____(0)\\___, with each containing a reference (or link) to its successor. By convention, the link in the last node is _____(1)\\___, to indicate that it terminates the list (literally from sec-4.3).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "nodes",

@@ -1,18 +1,26 @@
 {
-  "question_type": "blank",
-  "question_title": "FIFO queues",
+  "question_type": "mult",
+  "question_title": "Queue",
   "question_content": {
-    "description": "### Problem02\n\n\nA FIFO queue (or just a queue) is a collection that is based on the _____(0)\\___ - in _____(1)\\___ - out policy. ",
+    "description": "### Problem01\n\n\nA FIFO queue (or just a queue) is a collection that is based on the _____(0)\\___ policy (choose from the following options). \n\n **Choices:**\n\na. first - in - first - out\n\nb. first - in - last - out\n\nc. last - in - last - out\n\nd. last - in - first - out\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
-      "first",
-      "first"
+      "True",
+      "False",
+      "False",
+      "False"
     ],
-    "quiz_type": "blank",
+    "quiz_type": "mult",
     "level": "1",
     "author": "Yantao Mei",
     "section": "4.3",
-    "id": 502
+    "id": 502,
+    "choices": [
+      "a. first - in - first - out",
+      "b. first - in - last - out",
+      "c. last - in - last - out",
+      "d. last - in - first - out"
+    ]
   },
   "question_level": 1,
   "question_id": 502,
