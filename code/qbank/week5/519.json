@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Basic definition",
   "question_content": {
-    "description": "### Problem19\n\n\n- _____(0)\\___ are the basic abstract building blocks of formal languages.  \n- An _____(1)\\___ is a finite set of symbols.  \n- A _____(2)\\___ is a finite sequence of alphabet symbols.  \n- A _____(3)\\___ _____(4)\\___ is a set of strings (possibly infinite), all over the same alphabet.\n\nSee more examples of formal languages over the binary alphabet, ASCII alphabet, palindromes alphabet etc. in textbook pp.719-722. ",
+    "description": "### Problem19\n\n\n- _____(0)\\___ are the basic abstract building blocks of formal languages.  \n- An _____(1)\\___ is a finite set of symbols.  \n- A _____(2)\\___ is a finite sequence of alphabet symbols.  \n- A _____(3)\\___ _____(4)\\___ is a set of strings (possibly infinite), all over the same alphabet.\n\nNote: These answers can be found at the begining of sec-5.1.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.* ",
     "explains": "None",
     "answers": [
       "Symbols",

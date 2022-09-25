@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "DFA1",
   "question_content": {
-    "description": "### Problem12\n##DFA1\n\nWhich of the following strings does this DFA accept?  \n\n![image](/static/quiz/images/Users/carol/Desktop/CHAPTER05/../../../../5.1.5fig.jpg)\n\n**Choices:**\n\nA. bbabaaba\n\nB. ababbabb\n\nC. bbabbbaa ",
+    "description": "### Problem12\n\nWhich of the following strings does this DFA accept?  \n\n![image](/static/quiz/images/Users/carol/Desktop/CHAPTER05/../../../../5.1.5fig.jpg)\n\n**Choices:**\n\nA. bbabaaba\n\nB. ababbabb\n\nC. bbabbbaa ",
     "choices": [
       "A. bbabaaba",
       "B. ababbabb",

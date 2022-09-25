@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Summary2",
   "question_content": {
-    "description": "### Problem16\n##Summary2\n\nWhich is more powerful, DFA or NFA ?\n\n**Choices:**\n\nA. DFA\n\nB. NFA\n\nC. Both",
+    "description": "### Problem16\n\nWhich is more powerful, DFA or NFA ?\n\n**Choices:**\n\nA. DFA\n\nB. NFA\n\nC. Both",
     "choices": [
       "A. DFA",
       "B. NFA",

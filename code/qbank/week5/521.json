@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Deterministic finite-state automata",
   "question_content": {
-    "description": "### Problem21\n\n\n> Deterministic finite-state automaton (DFA) is an abstract machine consists of:\n- A _____(0)\\___ number of states, each of which is designated as either an accept state or a reject state.\n- A set of _____(1)\\___ that specify how the machine changes state. Each state has one transition for each symbol in the alphabet.\n- A tape reader initially positioned at the first symbol of an input string and capable only of reading a symbol and moving to the next symbol.",
+    "description": "### Problem21\n\n\n Deterministic finite-state automaton (DFA) is an abstract machine consists of:\n\n- A _____(0)\\___ number of states, each of which is designated as either an accept state or a reject state.\n- A set of _____(1)\\___ that specify how the machine changes state. Each state has one transition for each symbol in the alphabet.\n- A tape reader initially positioned at the first symbol of an input string and capable only of reading a symbol and moving to the next symbol.\n\n Hint: This question is literally from sec-5.1.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "finite",

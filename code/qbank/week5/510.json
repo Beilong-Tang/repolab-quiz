@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Regular language",
   "question_content": {
-    "description": "### Problem10\n##Regular language\n\n\nWhich of the following operations are included as part of the basic definition of REs ?\n\n**Choices:**\n\nA. union\n\nB. concentration\n\nC. parenthesis\n\nD. intersection\n\nE. closure",
+    "description": "### Problem10\n\n\nWhich of the following operations are included as part of the basic definition of REs ?\n\n**Choices:**\n\nA. union\n\nB. concentration\n\nC. parenthesis\n\nD. intersection\n\nE. closure",
     "choices": [
       "A. union",
       "B. concentration",

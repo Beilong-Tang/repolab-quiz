@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "Nondeterministic finite-state automata",
+  "question_title": "Nondeterministic finite automaton",
   "question_content": {
-    "description": "### Problem22\n\n\n- The behavior of a DFA is _____(0)\\___: for each input symbol and each state, there is exactly one possible state transition. \n\n- A _____(1)\\___ _____(2)\\___ _____(3)\\___ (NFA) is an abstract machine that allows other possibilities.",
+    "description": "### Problem22\n\n\n- The behavior of a DFA is _____(0)\\___ (deterministic/nondeterministic): for each input symbol and each state, there is exactly one possible state transition. \n\n- A _____(1)\\___ _____(2)\\___ _____(3)\\___ (NFA) is an abstract machine that allows other possibilities.\n\nNote: Type carefully, don't miss-spell, there are no dashes and use singular form.",
     "explains": "None",
     "answers": [
       "deterministic",
