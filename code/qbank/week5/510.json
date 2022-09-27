@@ -1,26 +1,30 @@
 {
   "question_type": "mult",
-  "question_title": "Regular language",
+  "question_title": "NP and P 1",
   "question_content": {
-    "description": "### Problem10\n\n\nWhich of the following operations are included as part of the basic definition of REs ?\n\n**Choices:**\n\nA. union\n\nB. concentration\n\nC. parenthesis\n\nD. intersection\n\nE. closure",
+    "description": "### Problem10\n\n\nLet A and B be two decision problems. Suppose we know that A polynomial-time reduces to B. Which of the following can we infer? Mark all that apply.\n\n**Choices:**\n\nA. A and B cannot both be NP-complete\n\nB. If A is in P, then B is in P\n\nC. If A is NP-complete and B is in NP, then B is NP-complete\n\nD. If B is in P, then A is in P \n\nE. If B is NP-complete then so is A\n\nF. If A is NP-complete then so is B\n\nG. If B is NP-complete and A is in NP then A is NP-complete  \n\n*From Coursera lecture quiz*\n\n",
     "choices": [
-      "A. union",
-      "B. concentration",
-      "C. parenthesis",
-      "D. intersection",
-      "E. closure"
+      "A. A and B cannot both be NP-complete ",
+      "B. If A is in P, then B is in P  ",
+      "C. If A is NP-complete and B is in NP then B is NP-complete  ",
+      "D. If B is in P, then A is in P  ",
+      "E. If B is NP-complete then so is A  ",
+      "F. If A is NP-complete then so is B  ",
+      "G. If B is NP-complete and A is in NP then A is NP-complete  "
     ],
     "answers": [
+      "False",
+      "False",
       "True",
       "True",
       "False",
       "False",
-      "True"
+      "False"
     ],
     "explains": "None",
     "quiz_type": "mult",
     "level": "1",
-    "section": "5.1",
+    "section": "5.5",
     "author": "Yike Guo",
     "id": 510
   },

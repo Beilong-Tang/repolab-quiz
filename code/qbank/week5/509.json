@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Symbol table",
   "question_content": {
-    "description": "### Problem09\n\n\nClients can store (put) an entry into the symbol table by specifying a _____(0)\\___ - _____(1)\\___ pair and then can retrieve (get) the value associated with a specified key from the symbol table (literally from sec-4.4).",
+    "description": "### Problem09\n\n\nClients can store (put) an entry into the symbol table by specifying a _____(0)\\___ - _____(1)\\___ pair and then can retrieve (get) the value associated with a specified key from the symbol table (literally from sec-4.4).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "key",

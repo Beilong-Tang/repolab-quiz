@@ -12,10 +12,10 @@
     ],
     "answers": [
       "True",
-      "True",
+      "False",
       "True",
       "False",
-      "False"
+      "True"
     ],
     "explains": "None",
     "quiz_type": "mult",
