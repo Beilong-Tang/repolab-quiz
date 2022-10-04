@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "NP-complete2",
   "question_content": {
-    "description": "### Problem09\n## NP-complete2 \n\nLet A and B be two decision problems.Suppose we know that A polynomial-time reduces to B. Which of the following can we infer?  Mark all that apply\n\n**Choices:**\n\nA. If B is NP-complete, then so is A.  \n\nB. If A is NP-complete, then so is B.  \n\nC. If B is NP-complete and A is in NP, then A is NP-complete.  \n\nD. If A is NP-complete and B is in NP, then B is NP-complete.  \n\nE. A and B cannot both be NP-complete. \n\nF. If A is in P, then B is in P.  \n\nG. If B is in P, then A is in P.  \nCoursera lecture quiz\n\n",
+    "description": "### Problem09\n\n\nLet A and B be two decision problems.Suppose we know that A polynomial-time reduces to B. Which of the following can we infer?  Mark all that apply\n\n**Choices:**\n\nA. If B is NP-complete, then so is A.  \n\nB. If A is NP-complete, then so is B.  \n\nC. If B is NP-complete and A is in NP, then A is NP-complete.  \n\nD. If A is NP-complete and B is in NP, then B is NP-complete.  \n\nE. A and B cannot both be NP-complete. \n\nF. If A is in P, then B is in P.  \n\nG. If B is in P, then A is in P.  \n\n *Excerpt from Lab*\n\n",
     "choices": [
       "A. If B is NP-complete, then so is A.  ",
       "B. If A is NP-complete, then so is B.  ",

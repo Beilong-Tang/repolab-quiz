@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "FACTOR",
   "question_content": {
-    "description": "### Problem10\n## FACTOR \n\n Assume that P = NP. Mark all correct options for FACTOR. \n\n\n### Quote \n Booksite <https://introcs.cs.princeton.edu/java/55intractability/>  \n\n",
+    "description": "### Problem10\n\nAssume that P = NP. Mark all correct options for FACTOR.\n\n**Choices:**\n\nA. is computable\n\nB. is in P\n\nC. is in NP\n\nD. is intractable\n\nE. is NP-complete\n\n*Excerpt from Lab*\n\n",
     "choices": [
       "A. is computable  ",
       "B. is in P  ",

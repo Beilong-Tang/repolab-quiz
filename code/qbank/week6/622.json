@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Components of Machine's State",
   "question_content": {
-    "description": "### Problem22\n## Components of Machine's State \n\n\n Which of the following are components of a machine's state (value at the beginning of each instruction cycle determines what happens next)? Mark all that apply.\n\n**Choices:**\n\nA. Registers\n\nB. IR\n\nC. Memory\n\nD. PC\n\nE. ALU\n ### Quote \n\ncoursera lecture quiz\n\n",
+    "description": "### Problem22\n\n Which of the following are components of a machine's state (value at the beginning of each instruction cycle determines what happens next)? Mark all that apply.\n\n**Choices:**\n\nA. Registers\n\nB. IR\n\nC. Memory\n\nD. PC\n\nE. ALU\n\n *Excerpt from coursera lecture quiz*\n\n",
     "choices": [
       "A. Registers",
       "B. IR",

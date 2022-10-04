@@ -1,11 +1,11 @@
 {
   "question_type": "blank",
-  "question_title": "6 1 7",
+  "question_title": "two's complement",
   "question_content": {
-    "description": "### Problem15\n\nWhat is the 4-digit hexadecimal two\u2019s complement representation of the decimal number \u2013256 : _____(0)\\___\n\n### Quote\n\n*coursera lecture slide*",
+    "description": "### Problem15\n\nWhat is the 4-digit hexadecimal two\u2019s complement representation of the decimal number \u2013256 : _____(0)\\___\n\n*Excerpt from coursera quiz*",
     "explains": "None",
     "answers": [
-      "FFF0"
+      "FF00"
     ],
     "quiz_type": "blank",
     "level": "2",

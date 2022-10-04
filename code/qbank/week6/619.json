@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "TOY_Register",
   "question_content": {
-    "description": "### Problem19\n\n\nA register is a machine component that holds a sequence of _____(0)\\___, much like a word in main memory. Registers serve the function of _____(1)\\___ (do not forgot the verb tense) intermediate results during computation.",
+    "description": "### Problem19\n\n\nA register is a machine component that holds a sequence of _____(0)\\___, much like a word in main memory. Registers serve the function of _____(1)\\___ intermediate results during computation (literally from sec-6.2).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "bits",

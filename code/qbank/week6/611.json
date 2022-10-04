@@ -2,13 +2,11 @@
   "question_type": "mult",
   "question_title": "NP-complete3",
   "question_content": {
-    "description": "### Problem11\n## NP-complete3 \n\n Which of the following can we infer from the fact that TSP is NP-complete, if we assume that P \u2260 NP? Mark all that apply. \n\n**Choices:**\n\nA. There does not exist an algorithm that solves arbitrary instances of TSP. \n\nB. There does not exist an algorithm that efficiently solves arbitrary in-\n\nstances of TSP.  \n\nC. There exists an algorithm that efficiently solves arbitrary instances of\n\nTSP, but no one has been able to find it.\n\nD. TSP is not in P.  \n\nE. All algorithms that are guaranteed to solve TSP run in polynomial time for some family of inputs.  \n\nF. All algorithms that are guaranteed to solve TSP run in exponential time for all families of inputs.\n### Quote \nBooksite <https://introcs.cs.princeton.edu/java/55intractability/>  \n\n",
+    "description": "### Problem11\n\n Which of the following can we infer from the fact that TSP is NP-complete, if we assume that P \u2260 NP? Mark all that apply. \n\n**Choices:**\n\nA. There does not exist an algorithm that solves arbitrary instances of TSP. \n\nB. There does not exist an algorithm that efficiently solves arbitrary instances of TSP.\n\nC. There exists an algorithm that efficiently solves arbitrary instances of TSP, but no one has been able to find it.\n\nD. TSP is not in P.  \n\nE. All algorithms that are guaranteed to solve TSP run in polynomial time for some family of inputs.  \n\nF. All algorithms that are guaranteed to solve TSP run in exponential time for all families of inputs.\n\n*Excerpt from Lab*\n\n",
     "choices": [
       "A. There does not exist an algorithm that solves arbitrary instances of TSP. ",
-      "B. There does not exist an algorithm that efficiently solves arbitrary in-",
-      "stances of TSP.  ",
-      "C. There exists an algorithm that efficiently solves arbitrary instances of",
-      "TSP, but no one has been able to find it.",
+      "B. There does not exist an algorithm that efficiently solves arbitrary instances of TSP.",
+      "C. There exists an algorithm that efficiently solves arbitrary instances of TSP, but no one has been able to find it.",
       "D. TSP is not in P.  ",
       "E. All algorithms that are guaranteed to solve TSP run in polynomial time for some family of inputs.  ",
       "F. All algorithms that are guaranteed to solve TSP run in exponential time for all families of inputs."
@@ -18,8 +16,6 @@
       "True",
       "False",
       "True",
-      "False",
-      "False",
       "False",
       "False"
     ],

@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "6 1 3",
+  "question_title": "Hexadecimal Add",
   "question_content": {
-    "description": "### Problem13\n\nAdd the two hexadecimal numbers 2AC and 4B8 and give the result in hexadecimal: _____(0)\\___",
+    "description": "### Problem13\n\nAdd the two hexadecimal numbers 2AC and 4B8 and give the result in hexadecimal: _____(0)\\___.",
     "explains": "None",
     "answers": [
       "764"

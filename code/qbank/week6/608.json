@@ -1,24 +1,19 @@
 {
-  "question_type": "mult",
-  "question_title": "NP-complete1",
+  "question_type": "blank",
+  "question_title": "NP-Complete",
   "question_content": {
-    "description": "### Problem08\n## NP-complete1 \n\n Suppose that X is NP-complete, X reduces to Y, and Y reduces to X. Is Y necessarily NP-complete ? \n\n",
-    "choices": [
-      "A. Yes",
-      "B. No  "
-    ],
-    "answers": [
-      "False",
-      "True"
-    ],
+    "description": "### Problem08\n\n\n Suppose that X is NP-complete, X reduces to Y, and Y reduces to X. Is Y necessarily NP-complete?\n\nAnswer:_____(0)\\___ (yes/no).",
     "explains": "None",
-    "quiz_type": "mult",
+    "answers": [
+      "no"
+    ],
+    "quiz_type": "blank",
+    "level": "3",
     "author": "Yike Guo",
-    "level": "1",
-    "section": "5.5",
+    "section": "5.2",
     "id": 608
   },
-  "question_level": 1,
+  "question_level": 3,
   "question_id": 608,
   "question_week": 6
 }

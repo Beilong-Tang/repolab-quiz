@@ -1,16 +1,14 @@
 {
   "question_type": "blank",
-  "question_title": "6 2 1",
+  "question_title": "TOY Basics",
   "question_content": {
-    "description": "### Problem16\n\nThe TOY machine has _____(0)\\___ words of main memory, _____(1)\\___ registers, and _____(2)\\___-bit instructions. \n\nThere are _____(3)\\___ different instruction types; each one is designated by one of the opcodes _____(4)\\___ through _____(5)\\___.",
+    "description": "### Problem16\n\nThe TOY machine has _____(0)\\___ words of main memory, _____(1)\\___ registers, and _____(2)\\___-bit instructions.There are _____(3)\\___ different instructions types.",
     "explains": "None",
     "answers": [
       "256",
       "16",
       "16",
-      "16",
-      "0",
-      "F"
+      "16"
     ],
     "quiz_type": "blank",
     "level": "1",

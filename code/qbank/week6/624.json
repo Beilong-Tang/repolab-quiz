@@ -1,26 +1,23 @@
 {
   "question_type": "blank",
-  "question_title": "6 2 5",
+  "question_title": "TOY-Program Flow",
   "question_content": {
-    "description": "### Problem24\n\n\nFill in the blanks in the following TOY program that reads two inputs from Stdin, multiplies them using repeated addition, and prints the result to StdOut.\n\n10: 8 A F F  \nreads from StdIn to R[A]  \n11: 8 B F F  \nreads from StdIn to R[B]  \n\n12: 7 C O O  \nR[C] <- 0000  \n\n13: 7 1 0 1   \nR[1] <- 0001  \n\n14: C A _____(0)\\___ _____(1)\\___  \nHINT: if R[A] == 0, we have our answer!  \n\n15: 1 C _____(2)\\___ _____(3)\\___  \nHINT: add something to R[C]  \n\n16: 2 A _____(4)\\___ _____(5)\\___  \nHINT: subtract something from R[A]\n\n17: _____(6)\\___ _____(7)\\___ _____(8)\\___ _____(9)\\___   \nHINT: we're not done yet!\n\n18: 9 C F F  \nprint R[C] to StdOut\n\n19: 0 0 0 0   \nhalt",
-    "explains": "None",
+    "description": "### Problem24\n\nSuppose that you load the following program into locations 10-20 of TOY:\n\n```\n10: 7101\n11: 7A30\n12: 7B08\n13: 130B\n14: C320\n15: 1400\n16: 2543\n17: C51E\n18: 16A4\n19: A706\n1A: 1717\n1B: B706\n1C: 1414\n1D: C016\n1E: 6331\n1F: C014\n20: 0000\n```\n\nNow suppose that you load 1 2 3 4 4 3 2 1 into memory locations 30 through 37, sec the PC to 10, and press RUN. What will be the contents of memory locations 30 through 37 when the program halts?\n\nAnswer: _____(0)\\___, _____(1)\\___, _____(2)\\___, _____(3)\\___, _____(4)\\___, _____(5)\\___, 3, _____(6)\\___ (from mem[30] to mem[37]). Note: Please write the decimal numbers.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "answers": [
-      "1",
-      "8",
-      "B",
-      "C",
-      "A",
-      "1",
-      "C",
-      "0",
-      "1",
-      "4"
+      "5",
+      "5",
+      "5",
+      "6",
+      "5",
+      "4",
+      "2"
     ],
     "quiz_type": "blank",
+    "section": "6.3",
     "level": "3",
-    "author": "Yike Guo",
-    "section": "6.2",
-    "id": 624
+    "author": "Beilong Tang",
+    "id": 624,
+    "explains": "None"
   },
   "question_level": 3,
   "question_id": 624,
