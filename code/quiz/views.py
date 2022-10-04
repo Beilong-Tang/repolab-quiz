@@ -67,7 +67,7 @@ def check(request, question_id):
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_id=question_id)
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')),question_dict.question_type)
-        quiz.logx+='#'.join(answer)+'@'+str(datetime.datetime.utcnow())[:19]+'$'
+        quiz.logx+='#^'.join(answer)+'@'+str(datetime.datetime.utcnow())[:19]+'$'
         quiz.save()
         if ut.checkanswer(answer,question_id,question_dict.question_type,request.user.username)!=True:    
             messages.error(request, 'Wrong Answer!')
@@ -116,11 +116,18 @@ def quiz_new(request,question_id):
 
     # Find latest history
     if q.logx!="":
-        answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
-        answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#')
-        context['recent_answer']=answer_sets
-        if mult:
-            context['recent_answer']=" ".join(answer_sets)
+        if q.logx.find("#^")==-1:
+            answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
+            answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#')
+            context['recent_answer']=answer_sets
+            if mult:
+                context['recent_answer']=" ".join(answer_sets)
+        else :
+            answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
+            answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#^')
+            context['recent_answer']=answer_sets
+            if mult:
+                context['recent_answer']=" ".join(answer_sets)
 
 
     question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
