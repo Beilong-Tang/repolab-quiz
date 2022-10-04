@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Universality",
   "question_content": {
-    "description": "### Problem06\n\nWhich of the following models of computation are universal? Mark all that apply.  \n\n**Choices:**\n\nA. Turing machines  \n\nB. Java  \n\nC. regular expressions\n\nD. Conway\u2019s Game of Life  \n\nE. NFAs  \n\nF. your mobile phone \nCoursera lecture quiz\n\n",
+    "description": "### Problem06\n\nWhich of the following models of computation are universal? Mark all that apply.  \n\n**Choices:**\n\nA. Turing machines  \n\nB. Java  \n\nC. regular expressions\n\nD. Conway\u2019s Game of Life  \n\nE. NFAs  \n\nF. your mobile phone \n\n*Excerpt from Coursera lecture quiz*\n\n",
     "choices": [
       "A. Turing machines  ",
       "B. Java  ",
