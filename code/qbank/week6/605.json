@@ -2,13 +2,12 @@
   "question_type": "blank",
   "question_title": "Church Turing Thesis",
   "question_content": {
-    "description": "### Problem05\n\n\n> Church\u2013Turing Thesis: A universal Turing machine (UTM) can perform any computation (_____(0)\\___ a _____(1)\\___ or )_____(2)\\___ a _____(3)\\___) that can be described by any physically realizable computing device.\n\n\n### Quote\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin This material may be protected by copyright.*",
+    "description": "### Problem05\n\n\n> Church\u2013Turing Thesis: A universal Turing machine (UTM) can perform any computation (_____(0)\\___ a _____(1)\\___ or _____(2)\\___ a function) that can be described by any physically realizable computing device (from sec-5.3).\n\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "decide",
       "language",
-      "compute",
-      "function"
+      "compute"
     ],
     "quiz_type": "blank",
     "level": "1",

@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Difference between TM and DFA",
   "question_content": {
-    "description": "### Problem03\nWhich of the following properties are common to both Turing machines are and DFAs? Mark all that apply \n\n**Choices:**\n\nA. Input on tape is a finite string with symbols from a finite alphabet\n\nB. Finite number of states\n\nC. Can read from or write onto the tape\n\nD. Simple model of computation\n\nE. State transitions are determined by current state and input symbol \n\nF. No limit on number of steps\nCoursera lecture slide\n\n",
+    "description": "### Problem03\nWhich of the following properties are common to both Turing machines are and DFAs? Mark all that apply \n\n**Choices:**\n\nA. Input on tape is a finite string with symbols from a finite alphabet\n\nB. Finite number of states\n\nC. Can read from or write onto the tape\n\nD. Simple model of computation\n\nE. State transitions are determined by current state and input symbol \n\nF. No limit on number of steps\n\n*Excerpt from Coursera Quiz*\n\n",
     "choices": [
       "A. Input on tape is a finite string with symbols from a finite alphabet",
       "B. Finite number of states",

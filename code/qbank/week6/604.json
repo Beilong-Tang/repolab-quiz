@@ -2,11 +2,10 @@
   "question_type": "blank",
   "question_title": "Universal models",
   "question_content": {
-    "description": "### Problem04\n\n\nA model is said to be _____(0)\\___ _____(1)\\___ or _____(2)\\___ _____(3)\\___ if it is equivalent to the Turing machine model (it can recognize the same set of languages and compute the same set of functions). \n\nRead Universal models of computation on textbook pp.794-797.\n\n### Quote\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin This material may be protected by copyright.*\n ",
+    "description": "### Problem04\n\n\nA model is said to be _____(0)\\___ complete or _____(1)\\___ _____(2)\\___ if it is equivalent to the Turing machine model (it can recognize the same set of languages and compute the same set of functions) (literally from sec-5.3).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin This material may be protected by copyright.*\n ",
     "explains": "None",
     "answers": [
       "Turing",
-      "complete",
       "Turing",
       "universal"
     ],
