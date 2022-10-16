@@ -1,14 +1,14 @@
 {
   "question_type": "mult",
-  "question_title": "Fundamental 2 ",
+  "question_title": "Fundamental 2",
   "question_content": {
-    "description": "### Problem19\nWhich of the following are not combinational circuits?\n\n**Choices:**\n\n. Clock\n\nb. ALU\n\nc. Control\n\nd. Memory\n\ne. Incrementer\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "description": "### Problem19\nWhich of the following are not combinational circuits?\n\n**Choices:**\n\na. Clock\n\nb. ALU\n\nc. Control\n\nd. Memory\n\ne. Incrementer\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
     "choices": [
-      ". Clock",
+      " a. Clock",
       "b. ALU",
       "c. Control",
       "d. Memory",
-      "e. Incrementer"
+      " e. Incrementer"
     ],
     "answers": [
       "True",

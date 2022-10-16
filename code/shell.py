@@ -284,7 +284,7 @@ def make_status(week):
 def execute():
     # load or dump question from each week
     if sys.argv[1] in first_command: #week1 or week2 or week3 ...
-        if '-dump'  in sys.argv:
+        if '-dump'  in sys.argv:             # python3 shell.py week1 -dump
             DumpQuestion(sys.argv[1])
         elif '-v2' in sys.argv:
             LoadQuestion(sys.argv[1], 2)

@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Boolean Function",
   "question_content": {
-    "description": "### Problem11\n:jq_level=2\n\nHow many boolean functions of 4 variables have ?\n\n**Choices:**\n\na. 4\n\nb. 16\n\nc. 64\n\nd. 1024\n\ne. 65536\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "description": "### Problem11\n\nHow many boolean functions of 4 variables have ?\n\n**Choices:**\n\na. 4\n\nb. 16\n\nc. 64\n\nd. 1024\n\ne. 65536\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
     "choices": [
       "a. 4",
       "b. 16",
