@@ -281,6 +281,16 @@ def make_status(week):
     ain=open('input.txt','r')
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
+def make_status_all():
+    args = ""
+    args+= "from simple_judge.models import Student, Question \n"
+    args+= "from utils.User import check_user_data_all as f\n"
+    args+= "f()"
+    with open ('input.txt','w') as f:
+        f.write(args)
+    ain=open('input.txt','r')
+    p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
+
 def execute():
     # load or dump question from each week
     if sys.argv[1] in first_command: #week1 or week2 or week3 ...
@@ -327,10 +337,11 @@ def execute():
         change_passowrd(sys.argv[2],sys.argv[3])
         return 
 
-    if sys.argv[1]=='status':
-        if len(sys.argv)==2:
-            print("Please input the the correct week")
-        else:
+    if sys.argv[1]=='status':   
+        if len(sys.argv)==2: # python3 shell.py status
+            print("Generating the quiz data")
+            make_status_all();
+        else: # python3 shell.py status 1
             make_status(sys.argv[2])
         return
 

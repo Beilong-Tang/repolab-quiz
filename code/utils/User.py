@@ -8,6 +8,8 @@ import random as r
 from django.db.models import Q
 import yaml
 import os
+import xlwt
+from xlwt import Workbook
 status_path = os.path.dirname(os.path.abspath(__file__))
 
 ## This will create a user and assign the user a foreign key to the student
@@ -91,6 +93,39 @@ def check_user_data(week):
         f.write(output)
     print('finished')
 
+def check_user_data_all():
+    wb = Workbook()
+    sh1=wb.add_sheet('Status')
+
+    sh1.write(0,0,'Netid')
+    sh1.write(0,1,'Name')
+    sh1.write(0,2,'Total')
+    sh1.write(0,3,'Week1')
+    sh1.write(0,4,'Week2')
+    sh1.write(0,5,'Week3')
+    sh1.write(0,6,'Week4')
+    sh1.write(0,7,'Week5')
+    sh1.write(0,8,'Week6')
+    sh1.write(0,9,'Week7')
+
+    row = 1
+    for s in Student.objects.filter(level=0):
+        week_status=[]
+        week_status.append(s.student_netid)
+        week_status.append(s.student_name)
+        week_status.append("")
+        total = 0
+        for week in range(1,8):
+            week_count = s.question_set.filter(ifpassed=True, question_id__gte=week*100,question_id__lte=(week+1)*100 ).count()
+            week_status.append(week_count)
+            total = total + week_count
+        # week_status : [bt132, Beilong Tang, 24, 25, 26]
+        week_status[2]=total
+        for i in range (0,len(week_status)):
+            sh1.write(row,i,str(week_status[i]))
+        row = row +1
+    
+    wb.save('CS201QuizData.xls')
 
 if __name__ == '__main__':
     print(status_path)
