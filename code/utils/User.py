@@ -124,7 +124,7 @@ def check_user_data_all():
         for i in range (0,len(week_status)):
             sh1.write(row,i,str(week_status[i]))
         row = row +1
-    
+    print("Finished")
     wb.save('CS201QuizData.xls')
 
 if __name__ == '__main__':
