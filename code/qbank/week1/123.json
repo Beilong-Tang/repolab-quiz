@@ -13,7 +13,7 @@
     "answers": [
       "i++,pow++",
       "args[4-i]",
-      "decimal+=Math.pow(2,pow)"
+      "decimal=(int)(Math.pow(2,pow))+decimal"
     ],
     "author": "Beilong Tang",
     "level": "3",

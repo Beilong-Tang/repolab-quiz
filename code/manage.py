@@ -3,11 +3,11 @@
 import os
 import sys
 # Load env
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
-import settings
+# sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+# import settings
 
 def main():
-    settings.main()
+    # settings.main()
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
     try:

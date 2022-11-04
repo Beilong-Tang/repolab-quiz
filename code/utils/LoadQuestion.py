@@ -15,11 +15,16 @@ import sys
 import json
 import re
 
-from utils.settings import quiz_dir
-from utils.settings import quiz_necessary_elements
-from utils.settings import quiz_non_necessary_elements
+import django
 
-from utils.question_title import question_title_change 
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
+# django.setup()
+
+from .settings import quiz_dir
+from .settings import quiz_necessary_elements
+from .settings import quiz_non_necessary_elements
+
+from .question_title import question_title_change 
 
 from simple_judge.models import Question, Student, Questiondict
 
@@ -30,6 +35,7 @@ def MergePath(a,b):
 
 # DumpQuestion(week1)
 def DumpQuestion(command_week):
+    print(111)
     print("DumpQuestion " , command_week)
     if not os.path.exists('qbank'): os.system('mkdir qbank')
     for q in Questiondict.objects.filter(question_week = int(command_week[4])):

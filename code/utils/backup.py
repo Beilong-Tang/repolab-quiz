@@ -10,7 +10,7 @@ s = 1
 
 # shutil.copy("file.txt","file_copy.txt")
 
-# # 或者
+# # or
 
 # shutil.copy("file.txt",os.path.join(os.getcwd(),"copy"))
 

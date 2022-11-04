@@ -1,6 +1,14 @@
 import sys, os,subprocess,json
 #from utils.AssignWeek import assign_week_main as week
-import utils as ut
+
+import django
+import logging
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
+django.setup()
+from simple_judge.models import *
+from utils import LoadQuestion as load
+logging.getLogger().setLevel(logging.INFO)
+
 #from utils.AssignQuestionWeek import execute
 # Revise the Quiz director as where the quiz is at 
 
@@ -22,7 +30,59 @@ first_command = ['week1','week2','week3','week4','week5','week6','week7']
 # 1. find question type
 # question_title : princetonbook_chap01_sec-1.1_quiz.0.Programming.in.java
 # 2. find question_content, which is a 
+def execute():
+    # load or dump question from each week
+    if sys.argv[1] in first_command: #week1 or week2 or week3 ...
+        if '-dump'  in sys.argv:             # python3 shell.py week1 -dump
+            DumpQuestion(sys.argv[1])
+        elif '-v2' in sys.argv:
+            LoadQuestion(sys.argv[1], 2)
+        else:
+            LoadQuestion(sys.argv[1])
+        return
 
+    # update simple question
+    if sys.argv[1]=='update':
+        LoadQuestion(sys.argv[2],3) # python3 shell.py update 102
+        return
+    # Export one single question from the db.
+    # if sys.argv[1]=='export':
+
+
+    if sys.argv[1]== 'assign':
+        if len(sys.argv)==2:
+            AssignQuestion()
+            return
+        if len(sys.argv)==3:
+            AssignQuestion(sys.argv[2])
+            return 
+
+    if sys.argv[1]=='create_user':
+        #net_id, student_name, (level=0)
+        if len(sys.argv)==4:
+            CreateUser(sys.argv[2],sys.argv[3],0 )
+            return
+        if len(sys.argv)==5:
+            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
+            return
+    if sys.argv[1]=='import_user':
+        ImportUser()
+        return
+    if sys.argv[1]=='change_password_yaml':
+        change_password_yaml()
+        return
+
+    if sys.argv[1]=='change_password':
+        change_passowrd(sys.argv[2],sys.argv[3])
+        return 
+
+    if sys.argv[1]=='status':   
+        if len(sys.argv)==2: # python3 shell.py status
+            print("Generating the quiz data")
+            make_status_all()
+        else: # python3 shell.py status 1
+            make_status(sys.argv[2])
+        return
 def generate_input_file_blank():
 
     args=importing
@@ -185,23 +245,13 @@ def LoadQuestion(command, version =1):
     '''
     pass
 def DumpQuestion(command):
-    
-    args=""
-    args+="from simple_judge.models import Questiondict\n"
-    args+="from utils.LoadQuestion import DumpQuestion as f\n"
-    args+="f('"+command+"')"
-    
-    with open ('input.txt','w') as f:
-        f.write(args)
-        ain=open('input.txt','r')
-        p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
-        
-        
-        '''
-        from simple_judge.models import Questiondict
-        from utils import LoadQuestion.LoadQuestion as f
-        f()
-        '''
+    '''
+    Dump the question from the database to json files
+    database -> json
+    '''
+    print("Dumping %s into json files", command)
+    load.DumpQuestion(command)
+    print("DumpQuestion finished")
 
 ## This will assign question for all students
 def AssignQuestion(student_netid=""):
@@ -291,63 +341,10 @@ def make_status_all():
     ain=open('input.txt','r')
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
-def execute():
-    # load or dump question from each week
-    if sys.argv[1] in first_command: #week1 or week2 or week3 ...
-        if '-dump'  in sys.argv:             # python3 shell.py week1 -dump
-            DumpQuestion(sys.argv[1])
-        elif '-v2' in sys.argv:
-            LoadQuestion(sys.argv[1], 2)
-        else:
-            LoadQuestion(sys.argv[1])
-        return
-
-    # update simple question
-    if sys.argv[1]=='update':
-        LoadQuestion(sys.argv[2],3) # python3 shell.py update 102
-        return
-    # Export one single question from the db.
-    # if sys.argv[1]=='export':
-
-
-    if sys.argv[1]== 'assign':
-        if len(sys.argv)==2:
-            AssignQuestion()
-            return
-        if len(sys.argv)==3:
-            AssignQuestion(sys.argv[2])
-            return 
-
-    if sys.argv[1]=='create_user':
-        #net_id, student_name, (level=0)
-        if len(sys.argv)==4:
-            CreateUser(sys.argv[2],sys.argv[3],0 )
-            return
-        if len(sys.argv)==5:
-            CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
-            return
-    if sys.argv[1]=='import_user':
-        ImportUser()
-        return
-    if sys.argv[1]=='change_password_yaml':
-        change_password_yaml()
-        return
-
-    if sys.argv[1]=='change_password':
-        change_passowrd(sys.argv[2],sys.argv[3])
-        return 
-
-    if sys.argv[1]=='status':   
-        if len(sys.argv)==2: # python3 shell.py status
-            print("Generating the quiz data")
-            make_status_all();
-        else: # python3 shell.py status 1
-            make_status(sys.argv[2])
-        return
-
-
-
 if __name__=='__main__':
-     execute()
+    execute()
 
-     print()
+    #  print()
+    # s= Student.objects.get(student_netid='bt132')
+    # print(s)
+
