@@ -35,7 +35,6 @@ def MergePath(a,b):
 
 # DumpQuestion(week1)
 def DumpQuestion(command_week):
-    print(111)
     print("DumpQuestion " , command_week)
     if not os.path.exists('qbank'): os.system('mkdir qbank')
     for q in Questiondict.objects.filter(question_week = int(command_week[4])):

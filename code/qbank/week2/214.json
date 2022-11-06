@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Function Basics 2",
   "question_content": {
-    "description": "### Problem14\nPlease select the choices that are right.\n\n**Choices:**\n\na. You cannot call another function inside a function in Java.\n\nb. In Java, functions need be written before the main() methods.\n\nc. You can change the flow of a program by using functions in Java.\n\nd. When you see a line in Java that is \" print(\"I love function) \", it must be wrong because Java cannot print something using that format.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "description": "### Problem14\nPlease select the choices that are right.\n\n**Choices:**\n\na. You cannot call another function inside a function in Java.\n\nb. In Java, functions need be written before the main() methods.\n\nc. You can change the flow of a program by using functions in Java.\n\nd. When you see a line in Java that is \" print(\"I love function\") \", it must be wrong because Java cannot print something using that format.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
     "choices": [
       "a. You cannot call another function inside a function in Java.",
       "b. In Java, functions need be written before the main() methods.",

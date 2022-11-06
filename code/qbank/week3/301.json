@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Recursion",
   "question_content": {
-    "description": "### Problem01\n\nFor every recursion, there are two main components that are _____(0)\\___ _____(1)\\___ , which returns a value without making any subsequent recursive calls, and _____(2)\\___ _____(3)\\___, which is the central part of a recursive function and relates the value of the function at one (or more) arguments to the value of function at one (or more) other arguments. (from sec-2.3).\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "description": "### Problem01\n\nFor every recursion, there are two main components that are _____(0)\\___ _____(1)\\___ , which returns a value without making any subsequent recursive calls, and _____(2)\\___ _____(3)\\___, which is the central part of a recursive function and relates the value of the function at one (or more) arguments to the value of function at one (or more) other arguments. (from sec-2.3).\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
     "explains": "None",
     "answers": [
       "base",

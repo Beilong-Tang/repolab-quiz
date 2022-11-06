@@ -1,6 +1,6 @@
 {
   "question_type": "blank",
-  "question_title": "3 1 18",
+  "question_title": "Mystery",
   "question_content": {
     "description": "### Problem12\n\nWhat does the following recursive function return? Assume s is \"012345678\"\n\n\n```java\npublic static String mystery(String s)\n{\n int n = s.length();\n if (n <= 1) return s;\n String a = s.substring(0, n/2);\n String b = s.substring(n/2, n);\n return mystery(b) + mystery(a);\n}\n```\nAnswer: _____(0)\\___",
     "explains": "None",

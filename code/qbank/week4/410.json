@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Immutability",
   "question_content": {
-    "description": "### Problem10\n\n\n- As defined at the end of Section 3.1, an object from a data type is _____(0)\\___ if its data-type value cannot change once created.\n- Generally, immutable types are _____(1)\\___ (eaiser/harder) to use and _____(2)\\___ (eaiser/harder) to misuse because the scope of code that can change their values is far smaller than for mutable types.It is _____(3)\\___ (eaiser/harder) to debug code that uses immutable types because it is _____(4)\\___ (eaiser/harder) to guarantee that variables in the client code that uses them will remain in a consistent state. \nThe downside of immutability is that a new _____(5)\\___ must be created for every value (literally from sec-3.3).",
+    "description": "### Problem10\n\n\n- As defined at the end of Section 3.1, an object from a data type is _____(0)\\___ if its data-type value cannot change once created.\n- Generally, immutable types are _____(1)\\___ (easier/harder) to use and _____(2)\\___ (easier/harder) to misuse because the scope of code that can change their values is far smaller than for mutable types.It is _____(3)\\___ (easier/harder) to debug code that uses immutable types because it is _____(4)\\___ (easier/harder) to guarantee that variables in the client code that uses them will remain in a consistent state. \nThe downside of immutability is that a new _____(5)\\___ must be created for every value (literally from sec-3.3).",
     "explains": "None",
     "answers": [
       "immutable",

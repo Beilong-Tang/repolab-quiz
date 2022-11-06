@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "Aliasing",
   "question_content": {
-    "description": "### Problem11\n\n\nSee the following code fragment\n```java\nColor a = new Color(160, 82, 45);\nColor b = new Color(160, 82, 45);\nColor c = b;\n```\nNow write the result (True or False) for the following fragent\n- a == b result: _____(0)\\___\n- c == b result: _____(1)\\___",
+    "description": "### Problem11\n\n\nSee the following code fragment\n```java\nColor a = new Color(160, 82, 45);\nColor b = new Color(160, 82, 45);\nColor c = b;\n```\nNow write the result (True or False) for the following fragent\n\n- a == b : _____(0)\\___\n\n- c == b : _____(1)\\___",
     "explains": "None",
     "answers": [
       "False",

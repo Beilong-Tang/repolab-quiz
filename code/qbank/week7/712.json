@@ -4,7 +4,7 @@
   "question_content": {
     "description": "### Problem12\n\n![image](/static/quiz/images/7.3.1.fig.png)\n\nThere are _____(0)\\___ switches in the diagram.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "answers": [
-      "50"
+      "52"
     ],
     "quiz_type": "blank",
     "section": "7.3",

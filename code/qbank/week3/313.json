@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Uninitialized variables",
   "question_content": {
-    "description": "### Problem13\nWhat error will the following code lead to?\n\n```java\nString bad;\nboolean value = bad.startsWith(\"Hello\");\n```\n\n**Choices:**\n\na.logical errors\n\nb.Compile-time errors\n\nc.Run time errors\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "description": "### Problem13\nWhat error will the following code lead to?\n\n```java\nString bad;\nboolean value = bad.startsWith(\"Hello\");\n```\n\n**Choices:**\n\na.logical errors\n\nb.Compile-time errors\n\nc.Run time errors\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
     "author": "Yantao Mei",
     "choices": [
       "a.logical errors",

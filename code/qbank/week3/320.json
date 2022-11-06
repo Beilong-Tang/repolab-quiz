@@ -1,8 +1,8 @@
 {
   "question_type": "blank",
-  "question_title": "Caveats of analyzing program performance  True or False ",
+  "question_title": "Caveats of analyzing program performance  True or False",
   "question_content": {
-    "description": "### Problem20\n\n\n- Instruction time: Each instruction always takes the same amount of time. (_____(0)\\___)\n- Nondominant inner loop: The inner loop not always dominates.  (_____(1)\\___)\n- System considerations: What is happening at this moment in your computer will never be reproduced again and java are just a part of it, which may lead to an significantly affect to performance. (_____(2)\\___)\n- Strong dependence on input values: The running time of program should always depend primarily on the problem size. (_____(3)\\___)\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "description": "### Problem20\n\n\n Type \"True\" or \"False\" for the following blanks.\n\n- Instruction time: Each instruction always takes the same amount of time. (_____(0)\\___)\n- Nondominant inner loop: The inner loop not always dominates.  (_____(1)\\___)\n- System considerations: What is happening at this moment in your computer will never be reproduced again and java are just a part of it, which may lead to an significantly affect to performance. (_____(2)\\___)\n- Strong dependence on input values: The running time of program should always depend primarily on the problem size. (_____(3)\\___)\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
     "explains": "None",
     "answers": [
       "False",

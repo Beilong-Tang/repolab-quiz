@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "StdOut printf()",
   "question_content": {
-    "description": "### Problem08\nLook at the line below:\n\n```java\nStdOut.printf(\"%-9.3f\",3.1415926);\n```\n\n**Choices:**\n\nWhich choices are right?\n\na. The output of the line will be \"    3.142\".\n\nb. The output of the line will be \"3.142    \".\n\nc. In the format string of StdOut.printf(), the conversion specification can be omitted.\n\nd. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.141\"\n\ne. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.142\".\n\n",
+    "description": "### Problem08\nLook at the line below:\n\n```java\nStdOut.printf(\"%-9.3f\",3.1415926);\n```\n\n**Choices:**\n\nWhich choices are right?\n\na. The output of the line will be \"____3.142\" (\"_\" stands for space).\n\nb. The output of the line will be \"3.142____\" (\"_\" stands for space).\n\nc. In the format string of StdOut.printf(), the conversion specification can be omitted.\n\nd. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.141\"\n\ne. If the line changes to \"StdOut.printf(\"%.3f\",3.1415926);\", the output will be \"3.142\".\n\n",
     "choices": [
       "Which choices are right?",
       "a. The output of the line will be \"    3.142\".",

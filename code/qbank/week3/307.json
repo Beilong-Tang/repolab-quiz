@@ -2,12 +2,11 @@
   "question_type": "blank",
   "question_title": "Datatype and object",
   "question_content": {
-    "description": "### Problem07\n\n\nTo learn object-oriented programming(OOP), we need to review the\ndefinition of datatype.\n- A data type is a set of values and a set of _____(0)\\___ defind on\n  those values.\n- An _____(1)\\___ data type is data type whose representation is\n  hidden from the client.\n\n- An _____(2)\\___ is an entity that holds a data-type value; you can\n  manipulate this data-type value by applying one of the _____(3)\\___\u2019s\n  data-type operations.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.",
+    "description": "### Problem07\n\n\nTo learn object-oriented programming(OOP), we need to review the\ndefinition of datatype.\n\n- A data type is a set of values and a set of _____(0)\\___ defind on\n  those values.\n\n- An _____(1)\\___ data type is data type whose representation is\n  hidden from the client.\n\n- In Java, each data-type value is stored in an _____(2)\\___.\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
     "explains": "None",
     "answers": [
       "operations",
       "abstract",
-      "object",
       "object"
     ],
     "quiz_type": "blank",

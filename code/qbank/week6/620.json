@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "TOY_PC",
   "question_content": {
-    "description": "### Problem20\n\n\nThe 8-bit program counter (PC) is an internal register that holds the _____(0)\\___ of the next instruction to be executed (literally from sec-6.2).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "description": "### Problem20\n\n\nThe 8-bit program counter (PC) is an internal register that holds the _____(0)\\___ of the next instruction to be executed ((literally from sec-6.2)).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "address"
