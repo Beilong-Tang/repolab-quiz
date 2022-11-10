@@ -30,15 +30,37 @@ first_command = ['week1','week2','week3','week4','week5','week6','week7']
 # 1. find question type
 # question_title : princetonbook_chap01_sec-1.1_quiz.0.Programming.in.java
 # 2. find question_content, which is a 
-def execute():
+def execute() -> None:
+
+    if '-help' in sys.argv:
+        print(
+'''
+To dump the question into qbank/, python3 shell.py week1 -dump 
+To load the question from qbank/, python3 shell.py week1 -v2 (Load Question from qbank/)
+To Load the question from simple-judge/bank/week, python3 python3 shell.py week1
+To update simple question, python3 shell.py update 102
+python3 shell.py assign (Assgin Questions to all students)
+python3 shell.py assign bt132 (Assign Questions to bt132)
+python3 shell.py create_user bt132 Beilong_Tang (create user)
+python3 shell.py create_user bt132 Beilong_Tang 1 (level = 1)
+python3 import_user (Create User using the information from 'user_raw.txt')
+python3 change_password_yaml # Change the raw password to the password in the yaml file (given by professor)
+Change the password (python3 shell.py change_password bt132 password)
+python3 shell.py status (generating a excel file of the status of all students in all the week)
+python3 shell.py status 1 (status in week 1 output in a txt file)
+
+'''
+        )
+        return
+
     # load or dump question from each week
     if sys.argv[1] in first_command: #week1 or week2 or week3 ...
         if '-dump'  in sys.argv:             # python3 shell.py week1 -dump
             DumpQuestion(sys.argv[1])
         elif '-v2' in sys.argv:
-            LoadQuestion(sys.argv[1], 2)
+            LoadQuestion(sys.argv[1], 2)     # python3 shell.py week1 -v2 (Load Question from qbank/)
         else:
-            LoadQuestion(sys.argv[1])
+            LoadQuestion(sys.argv[1])      # python3 shell.py week1 (Load Question from simple-judge/bank/week)
         return
 
     # update simple question
@@ -51,38 +73,46 @@ def execute():
 
     if sys.argv[1]== 'assign':
         if len(sys.argv)==2:
-            AssignQuestion()
+            AssignQuestion()  # python3 shell.py assign (Assgin Questions to all students)
             return
         if len(sys.argv)==3:
-            AssignQuestion(sys.argv[2])
+            AssignQuestion(sys.argv[2]) #python3 shell.py assign bt132 (Assign Questions to bt132)
             return 
 
     if sys.argv[1]=='create_user':
         #net_id, student_name, (level=0)
+        
+        # python3 shell.py create_user bt132 Beilong_Tang
         if len(sys.argv)==4:
             CreateUser(sys.argv[2],sys.argv[3],0 )
             return
+        # python3 shell.py create_user bt132 Beilong_Tang 1 (level = 1)
         if len(sys.argv)==5:
             CreateUser(sys.argv[2],sys.argv[3],sys.argv[4] )
             return
     if sys.argv[1]=='import_user':
+        # Create User using the information from 'user_raw.txt'
         ImportUser()
         return
     if sys.argv[1]=='change_password_yaml':
+        # Change the raw password to the password in the yaml file (given by professor)
         change_password_yaml()
         return
-
+        # Change the password (python3 shell.py change_password bt132 password)
     if sys.argv[1]=='change_password':
         change_passowrd(sys.argv[2],sys.argv[3])
         return 
 
+        # generate the status
     if sys.argv[1]=='status':   
-        if len(sys.argv)==2: # python3 shell.py status
+        if len(sys.argv)==2: 
+            # python3 shell.py status (generating a excel file of the status of all students in all the week)
             print("Generating the quiz data")
             make_status_all()
         else: # python3 shell.py status 1
             make_status(sys.argv[2])
         return
+
 def generate_input_file_blank():
 
     args=importing

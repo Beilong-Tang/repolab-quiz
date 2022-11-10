@@ -121,7 +121,7 @@ def LoadQuestion(command_week):
     os.system('python3 manage.py '+command_week)
 
     os.chdir(dir_now)
-    print('yess')
+    
     specific_week_folder = MergePath( quiz_dir , command_week ) 
     question_array=list(filter(lambda x: x.endswith('.json'), os.listdir(specific_week_folder)))
 
