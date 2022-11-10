@@ -65,7 +65,7 @@ def getanswer(request, len,question_type):
     if question_type=='mult':
         return list(filter(lambda x: x!="",request.POST.get('0').split(' ')))
     for i in range(0,len):
-        answers.append(request.POST.get((str)(i)))
+        answers.append(request.POST.get((str)(i)) if request.POST.get((str)(i))!=None else "None")
     return answers
 
 def check_answer_code(jsonfile, answer,student_name):

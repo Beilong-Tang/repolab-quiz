@@ -1,13 +1,13 @@
-import sys, os,subprocess,json
+import sys, os,subprocess
 #from utils.AssignWeek import assign_week_main as week
 
 import django
-import logging
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
 django.setup()
 from simple_judge.models import *
 from utils import LoadQuestion as load
-logging.getLogger().setLevel(logging.INFO)
+
 
 #from utils.AssignQuestionWeek import execute
 # Revise the Quiz director as where the quiz is at 
@@ -36,8 +36,9 @@ def execute() -> None:
         print(
 '''
 To dump the question into qbank/, python3 shell.py week1 -dump 
+To Load the question from repolab-quiz/bank/ using YAML, python3 shell.py week1
 To load the question from qbank/, python3 shell.py week1 -v2 (Load Question from qbank/)
-To Load the question from simple-judge/bank/week, python3 python3 shell.py week1
+To Load the question from repolab-quiz/bank/week, python3 shell.py week1 -old
 To update simple question, python3 shell.py update 102
 python3 shell.py assign (Assgin Questions to all students)
 python3 shell.py assign bt132 (Assign Questions to bt132)
@@ -59,8 +60,11 @@ python3 shell.py status 1 (status in week 1 output in a txt file)
             DumpQuestion(sys.argv[1])
         elif '-v2' in sys.argv:
             LoadQuestion(sys.argv[1], 2)     # python3 shell.py week1 -v2 (Load Question from qbank/)
+        elif '-old' in sys.argv:
+            LoadQuestion(sys.argv[1])      # python3 shell.py week1 (Load Question from repolab-quiz/bank/week)
         else:
-            LoadQuestion(sys.argv[1])      # python3 shell.py week1 (Load Question from simple-judge/bank/week)
+            LoadQuestion_yaml(sys.argv[1]) # Directly load question according to the yaml file
+
         return
 
     # update simple question
@@ -112,6 +116,14 @@ python3 shell.py status 1 (status in week 1 output in a txt file)
         else: # python3 shell.py status 1
             make_status(sys.argv[2])
         return
+
+def LoadQuestion_yaml(command_week:str) ->None:
+    '''
+    Load Question from the yaml file in repolab-quiz/bank/Quiz.yml
+    '''
+    load.LoadQuestion_yaml(command_week)
+    pass
+
 
 def generate_input_file_blank():
 

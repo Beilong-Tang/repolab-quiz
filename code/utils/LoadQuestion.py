@@ -11,11 +11,11 @@ Dont run the file, since it will go wrong.
 '''
 import os
 #from selectors import EpollSelector
-import sys
+
 import json
 import re
 
-import django
+import yaml
 
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
 # django.setup()
@@ -32,6 +32,63 @@ week=[100,200,300,400,500,600,700]
 
 def MergePath(a,b):
     return a+'/'+b
+
+def LoadQuestion_yaml(command_week:str) ->None:
+    bank_path = os.path.join(os.path.dirname(os.getcwd()),'repolab-quiz','bank')
+    content:list = yaml.load(open(os.path.join(bank_path,'Quiz.yml')), Loader=yaml.FullLoader)[command_week] # This part shall be changed 
+    print(content)
+    week = int(command_week[4])
+    for index , quiz in enumerate(content):
+        find = re.search('sec-(\d.\d)-(\w+).(\d+)',quiz).groups()
+        # section = find[0] # '1.1' # quiz_type = find[1]  # 'quiz'# quiz_id = find[2] # 0
+        print(find)
+        if find[1]=='quiz':
+            # fill in the blank question
+            path = os.path.join(bank_path, 'princeton-book', 'chap0%s'% find[0][0] , 'sec-%s'%find[0], 'quiz-gen')
+            json_name = list(filter(lambda x: x.startswith(find[1]+'.'+find[2]), os.listdir(path)))[0]
+            json_file = os.path.join(path,json_name)
+        elif find[1]=='mult':
+            path = os.path.join(bank_path, 'mult', 'chap0%s'% find[0][0] , 'sec-%s'%find[0])
+            json_name = list(filter(lambda x: x.startswith(find[1]+'.'+find[2]), os.listdir(path)))[0]
+            json_file = os.path.join(path,json_name)
+        elif find[1]=='code':
+            path = os.path.join(bank_path, 'code', 'chap0%s'% find[0][0] , 'sec-%s'%find[0],'quiz-gen')
+            json_name = list(filter(lambda x: x.startswith(find[1]+'.'+find[2]), os.listdir(path)))[0]
+            json_file = os.path.join(path,json_name)
+            
+
+        json_content:dict = json.load(open(json_file))
+        json_content['section']=find[0]
+        
+        question_id = week*100+index+1
+
+        if (Questiondict.objects.filter(question_id=week*100+index+1).exists()):
+            q = Questiondict.objects.get(question_id=question_id)
+            ## Just Update the quiz 
+            q.question_type = ModifyType(json_content['quiz_type'])
+            q.question_title = FindTitle(json_content['quiz_type'],json_name)
+            q.question_content=ModifyContent(json_content,json_content['quiz_type'],question_id)
+            q.question_id=question_id
+            q.question_level=int(json_content['level'])
+            q.question_week=week
+            q.save()
+        else:
+            q= Questiondict(question_type=ModifyType(json_content['quiz_type']),
+                            question_title=FindTitle(json_content['quiz_type'],json_name),
+                            question_content=ModifyContent(json_content,json_content['quiz_type'],question_id),
+                            question_id=question_id,
+                            question_level=int(json_content['level']),
+                            question_week=week
+                            )
+            q.save()
+    print("finished loading question from %s" % command_week)
+    
+    return
+            
+    pass
+
+
+
 
 # DumpQuestion(week1)
 def DumpQuestion(command_week):
@@ -168,7 +225,7 @@ def ModifyContent(json_content,quiz_type,question_id):
     ###
     json_content['description']=replace_blanks(json_content['description'])
 
-    if quiz_type=='mult':
+    if quiz_type=='mult' or quiz_type=='JQ_MultiChoice':
         #quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
         json_content['description']='### Problem'+str(question_id)[1:]+'\n'+json_content['description']
         json_content['description']=json_content['description'].replace('%s','**Choices:**\n\n'+'\n\n'.join(json_content['choices']))
@@ -178,6 +235,15 @@ def ModifyContent(json_content,quiz_type,question_id):
     return json_content
 
     pass
+
+def ModifyType(quiz_type):
+    if quiz_type=='JQ_Code':
+        return 'code'
+    elif quiz_type=='JQ_MultiChoice':
+        return 'mult'
+    elif quiz_type=='JQ_UnorderedBlank':
+        return 'blank'
+    raise Exception("Quiz Type Error")
 
 
 def FindTitle(quiz_type,question_title_raw):

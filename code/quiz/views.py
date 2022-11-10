@@ -120,13 +120,15 @@ def quiz_new(request,question_id):
             answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
             answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#')
             context['recent_answer']=answer_sets
-            if mult:
-                context['recent_answer']=" ".join(answer_sets)
+
         else :
             answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
             answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#^')
             context['recent_answer']=answer_sets
-            if mult:
+
+        # if len(question_dict.question_content.get('answers'))!=
+
+        if mult:
                 context['recent_answer']=" ".join(answer_sets)
 
 
