@@ -49,13 +49,13 @@ def checkuser(username,user_id):
 def checktime(question_due_dict):
     due_dict_after={}
     
-    tim=datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc) # UTC
+    tim=datetime.datetime.utcnow() # UTC
     for i, j in question_due_dict.items():
-        time_start= datetime.datetime.strptime(j[0],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
-        time_end= datetime.datetime.strptime(j[1],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8))) # UTC+8
-        if tim > time_end:
+        time_start= datetime.datetime.strptime(j[0],'%Y-%m-%d %H:%M') # UTC+8
+        time_end= datetime.datetime.strptime(j[1],'%Y-%m-%d %H:%M') # UTC+8
+        if tim > time_end-datetime.timedelta(hours=8):
             due_dict_after[i]=[False,time_end] ## passed
-        elif tim > time_start:
+        elif tim > time_start-datetime.timedelta(hours=8):
             due_dict_after[i]=[True,time_end] ## open
             #due_dict_after[i]=[True,time_end] ## open
     return due_dict_after

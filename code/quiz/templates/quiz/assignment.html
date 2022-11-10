@@ -57,25 +57,15 @@
         {% for i, j, k, m , p in array %}
         <tr class= "table-primary">
           <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
-          {% if i != 'week7' %}
           <td>{{k}}</td>
           <td>{{p}}</td>
           <td name='status'><strong>{{j.0|status}}</strong></td>
           <td>{{j.1}}</td>
-          {% else %}
-          <td></td>
-          <td></td>
-          <td name='status'></td>
-          <td></td>
-          {% endif %}
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <div class='text' style="align:center">
-      Hi, all! The quiz 7 here does not need to be done. It is used as a review material. <br>
-      Details are shown <a href="https://edstem.org/us/courses/25080/discussion/1964495">here</a>.
-    </div>
+
 
 
     <script>
