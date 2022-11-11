@@ -67,7 +67,7 @@ def check(request, question_id):
     if request.method=='POST':
         question_dict=Questiondict.objects.get(question_id=question_id)
         answer=ut.getanswer(request,len(question_dict.question_content.get('answers')),question_dict.question_type)
-        quiz.logx+='#^'.join(answer)+'@'+str(datetime.datetime.utcnow())[:19]+'$'
+        quiz.logx+='#'.join(answer)+'@'+str(datetime.datetime.utcnow())[:19]+'$'
         quiz.save()
         if ut.checkanswer(answer,question_id,question_dict.question_type,request.user.username)!=True:    
             messages.error(request, 'Wrong Answer!')
@@ -98,12 +98,12 @@ def quiz_new(request,question_id):
     context={}
 
     time_array = student_current.question_due_dict.get("week"+str(question_week))
-    time_start = datetime.datetime.strptime(time_array[0],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
-    time_end = datetime.datetime.strptime(time_array[1],'%Y-%m-%d %H:%M').astimezone(datetime.timezone(datetime.timedelta(hours=8)))
-    time_now = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
-    if time_now > time_end:
+    time_start = datetime.datetime.strptime(time_array[0],'%Y-%m-%d %H:%M') # UTC+8
+    time_end = datetime.datetime.strptime(time_array[1],'%Y-%m-%d %H:%M') # UTC+8
+    time_now = datetime.datetime.utcnow()
+    if time_now > time_end - datetime.timedelta(hours=8):
         context['overdue']=True
-    elif time_now >= time_start:
+    elif time_now >= time_start- datetime.timedelta(hours=8):
         pass
     else:
         return HttpResponse("The question is not open yet")
@@ -119,29 +119,20 @@ def quiz_new(request,question_id):
         if q.logx.find("#^")==-1:
             answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
             answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#')
-            context['recent_answer']=answer_sets
-
         else :
             answer_string_and_time = q.logx[q.logx.rfind('$',0,q.logx.rfind('$')-1)+1:]
             answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#^')
-            context['recent_answer']=answer_sets
+        context['recent_answer']=answer_sets
 
         # if len(question_dict.question_content.get('answers'))!=
 
         if mult:
-                context['recent_answer']=" ".join(answer_sets)
+            context['recent_answer']=" ".join(answer_sets)
 
 
     question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
 
-    text = markdown.markdown(quiz_description,extensions=[
-    'markdown.extensions.fenced_code',
-    'markdown.extensions.extra',
-    'markdown.extensions.toc'
-    ])
-
-
-    context['text']=text
+    context['text']=quiz_description
     context['question_dict']=Questiondict.objects.get(question_id=question_id)
     context['quiz']=q
     context['mult']=mult
@@ -167,9 +158,6 @@ def message(request):
         student.messages=student.messages.replace(delete_msg_id+',','')
         student.save()
         return HttpResponseRedirect(reverse('quiz:message',args=()))
-    
-    
-    
     
     context={}
     ## including reply and messages

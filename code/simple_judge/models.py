@@ -10,7 +10,7 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     student_name=models.CharField(max_length=50)
     student_netid=models.CharField(max_length=8)
-    question_due_dict=models.JSONField(default={'week1':['2022-7-29 6:00','2022-7-29 23:59']})
+    question_due_dict=models.JSONField(default=dict(week1=['2022-7-29 6:00','2022-7-29 23:59']))
     online_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:00','%Y-%m-%d %H:%M'))
     offline_time = models.DateTimeField(default=datetime.datetime.strptime('2022-7-26 6:30','%Y-%m-%d %H:%M'))
     level= models.IntegerField(default = 0)
@@ -28,6 +28,7 @@ class Question(models.Model):
     ifpassed=models.BooleanField('ifpassed',default=False)
     logx=models.TextField(blank=True)
     submission_times=models.IntegerField(default=5)
+    # logx_json = models.JSONField(default=list,blank=True)
     def __str__(self):
         return self.question_title
 

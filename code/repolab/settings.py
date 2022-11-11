@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'quiz.apps.QuizConfig',
     'quiz.templatetags.my_tags',
     'forum.apps.ForumConfig',
-    'markdownify'
-    
+    'markdownify',
 ]
 
 MIDDLEWARE = [
@@ -216,10 +215,17 @@ MARKDOWNIFY = {
         "MARKDOWN_EXTENSIONS": [
             'markdown.extensions.fenced_code',
             'markdown.extensions.extra',
-            'markdown.extensions.codehilite'
+            'markdown.extensions.codehilite',
         ],
-        "STRIP": False,
+        "WHITELIST_STYLES": [
+            'color',
+            'font-weight',
+        ],
         "WHITELIST_TAGS": [
+            'code',
+            'pre',
+            'span',
+            'div',
             'a',
             'abbr',
             'acronym',
@@ -232,21 +238,24 @@ MARKDOWNIFY = {
             'p',
             'strong',
             'ul',
-            'code',
-            'span',
-            'div', 'class',
-            'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6','img'
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'img',
         ],
         "WHITELIST_ATTRS": [
+            'class',
             'href',
             'src',
             'alt',
-            'class',
-        ],
-        "WHITELIST_PROTOCOLS": [
+            ],
+        "WHITELIST_PROTOCOL": [
             'http',
             'https',
-        ]
+        ],
+        "BLEACH": False
     }
 }
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000

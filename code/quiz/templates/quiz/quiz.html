@@ -7,20 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     {% load my_tags%}
+    {% load markdownify %}
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
     <script src="{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <link rel="stylesheet" href= "{% static 'quiz/highlight/styles/default.min.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
-    <script src="{% static 'quiz/highlight/highlight.min.js' %}"></script>
     <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
-    <script>hljs.highlightAll();</script>
+    {% comment %} <script>hljs.highlightAll();</script> {% endcomment %}
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
+     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">
     <script>
         function checkblank(){
             var x = document.getElementsByClassName('answer');
              for (var i =0;i<x.length;i++){
                  if (x[i].value==""){
-                    alert("You have unfinished blanks")
+                    alert("You have unfinished blanks");
+                    return false;
+                 }
+                 if (x[i].value.indexOf("#")!=-1 || x[i].value.indexOf("@")!=-1 || x[i].value.indexOf("$")!=-1){
+                    alert("Invalid Character (Do not contain '#' or '@' or '$')");
                     return false;
                  }
              }
@@ -138,7 +142,7 @@
             <div class='question' >
                 <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px; ">
-                {{text|safe}}
+                {{text|markdownify}}
                 </div>
             </div>
             {% if user.is_authenticated %}
