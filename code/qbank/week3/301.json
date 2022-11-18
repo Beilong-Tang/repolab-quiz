@@ -1,20 +1,26 @@
 {
   "question_type": "blank",
-  "question_title": "Recursion",
+  "question_title": "Datatype and object",
   "question_content": {
-    "description": "### Problem01\n\nFor every recursion, there are two main components that are _____(0)\\___ _____(1)\\___ , which returns a value without making any subsequent recursive calls, and _____(2)\\___ _____(3)\\___, which is the central part of a recursive function and relates the value of the function at one (or more) arguments to the value of function at one (or more) other arguments. (from sec-2.3).\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
+    "description": "### Problem01\n\nTo learn object-oriented programming(OOP), we need to review the\ndefinition of datatype.\n- A data type is a set of _____(0)\\___ and a set of _____(1)\\___ defind on those values.\n\n- An _____(2)\\___ data type is data type whose representation is\n  hidden from the client.\n\n- An _____(3)\\___ is an entity that holds a data-type value; you can\n  manipulate this data-type value by applying one of the _____(4)\\___\u2019s data-type operations.",
+    "qzid": "None",
+    "logx": [],
     "explains": "None",
+    "submission": "None",
+    "passed": "False",
+    "seed": "0",
     "answers": [
-      "base",
-      "case",
-      "reduction",
-      "step"
+      "values",
+      "operations",
+      "abstract",
+      "object",
+      "object"
     ],
-    "quiz_type": "blank",
+    "quiz_type": "JQ_UnorderedBlank",
+    "from": "sec-3.1.para.qz.md",
     "level": "1",
-    "author": "Beilong_Tang",
-    "section": "2.3",
-    "id": 301
+    "author": "Yantao",
+    "section": "3.1"
   },
   "question_level": 1,
   "question_id": 301,

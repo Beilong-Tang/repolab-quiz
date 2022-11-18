@@ -2,8 +2,7 @@
   "question_type": "mult",
   "question_title": "Run a program",
   "question_content": {
-    "description": "### Problem02\n\nImagine you have a \"HelloWorld.java\" file.\n\nPlease select the following choices that are correct.\n\n**Choices:**\n\na. To make the program execute, we only type 'java HelloWorld.java' in our terminal window, and the program will execute.\n\nb. To compile the program, we type 'javac HelloWorld.java' in our terminal window, and a 'HelloWorld.class' file will show up (assume there are no any compile-time errors).\n\nc. When typing 'javac HelloWorld.java', the JVM (Java Virtual Machine) will come to help compile the 'HelloWorld.java' file into a 'HelloWorld.class' file that can be executed. \n\nd. When typing 'javac HelloWorld.java', the Compiler will come to help compile the 'HelloWorld.java' file into a 'HelloWorld.class' file that can be executed. \n\ne. To run the 'HelloWorld.class' file, we type \"java HelloWorld.class'.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
-    "author": "Beilong Tang",
+    "description": "### Problem02\nImagine you have a \"HelloWorld.java\" file.\n\nPlease select the following choices that are correct.\n\n**Choices:**\n\na. To make the program execute, we only type 'java HelloWorld.java' in our terminal window, and the program will execute.\n\nb. To compile the program, we type 'javac HelloWorld.java' in our terminal window, and a 'HelloWorld.class' file will show up (assume there are no any compile-time errors).\n\nc. When typing 'javac HelloWorld.java', the JVM (Java Virtual Machine) will come to help compile the 'HelloWorld.java' file into a 'HelloWorld.class' file that can be executed. \n\nd. When typing 'javac HelloWorld.java', the Compiler will come to help compile the 'HelloWorld.java' file into a 'HelloWorld.class' file that can be executed. \n\ne. To run the 'HelloWorld.class' file, we type \"java HelloWorld.class'.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
     "choices": [
       "a. To make the program execute, we only type 'java HelloWorld.java' in our terminal window, and the program will execute.",
       "b. To compile the program, we type 'javac HelloWorld.java' in our terminal window, and a 'HelloWorld.class' file will show up (assume there are no any compile-time errors).",
@@ -18,11 +17,22 @@
       "True",
       "False"
     ],
-    "quiz_type": "mult",
+    "qzid": "None",
+    "logx": [],
+    "explains": [
+      "None",
+      "None",
+      "None",
+      "None",
+      "None"
+    ],
+    "submission": "None",
+    "passed": "False",
+    "seed": "None",
+    "quiz_type": "JQ_MultiChoice",
+    "author": "Beilong Tang",
     "level": "1",
-    "id": 102,
-    "section": "1.1",
-    "explains": "None"
+    "section": "1.1"
   },
   "question_level": 1,
   "question_id": 102,

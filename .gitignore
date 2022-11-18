@@ -157,3 +157,5 @@ uwsgi_params
 
 /code/utils/status.txt
 
+/repolab-quiz
+
