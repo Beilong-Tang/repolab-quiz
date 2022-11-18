@@ -108,7 +108,7 @@ class Json_File():
 
     def mult_quiz_content_convert(self,content:str,title:str,choices:list,author:str,level:int,answers:list) ->str:
         original_title = content[:content.find("\n")]
-        title_level_author = title+"\n"+":jq_level="+str(level)+":\n"+":author="+author+":"
+        title_level_author = title+"\n"+":jq_level="+str(level)+":\n"+":author="+author+":\n"
         Quote = False
         if content.find("Excerpt From Computer Science")!=-1:
             Quote = True
