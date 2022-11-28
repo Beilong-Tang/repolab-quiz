@@ -55,6 +55,7 @@
                 {%if mult %}
                 answer.value = change_mult_value(answer.value,"{{choices|choices_keys}}")
                 {% endif %}
+                answer.style.display='none'
                 document.myform.submit();
                 return true;
             }
@@ -160,10 +161,14 @@
             <div class='question' >
                 <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px; ">
-                {{question_dict.question_content.description|markdownify}}
                 {%if mult%}
-                {{choices|choices_shown|markdownify}}
+                {{description|markdownify}}
+                {%else%}
+                {{question_dict.question_content.description|markdownify}}
                 {%endif%}
+                {% comment %} {%if mult%}
+                {{choices|choices_shown|markdownify}}
+                {%endif%} {% endcomment %}
                 </div>
             </div>
             {% if user.is_authenticated %}

@@ -111,9 +111,14 @@ def quiz_new(request,question_id):
     if question_dict.question_type=='blank' or question_dict.question_type=='code':
         answers=question_dict.question_content.get('answers')
         mult=False
+        # if mult
     else:
         answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
         context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'))
+        try:
+            context['description'] = question_dict.question_content.get('description') % "\n\n".join(context['choices'].values())
+        except:
+            context['description'] = question_dict.question_content.get('description')
         # print(context['choices'])
 
     # Find latest history
@@ -126,17 +131,13 @@ def quiz_new(request,question_id):
             answer_sets  = answer_string_and_time[:answer_string_and_time.find('@')].split('#^')
         context['recent_answer']=answer_sets
 
-        # if len(question_dict.question_content.get('answers'))!=
-
         if mult:
-            # context['recent_answer']=" ".join(answer_sets)
             context['recent_answer']=""
-            # print(mult_length)
             
 
     question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
 
-    context['question_dict']=Questiondict.objects.get(question_id=question_id)
+    context['question_dict']=question_dict
     context['quiz']=q
     context['mult']=mult
     context['answers']=answers
