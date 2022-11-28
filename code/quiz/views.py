@@ -116,9 +116,11 @@ def quiz_new(request,question_id):
         answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
         context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'))
         try:
+        
             context['description'] = question_dict.question_content.get('description') % "\n\n".join(context['choices'].values())
         except:
             context['description'] = question_dict.question_content.get('description')
+            print(context['choices'])
         # print(context['choices'])
 
     # Find latest history

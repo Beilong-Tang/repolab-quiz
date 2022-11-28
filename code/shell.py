@@ -384,7 +384,16 @@ def make_status_all():
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 if __name__=='__main__':
-    execute()
+    # execute()
+
+    for quiz in Questiondict.objects.filter(question_type='mult'):
+        des = quiz.question_content['description']
+        if des.find("Excerpt") !=-1 :
+            quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*")
+        else:
+            quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s")
+        quiz.save()
+        x="% 132 %"
 
     #  print()
     # s= Student.objects.get(student_netid='bt132')

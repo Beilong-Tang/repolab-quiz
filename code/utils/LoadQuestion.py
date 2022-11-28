@@ -228,7 +228,7 @@ def ModifyContent(json_content,quiz_type,question_id):
     if quiz_type=='mult' or quiz_type=='JQ_MultiChoice':
         #quiz_description=quiz_description.replace('%s','**Choices:**\n\n'+'\n\n'.join(question_dict.question_content.get('choices')))
         json_content['description']='### Problem'+str(question_id)[1:]+'\n'+json_content['description']
-        json_content['description']=json_content['description'].replace('%s','**Choices:**\n\n'+'\n\n'.join(json_content['choices']))
+        json_content['description']=json_content['description'].replace('%s','**Choices:**\n\n%s')
     else:
         json_content['description']='### Problem'+str(question_id)[1:]+'\n'+json_content['description'].lstrip('\n')[json_content['description'].lstrip('\n').find('\n')+1:]
 
