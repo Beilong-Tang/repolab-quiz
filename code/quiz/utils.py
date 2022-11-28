@@ -4,7 +4,7 @@ from simple_judge.models import Questiondict
 from django.http import HttpResponse
 import subprocess ,os,datetime
 import shutil
-
+import random
 ### Clean the output for the code
 clean_output=True
 
@@ -178,4 +178,15 @@ def mult_answer_convert(mult_answer_sets):
     for i in range(0,len(mult_answer_sets)):
         if mult_answer_sets[i]=='True':
             answer_arrays.append(chr(i+97))
-    return answer_arrays
+    return answer_arrays 
+
+def shuffle_choices(choices:list) -> dict:
+    random.shuffle(choices)
+    choice_dict={}
+    #['B. ababbabb', 'A. bbabaaba', 'C. bbabbbaa ']
+    for index, item in enumerate(choices):
+        choice_str:str = item[:item.find('.')].lstrip(' ').rstrip(' ')
+        choice_dict[choice_str.lower()] = item.replace(choice_str,chr(97+index),1)
+    # print(choice_dict)
+    return choice_dict
+    pass

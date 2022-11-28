@@ -170,3 +170,17 @@ function show_img(id,this_id){
   x.style.display='inline';
   document.getElementById(this_id).style.display='none';
 }
+
+function change_mult_value(answer_str,dict_str){
+  answer_str=answer_str.replaceAll(" ","") // Drop all the spaces
+  var answer = ""
+  for(var i = 0 ; i< answer_str.length;i++){
+    var char = answer_str.charAt(i)
+    var charcode = char.charCodeAt(0)-97;
+    if (charcode > dict_str.length-1){
+      return ""
+    }
+    answer +=dict_str.charAt(char.charCodeAt(0)-97)+" "
+  }
+  return answer;
+}

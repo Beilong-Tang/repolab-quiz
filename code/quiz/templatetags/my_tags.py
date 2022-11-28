@@ -71,3 +71,10 @@ def title2(name):
 def cap(name):
     return name[0:1]
 
+@register.filter
+def choices_shown(choices:dict)->str:
+    return "\n\n".join(list(choices.values()))
+
+@register.filter
+def choices_keys(choices:dict)->str:
+    return "".join(list(choices.keys()))

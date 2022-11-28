@@ -10,7 +10,7 @@ from simple_judge.models import Student, Question, Questiondict
 from forum.models import Post, Comment
 from django.contrib.auth.decorators import login_required
 import quiz.utils as ut
-import markdown
+import random
 import datetime
 from utils.settings import question_due_dict
 from django.db.models import Q
@@ -93,7 +93,7 @@ def quiz_new(request,question_id):
     question_dict=Questiondict.objects.get(question_id=question_id)
     question_week=question_dict.question_week
     q= student_current.question_set.get(question_id=question_id)
-    quiz_description=question_dict.question_content.get('description')
+    # quiz_description=question_dict.question_content.get('description')
     mult=True
     context={}
 
@@ -113,6 +113,8 @@ def quiz_new(request,question_id):
         mult=False
     else:
         answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
+        context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'))
+        # print(context['choices'])
 
     # Find latest history
     if q.logx!="":
@@ -127,12 +129,13 @@ def quiz_new(request,question_id):
         # if len(question_dict.question_content.get('answers'))!=
 
         if mult:
-            context['recent_answer']=" ".join(answer_sets)
-
+            # context['recent_answer']=" ".join(answer_sets)
+            context['recent_answer']=""
+            # print(mult_length)
+            
 
     question_sets_temp1=student_current.question_set.filter(question_id__gte=100*question_week , question_id__lte=100*(question_week+1)).order_by('question_id')
 
-    context['text']=quiz_description
     context['question_dict']=Questiondict.objects.get(question_id=question_id)
     context['quiz']=q
     context['mult']=mult

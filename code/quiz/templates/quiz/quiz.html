@@ -30,6 +30,7 @@
              }
              return true;
         }
+
         function submit(){
             if (checkblank()==true){
                 var x = document.getElementsByName('xxx')
@@ -37,6 +38,23 @@
                     x[i].style.display='none'
                 }
                 document.getElementById('check').style.display='inline';
+                document.myform.submit();
+                return true;
+            }
+            return false;
+        }
+
+        function mult_submit(){
+            if (checkblank()==true){
+                var x = document.getElementsByName('xxx')
+                for(var i=0;i<x.length;i++){
+                    x[i].style.display='none'
+                }
+                document.getElementById('check').style.display='inline';
+                var answer = document.getElementsByClassName('answer')[0];
+                {%if mult %}
+                answer.value = change_mult_value(answer.value,"{{choices|choices_keys}}")
+                {% endif %}
                 document.myform.submit();
                 return true;
             }
@@ -142,7 +160,10 @@
             <div class='question' >
                 <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px; ">
-                {{text|markdownify}}
+                {{question_dict.question_content.description|markdownify}}
+                {%if mult%}
+                {{choices|choices_shown|markdownify}}
+                {%endif%}
                 </div>
             </div>
             {% if user.is_authenticated %}
@@ -152,7 +173,7 @@
                     {% if overdue != True%}
                             <label for="" style="text-align: center; color:rgb(110, 119, 123);font-size: 13px;">Your answer goes here:</label>
                             <br>
-                                {% if question_dict.question_type == 'mult' %}
+                                {% if mult %}
                                     <input type="text" class= "answer" spellcheck=false id="answer1" name="0" placeholder="Your Answer" value ="{{recent_answer}}" required>
                                 {% else%}
                                     {% if question_dict.question_type != 'code'%}
@@ -181,11 +202,15 @@
                             <label for="" style="text-align: center; color:rgb(255, 157, 0);font-size: 13px; display:none ;" id ='check'>...CHECKING...</label>
                         </form>
                         <a href="{% url 'quiz:quiz_new' ids.0 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx' class='submit'>Previous Question</button></a>
+                        {% if mult %}
+                        <button type="submit" style="margin-top:10px"  id='submit' onclick='mult_submit()' name='xxx' class='submit'>SUBMIT</button>
+                        {%else %}
                         <button type="submit" style="margin-top:10px"  id='submit' onclick='submit()' name='xxx' class='submit'>SUBMIT</button>
+                        {%endif%}
                         <a href="{% url 'quiz:quiz_new' ids.1 %}"><button type="submit" style="margin-top:10px"  id='submit'  name='xxx' class='submit'>Next Question</button></a>
                     {% else %}
                         <p style='color:grey'>Answer: </p>
-                        {% if question_dict.question_type != 'mult' %}
+                        {% if mult == false %}
                         <p style='color:orange;margin-top:-10px;white-space:pre-wrap'>{{answers|answer}}</p>
                         {% else %}
                         <p style='color:orange;margin-top:-10px;white-space:pre-wrap'>{{answers|mult_answer}}</p>
