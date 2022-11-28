@@ -16,6 +16,8 @@ from utils.settings import question_due_dict
 from django.db.models import Q
 # Create your views here.
 
+mult_shuffle = True
+
 def record_online_time(minute = 30):
     tim = datetime.datetime.utcnow().astimezone(datetime.timezone(datetime.timedelta(hours=0))) #UTC Time
     return tim, tim+datetime.timedelta(minutes=minute)
@@ -116,10 +118,9 @@ def quiz_new(request,question_id):
         answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
         context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'))
         try:
-        
             context['description'] = question_dict.question_content.get('description') % "\n\n".join(context['choices'].values())
         except:
-            context['description'] = question_dict.question_content.get('description')
+            context['description'] = question_dict.question_content.get('description').replace("%s","\n\n".join(context['choices'].values()))
             print(context['choices'])
         # print(context['choices'])
 
