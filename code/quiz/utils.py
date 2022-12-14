@@ -180,8 +180,9 @@ def mult_answer_convert(mult_answer_sets):
             answer_arrays.append(chr(i+97))
     return answer_arrays 
 
-def shuffle_choices(choices:list,shuffle=True) -> dict:
+def shuffle_choices(choices:list,seed : int,shuffle=True,) -> dict:
     if shuffle==True:
+        random.seed(seed)
         random.shuffle(choices)
     choice_dict={}
     #['B. ababbabb', 'A. bbabaaba', 'C. bbabbbaa ']

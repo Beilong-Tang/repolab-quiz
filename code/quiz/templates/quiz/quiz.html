@@ -166,9 +166,6 @@
                 {%else%}
                 {{question_dict.question_content.description|markdownify}}
                 {%endif%}
-                {% comment %} {%if mult%}
-                {{choices|choices_shown|markdownify}}
-                {%endif%} {% endcomment %}
                 </div>
             </div>
             {% if user.is_authenticated %}
@@ -178,6 +175,7 @@
                     {% if overdue != True%}
                             <label for="" style="text-align: center; color:rgb(110, 119, 123);font-size: 13px;">Your answer goes here:</label>
                             <br>
+                            <input type='text' style='display:none'>
                                 {% if mult %}
                                     <input type="text" class= "answer" spellcheck=false id="answer1" name="0" placeholder="Your Answer" value ="{{recent_answer}}" required>
                                 {% else%}

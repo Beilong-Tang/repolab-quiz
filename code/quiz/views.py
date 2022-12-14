@@ -75,6 +75,7 @@ def check(request, question_id):
             messages.error(request, 'Wrong Answer!')
             if quiz.submission_times > 0 and quiz.ifpassed==False:
                 quiz.submission_times=quiz.submission_times-1
+                quiz.seed=random.randint(0,100)
                 quiz.save()
             return HttpResponseRedirect(reverse('quiz:quiz_new',args=(question_id,)))
         messages.success(request, 'Correct Answer!')
@@ -106,6 +107,7 @@ def quiz_new(request,question_id):
     if time_now > time_end - datetime.timedelta(hours=8):
         context['overdue']=True
     elif time_now >= time_start- datetime.timedelta(hours=8):
+        context['overdue']=False
         pass
     else:
         return HttpResponse("The question is not open yet")
@@ -116,13 +118,11 @@ def quiz_new(request,question_id):
         # if mult
     else:
         answers=ut.mult_answer_convert(question_dict.question_content.get('answers'))
-        context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'))
+        context['choices'] = ut.shuffle_choices(choices=question_dict.question_content.get('choices'),seed=q.seed,shuffle= not context['overdue'])
         try:
             context['description'] = question_dict.question_content.get('description') % "\n\n".join(context['choices'].values())
         except:
             context['description'] = question_dict.question_content.get('description').replace("%s","\n\n".join(context['choices'].values()))
-            print(context['choices'])
-        # print(context['choices'])
 
     # Find latest history
     if q.logx!="":

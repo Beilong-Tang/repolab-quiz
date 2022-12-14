@@ -28,6 +28,7 @@ class Question(models.Model):
     ifpassed=models.BooleanField('ifpassed',default=False)
     logx=models.TextField(blank=True)
     submission_times=models.IntegerField(default=5)
+    seed = models.IntegerField(default= 0)
     # logx_json = models.JSONField(default=list,blank=True)
     def __str__(self):
         return self.question_title
