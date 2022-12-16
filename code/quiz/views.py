@@ -312,10 +312,6 @@ def admin_quiz(request,week):
     context['dict']=sorted_dict
     context['submit_dict']=submit_sorted_dict
 
-
-
-
-
     return render(request, 'quiz/admin_quiz.html',context)
 
     

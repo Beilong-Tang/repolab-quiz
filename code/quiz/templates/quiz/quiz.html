@@ -8,11 +8,14 @@
     {% load static %}
     {% load my_tags%}
     {% load markdownify %}
+    <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/vs.min.css' %}">
+      <script type= "text/javascript"  src = "{% static 'quiz/highlight.min.js' %}"></script>
+
     <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/bootstrap/css/bootstrap.min.css' %}">
     <script src="{% static 'quiz/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <link rel="icon" type="image/x-icon" href="{% static 'quiz/CS201.svg' %}">
     <script type= "text/javascript"  src = "{% static 'quiz/function.js' %}"></script>
-    {% comment %} <script>hljs.highlightAll();</script> {% endcomment %}
+    <script>hljs.highlightAll();</script>
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/question.css' %}">
      <link rel = "stylesheet" type ="text/css" href = "{% static 'quiz/codehilite_styles.css' %}">
     <script>
@@ -161,7 +164,7 @@
             <div class='question' >
                 <h2 >Week{{question_dict.question_week}}/sec-{{section}}: {{question_dict.question_title}}</h2>
                 <div class='text' style="margin-bottom: 0; margin-left:-10px; ">
-                {%if mult%}
+                {%if mult %}
                 {{description|markdownify}}
                 {%else%}
                 {{question_dict.question_content.description|markdownify}}
