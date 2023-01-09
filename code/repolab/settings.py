@@ -215,7 +215,7 @@ MARKDOWNIFY = {
         "MARKDOWN_EXTENSIONS": [
             'markdown.extensions.fenced_code',
             'markdown.extensions.extra',
-            'markdown.extensions.codehilite',
+            # 'markdown.extensions.codehilite',
         ],
         "WHITELIST_STYLES": [
             'color',

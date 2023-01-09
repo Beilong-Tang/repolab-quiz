@@ -28,7 +28,7 @@ question_title
 
 
 
-
+import random
 
 from simple_judge.models import Student, Question, Questiondict
 from utils.settings import question_due_dict as question_due
@@ -56,7 +56,8 @@ def AssignQuestion(student_netid=""):
             for id in id_all:
                 if id not in id_student:
                     q = s.question_set.create(question_id=id,
-                                            question_title=Questiondict.objects.get(question_id=id).question_title)
+                                            question_title=Questiondict.objects.get(question_id=id).question_title,
+                                            seed = random.randint(0,100))
                     q.save()
             print(s.student_netid,' finished')
     else:
@@ -76,7 +77,8 @@ def AssignQuestion(student_netid=""):
         for id in id_all:
             if id not in id_student:
                 q = s.question_set.create(question_id=id,
-                                        question_title=Questiondict.objects.get(question_id=id).question_title)
+                                        question_title=Questiondict.objects.get(question_id=id).question_title,
+                                        seed = random.randint(0,100))
                 q.save()
         print('finished')
 
