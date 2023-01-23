@@ -7,6 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'repolab.settings')
 django.setup()
 from simple_judge.models import *
 from utils import LoadQuestion as load
+from utils import User as User
 
 
 #from utils.AssignQuestionWeek import execute
@@ -30,7 +31,7 @@ first_command = ['week1','week2','week3','week4','week5','week6','week7']
 # 1. find question type
 # question_title : princetonbook_chap01_sec-1.1_quiz.0.Programming.in.java
 # 2. find question_content, which is a 
-def execute() -> None:
+def execute() :
 
     if '-help' in sys.argv:
         print(
@@ -49,6 +50,7 @@ python3 change_password_yaml # Change the raw password to the password in the ya
 Change the password (python3 shell.py change_password bt132 password)
 python3 shell.py status (generating a excel file of the status of all students in all the week)
 python3 shell.py status 1 (status in week 1 output in a txt file)
+python3 shell.py deleteUser 
 
 '''
         )
@@ -115,6 +117,10 @@ python3 shell.py status 1 (status in week 1 output in a txt file)
             make_status_all()
         else: # python3 shell.py status 1
             make_status(sys.argv[2])
+        return
+    
+    if sys.argv[1]=='deleteUser':
+        User.deleteUser()
         return
 
 def LoadQuestion_yaml(command_week:str) ->None:
@@ -322,6 +328,7 @@ def CreateUser(net_id, student_name,level):
     pass
 
 def ImportUser():
+    print(1)
     args = ""
     args+= "from simple_judge.models import Student\n"
     args+= "from django.contrib.auth.models import User\n"
@@ -384,16 +391,16 @@ def make_status_all():
     p1= subprocess.Popen(args='python3 manage.py shell',shell=True, stdin=ain)
 
 if __name__=='__main__':
-    # execute()
+    execute()
 
-    for quiz in Questiondict.objects.filter(question_type='mult'):
-        des = quiz.question_content['description']
-        if des.find("Excerpt") !=-1 :
-            quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*")
-        else:
-            quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s")
-        quiz.save()
-        x="% 132 %"
+    # for quiz in Questiondict.objects.filter(question_type='mult'):
+    #     des = quiz.question_content['description']
+    #     if des.find("Excerpt") !=-1 :
+    #         quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*")
+    #     else:
+    #         quiz.question_content['description'] = des.replace(des[des.find("**Choices:**"):],"**Choices:**\n\n%s")
+    #     quiz.save()
+    #     x="% 132 %"
 
     #  print()
     # s= Student.objects.get(student_netid='bt132')

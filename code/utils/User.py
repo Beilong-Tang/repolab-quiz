@@ -61,7 +61,7 @@ def password_random_gen():
     
 
 def importing_user():
-    with open(user_raw_file,'r') as f:
+    with open(user_raw_file,'r', encoding='utf-16') as f:
         for line in f.readlines():
             line = line.rstrip('\n')
             line_array = line.split(',') #"Tang, Beilong",bt132@duke.edu,lunji.zhu@dukekunshan.edu.cn,TA#
@@ -73,7 +73,6 @@ def importing_user():
 
 def change_passowrd_yaml():
     password_list = yaml.load(open(password_yaml,'r').read())['passwd']
-    print(password_list)
     student_netid_list = [s.username for s in User.objects.all()]
     for i in password_list:
         if i[0] in student_netid_list:
@@ -126,6 +125,11 @@ def check_user_data_all():
         row = row +1
     print("Finished")
     wb.save('CS201QuizData.xls')
+
+def deleteUser():
+    for s in Student.objects.filter(level=0):
+        s.delete()
+    return
 
 if __name__ == '__main__':
     print(status_path)

@@ -10,3 +10,5 @@ class PostAdmin(admin.ModelAdmin):
     list_display=('title','author_name','pub_date','level','category')
 
 admin.site.register(Post,PostAdmin)
+
+admin.site.register(Comment)
