@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "if flow",
   "question_content": {
-    "description": "### Problem17\n\nLook at the following program:\n\n```java\npublic class Flow\n{\n    public static void main(String[]args)\n    {\n        int x = Integer.parseInt(args[0]);\n        if (x % 3 == 0)\n        {\n            if ( x %2 ==0 && x <10 ) System.out.println(1);\n            else System.out.println(2);\n        }\n        else\n        {\n            if (x!=20) System.out.println(3);\n            if (x >15) System.out.println(4);\n        }\n    }\n}\n```\n\nPlease select the following choices that are right.\n\n**Choices:**\n\na. If we do 'java Flow 12', the output will be '1'.\n\nb. If we do 'java Flow 6', the output will be '1'.\n\nc. If we do 'java Flow 16', the output will be '3'.\n\nd. If we do 'java Flow 16', the output will be '3\\n4' ('\\n' stands for a new line).\n\n",
+    "description": "### Problem17\n\nLook at the following program:\n\n```java\npublic class Flow\n{\n    public static void main(String[]args)\n    {\n        int x = Integer.parseInt(args[0]);\n        if (x % 3 == 0)\n        {\n            if ( x % 2 ==0 && x <10 ) System.out.println(1);\n            else System.out.println(2);\n        }\n        else\n        {\n            if (x!=20) System.out.println(3);\n            if (x >15) System.out.println(4);\n        }\n    }\n}\n```\n\nPlease select the following choices that are right.\n\n**Choices:**\n\n%s",
     "author": "Beilong Tang",
     "choices": [
       "a. If we do 'java Flow 12', the output will be '1'.",

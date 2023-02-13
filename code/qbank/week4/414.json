@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Shadow",
   "question_content": {
-    "description": "### Problem14\nA shadow in a Java data type implementation refers to which of the following?\n\n**Choices:**\n\na. Two constructors with the same name\n\nb. An instance method with the same name as a static method\n\nc. A local variable with the same name as an instance variable\n\nd. An instance variable with the same name as a constructor\n\ne. An instance method with the same name as a constructor\n\n_Excerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright._",
+    "description": "### Problem14\nA shadow in a Java data type implementation refers to which of the following?\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "author": "Yantao Mei",
     "choices": [
       "a. Two constructors with the same name",

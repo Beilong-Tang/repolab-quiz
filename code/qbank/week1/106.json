@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "String, Java identifier",
   "question_content": {
-    "description": "### Problem06\n\nPlease select the following choices that are right.\n\n**Choices:**\n\na. String is a primitive data type in Java.\n\nb. The first letter of the Java identifier can be a digit.\n\nc. In Java, we can use a variable in an expression without declaratiion.\n\nd. A declaration in Java includes a type followed by a variable name.\n\nExcerpt From\nComputer Science\nSedgewick, Robert,Wayne, Kevin\nThis material may be protected by copyright.\n\n",
+    "description": "### Problem06\n\nPlease select the following choices that are right.\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "author": "Beilong Tang",
     "choices": [
       "a. String is a primitive data type in Java.",

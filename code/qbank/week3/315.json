@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Reference",
   "question_content": {
-    "description": "### Problem15\nWhat does the following code fragment print?\n\n```java\nString string1 = \"hello\";\nString string2 = string1;\nstring1 = \"world\";\nStdOut.println(string1 + string2);\n```\n\n**Choices:**\n\na. hellohello\n\nb. helloworld\n\nc. worldworld\n\nd. worldhello",
+    "description": "### Problem15\nWhat does the following code fragment print?\n\n```java\nString string1 = \"hello\";\nString string2 = string1;\nstring1 = \"world\";\nStdOut.println(string1 + string2);\n```\n\n**Choices:**\n\n%s",
     "author": "Yantao Mei",
     "choices": [
       "a. hellohello",

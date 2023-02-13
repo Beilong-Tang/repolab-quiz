@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "doubling hypothesis",
   "question_content": {
-    "description": "### Problem07\nWhich statements that characterize the doubling hypothesis? Mark all that apply.\n\n**Choices:**\n\na. A way to avoid mathematical analysis of program performance\n\nb. A way to avoid empirical tests of program performance\n\nc. A way to determine the order of growth of the running time of a program\n\nd. A way to better understand the performance of a program\n\ne. A way to improve the performance of a program",
+    "description": "### Problem07\nWhich statements that characterize the doubling hypothesis? Mark all that apply.\n\n**Choices:**\n\n%s",
     "author": "Yantao Mei",
     "choices": [
       "a. A way to avoid mathematical analysis of program performance",

@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Summary1",
   "question_content": {
-    "description": "### Problem15\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\n \n\nA. Every NFA can be simulated by some DFA  \n\nB. All formal languages are regular  \n\nC. NFAs and REs are equivalent \n\nD. Every formal language can be recognized by some NFA  \n\nE. Every DFA can be simulated by some NFA   \n\n*From Coursera lecture quiz*\n\n",
+    "description": "### Problem15\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\n%s",
     "choices": [
       "A. Every NFA can be simulated by some DFA  ",
       "B. All formal languages are regular  ",

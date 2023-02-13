@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Summary3",
   "question_content": {
-    "description": "### Problem17\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\nA. There is formal language that can be recognized by some NFA and not by any DFA\n\nB. A language is regular if and only if it can be specified by an RE\n\nC. Not all formal language can be recognized by some DFA\n\nD. Some RE cannot be simulated by NFA\n\nE. Any language described by any RE, DFA, or NFA is regular",
+    "description": "### Problem17\n\nWhich of the following statements are true? Mark all that apply.\n\n**Choices:**\n\n%s",
     "choices": [
       "A. There is formal language that can be recognized by some NFA and not by any DFA",
       "B. A language is regular if and only if it can be specified by an RE",

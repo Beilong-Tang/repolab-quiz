@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Args, Comments, Print",
   "question_content": {
-    "description": "### Problem04\nLook at the following Java code:\n\n```java\n1    public class PrintArgs\n2    {\n3        // This is my program.\n4        public static void main(String[] args)\n5        {\n6            System.out.println(args[1]);\n7        }\n8    }\n```\n\nPlease select the following choices that are right.\n\n**Choices:**\n\na. Line 3 is a comment, meaning that it will be ignored by the compiler.\n\nb. To write a comment, we can use'//, /*, */, #' in Java.\n\nc. If we do 'javac PrintArgs.java' and 'java PrintArgs Alice Bob', the output will be 'Alice'.\n\nd. If we do 'javac PrintArgs.java' and 'java PrintArgs Alice Bob', the output will be 'Bob'.\n\ne. If line 6 is changed to ' System.out.print(args[1]);System.out.print(args[0]); ', then the output will be 'BobAlice' if we do 'javac PrintArgs.java' and 'java PrintArgs Alice Bob'.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "description": "### Problem04\nLook at the following Java code:\n\n```java\n1    public class PrintArgs\n2    {\n3        // This is my program.\n4        public static void main(String[] args)\n5        {\n6            System.out.println(args[1]);\n7        }\n8    }\n```\n\nPlease select the following choices that are right.\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "author": "Beilong Tang",
     "choices": [
       "a. Line 3 is a comment, meaning that it will be ignored by the compiler.",

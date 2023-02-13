@@ -172,7 +172,7 @@ function show_img(id,this_id){
 }
 
 function change_mult_value(answer_str,dict_str){
-  answer_str=answer_str.replaceAll(" ","") // Drop all the spaces
+  answer_str=answer_str.replaceAll(" ","").toLowerCase(); // Drop all the spaces
   var answer = ""
   for(var i = 0 ; i< answer_str.length;i++){
     var char = answer_str.charAt(i)

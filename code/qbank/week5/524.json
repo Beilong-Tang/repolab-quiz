@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "FACTORING",
   "question_content": {
-    "description": "### Problem24\n\nWhich of the following can we infer from the fact that FACTORING is in NP but not known to be NP-complete, if we assume that P is not equal to NP?\n\n**Choices:**\n\n A. There exists an algorithm that solves arbitrary instances of FACTORING.\n\nB. There exists an algorithm that efficiently solves arbitrary instances of FACTORING.\n\nC. If we found an efficient algorithm for FACTORING, we could immediately use it as a black box to solve TSP.   \n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*\n\n",
+    "description": "### Problem24\n\nWhich of the following can we infer from the fact that FACTORING is in NP but not known to be NP-complete, if we assume that P is not equal to NP?\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "choices": [
       "A. There exists an algorithm that solves arbitrary instances of FACTORING.  ",
       "B. There exists an algorithm that efficiently solves arbitrary instances of FACTORING.  ",

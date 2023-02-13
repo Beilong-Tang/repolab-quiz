@@ -2,14 +2,14 @@
   "question_type": "mult",
   "question_title": "Binary search",
   "question_content": {
-    "description": "### Problem22\nSuppose that an array of strings contains [\"blueberry\", \"chocolate\", \"coconut\", \"coffee\", \"mint\", \"strawberry\", \"vanilla\"]. How many compares are used for a successful search for \"mint\" with binary search?\n\n**Choices:**\n\na. 2\n\nb. 3\n\nc. 4\n\nd. 5\n\ne. 6",
+    "description": "### Problem22\nSuppose that an array of strings contains [\"blueberry\", \"chocolate\", \"coconut\", \"coffee\", \"mint\", \"strawberry\", \"vanilla\"]. How many compares are used for a successful search for \"mint\" with binary search?\n\n**Choices:**\n\n%s",
     "author": "Yantao Mei",
     "choices": [
-      "2",
-      "3",
-      "4",
-      "5",
-      "6"
+      "a. 2",
+      "b. 3",
+      "c. 4",
+      "d. 5",
+      "e. 6"
     ],
     "answers": [
       "False",

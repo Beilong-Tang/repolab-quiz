@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "True or False",
   "question_content": {
-    "description": "### Problem16\n\nLook at the two boolean variables:\n\n```java\nboolean X = Math.sqrt(2.0)*Math.sqrt(2.0)==2.0;\nboolean Y = (0.1+0.1+0.1)>0.3;\n```\n\nPlease select the following choices that are correct (Hint: try this on your own).\n\n**Choices:**\n\na. The value of 'X' is 'true'.\n\nb. The value of 'X' is 'false'.\n\nc. The value of 'Y' is 'true'.\n\nd. The value of 'Y' is 'flase'.\n\n",
+    "description": "### Problem16\n\nLook at the two boolean variables:\n\n```java\nboolean X = Math.sqrt(2.0)*Math.sqrt(2.0)==2.0;\nboolean Y = (0.1+0.1+0.1)>0.3;\n```\n\nPlease select the following choices that are correct (Hint: try this on your own).\n\n**Choices:**\n\n%s",
     "author": "Beilong Tang",
     "choices": [
       "a. The value of 'X' is 'true'.",

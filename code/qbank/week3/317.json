@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Instance variable",
   "question_content": {
-    "description": "### Problem17\nWhat does an instance variable refer to in an instance method?\n\n**Choices:**\n\nA. A value in the scope of the constructor associated with the method\n\nB. A value in the scope of the method\n\nC. A value associated with the object that was used to invoke the method\n\nD. A value in the scope of the method's client\n\nE. An object that was created by the constructor associated with the method\n\n _Excerpt from the Coursera Site._",
+    "description": "### Problem17\nWhat does an instance variable refer to in an instance method?\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "author": "Yantao Mei",
     "choices": [
       "A. A value in the scope of the constructor associated with the method",
