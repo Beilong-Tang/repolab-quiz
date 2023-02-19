@@ -2,7 +2,7 @@
   "question_type": "mult",
   "question_title": "Debug",
   "question_content": {
-    "description": "### Problem13\nSuppose you want to create your own data type of Complex**Choices:**\n\n%s",
+    "description": "### Problem13\n\nSuppose you want to create your own data type of Complex. Below is the code you wrote. There are now two constructors. What is wrong with the Constructor? \n\n```java\nclass Complex{\n    double re;\n    double im;\n\n    // Constructor 1\n    public void Complex(double Cre, double Cim){\n        re = Cre;\n        im = Cim;\n    }\n\n    // Constructor 2\n    public Complex(){\n        this.re = 1;\n        this.im = 1;\n    }\n\n\n    public static void main(String[] args) {\n        Complex a = new Complex(1.0,2.0);\n        System.out.println(a.re);\n    }\n}\n```\n\n**Choices:**\n\n%s",
     "author": "Yantao Mei",
     "choices": [
       "a. The 're' and 'im' in the constructor 1 are not defined.",
