@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "NP-Complete",
   "question_content": {
-    "description": "### Problem08\n\n\n**Answer:no**\n\n Suppose that X is NP-complete, X reduces to Y, and Y reduces to X. Is Y necessarily NP-complete?\n\nAnswer:_____(0)\\___ (yes/no).",
+    "description": "### Problem08\n\n\n Suppose that X is NP-complete, X reduces to Y, and Y reduces to X. Is Y necessarily NP-complete?\n\nAnswer:_____(0)\\___ (yes/no).",
     "explains": "None",
     "answers": [
       "no"

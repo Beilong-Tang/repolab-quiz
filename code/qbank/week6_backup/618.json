@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Toy Instruction",
+  "question_content": {
+    "description": "### Problem18\n\nWhich of the 16 TOY instructions do not use all 16 bits?\n\nAnswer: _____(0)\\___ (Write the opcode for that instruction).\n\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "0"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike Guo",
+    "section": "6.2",
+    "id": 618
+  },
+  "question_level": 1,
+  "question_id": 618,
+  "question_week": 6
+}

@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Binary operations",
+  "question_content": {
+    "description": "### Problem14\n\nLook at the following code:\n\n```java\nint b = 648;\nint a = 32;\nint c = 0;\nwhile (b > 0) {\n    if (b % 2 == 1) c = c + a;\n    b = b >> 1;\n    a = a << 1;\n}\n```\n\n The value of c is _____(0)\\___ after executing the program (Hint: Try some simple numbers, and find the relationship of c between a and b. Figure out the nature of this code).",
+    "explains": "None",
+    "answers": [
+      "20736"
+    ],
+    "quiz_type": "blank",
+    "level": "2",
+    "author": "Yike Guo",
+    "section": "6.1",
+    "id": 614
+  },
+  "question_level": 2,
+  "question_id": 614,
+  "question_week": 6
+}

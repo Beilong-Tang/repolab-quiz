@@ -2,12 +2,12 @@
   "question_type": "mult",
   "question_title": "NP-complete3",
   "question_content": {
-    "description": "### Problem11\n\n**Answer: Highlighted Choices**\n\n Which of the following can we infer from the fact that TSP is NP-complete, if we assume that P \u2260 NP? Mark all that apply. \n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "description": "### Problem11\n\n Which of the following can we infer from the fact that TSP is NP-complete, if we assume that P \u2260 NP? Mark all that apply. \n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "choices": [
       "A. There does not exist an algorithm that solves arbitrary instances of TSP. ",
-      "B. **There does not exist an algorithm that efficiently solves arbitrary instances of TSP.**",
+      "B. There does not exist an algorithm that efficiently solves arbitrary instances of TSP.",
       "C. There exists an algorithm that efficiently solves arbitrary instances of TSP, but no one has been able to find it.",
-      "D. **TSP is not in P.**  ",
+      "D. TSP is not in P.  ",
       "E. All algorithms that are guaranteed to solve TSP run in polynomial time for some family of inputs.  ",
       "F. All algorithms that are guaranteed to solve TSP run in exponential time for all families of inputs."
     ],

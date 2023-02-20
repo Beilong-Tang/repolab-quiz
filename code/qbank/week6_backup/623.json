@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY-Program Loop ",
+  "question_content": {
+    "description": "### Problem23\n\nConsider the following TOY program.\n\n```\n10: 7101\n11: 7207\n12: 7301\n13: 1333\n14: 2221\n15: D213\n16: 0000\n```\n\nThe value of R[3] is _____(0)\\___ when the program halts. Note: Please type in decimal number.\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "answers": [
+      "128"
+    ],
+    "quiz_type": "blank",
+    "section": "6.3",
+    "level": "1",
+    "author": "Beilong Tang",
+    "id": 623,
+    "explains": "None"
+  },
+  "question_level": 1,
+  "question_id": 623,
+  "question_week": 6
+}

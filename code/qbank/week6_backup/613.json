@@ -1,0 +1,19 @@
+{
+  "question_type": "blank",
+  "question_title": "Hexadecimal Add",
+  "question_content": {
+    "description": "### Problem13\n\nAdd the two hexadecimal numbers 2AC and 4B8 and give the result in hexadecimal: _____(0)\\___.",
+    "explains": "None",
+    "answers": [
+      "764"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike Guo",
+    "section": "6.1",
+    "id": 613
+  },
+  "question_level": 1,
+  "question_id": 613,
+  "question_week": 6
+}

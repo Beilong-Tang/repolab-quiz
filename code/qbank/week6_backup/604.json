@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Universal models",
+  "question_content": {
+    "description": "### Problem04\n\n\nA model is said to be _____(0)\\___ complete or _____(1)\\___ _____(2)\\___ if it is equivalent to the Turing machine model (it can recognize the same set of languages and compute the same set of functions) (literally from sec-5.3).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin This material may be protected by copyright.*\n ",
+    "explains": "None",
+    "answers": [
+      "Turing",
+      "Turing",
+      "universal"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike Guo",
+    "section": "5.3",
+    "id": 604
+  },
+  "question_level": 1,
+  "question_id": 604,
+  "question_week": 6
+}

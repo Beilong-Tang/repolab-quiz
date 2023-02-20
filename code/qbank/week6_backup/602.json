@@ -1,0 +1,21 @@
+{
+  "question_type": "blank",
+  "question_title": "Universal Turing machine",
+  "question_content": {
+    "description": "### Problem02\n\n\n>_____(0)\\___ _____(1)\\___ _____(2)\\___ is a specific Turing machine that can simulate the behavior of any Turing machine (including itself).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "Universal",
+      "Turing",
+      "machine"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike Guo",
+    "section": "5.3",
+    "id": 602
+  },
+  "question_level": 1,
+  "question_id": 602,
+  "question_week": 6
+}

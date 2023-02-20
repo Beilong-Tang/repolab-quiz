@@ -2,13 +2,13 @@
   "question_type": "mult",
   "question_title": "FACTOR",
   "question_content": {
-    "description": "### Problem10\n\n**Answer: Highlighted Choices**\n\nAssume that P = NP. Mark all correct options for FACTOR.\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "description": "### Problem10\n\nAssume that P = NP. Mark all correct options for FACTOR.\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "choices": [
-      "A. **is computable**  ",
-      "B. **is in P**  ",
-      "C. **is in NP**  ",
+      "A. is computable  ",
+      "B. is in P  ",
+      "C. is in NP  ",
       "D. is intractable  ",
-      "E. **is NP-complete**"
+      "E. is NP-complete "
     ],
     "answers": [
       "True",

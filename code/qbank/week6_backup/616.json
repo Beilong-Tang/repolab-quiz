@@ -1,0 +1,22 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY Basics",
+  "question_content": {
+    "description": "### Problem16\n\nThe TOY machine has _____(0)\\___ words of main memory, _____(1)\\___ registers, and _____(2)\\___-bit instructions.There are _____(3)\\___ different instructions types.",
+    "explains": "None",
+    "answers": [
+      "256",
+      "16",
+      "16",
+      "16"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yike Guo",
+    "section": "6.2",
+    "id": 616
+  },
+  "question_level": 1,
+  "question_id": 616,
+  "question_week": 6
+}

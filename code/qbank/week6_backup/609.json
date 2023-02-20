@@ -2,15 +2,15 @@
   "question_type": "mult",
   "question_title": "NP-complete2",
   "question_content": {
-    "description": "### Problem09\n\n\n**Answer: Highlighted Choices**\n\nLet A and B be two decision problems.Suppose we know that A polynomial-time reduces to B. Which of the following can we infer?  Mark all that apply\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "description": "### Problem09\n\n\nLet A and B be two decision problems.Suppose we know that A polynomial-time reduces to B. Which of the following can we infer?  Mark all that apply\n\n**Choices:**\n\n%s\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "choices": [
       "A. If B is NP-complete, then so is A.  ",
       "B. If A is NP-complete, then so is B.  ",
       "C. If B is NP-complete and A is in NP, then A is NP-complete.  ",
-      "D. **If A is NP-complete and B is in NP, then B is NP-complete.**  ",
+      "D. If A is NP-complete and B is in NP, then B is NP-complete.  ",
       "E. A and B cannot both be NP-complete. ",
       "F. If A is in P, then B is in P.  ",
-      "G. **If B is in P, then A is in P.**  "
+      "G. If B is in P, then A is in P.  "
     ],
     "answers": [
       "False",

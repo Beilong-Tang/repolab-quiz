@@ -1,0 +1,20 @@
+{
+  "question_type": "blank",
+  "question_title": "TOY_IR",
+  "question_content": {
+    "description": "### Problem21\n\n\nThe 16-bit _____(0)\\___ _____(1)\\___ (IR) is an internal register that contains the current instruction being executed. These registers are central to the operation of the machine. The IR is not directly accessed by programs, but programmers are always aware of its contents (literally from sec-6.2).\n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "explains": "None",
+    "answers": [
+      "instruction",
+      "register"
+    ],
+    "quiz_type": "blank",
+    "level": "1",
+    "author": "Yantao Mei",
+    "section": "6.2",
+    "id": 621
+  },
+  "question_level": 1,
+  "question_id": 621,
+  "question_week": 6
+}
