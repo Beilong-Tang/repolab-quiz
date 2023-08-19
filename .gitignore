@@ -159,3 +159,4 @@ uwsgi_params
 
 /repolab-quiz
 
+*.xls

@@ -2,7 +2,7 @@
   "question_type": "blank",
   "question_title": "PC Changing",
   "question_content": {
-    "description": "### Problem17\n\nGive two instructions that change the program counter (PC) to memory address 15 regardless of the contents of any registers or memory cells: \n\n_____(0)\\___ (Begining with 'C') \n\n _____(1)\\___ (Begining with 'F') \n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
+    "description": "### Problem17\n\nGive two instructions that \n\n 1. change the program counter (PC) to memory address 15 regardless of the contents of any registers or memory cells \n\n2. Only PC changes, values of memory and register will not be changed \n\n_____(0)\\___ (Begining with 'C') \n\n _____(1)\\___ (Begining with 'F') \n\n*Excerpt From Computer Science Sedgewick, Robert,Wayne, Kevin. This material may be protected by copyright.*",
     "explains": "None",
     "answers": [
       "C015",

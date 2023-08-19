@@ -55,6 +55,18 @@
       </thead>
       <tbody>
         {% for i, j, k, m , p in array %}
+
+        {% if i == 'week7' %}
+          <tr class= "table-primary">
+            <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
+            <td></td>
+            <td></td>
+            <td name='status'><strong></strong></td>
+            <td></td>
+          </tr>
+        
+          {% else %}
+
         <tr class= "table-primary">
           <th scope="row" ><a href= '{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
           <td>{{k}}</td>
@@ -62,10 +74,15 @@
           <td name='status'><strong>{{j.0|status}}</strong></td>
           <td>{{j.1}}</td>
         </tr>
+
+        {% endif %}
+
         {% endfor %}
       </tbody>
     </table>
 
+    <p>Quiz 7 is released with the answers, and it will not be graded. It can be used as your review material for week7.</p>
+    <p>In other words, no more quizzes😀. Appreciate your hard work 👍!</p>
 
 
     <script>
