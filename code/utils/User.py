@@ -4,6 +4,7 @@ from simple_judge.models import Student
 from django.contrib.auth.models import User
 from utils.settings import user_raw_path as user_raw_file
 from utils.settings import password_yaml as password_yaml
+from utils.settings import question_due_dict
 import random as r
 from django.db.models import Q
 import yaml
@@ -14,11 +15,15 @@ status_path = os.path.dirname(os.path.abspath(__file__))
 
 ## This will create a user and assign the user a foreign key to the student
 def create_user(net_id, student_name, level=0):
+    if (User.objects.filter(username=net_id).exists()):
+        print(User.objects.get(username=net_id).username, " exists")
+        return
     u = User.objects.create(username=net_id)
     password = password_random_gen()
     u.set_password(password)
     u.save()    
     s = Student(user = u, student_name=student_name.replace('_',' '),student_netid=net_id, level=level)
+    s.question_due_dict= question_due_dict
     s.save()
     with open ('utils/user.txt','a') as f:
         f.write(net_id+" "+student_name+" "+ password+' '+str(level)+" ;\n")
@@ -61,7 +66,7 @@ def password_random_gen():
     
 
 def importing_user():
-    with open(user_raw_file,'r', encoding='utf-16') as f:
+    with open(user_raw_file,'r') as f:
         for line in f.readlines():
             line = line.rstrip('\n')
             line_array = line.split(',') #"Tang, Beilong",bt132@duke.edu,lunji.zhu@dukekunshan.edu.cn,TA#
