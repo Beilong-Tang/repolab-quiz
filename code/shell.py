@@ -328,7 +328,6 @@ def CreateUser(net_id, student_name,level):
     pass
 
 def ImportUser():
-    print(1)
     args = ""
     args+= "from simple_judge.models import Student\n"
     args+= "from django.contrib.auth.models import User\n"
