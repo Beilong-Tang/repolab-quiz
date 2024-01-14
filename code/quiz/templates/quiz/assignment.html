@@ -64,7 +64,7 @@
 
             {% if i == 'week7' %}
             <tr class="table-primary">
-              <th scope="row"><a href='{% url ' quiz:quiz_new' m %}'>{{i}}</a></th>
+              <th scope="row"><a href='{% url 'quiz:quiz_new' m %}'>{{i}}</a></th>
               <td></td>
               <td></td>
               <td name='status'><strong></strong></td>
@@ -87,9 +87,15 @@
           </tbody>
         </table>
 
-        <!-- <p>Quiz 7 is released with the answers, and it will not be graded. It can be used as your review material for
-          week7.</p>
-        <p>In other words, no more quizzes😀. Appreciate your hard work 👍!</p> -->
+          {% if array|length == 7%}
+          <p>Quiz 7 is released with the answers, and it will not be graded. It can be used as your review material for
+            week7.</p>
+        <p>In other words, no more quizzes😀. Appreciate your hard work 👍!</p>
+          {% endif %}
+        
+        
+
+        
 
 
         <script>
