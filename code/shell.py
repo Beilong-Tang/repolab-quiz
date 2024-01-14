@@ -9,6 +9,7 @@ django.setup()
 from simple_judge.models import *
 from utils import LoadQuestion as load
 from utils import User as User
+from utils import Post as Post
 
 
 # from utils.AssignQuestionWeek import execute
@@ -50,7 +51,8 @@ python3 change_password_yaml # Change the raw password to the password in the ya
 Change the password (python3 shell.py change_password bt132 password)
 python3 shell.py status (generating a excel file of the status of all students in all the week)
 python3 shell.py status 1 (status in week 1 output in a txt file)
-python3 shell.py deleteUser 
+python3 shell.py deleteUser (delete all the student users)
+python3 shell.py clean (clean all the users and all the posts)
 """
         )
         return
@@ -127,6 +129,11 @@ python3 shell.py deleteUser
 
     if sys.argv[1] == "deleteUser":
         User.deleteUser()
+        return
+
+    if sys.argv[1] == "clean":
+        User.deleteUser()
+        Post.deleteForum()
         return
 
 
